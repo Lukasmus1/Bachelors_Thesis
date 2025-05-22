@@ -15,7 +15,7 @@ namespace DesktopGeneration
             {
                 // Check if the left mouse button was clicked
                 case PointerEventData.InputButton.Left:
-                    print("LEFT MOUSE CLICKED");
+                    OnLeftClick();
                     break;
                 // Check if the right mouse button was clicked
                 case PointerEventData.InputButton.Right:
@@ -27,6 +27,11 @@ namespace DesktopGeneration
         public void SetProperties(Sprite iconSprite)
         {
             iconImage.sprite = iconSprite;
+        }
+
+        public void OnLeftClick()
+        {
+            print("LEFT MOUSE CLICKED");
         }
     }
 }
