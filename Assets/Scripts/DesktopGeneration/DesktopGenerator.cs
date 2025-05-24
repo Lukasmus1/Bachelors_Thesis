@@ -23,6 +23,9 @@ namespace DesktopGeneration
         [SerializeField] private List<Sprite> iconSprites;
         //Bottom bar
         [SerializeField] private List<GameObject> bottomBarIconObjects;
+        //Desktop icons
+        [SerializeField] private List<GameObject> desktopIconObjects;
+        
         
         private WallpaperGenerator _wallpaperGenerator;
         private ColorSchemeGeneration _colorSchemeGenerator;
@@ -64,7 +67,8 @@ namespace DesktopGeneration
             //tbd
             
             //Desktop icons
-            _iconGenerator = new IconGeneration();
+            _iconGenerator = new IconGeneration(desktopIconObjects);
+            print(_iconGenerator.GenerateUserDesktopIcons());
         }
 
         private void GenerateWallpaper()

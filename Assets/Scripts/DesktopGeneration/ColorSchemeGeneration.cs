@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.Win32;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,31 +14,22 @@ namespace DesktopGeneration
         {
             _bottomBarBackground = bottomBarBackground;
         }
-        
+
         public void GenerateUserColorScheme()
         {
-            var psi = new ProcessStartInfo
-            {
-                FileName = "powershell",
-                Arguments = "-NoProfile -Command \"(Get-ItemProperty 'HKCU:\\Software\\Microsoft\\Windows\\DWM').AccentColor\"",
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
+            //Reading the accent color from the Windows registry
+            object regValue = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM", "AccentColor", null);
             
-            var process = Process.Start(psi);
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-            output = output.Trim();
+            //Converting the int registry value to a hex color string
+            string hexColor = new(((int)regValue).ToString("X").Reverse().ToArray());
             
-            //ulong (32-bit) to hex conversion and reversing the string, 'cause PowerShell returns the color in opposite order
-            string hexColor = new string(ulong.Parse(output).ToString("X").Reverse().ToArray());
-            if (ColorUtility.TryParseHtmlString("#" + hexColor, out Color userColor))
+            //Parsing the hex color to a Color object
+            if (ColorUtility.TryParseHtmlString($"#{hexColor}", out Color color))
             {
-                SetColorScheme(userColor);
+                SetColorScheme(color);
             }
         }
-        
+
         public void GenerateColorScheme()
         {
             SetColorScheme(Random.ColorHSV());

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
+using Microsoft.Win32;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = System.Diagnostics.Debug;
 
 namespace DesktopGeneration
 {
@@ -21,27 +20,9 @@ namespace DesktopGeneration
 
         public void SetUserWallpaper()
         {
-            //Using PowerShell to get the current user's wallpaper path
-            var psi = new ProcessStartInfo
-            {
-                FileName = "powershell",
-                //NoProfile -> doesn't load the user's profile, which speeds up the process
-                //Command -> executes the command in PowerShell
-                //Get-ItemProperty -> gets the property of the registry key
-                //HKCU:\Control Panel\Desktop -> the registry key for the current user's desktop settings
-                //WallPaper -> the property that contains the wallpaper path
-                Arguments = "-NoProfile -Command \"(Get-ItemProperty 'HKCU:\\Control Panel\\Desktop').WallPaper\"",
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            //Starting the process and reading the output
-            var process = Process.Start(psi);
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-
-            SetWallpaper(output.Trim());
+            //Using the registry to get the current user's wallpaper path
+            string wallpaperPath = (string)Registry.GetValue(@"HKEY_CURRENT_USER\Control Panel\Desktop", "WallPaper", null);
+            SetWallpaper(wallpaperPath);
         }
         
         public void SetRandomWallpaper()
