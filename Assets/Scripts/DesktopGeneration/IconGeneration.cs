@@ -12,5 +12,12 @@ namespace DesktopGeneration
             _iconSprites = iconSprites;
             _bottomBarIconObjects = bottomBarIconObjects;
         }
+
+        public IconGeneration(){}
+
+        public void GenerateUserDesktopIcons()
+        {
+            
+        }
     }
 }

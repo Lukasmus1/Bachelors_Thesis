@@ -34,7 +34,7 @@ namespace DesktopGeneration
             
             //Generating desktop
             //Wallpaper
-            _wallpaperGenerator = new WallpaperGenerator();
+            _wallpaperGenerator = new WallpaperGenerator(wallpaperImage);
             GenerateWallpaper();
             
             //Color scheme
@@ -46,11 +46,37 @@ namespace DesktopGeneration
             
         }
 
+        public void GenerateUserDesktop()
+        {
+            Debug.Log("Generating user desktop...");
+            
+            //Generating desktop
+            //Wallpaper
+            _wallpaperGenerator = new WallpaperGenerator(wallpaperImage);
+            _wallpaperGenerator.SetUserWallpaper();
+            EnableDesktop();
+            
+            //Color scheme
+            _colorSchemeGenerator = new ColorSchemeGeneration(bottomBarBackground);
+            _colorSchemeGenerator.GenerateUserColorScheme();
+            
+            //Bottom bar icons
+            //tbd
+            
+            //Desktop icons
+            _iconGenerator = new IconGeneration();
+        }
+
         private void GenerateWallpaper()
         {
             //Getting a random wallpaper path
-            _wallpaperGenerator.SetRandomWallpaper(wallpaperImage);
+            _wallpaperGenerator.SetRandomWallpaper();
             
+            EnableDesktop();
+        }
+
+        private void EnableDesktop()
+        {
             //Enabling the desktop object
             desktopObject.SetActive(true);
             createDesktopButton.SetActive(false);
