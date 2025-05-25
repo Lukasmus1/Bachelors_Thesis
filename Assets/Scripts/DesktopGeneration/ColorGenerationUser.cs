@@ -1,42 +1,35 @@
-using System.Diagnostics;
-using System.Linq;
 using Microsoft.Win32;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 namespace DesktopGeneration
 {
-    public class ColorSchemeGeneration
+    public class ColorGenerationUser : IColorGeneration
     {
         private Image _bottomBarBackground; 
-            
-        public ColorSchemeGeneration(Image bottomBarBackground)
+
+        public ColorGenerationUser(Image bottomBarBackground)
         {
             _bottomBarBackground = bottomBarBackground;
         }
-
-        public void GenerateUserColorScheme()
+        
+        public void GenerateColorScheme()
         {
             //Reading the accent color from the Windows registry
-            object regValue = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM", "AccentColor", null);
+            object regValue = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM", "ColorizationColor", null);
             
             //Converting the int registry value to a hex color string
-            string hexColor = new(((int)regValue).ToString("X").Reverse().ToArray());
+            string hexColor = ((int)regValue).ToString("X")[2..];
             
             //Parsing the hex color to a Color object
             if (ColorUtility.TryParseHtmlString($"#{hexColor}", out Color color))
             {
+                //check, jeslti má user nastavené jinou barvu pro taskbar a cosi idk ->colorprevalence
                 Debug.Log(hexColor);
                 SetColorScheme(color);
             }
         }
-
-        public void GenerateColorScheme()
-        {
-            SetColorScheme(Random.ColorHSV());
-        }
-
+        
         private void SetColorScheme(Color clr)
         {
             //Setting alpha value for the color

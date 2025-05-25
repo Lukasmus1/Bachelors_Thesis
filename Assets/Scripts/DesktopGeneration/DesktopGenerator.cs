@@ -28,11 +28,11 @@ namespace DesktopGeneration
         
         
         private WallpaperGenerator _wallpaperGenerator;
-        private ColorSchemeGeneration _colorSchemeGenerator;
+        private IColorGeneration _colorSchemeGenerator;
         private IconGeneration _iconGenerator;
         private FontScript _fontGenerator;
         
-        public void GenerateDesktop()
+        public void GenerateDesktopButton()
         {
             Debug.Log("Generating desktop...");
             
@@ -42,7 +42,7 @@ namespace DesktopGeneration
             GenerateWallpaper();
             
             //Color scheme
-            _colorSchemeGenerator = new ColorSchemeGeneration(bottomBarBackground);
+            _colorSchemeGenerator = new ColorGenerationRandom(bottomBarBackground);
             _colorSchemeGenerator.GenerateColorScheme();
             
             //Bottom bar icons
@@ -50,7 +50,7 @@ namespace DesktopGeneration
             
         }
 
-        public void GenerateUserDesktop()
+        public void GenerateUserDesktopButton()
         {
             Debug.Log("Generating user desktop...");
             
@@ -61,8 +61,7 @@ namespace DesktopGeneration
             EnableDesktop();
             
             //Color scheme
-            _colorSchemeGenerator = new ColorSchemeGeneration(bottomBarBackground);
-            _colorSchemeGenerator.GenerateUserColorScheme();
+            _colorSchemeGenerator = new ColorGenerationUser(bottomBarBackground);
             
             //Bottom bar icons
             //tbd
@@ -74,6 +73,16 @@ namespace DesktopGeneration
             //Font
             _fontGenerator = new FontScript(desktopIconObjects);
             _fontGenerator.SetUserFont();
+            
+            
+            //Generate the desktop
+            GenerateDesktop();
+        }
+
+        private void GenerateDesktop()
+        {
+            //Color scheme
+            _colorSchemeGenerator.GenerateColorScheme();
         }
 
         private void GenerateWallpaper()
