@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Win32;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace DesktopGeneration
 {
@@ -26,6 +27,7 @@ namespace DesktopGeneration
             //Parsing the hex color to a Color object
             if (ColorUtility.TryParseHtmlString($"#{hexColor}", out Color color))
             {
+                Debug.Log(hexColor);
                 SetColorScheme(color);
             }
         }

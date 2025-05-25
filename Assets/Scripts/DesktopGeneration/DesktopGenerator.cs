@@ -30,6 +30,7 @@ namespace DesktopGeneration
         private WallpaperGenerator _wallpaperGenerator;
         private ColorSchemeGeneration _colorSchemeGenerator;
         private IconGeneration _iconGenerator;
+        private FontScript _fontGenerator;
         
         public void GenerateDesktop()
         {
@@ -45,7 +46,7 @@ namespace DesktopGeneration
             _colorSchemeGenerator.GenerateColorScheme();
             
             //Bottom bar icons
-            _iconGenerator = new IconGeneration(iconSprites, bottomBarIconObjects);
+            //_iconGenerator = new IconGeneration(iconSprites, bottomBarIconObjects);
             
         }
 
@@ -69,6 +70,10 @@ namespace DesktopGeneration
             //Desktop icons
             _iconGenerator = new IconGeneration(desktopIconObjects);
             print(_iconGenerator.GenerateUserDesktopIcons());
+            
+            //Font
+            _fontGenerator = new FontScript(desktopIconObjects);
+            _fontGenerator.SetUserFont();
         }
 
         private void GenerateWallpaper()

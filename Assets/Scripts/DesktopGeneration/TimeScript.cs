@@ -17,7 +17,8 @@ namespace DesktopGeneration
 
         private void FixedUpdate()
         {
-            _timeText.text = $"{DateTime.Now.TimeOfDay.Hours}:{DateTime.Now.TimeOfDay.Minutes}\n{DateTime.Now:dd/MM/yyyy}";
+            //Updating the time text every fixed update
+            _timeText.text = $"{DateTime.Now.TimeOfDay.Hours:D2}:{DateTime.Now.TimeOfDay.Minutes:D2}\n{DateTime.Now:dd/MM/yyyy}";
         }
     }
 }

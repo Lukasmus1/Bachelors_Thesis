@@ -34,7 +34,7 @@ namespace DesktopGeneration
         public static extern bool DestroyIcon(IntPtr handle);
         
         private const uint SHGFI_ICON = 0x100;
-        private const uint SHGFI_LARGEICON = 0x0;
+        private const uint SHGFI_LARGEICON = 0x000000002;
         
         private List<Sprite> _iconSprites;
         private List<GameObject> _bottomBarIconObjects;
