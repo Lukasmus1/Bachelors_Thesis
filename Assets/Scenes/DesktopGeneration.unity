@@ -4089,7 +4089,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 108742328}
         m_TargetAssemblyTypeName: DesktopGeneration.DesktopGenerator, Assembly-CSharp
-        m_MethodName: GenerateDesktop
+        m_MethodName: GenerateDesktopButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

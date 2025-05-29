@@ -27,7 +27,7 @@ namespace DesktopGeneration
         [SerializeField] private List<GameObject> desktopIconObjects;
         
         
-        private WallpaperGenerator _wallpaperGenerator;
+        private WallpaperGeneration _wallpaperGeneratorRandom;
         private IColorGeneration _colorSchemeGenerator;
         private IconGeneration _iconGenerator;
         private FontScript _fontGenerator;
@@ -38,8 +38,7 @@ namespace DesktopGeneration
             
             //Generating desktop
             //Wallpaper
-            _wallpaperGenerator = new WallpaperGenerator(wallpaperImage);
-            GenerateWallpaper();
+            _wallpaperGeneratorRandom = new WallpaperGeneratorRandom(wallpaperImage);
             
             //Color scheme
             _colorSchemeGenerator = new ColorGenerationRandom(bottomBarBackground);
@@ -48,6 +47,7 @@ namespace DesktopGeneration
             //Bottom bar icons
             //_iconGenerator = new IconGeneration(iconSprites, bottomBarIconObjects);
             
+            GenerateDesktop();
         }
 
         public void GenerateUserDesktopButton()
@@ -56,9 +56,7 @@ namespace DesktopGeneration
             
             //Generating desktop
             //Wallpaper
-            _wallpaperGenerator = new WallpaperGenerator(wallpaperImage);
-            _wallpaperGenerator.SetUserWallpaper();
-            EnableDesktop();
+            _wallpaperGeneratorRandom = new WallpaperGeneratorUser(wallpaperImage);
             
             //Color scheme
             _colorSchemeGenerator = new ColorGenerationUser(bottomBarBackground);
@@ -81,17 +79,16 @@ namespace DesktopGeneration
 
         private void GenerateDesktop()
         {
+            //Wallpaper
+            _wallpaperGeneratorRandom.GenerateWallpaper();
+            
             //Color scheme
             _colorSchemeGenerator.GenerateColorScheme();
-        }
-
-        private void GenerateWallpaper()
-        {
-            //Getting a random wallpaper path
-            _wallpaperGenerator.SetRandomWallpaper();
+            
             
             EnableDesktop();
         }
+        
 
         private void EnableDesktop()
         {
