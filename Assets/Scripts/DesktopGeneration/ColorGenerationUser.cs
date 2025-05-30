@@ -32,9 +32,6 @@ namespace DesktopGeneration
         
         private void SetColorScheme(Color clr)
         {
-            //Setting alpha value for the color
-            clr.a = 0.97f;
-            
             //Setting the color scheme
             Desktop.Instance.ColorScheme = clr;
             UpdateColorScheme();

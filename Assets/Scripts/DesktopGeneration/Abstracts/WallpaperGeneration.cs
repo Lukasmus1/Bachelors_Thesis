@@ -2,11 +2,11 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.Abstracts
 {
     public abstract class WallpaperGeneration
     {
-        protected RawImage _wallpaperImage;
+        private readonly RawImage _wallpaperImage;
 
         protected WallpaperGeneration(RawImage wallpaperImage)
         {

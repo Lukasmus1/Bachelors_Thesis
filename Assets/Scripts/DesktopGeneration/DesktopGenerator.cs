@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DesktopGeneration.Abstracts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,8 +66,7 @@ namespace DesktopGeneration
             //tbd
             
             //Desktop icons
-            _iconGenerator = new IconGeneration(desktopIconObjects);
-            print(_iconGenerator.GenerateUserDesktopIcons());
+            _iconGenerator = new IconGenerationUser(desktopIconObjects);
             
             //Font
             _fontGenerator = new FontScript(desktopIconObjects);
@@ -85,6 +85,11 @@ namespace DesktopGeneration
             //Color scheme
             _colorSchemeGenerator.GenerateColorScheme();
             
+            //Bottom bar icons
+            //tbd
+            
+            //Desktop icons
+            _iconGenerator.GenerateIcons();
             
             EnableDesktop();
         }

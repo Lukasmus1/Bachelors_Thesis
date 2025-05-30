@@ -23,7 +23,7 @@ namespace DesktopGeneration
         public string szTypeName;
     }
     
-    public class IconGeneration
+    public class IconGenerationOld
     {
         
         [DllImport("shell32.dll")]
@@ -39,13 +39,13 @@ namespace DesktopGeneration
         private List<Sprite> _iconSprites;
         private List<GameObject> _bottomBarIconObjects;
         private List<GameObject> _desktopIconObjects;
-        public IconGeneration(List<Sprite> iconSprites, List<GameObject> bottomBarIconObjects)
+        public IconGenerationOld(List<Sprite> iconSprites, List<GameObject> bottomBarIconObjects)
         {
             _iconSprites = iconSprites;
             _bottomBarIconObjects = bottomBarIconObjects;
         }
 
-        public IconGeneration(List<GameObject> desktopIcons)
+        public IconGenerationOld(List<GameObject> desktopIcons)
         {
             _desktopIconObjects = desktopIcons;
         }
