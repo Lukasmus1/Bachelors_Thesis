@@ -7,6 +7,7 @@ using System.Linq;
 using Microsoft.Win32;
 using TMPro;
 using UnityEngine;
+using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
 
 namespace DesktopGeneration
@@ -45,6 +46,11 @@ namespace DesktopGeneration
         {
             UnityEngine.Font font = new(_userFontFile);
             TMP_FontAsset fontAsset = TMP_FontAsset.CreateFontAsset(font);
+            
+            //Font settings
+            fontAsset.material.EnableKeyword("OUTLINE_ON");
+            fontAsset.material.SetFloat(Shader.PropertyToID("_OutlineWidth"), 0.2f);
+            fontAsset.material.SetColor(Shader.PropertyToID("_OutlineColor"), UnityEngine.Color.black);
             
             foreach (GameObject desktopIconObject in _desktopIconObjects)
             {

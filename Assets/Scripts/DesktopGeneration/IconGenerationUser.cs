@@ -5,6 +5,7 @@ using DesktopGeneration.Abstracts;
 using TMPro;
 using UnityEngine;
 
+
 namespace DesktopGeneration
 {
     public class IconGenerationUser : IconGeneration

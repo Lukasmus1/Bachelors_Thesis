@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DesktopGeneration.Abstracts;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,7 +72,6 @@ namespace DesktopGeneration
             //Font
             _fontGenerator = new FontScript(desktopIconObjects);
             _fontGenerator.SetUserFont();
-            
             
             //Generate the desktop
             GenerateDesktop();
