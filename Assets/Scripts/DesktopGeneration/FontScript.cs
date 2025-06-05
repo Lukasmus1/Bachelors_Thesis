@@ -48,9 +48,17 @@ namespace DesktopGeneration
             TMP_FontAsset fontAsset = TMP_FontAsset.CreateFontAsset(font);
             
             //Font settings
+            //Outline
             fontAsset.material.EnableKeyword("OUTLINE_ON");
             fontAsset.material.SetFloat(Shader.PropertyToID("_OutlineWidth"), 0.2f);
             fontAsset.material.SetColor(Shader.PropertyToID("_OutlineColor"), UnityEngine.Color.black);
+            
+            //Underlay
+            fontAsset.material.EnableKeyword("UNDERLAY_ON");
+            fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlayOffsetX"), 1f);
+            fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlayOffsetY"), -1f);  
+            fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlayDilate"), 1f);
+            fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlaySoftness"), 0f);
             
             foreach (GameObject desktopIconObject in _desktopIconObjects)
             {

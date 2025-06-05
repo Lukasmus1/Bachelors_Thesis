@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using DesktopGeneration.Abstracts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace DesktopGeneration
@@ -16,26 +18,50 @@ namespace DesktopGeneration
 
         public override void GenerateIcons()
         {
-            DirectoryInfo directoryInfo = new(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop));
-            int iconIndex = 0;
-            foreach (FileSystemInfo item in directoryInfo.GetFileSystemInfos())
+            List<string> allFiles = new();
+    
+            //Desktop of current user
+            string userDesktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            allFiles.AddRange(Directory.GetFiles(userDesktop));
+    
+            //Shared desktop for all users
+            string commonDesktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonDesktopDirectory);
+            if (Directory.Exists(commonDesktop))
             {
-                //Removing the file extension from the name
-                StringBuilder sb = new(item.Name);
-                sb.Remove(item.Name.Length - item.Extension.Length, item.Extension.Length);
-             
+                allFiles.AddRange(Directory.GetFiles(commonDesktop));
+            }
+    
+            //Remopving duplicit files
+            allFiles = allFiles.Distinct().ToList();
+            
+            //Removing desktop.ini files (hidden config folder file)
+            allFiles.Remove(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + @"\desktop.ini");
+            allFiles.Remove(System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonDesktopDirectory) + @"\desktop.ini");
+            
+            for (int iconIndex = 0; iconIndex < allFiles.Count; iconIndex++) 
+            {
+                if (Path.GetFileNameWithoutExtension(allFiles[iconIndex]) == "desktop")
+                {
+                    Debug.Log(true);
+                }
+                
                 //Setting the text of an icon
-                DesktopIconObjects[iconIndex].GetComponentInChildren<TMP_Text>().text = sb.ToString();
+                DesktopIconObjects[iconIndex].GetComponentInChildren<TMP_Text>().text = Path.GetFileNameWithoutExtension(allFiles[iconIndex]);
+                
+                //Getting the icon image
                 Transform[] images = DesktopIconObjects[iconIndex].GetComponentsInChildren<Transform>();
                 foreach (Transform image in images)
                 {
-                    if (image.name == "Icon")
+                    if (image.name != "Icon")
                     {
-                        
+                        continue;
                     }
+                    
+                    //Setting the icon image
+                    image.GetComponent<RawImage>().texture = WindowsIconUtil.GetFileIcon(allFiles[iconIndex]);
+                    break;
                 }
                 DesktopIconObjects[iconIndex].SetActive(true);
-                iconIndex++;
             }
         }
     }
