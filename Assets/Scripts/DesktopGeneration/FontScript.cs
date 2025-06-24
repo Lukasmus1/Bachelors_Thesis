@@ -14,8 +14,8 @@ namespace DesktopGeneration
 {
     public class FontScript
     {
-        private string _userFontFile;
-        private List<GameObject> _desktopIconObjects;
+        private readonly string _userFontFile;
+        private readonly List<GameObject> _desktopIconObjects;
         
         public FontScript(List<GameObject> desktopIconObjects)
         {

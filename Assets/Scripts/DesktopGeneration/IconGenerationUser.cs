@@ -22,7 +22,10 @@ namespace DesktopGeneration
     
             //Desktop of current user
             string userDesktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            
+            //Adding files and directories from the user's desktop
             allFiles.AddRange(Directory.GetFiles(userDesktop));
+            allFiles.AddRange(Directory.GetDirectories(userDesktop));
     
             //Shared desktop for all users
             string commonDesktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonDesktopDirectory);
