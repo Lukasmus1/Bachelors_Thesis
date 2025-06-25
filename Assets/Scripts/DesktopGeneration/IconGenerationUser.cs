@@ -86,8 +86,19 @@ namespace DesktopGeneration
             const string keyPath = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel";
             foreach (var icon in SpecialIcons)
             {
-                Debug.Log((int)Registry.GetValue(keyPath, icon.Value.ToString("B"), 0));
-                if ((int)Registry.GetValue(keyPath, icon.Value.ToString("B"), 0) == 0)
+                int registryValue;
+                
+                //Recycle bin default behavior is different, it is not hidden by default -> arg "defaultValue" of GetValue is 0
+                if (icon.Key == "Recycle Bin")
+                {
+                    registryValue = (int)Registry.GetValue(keyPath, icon.Value.ToString("B"), 0);
+                }
+                else
+                {
+                    registryValue = (int)Registry.GetValue(keyPath, icon.Value.ToString("B"), 1);
+                }
+                
+                if (registryValue == 0)
                 {
                     allFiles.Add("::" + icon.Value.ToString("B"));
                 }

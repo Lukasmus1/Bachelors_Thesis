@@ -48,6 +48,10 @@ namespace DesktopGeneration
             TMP_FontAsset fontAsset = TMP_FontAsset.CreateFontAsset(font);
             
             //Font settings
+            //Dilate
+            fontAsset.material.EnableKeyword("DILATE_ON");
+            fontAsset.material.SetFloat(Shader.PropertyToID("_FaceDilate"), -0.15f);
+            
             //Outline
             fontAsset.material.EnableKeyword("OUTLINE_ON");
             fontAsset.material.SetFloat(Shader.PropertyToID("_OutlineWidth"), 0.2f);
