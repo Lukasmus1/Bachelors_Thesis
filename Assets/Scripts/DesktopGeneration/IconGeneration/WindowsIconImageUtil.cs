@@ -2,9 +2,9 @@ using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.IconGeneration
 {
-    public static class WindowsIconUtil
+    public static class WindowsIconImageUtil
     {
         //Import the necessary Windows API functions
         [DllImport("shell32.dll", CharSet = CharSet.Unicode, PreserveSig = false)]

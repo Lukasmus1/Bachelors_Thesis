@@ -2,25 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using DesktopGeneration.Abstracts;
 using Microsoft.Win32;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace DesktopGeneration
+namespace DesktopGeneration.IconGeneration
 {
-    public class IconGenerationUser : IconGeneration
+    public class IconGenerationUser : Abstracts.IconGeneration
     {
         private static readonly Dictionary<string, Guid> SpecialIcons = new Dictionary<string, Guid>
         {
-            { "This PC", KnownFolder.ThisPC },
-            { "Network", KnownFolder.Network },
-            { "Recycle Bin", KnownFolder.RecycleBin },
-            { "User Files", KnownFolder.UserFiles },
-            { "Control Panel", KnownFolder.ControlPanel }
+            { "This PC", KnownFolders.ThisPC },
+            { "Network", KnownFolders.Network },
+            { "Recycle Bin", KnownFolders.RecycleBin },
+            { "User Files", KnownFolders.UserFiles },
+            { "Control Panel", KnownFolders.ControlPanel }
         };
 
         public IconGenerationUser(List<GameObject> desktopIcons) : base(desktopIcons)
@@ -74,7 +71,7 @@ namespace DesktopGeneration
                     }
                     
                     //Setting the icon image
-                    image.GetComponent<RawImage>().texture = WindowsIconUtil.GetFileIcon(allFiles[iconIndex]);
+                    image.GetComponent<RawImage>().texture = WindowsIconImageUtil.GetFileIcon(allFiles[iconIndex]);
                     break;
                 }
                 DesktopIconObjects[iconIndex].SetActive(true);

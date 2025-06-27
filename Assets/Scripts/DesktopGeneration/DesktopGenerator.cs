@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DesktopGeneration.Abstracts;
+using DesktopGeneration.IconGeneration;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,7 @@ namespace DesktopGeneration
         
         private WallpaperGeneration _wallpaperGeneratorRandom;
         private IColorGeneration _colorSchemeGenerator;
-        private IconGeneration _iconGenerator;
+        private Abstracts.IconGeneration _iconGenerator;
         private FontScript _fontGenerator;
         
         public void GenerateDesktopButton()

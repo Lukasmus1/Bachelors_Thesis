@@ -1,8 +1,8 @@
 using System;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.IconGeneration
 { 
-    public static class KnownFolder
+    public static class KnownFolders
     {
         public static readonly Guid ThisPC = new Guid( "20D04FE0-3AEA-1069-A2D8-08002B30309D" );
         public static readonly Guid Network = new Guid( "F02C1A0D-BE21-4350-88B0-7367FC96EF3C" );
