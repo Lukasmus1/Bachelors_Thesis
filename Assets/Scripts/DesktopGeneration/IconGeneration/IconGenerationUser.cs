@@ -48,16 +48,14 @@ namespace DesktopGeneration.IconGeneration
             allFiles = allFiles.Distinct().ToList();
             
             //Removing desktop.ini files (hidden config folder file)
-            allFiles.Remove(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + @"\desktop.ini");
-            allFiles.Remove(System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonDesktopDirectory) + @"\desktop.ini");
+            allFiles.Remove(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\desktop.ini");
+            allFiles.Remove(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory) + @"\desktop.ini");
             
             for (int iconIndex = 0; iconIndex < allFiles.Count; iconIndex++)
             {
-                string iconName;
-                
                 //Checking if the icon is a special icon
-                iconName = allFiles[iconIndex].StartsWith("::") ? GetSpecialIconName(allFiles[iconIndex]) : Path.GetFileNameWithoutExtension(allFiles[iconIndex]);
-                
+                string iconName = allFiles[iconIndex].StartsWith("::") ? GetSpecialIconName(allFiles[iconIndex]) : Path.GetFileNameWithoutExtension(allFiles[iconIndex]);
+
                 //Setting the text of an icon
                 DesktopIconObjects[iconIndex].GetComponentInChildren<TMP_Text>().text = iconName;
                 
