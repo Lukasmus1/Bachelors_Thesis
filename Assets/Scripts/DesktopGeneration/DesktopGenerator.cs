@@ -29,7 +29,6 @@ namespace DesktopGeneration
         //Desktop icons
         [SerializeField] private List<GameObject> desktopIconObjects;
         
-        
         private WallpaperGeneration _wallpaperGeneratorRandom;
         private IColorGeneration _colorSchemeGenerator;
         private Abstracts.IconGeneration _iconGenerator;
@@ -55,8 +54,6 @@ namespace DesktopGeneration
 
         public void GenerateUserDesktopButton()
         {
-            Debug.Log("Generating user desktop...");
-            
             //Generating desktop
             //Wallpaper
             _wallpaperGeneratorRandom = new WallpaperGeneratorUser(wallpaperImage);

@@ -40,9 +40,6 @@ namespace DesktopGeneration.IconGeneration
         [DllImport("kernel32.dll")]
         static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, out uint lpNumberOfBytesWritten);
 
-        [DllImport("user32.dll")]
-        static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
-
         [StructLayout(LayoutKind.Sequential)]
         private struct RECT
         {
@@ -63,6 +60,11 @@ namespace DesktopGeneration.IconGeneration
             {
                 return $"({x}, {y})";
             }
+
+            public static Point operator -(Point left, Point right)
+            {
+                return new Point() {x = left.x - right.x, y = left.y - right.y};
+            }
         }
 
         //Structure for ListView item
@@ -80,7 +82,7 @@ namespace DesktopGeneration.IconGeneration
             public IntPtr lParam;
         }
 
-        public struct DesktopIcon
+        public struct DesktopIcon : IEquatable<DesktopIcon>
         {
             public System.Drawing.Point Position { get; set; }
             public string Name { get; set; }
@@ -88,6 +90,21 @@ namespace DesktopGeneration.IconGeneration
             public override string ToString()
             {
                 return $"{Name} ({Position.X}, {Position.Y})";
+            }
+
+            public bool Equals(DesktopIcon other)
+            {
+                return Position.Equals(other.Position) && Name == other.Name;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is DesktopIcon other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(Position, Name);
             }
         }
 
@@ -102,8 +119,11 @@ namespace DesktopGeneration.IconGeneration
         const uint MEM_COMMIT = 0x1000;
         const uint MEM_RELEASE = 0x8000;
         const uint PAGE_READWRITE = 0x04;
-        const uint LVM_GETITEMRECT = 0x100E;
         const uint LVM_GETITEMSPACING = 0x1035;
+        const uint LVM_GETITEMRECT = 0x100E;
+        
+        public static Point IconSize { get; private set; } = new Point { x = 0, y = 0 };
+        public static Point IconSpacing { get; private set; } = new Point { x = 0, y = 0 };
         
          public static List<DesktopIcon> GetDesktopIconPositions()
         {
@@ -156,6 +176,11 @@ namespace DesktopGeneration.IconGeneration
                 IntPtr itemCount = SendMessage(listView, LVM_GETITEMCOUNT, IntPtr.Zero, IntPtr.Zero);
                 int count = itemCount.ToInt32();
                 
+                System.Drawing.Point offset = GetDesktopOffset();
+
+                IconSize = GetIconSize(explorerProcess, listView);
+                IconSpacing = GetIconSpacing(listView);
+                
                 for (int i = 0; i < count; i++)
                 {
                     string iconName = "";
@@ -193,10 +218,23 @@ namespace DesktopGeneration.IconGeneration
                     //Add the icon to the list
                     if (!string.IsNullOrEmpty(iconName) && iconPosition != System.Drawing.Point.Empty)
                     {
+                        //Adjust the position based on the offset of the main screen
+                        iconPosition.X -= offset.X;
+                        iconPosition.Y -= offset.Y;
+                        
+                        //Normalize the position to the pre-set 2560x1440 resolution of the canvas
+                        iconPosition.X *= 2560 / Screen.width;
+                        iconPosition.Y *= 1440 / Screen.height;
+                        
+                        //Adjust the position to be in the center of the icon
+                        iconPosition.X += IconSize.x / 2;
+                        iconPosition.Y += IconSize.y / 2;
+                        
+                        //Add the icon to the list
                         icons.Add(new DesktopIcon 
                         { 
                             Name = iconName,
-                            Position = iconPosition 
+                            Position = iconPosition
                         });
                     }
                 }
@@ -331,8 +369,8 @@ namespace DesktopGeneration.IconGeneration
             return new Point { x = spacingX, y = spacingY };
         }
 
-        /*Assumes the icon count is at least 1
-        private static Point GetIconSize(IntPtr explorerProcess, IntPtr listView)
+        //Assumes the icon count is at least 1s
+        public static Point GetIconSize(IntPtr explorerProcess, IntPtr listView)
         {
             Point res = new Point{x = 0, y = 0};
             
@@ -362,50 +400,51 @@ namespace DesktopGeneration.IconGeneration
             VirtualFreeEx(explorerProcess, remoteRectBuffer, 0, MEM_RELEASE);
 
             return res;
-            
-        }*/
-
-        private static Point GetDesktopSize(IntPtr listView)
-        {
-            GetClientRect(listView, out RECT rect);
-
-            //The left and top members are zero. The right and bottom members contain the width and height of the window
-            return new Point { x = rect.Right, y = rect.Bottom };
         }
 
-        public static Point GetDesktopOffset()
+        public static Point GetDesktopSize()
         {
-            Point point = new() { x = 0, y = 0 };
+            return new Point { x = Screen.width, y = Screen.height };
+        }
+
+        public static System.Drawing.Point GetDesktopOffset()
+        {
+            System.Drawing.Point point = new(0, 0);
             
             string appPath = Path.Combine(Application.streamingAssetsPath, "ScreenHelper.exe");
             string textPath = Path.Combine(Application.persistentDataPath, "offset.txt");
-            using (Process pr = new Process())
+            
+            if (!File.Exists(textPath))
             {
-                pr.StartInfo.FileName = appPath;
-                pr.StartInfo.Arguments = textPath;
-                pr.StartInfo.UseShellExecute = false;
-                pr.StartInfo.CreateNoWindow = true;
-                pr.StartInfo.RedirectStandardOutput = true;
-                pr.StartInfo.RedirectStandardError = true;
+                //Start the ScreenHelper.exe to get the desktop offset
+                using (Process pr = new())
+                {
+                    pr.StartInfo.FileName = appPath;
+                    pr.StartInfo.Arguments = textPath;
+                    pr.StartInfo.UseShellExecute = false;
+                    pr.StartInfo.CreateNoWindow = true;
+                    pr.StartInfo.RedirectStandardError = true;
 
-                try
-                {
-                    pr.Start();
-                    pr.WaitForExit();
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError($"Failed to start ScreenHelper.exe: {e.Message}");
-                    return point;
+                    try
+                    {
+                        pr.Start();
+                        pr.WaitForExit();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError($"Failed to start ScreenHelper.exe: {e.Message}");
+                        return point;
+                    }
                 }
             }
-            
+
+            //Read the offset from the text file
             string offset = File.ReadAllText(textPath);
             string[] parts = offset.Split(' ');
-            point.x = int.Parse(parts[0]);
-            point.y = int.Parse(parts[1]);
             
-            File.Delete(textPath);
+            //Parse the x and y coordinates
+            point.X = int.Parse(parts[0]);
+            point.Y = int.Parse(parts[1]);
             
             return point;
         }

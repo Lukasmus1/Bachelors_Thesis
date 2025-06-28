@@ -11,6 +11,8 @@ namespace DesktopGeneration.IconGeneration
 {
     public class IconGenerationUser : Abstracts.IconGeneration
     {
+        private GameObject iconPrefab = Resources.Load<GameObject>("Prefabs/DesktopIconPrefab");
+        
         private static readonly Dictionary<string, Guid> SpecialIcons = new Dictionary<string, Guid>
         {
             { "This PC", KnownFolders.ThisPC },
@@ -50,6 +52,10 @@ namespace DesktopGeneration.IconGeneration
             //Removing desktop.ini files (hidden config folder file)
             allFiles.Remove(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\desktop.ini");
             allFiles.Remove(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory) + @"\desktop.ini");
+
+            //Getting the icon positions
+            List<WindowsIconPositionUtil.DesktopIcon> iconPositions = WindowsIconPositionUtil.GetDesktopIconPositions();
+            iconPositions.ForEach(s => Debug.Log(s));
             
             for (int iconIndex = 0; iconIndex < allFiles.Count; iconIndex++)
             {
@@ -59,7 +65,23 @@ namespace DesktopGeneration.IconGeneration
                 //Setting the text of an icon
                 DesktopIconObjects[iconIndex].GetComponentInChildren<TMP_Text>().text = iconName;
                 
-                //Getting the icon image
+                //Setting the icon size
+                DesktopIconObjects[iconIndex].GetComponent<RectTransform>().sizeDelta = new Vector3(WindowsIconPositionUtil.IconSize.x, WindowsIconPositionUtil.IconSize.y, 1f);
+                
+                //Setting the icon position
+                WindowsIconPositionUtil.DesktopIcon currentIcon = new();
+                foreach (WindowsIconPositionUtil.DesktopIcon icon in iconPositions)
+                {
+                    //The WinApi sometimes returns the icon with its extension, sometimes without it
+                    if (icon.Name.Equals(iconName) || icon.Name.Equals(Path.GetFileName(allFiles[iconIndex])))
+                    {
+                        currentIcon = icon;
+                    }
+                }
+                DesktopIconObjects[iconIndex].GetComponent<RectTransform>().anchoredPosition = new Vector3(currentIcon.Position.X, -currentIcon.Position.Y, 0);
+                iconPositions.Remove(currentIcon); //Removing the icon for better performance in the next iteration
+                
+                //Getting the icon image component
                 Transform[] images = DesktopIconObjects[iconIndex].GetComponentsInChildren<Transform>();
                 foreach (Transform image in images)
                 {
