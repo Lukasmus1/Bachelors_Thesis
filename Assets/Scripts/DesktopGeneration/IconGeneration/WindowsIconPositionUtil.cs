@@ -414,27 +414,24 @@ namespace DesktopGeneration.IconGeneration
             string appPath = Path.Combine(Application.streamingAssetsPath, "ScreenHelper.exe");
             string textPath = Path.Combine(Application.persistentDataPath, "offset.txt");
             
-            if (!File.Exists(textPath))
+            //Start the ScreenHelper.exe to get the desktop offset
+            using (Process pr = new())
             {
-                //Start the ScreenHelper.exe to get the desktop offset
-                using (Process pr = new())
-                {
-                    pr.StartInfo.FileName = appPath;
-                    pr.StartInfo.Arguments = textPath;
-                    pr.StartInfo.UseShellExecute = false;
-                    pr.StartInfo.CreateNoWindow = true;
-                    pr.StartInfo.RedirectStandardError = true;
+                pr.StartInfo.FileName = appPath;
+                pr.StartInfo.Arguments = textPath;
+                pr.StartInfo.UseShellExecute = false;
+                pr.StartInfo.CreateNoWindow = true;
+                pr.StartInfo.RedirectStandardError = true;
 
-                    try
-                    {
-                        pr.Start();
-                        pr.WaitForExit();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.LogError($"Failed to start ScreenHelper.exe: {e.Message}");
-                        return point;
-                    }
+                try
+                {
+                    pr.Start();
+                    pr.WaitForExit();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Failed to start ScreenHelper.exe: {e.Message}");
+                    return point;
                 }
             }
 
