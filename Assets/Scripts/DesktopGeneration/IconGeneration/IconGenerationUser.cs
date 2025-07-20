@@ -65,8 +65,12 @@ namespace DesktopGeneration.IconGeneration
                 //Setting the text of an icon
                 DesktopIconObjects[iconIndex].GetComponentInChildren<TMP_Text>().text = iconName;
                 
+                //Getting the icon prefab default size to calculate the relative scale 
+                //NewScale / OldScale 
+                Vector2 oldIconSize = new Vector2(DesktopIconObjects[iconIndex].GetComponent<RectTransform>().sizeDelta.x, DesktopIconObjects[iconIndex].GetComponent<RectTransform>().sizeDelta.y); 
+                Vector2 iconRelativeScale = new Vector2(WindowsIconPositionUtil.IconSize.x / oldIconSize.x, WindowsIconPositionUtil.IconSize.y / oldIconSize.y);
                 //Setting the icon size
-                DesktopIconObjects[iconIndex].GetComponent<RectTransform>().sizeDelta = new Vector3(WindowsIconPositionUtil.IconSize.x, WindowsIconPositionUtil.IconSize.y, 1f);
+                DesktopIconObjects[iconIndex].GetComponent<RectTransform>().localScale = new Vector3(iconRelativeScale.x, iconRelativeScale.y, 1f);
                 
                 //Setting the icon position
                 WindowsIconPositionUtil.DesktopIcon currentIcon = new();
