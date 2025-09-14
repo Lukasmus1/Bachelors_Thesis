@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using DesktopGeneration.Abstracts;
 using DesktopGeneration.IconGeneration;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

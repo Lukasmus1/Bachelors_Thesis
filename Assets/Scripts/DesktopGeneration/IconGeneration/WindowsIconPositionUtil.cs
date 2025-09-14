@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -410,38 +411,52 @@ namespace DesktopGeneration.IconGeneration
         public static System.Drawing.Point GetDesktopOffset()
         {
             System.Drawing.Point point = new(0, 0);
-            
-            string appPath = Path.Combine(Application.streamingAssetsPath, "ScreenHelper.exe");
-            string textPath = Path.Combine(Application.persistentDataPath, "offset.txt");
-            
-            //Start the ScreenHelper.exe to get the desktop offset
-            using (Process pr = new())
-            {
-                pr.StartInfo.FileName = appPath;
-                pr.StartInfo.Arguments = textPath;
-                pr.StartInfo.UseShellExecute = false;
-                pr.StartInfo.CreateNoWindow = true;
-                pr.StartInfo.RedirectStandardError = true;
 
-                try
-                {
-                    pr.Start();
-                    pr.WaitForExit();
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError($"Failed to start ScreenHelper.exe: {e.Message}");
-                    return point;
-                }
+            string command = "Add-Type -AssemblyName System.Windows.Forms; " +
+                             "foreach($s in [System.Windows.Forms.Screen]::AllScreens) " +
+                             "{ " +
+                             "Write-Output \"$($s.Bounds.X) $($s.Bounds.Y)\"" +
+                             "}";
+            
+            //Create a new process to run the PowerShell command
+            var psi = new ProcessStartInfo
+            {
+                FileName = "powershell.exe",
+                Arguments = $"-NoProfile -Command \"{command}\"",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true
+            };
+
+            //Run the powershell command and save the output
+            string output;
+            using (var process = Process.Start(psi))
+            {
+                process.WaitForExit();
+                output = process.StandardOutput.ReadToEnd();
+                Debug.Log(output);
             }
 
-            //Read the offset from the text file
-            string offset = File.ReadAllText(textPath);
-            string[] parts = offset.Split(' ');
+            //Parsing the output into X and Y coordinates
+            string[] parts = output.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            List<int> xBounds = new();
+            List<int> yBounds = new();
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    xBounds.Add(int.Parse(parts[i]));
+                }
+                else
+                {
+                    yBounds.Add(int.Parse(parts[i]));
+                }
+            }
             
-            //Parse the x and y coordinates
-            point.X = int.Parse(parts[0]);
-            point.Y = int.Parse(parts[1]);
+            //Getting the offset required to normalize the coordinates to the main screen
+            point.X = Math.Max(0, -xBounds.Min());
+            point.Y = Math.Max(0, -yBounds.Min());
             
             return point;
         }

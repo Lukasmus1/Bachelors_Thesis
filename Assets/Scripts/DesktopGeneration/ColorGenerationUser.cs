@@ -25,7 +25,7 @@ namespace DesktopGeneration
             if (ColorUtility.TryParseHtmlString($"#{hexColor}", out Color color))
             {
                 //check, jeslti má user nastavené jinou barvu pro taskbar a cosi idk ->colorprevalence
-                Debug.Log(hexColor);
+                //Debug.Log(hexColor);
                 SetColorScheme(color);
             }
         }
