@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -41,6 +42,9 @@ namespace DesktopGeneration.IconGeneration
         [DllImport("kernel32.dll")]
         static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, IntPtr lpBuffer, uint nSize, out uint lpNumberOfBytesWritten);
 
+        [DllImport("user32.dll")]
+        private static extern uint GetDpiForSystem();
+        
         [StructLayout(LayoutKind.Sequential)]
         private struct RECT
         {
@@ -364,9 +368,10 @@ namespace DesktopGeneration.IconGeneration
             //IntPtr.Zero -> get both x and y spacing
             IntPtr spacing = SendMessage(listView, LVM_GETITEMSPACING, IntPtr.Zero, IntPtr.Zero);
             int spacingValue = spacing.ToInt32();
-            int spacingX = spacingValue & 0xFFFF;
-            int spacingY = (spacingValue >> 16) & 0xFFFF;
-            
+            float scaling = GetWindowsScaling();
+            int spacingX = (int)((spacingValue & 0xFFFF) * scaling);
+            int spacingY = (int)(((spacingValue >> 16) & 0xFFFF) * scaling);
+
             return new Point { x = spacingX, y = spacingY };
         }
 
@@ -459,6 +464,12 @@ namespace DesktopGeneration.IconGeneration
             point.Y = Math.Max(0, -yBounds.Min());
             
             return point;
+        }
+
+        public static float GetWindowsScaling()
+        {
+            uint dpi = GetDpiForSystem();
+            return dpi / 96.0f;
         }
     }
 }
