@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace DesktopGeneration.IconGeneration
+namespace DesktopGeneration.Models.IconGeneration
 {
     public abstract class WindowsIconPositionUtil
     {
@@ -413,7 +411,7 @@ namespace DesktopGeneration.IconGeneration
             return new Point { x = Screen.width, y = Screen.height };
         }
 
-        public static System.Drawing.Point GetDesktopOffset()
+        private static System.Drawing.Point GetDesktopOffset()
         {
             System.Drawing.Point point = new(0, 0);
 
@@ -436,7 +434,7 @@ namespace DesktopGeneration.IconGeneration
 
             //Run the powershell command and save the output
             string output;
-            using (var process = Process.Start(psi))
+            using (Process process = Process.Start(psi))
             {
                 process.WaitForExit();
                 output = process.StandardOutput.ReadToEnd();
@@ -466,7 +464,7 @@ namespace DesktopGeneration.IconGeneration
             return point;
         }
 
-        public static float GetWindowsScaling()
+        private static float GetWindowsScaling()
         {
             uint dpi = GetDpiForSystem();
             return dpi / 96.0f;

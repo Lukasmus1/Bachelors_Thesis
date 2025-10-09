@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace DesktopGeneration.IconGeneration
+namespace DesktopGeneration.Models.IconGeneration
 {
     public static class WindowsIconImageUtil
     {

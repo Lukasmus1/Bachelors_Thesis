@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Win32;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace DesktopGeneration.IconGeneration
+namespace DesktopGeneration.Models.IconGeneration
 {
-    public class IconGenerationUser : Abstracts.IconGeneration
+    public class IconGeneratorUser : IconGenerator
     {
         private GameObject iconPrefab = Resources.Load<GameObject>("Prefabs/DesktopIconPrefab");
         
-        private static readonly Dictionary<string, Guid> SpecialIcons = new Dictionary<string, Guid>
+        private static readonly Dictionary<string, Guid> SpecialIcons = new()
         {
             { "This PC", KnownFolders.ThisPC },
             { "Network", KnownFolders.Network },
@@ -22,16 +20,14 @@ namespace DesktopGeneration.IconGeneration
             { "Control Panel", KnownFolders.ControlPanel }
         };
 
-        public IconGenerationUser(List<GameObject> desktopIcons) : base(desktopIcons)
+        public override List<IconClass> GenerateIcons()
         {
-        }
-
-        public override void GenerateIcons()
-        {
+            var completeIcons = new List<IconClass>();
+            
             List<string> allFiles = new();
     
             //Desktop of current user
-            string userDesktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            string userDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             
             //Adding files and directories from the user's desktop
             allFiles.AddRange(Directory.GetFiles(userDesktop));
@@ -40,7 +36,7 @@ namespace DesktopGeneration.IconGeneration
             CheckForSpecialIcons(allFiles);
     
             //Shared desktop for all users
-            string commonDesktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonDesktopDirectory);
+            string commonDesktop = Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory);
             if (Directory.Exists(commonDesktop))
             {
                 allFiles.AddRange(Directory.GetFiles(commonDesktop));
@@ -57,22 +53,14 @@ namespace DesktopGeneration.IconGeneration
             List<WindowsIconPositionUtil.DesktopIcon> iconPositions = WindowsIconPositionUtil.GetDesktopIconPositions();
             iconPositions.ForEach(s => Debug.Log(s));
             
+            var icons = new List<IconClass>();
+            
             for (int iconIndex = 0; iconIndex < allFiles.Count; iconIndex++)
             {
                 //Checking if the icon is a special icon
                 string iconName = allFiles[iconIndex].StartsWith("::") ? GetSpecialIconName(allFiles[iconIndex]) : Path.GetFileNameWithoutExtension(allFiles[iconIndex]);
-
-                //Setting the text of an icon
-                DesktopIconObjects[iconIndex].GetComponentInChildren<TMP_Text>().text = iconName;
                 
-                //Getting the icon prefab default size to calculate the relative scale 
-                //NewScale / OldScale 
-                Vector2 oldIconSize = new Vector2(DesktopIconObjects[iconIndex].GetComponent<RectTransform>().sizeDelta.x, DesktopIconObjects[iconIndex].GetComponent<RectTransform>().sizeDelta.y); 
-                Vector2 iconRelativeScale = new Vector2(WindowsIconPositionUtil.IconSize.x / oldIconSize.x, WindowsIconPositionUtil.IconSize.y / oldIconSize.y);
-                //Setting the icon size
-                DesktopIconObjects[iconIndex].GetComponent<RectTransform>().localScale = new Vector3(iconRelativeScale.x, iconRelativeScale.y, 1f);
-                
-                //Setting the icon position
+                //Getting the icon position
                 WindowsIconPositionUtil.DesktopIcon currentIcon = new();
                 foreach (WindowsIconPositionUtil.DesktopIcon icon in iconPositions)
                 {
@@ -82,24 +70,17 @@ namespace DesktopGeneration.IconGeneration
                         currentIcon = icon;
                     }
                 }
-                DesktopIconObjects[iconIndex].GetComponent<RectTransform>().anchoredPosition = new Vector3(currentIcon.Position.X, -currentIcon.Position.Y, 0);
-                iconPositions.Remove(currentIcon); //Removing the icon for better performance in the next iteration
                 
-                //Getting the icon image component
-                Transform[] images = DesktopIconObjects[iconIndex].GetComponentsInChildren<Transform>();
-                foreach (Transform image in images)
-                {
-                    if (image.name != "Icon")
-                    {
-                        continue;
-                    }
-                    
-                    //Setting the icon image
-                    image.GetComponent<RawImage>().texture = WindowsIconImageUtil.GetFileIcon(allFiles[iconIndex]);
-                    break;
-                }
-                DesktopIconObjects[iconIndex].SetActive(true);
+                completeIcons.Add(new IconClass(
+                    iconName,
+                    new Vector2(WindowsIconPositionUtil.IconSize.x, WindowsIconPositionUtil.IconSize.y),
+                    new Vector2(currentIcon.Position.X, -currentIcon.Position.Y),
+                    WindowsIconImageUtil.GetFileIcon(allFiles[iconIndex])));
+                
+                iconPositions.Remove(currentIcon); //Removing the icon for better performance in the next iteration
             }
+            
+            return completeIcons;
         }
 
         private static void CheckForSpecialIcons(List<string> allFiles)

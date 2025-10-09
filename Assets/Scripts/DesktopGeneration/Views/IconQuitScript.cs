@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.Views
 {
     public class IconQuitScript : MonoBehaviour
     {

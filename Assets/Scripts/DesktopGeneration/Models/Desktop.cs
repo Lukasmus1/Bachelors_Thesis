@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.Models
 {
     public class Desktop
     {

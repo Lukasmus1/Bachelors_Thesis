@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.Views
 {
     public class IconScript : MonoBehaviour, IPointerClickHandler
     {
