@@ -6,27 +6,17 @@ namespace DesktopGeneration.Abstracts
 {
     public abstract class WallpaperGeneration
     {
-        private readonly RawImage _wallpaperImage;
-
-        protected WallpaperGeneration(RawImage wallpaperImage)
-        {
-            _wallpaperImage = wallpaperImage;
-        }
+        public abstract Texture2D GetWallpaperTexture();
         
-        public abstract void GenerateWallpaper();
-        
-        protected void SetWallpaper(string wallpaperPath)
+        protected static Texture2D GetWallpaper(string wallpaperPath)
         {
             //Get image bytes and create a texture
             byte[] imageBytes= File.ReadAllBytes(wallpaperPath);
-            Texture2D texture = new Texture2D(2, 2);
+            var texture = new Texture2D(2, 2);
             texture.LoadImage(imageBytes);
             
-            //Setting the texture to the RawImage
-            _wallpaperImage.texture = texture;
-            
-            //Setting the wallpaper to the desktop instance
-            Desktop.Instance.Wallpaper = texture;
+            //Returning the wallpaper texture
+            return texture;
         }
     }
 }

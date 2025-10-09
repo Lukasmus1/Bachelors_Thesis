@@ -1,30 +1,22 @@
 using System.Collections.Generic;
 using System.IO;
 using DesktopGeneration.Abstracts;
-using Microsoft.Win32;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace DesktopGeneration
+namespace DesktopGeneration.Models
 {
     public class WallpaperGeneratorRandom : WallpaperGeneration
     {
         private List<string> _wallpapersPaths = new();
         
-        public WallpaperGeneratorRandom(RawImage wallpaperImage) : base(wallpaperImage)
+        public WallpaperGeneratorRandom()
         {
             PopulateWallpapers();
         }
 
-        public override void GenerateWallpaper()
+        public override Texture2D GetWallpaperTexture()
         {
-            //Getting a random index 
-            int randomIndex = Random.Range(0, _wallpapersPaths.Count);
-            
-            //Returning a random wallpaper path
-            string randomPath = _wallpapersPaths[randomIndex];
-            
-            SetWallpaper(randomPath);
+            return GetWallpaper(GetRandomPath());
         }
         
         private void PopulateWallpapers()
@@ -36,6 +28,15 @@ namespace DesktopGeneration
                 //Populating wallpaper paths
                 _wallpapersPaths.Add(file.FullName);
             }   
+        }
+
+        private string GetRandomPath()
+        {
+            //Getting a random index 
+            int randomIndex = Random.Range(0, _wallpapersPaths.Count);
+            
+            //Returning a random wallpaper path
+            return _wallpapersPaths[randomIndex];
         }
     }
 }

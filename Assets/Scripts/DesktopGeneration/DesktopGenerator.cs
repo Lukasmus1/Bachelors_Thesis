@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DesktopGeneration.Abstracts;
 using DesktopGeneration.IconGeneration;
+using DesktopGeneration.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,9 @@ namespace DesktopGeneration
 {
     public class DesktopGenerator : MonoBehaviour
     {
-        //References for activating desktop generation
-        [SerializeField] private GameObject desktopObject;
-        [SerializeField] private GameObject createDesktopButton;
+
         
-        //References for the wallpaper generator
-        [Header("Wallpaper")]
-        [SerializeField] private RawImage wallpaperImage;
+
         
         //References for the color scheme generator
         [Header("Wallpaper")] 
@@ -29,7 +26,7 @@ namespace DesktopGeneration
         [SerializeField] private List<GameObject> desktopIconObjects;
         
         private WallpaperGeneration _wallpaperGeneratorRandom;
-        private IColorGeneration _colorSchemeGenerator;
+        
         private Abstracts.IconGeneration _iconGenerator;
         private FontScript _fontGenerator;
         
@@ -37,13 +34,13 @@ namespace DesktopGeneration
         {
             Debug.Log("Generating desktop...");
             
-            //Generating desktop
-            //Wallpaper
-            _wallpaperGeneratorRandom = new WallpaperGeneratorRandom(wallpaperImage);
+            // //Generating desktop
+            // //Wallpaper
+            // _wallpaperGeneratorRandom = new WallpaperGeneratorRandom(wallpaperImage);
             
-            //Color scheme
-            _colorSchemeGenerator = new ColorGenerationRandom(bottomBarBackground);
-            _colorSchemeGenerator.GenerateColorScheme();
+            // //Color scheme
+            // _colorSchemeGenerator = new ColorGenerationRandom(bottomBarBackground);
+            // _colorSchemeGenerator.GenerateColorScheme();
             
             //Bottom bar icons
             //_iconGenerator = new IconGeneration(iconSprites, bottomBarIconObjects);
@@ -53,12 +50,12 @@ namespace DesktopGeneration
 
         public void GenerateUserDesktopButton()
         {
-            //Generating desktop
-            //Wallpaper
-            _wallpaperGeneratorRandom = new WallpaperGeneratorUser(wallpaperImage);
+            // //Generating desktop
+            // //Wallpaper
+            // _wallpaperGeneratorRandom = new WallpaperGeneratorUser(wallpaperImage);
             
-            //Color scheme
-            _colorSchemeGenerator = new ColorGenerationUser(bottomBarBackground);
+            // //Color scheme
+            // _colorSchemeGenerator = new ColorGenerationUser(bottomBarBackground);
             
             //Bottom bar icons
             //tbd
@@ -77,10 +74,10 @@ namespace DesktopGeneration
         private void GenerateDesktop()
         {
             //Wallpaper
-            _wallpaperGeneratorRandom.GenerateWallpaper();
+            //_wallpaperGeneratorRandom.GenerateWallpaper();
             
-            //Color scheme
-            _colorSchemeGenerator.GenerateColorScheme();
+            // //Color scheme
+            // _colorSchemeGenerator.GenerateColorScheme();
             
             //Bottom bar icons
             //tbd
@@ -88,15 +85,10 @@ namespace DesktopGeneration
             //Desktop icons
             _iconGenerator.GenerateIcons();
             
-            EnableDesktop();
+            // EnableDesktop();
         }
         
 
-        private void EnableDesktop()
-        {
-            //Enabling the desktop object
-            desktopObject.SetActive(true);
-            createDesktopButton.SetActive(false);
-        }
+
     }
 }
