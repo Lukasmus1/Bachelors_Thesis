@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using DesktopGeneration.Controllers;
+﻿using System.Collections.Generic;
+using Desktop.Controllers;
+using Desktop.Models;
 using DesktopGeneration.Models;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace DesktopGeneration.Views
+namespace Desktop.Views
 {
     public class DesktopGeneratorView : MonoBehaviour
     {
@@ -56,7 +56,7 @@ namespace DesktopGeneration.Views
             wallpaperImage.texture = wallpaper;
             
             //Setting the wallpaper in the desktop model
-            Desktop.Instance.Wallpaper = wallpaper;
+            DesktopModel.Instance.Wallpaper = wallpaper;
         }
 
         /// <summary>
@@ -68,10 +68,10 @@ namespace DesktopGeneration.Views
             //Setting slight transparency
             clr.a = 0.998f;
             
-            Desktop.Instance.ColorScheme = clr;
+            DesktopModel.Instance.ColorScheme = clr;
             
             //Getting the current color scheme
-            Color colorScheme = Desktop.Instance.ColorScheme;
+            Color colorScheme = DesktopModel.Instance.ColorScheme;
             
             //Setting the color scheme
             bottomBarBackground.color = colorScheme;
@@ -95,12 +95,12 @@ namespace DesktopGeneration.Views
                 var oldIconSize = new Vector2(iconObject.GetComponent<RectTransform>().sizeDelta.x, iconObject.GetComponent<RectTransform>().sizeDelta.y); 
                 var iconRelativeScale = new Vector2(icon.Size.x / oldIconSize.x, icon.Size.y / oldIconSize.y);
                 
-                //Setting the icon size
-                iconObject.GetComponent<RectTransform>().localScale = new Vector3(iconRelativeScale.x, iconRelativeScale.y, 1f);
-                iconObject.GetComponentInChildren<TMP_Text>().text = icon.Name;
-                iconObject.GetComponent<RectTransform>().anchoredPosition = icon.Position;
-                iconObject.GetComponentInChildren<RawImage>().texture = icon.Image;
-                iconObject.GetComponentInChildren<TMP_Text>().font = userFont;
+                //Getting the rest of the icon properties
+                icon.Size = new Vector3(iconRelativeScale.x, iconRelativeScale.y, 1f);
+                icon.Font = userFont;
+                
+                //Setting the icon properties
+                iconObject.GetComponent<IconScript>().SetProperties(icon);
 
                 iconObject.SetActive(true);
             }

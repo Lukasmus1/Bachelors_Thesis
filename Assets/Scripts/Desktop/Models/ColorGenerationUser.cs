@@ -1,7 +1,7 @@
 using Microsoft.Win32;
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models
 {
     public class ColorGenerationUser : ColorGeneration
     {

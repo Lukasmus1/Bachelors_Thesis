@@ -1,8 +1,7 @@
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace DesktopGeneration.Abstracts
+namespace Desktop.Abstracts
 {
     public abstract class WallpaperGeneration
     {

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using DesktopGeneration.Abstracts;
+using Desktop.Abstracts;
+using Desktop.Models;
 using DesktopGeneration.Models;
 using DesktopGeneration.Models.IconGeneration;
 using TMPro;
 using UnityEngine;
 
-namespace DesktopGeneration.Controllers
+namespace Desktop.Controllers
 {
     public class DesktopGeneratorController
     {

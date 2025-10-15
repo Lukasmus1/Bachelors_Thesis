@@ -1,11 +1,11 @@
-using DesktopGeneration.Models;
+using Desktop.Models;
 using UnityEngine;
 
 namespace Saving.Models
 {
     public class SaveModel : MonoBehaviour
     {
-        private Desktop _desktop;
+        private DesktopModel _desktop;
         
     }
 }

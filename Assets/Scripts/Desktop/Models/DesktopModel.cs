@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models
 {
-    public class Desktop
+    public class DesktopModel
     {
         //Singleton instance
-        private static Desktop _instance;
-        public static Desktop Instance
+        private static DesktopModel _instance;
+        public static DesktopModel Instance
         {
             get
             {
-                _instance ??= new Desktop();
+                _instance ??= new DesktopModel();
                 return _instance;
             }
         }

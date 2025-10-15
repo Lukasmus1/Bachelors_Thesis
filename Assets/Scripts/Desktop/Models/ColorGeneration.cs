@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models
 {
     public class ColorGeneration
     {

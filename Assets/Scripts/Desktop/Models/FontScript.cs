@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using Microsoft.Win32;
 using TMPro;
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models
 {
     public class FontScript
     {

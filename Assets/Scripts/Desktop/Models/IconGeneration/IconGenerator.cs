@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Desktop.Models;
 using UnityEngine;
 
 namespace DesktopGeneration.Models

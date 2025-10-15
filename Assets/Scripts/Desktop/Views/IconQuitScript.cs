@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DesktopGeneration.Views
+namespace Desktop.Views
 {
     public class IconQuitScript : MonoBehaviour
     {

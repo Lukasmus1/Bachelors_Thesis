@@ -244,7 +244,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2331327422858743029}
         m_TargetAssemblyTypeName: DesktopGeneration.IconScript, Assembly-CSharp
-        m_MethodName: OnLeftClick
+        m_MethodName: PerformIconAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

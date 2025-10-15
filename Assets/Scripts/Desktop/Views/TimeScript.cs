@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace DesktopGeneration.Views
+namespace Desktop.Views
 {
     public class TimeScript : MonoBehaviour
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using DesktopGeneration.Abstracts;
+using Desktop.Abstracts;
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models
 {
     public class WallpaperGeneratorRandom : WallpaperGeneration
     {

@@ -1,8 +1,8 @@
-using DesktopGeneration.Abstracts;
+using Desktop.Abstracts;
 using Microsoft.Win32;
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models
 {
     public class WallpaperGeneratorUser : WallpaperGeneration
     {
