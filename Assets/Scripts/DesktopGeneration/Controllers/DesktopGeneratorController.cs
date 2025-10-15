@@ -36,11 +36,5 @@ namespace DesktopGeneration.Controllers
             var fontScript = new FontScript();
             return fontScript.GetUserFont();
         }
-
-        // public Color GetRandomColorScheme()
-        // {
-        //     _colorSchemeGenerator = new ColorGeneration();
-        //     return ColorGeneration.GenerateRandomColorScheme();
-        // }
     }
 }

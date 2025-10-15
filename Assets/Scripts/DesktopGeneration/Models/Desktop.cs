@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DesktopGeneration.Models
@@ -10,10 +11,7 @@ namespace DesktopGeneration.Models
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = new Desktop();
-                }
+                _instance ??= new Desktop();
                 return _instance;
             }
         }
@@ -21,8 +19,8 @@ namespace DesktopGeneration.Models
         //Public
         public Texture2D Wallpaper { get; set; }
         public Color ColorScheme { get; set; }
+        public List<IconClass> Icons { get; set; }
         
-        //Private
         
     }
 }
