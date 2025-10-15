@@ -37,5 +37,10 @@ namespace Desktop.Controllers
             var fontScript = new FontScript();
             return fontScript.GetUserFont();
         }
+
+        public void SetDesktopFlag(string flag, bool value)
+        {
+            DesktopModel.Instance.SetFlag(flag, value);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
 using DesktopGeneration.Models;
@@ -31,7 +32,7 @@ namespace Desktop.Views
 
         private void Awake()
         {
-            _controller = new DesktopGeneratorController();
+            _controller = DesktopMvc.Instance.DesktopGeneratorController;
         }
 
         /// <summary>

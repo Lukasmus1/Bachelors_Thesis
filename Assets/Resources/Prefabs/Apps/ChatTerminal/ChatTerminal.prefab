@@ -259,9 +259,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1739593137786270593}
   - component: {fileID: 5915836147474849967}
+  - component: {fileID: 5802028112839250102}
   m_Layer: 5
   m_Name: ChatTerminal
-  m_TagString: Untagged
+  m_TagString: ChatTerminal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,6 +303,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc51e8d91364154c9153405e6c4d44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.Commons.Commons
+--- !u!114 &5802028112839250102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695141196054981865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730bc711674f4ed38ee8f8f0c43a11e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.ChatTerminalView
 --- !u!1 &1799932230038066507
 GameObject:
   m_ObjectHideFlags: 0

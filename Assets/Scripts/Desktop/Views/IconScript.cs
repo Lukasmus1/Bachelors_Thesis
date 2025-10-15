@@ -56,8 +56,8 @@ namespace Desktop.Views
         }
 
         private void PerformIconAction()
-        {
-            print("Icon action on double click");
+        { 
+            GetComponent<IIconAction>().PerformAction();
         }
     }
 }

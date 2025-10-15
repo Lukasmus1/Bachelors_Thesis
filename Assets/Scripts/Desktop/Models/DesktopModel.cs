@@ -20,7 +20,19 @@ namespace Desktop.Models
         public Texture2D Wallpaper { get; set; }
         public Color ColorScheme { get; set; }
         public List<IconClass> Icons { get; set; }
+        public Dictionary<string, bool> Flags { get; set; } = new();
+
         
-        
+        public void SetFlag(string name, bool value)
+        {
+            if (Flags.ContainsKey(name))
+            {
+                Flags[name] = value;
+            }
+            else
+            {
+                Flags.Add(name, value);
+            }
+        }
     }
 }

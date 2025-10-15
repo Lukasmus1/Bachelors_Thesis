@@ -1,4 +1,5 @@
 using System.Collections;
+using Desktop.Models;
 using UnityEngine;
 
 namespace Apps.Commons
@@ -7,14 +8,7 @@ namespace Apps.Commons
     {
         public void CloseApp(GameObject appToDestroy)
         {
-            StartCoroutine(FadeOutCoroutine());
             Destroy(appToDestroy);
-        }
-
-        private IEnumerator FadeOutCoroutine()
-        {
-            yield return new WaitForSeconds(0.5f);
-            
         }
         
         public void OpenApp()

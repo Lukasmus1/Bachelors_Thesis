@@ -5538,6 +5538,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3776590706474451972, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+      propertyPath: appToOpen
+      value: 
+      objectReference: {fileID: 1695141196054981865, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+    - target: {fileID: 3776590706474451972, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+      propertyPath: _appToOpen
+      value: 
+      objectReference: {fileID: 929233804}
+    - target: {fileID: 3776590706474451972, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+      propertyPath: desktopHolder
+      value: 
+      objectReference: {fileID: 133167434}
     - target: {fileID: 5757989634877996338, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5618,6 +5630,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7520913683159428712, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+      propertyPath: m_text
+      value: Message Terminal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5632,6 +5648,11 @@ RectTransform:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5757989634877996338, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
   m_PrefabInstance: {fileID: 503555167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &929233804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1695141196054981865, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+  m_PrefabInstance: {fileID: 5027116951424292960}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &931016228 stripped
 RectTransform:
@@ -12848,6 +12869,10 @@ PrefabInstance:
     - target: {fileID: 28416349138573931, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 981311455863098217, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: m_Size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1695141196054981865, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_Name
