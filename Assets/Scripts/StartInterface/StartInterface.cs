@@ -10,7 +10,7 @@ namespace StartInterface
 
         public void StartGame(Button clickedButton)
         {
-            const float fadeDuration = 2f;
+            const float fadeDuration = 1.5f;
             clickedButton.interactable = false;
             
             clickedButton.GetComponent<Image>().CrossFadeAlpha(0, fadeDuration, false);

@@ -15,8 +15,9 @@ namespace Desktop.Views
             }
             
             //Check if the app is already open using the Flags dictionary and the gameObject tag
-            if (DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag) && 
-                !DesktopModel.Instance.Flags[appToOpen.tag])
+            if (!DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag) || 
+                (!DesktopModel.Instance.Flags[appToOpen.tag] &&
+                DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag)))
             {
                 Instantiate(appToOpen, gameObject.transform.parent.parent);    
             }

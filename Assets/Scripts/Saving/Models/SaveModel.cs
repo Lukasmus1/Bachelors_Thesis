@@ -1,11 +1,17 @@
+using System;
 using Desktop.Models;
 using UnityEngine;
 
 namespace Saving.Models
 {
-    public class SaveModel : MonoBehaviour
+    [Serializable]
+    public class SaveModel
     {
-        private DesktopModel _desktop;
+        public DesktopModel desktop;
         
+        public void LoadDataFromModel(SaveModel saveModel)
+        {
+            desktop = saveModel.desktop;
+        }
     }
 }

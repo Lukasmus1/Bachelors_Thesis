@@ -14,6 +14,7 @@ namespace Desktop.Models
                 _instance ??= new DesktopModel();
                 return _instance;
             }
+            set => _instance = value;
         }
         
         //Public
