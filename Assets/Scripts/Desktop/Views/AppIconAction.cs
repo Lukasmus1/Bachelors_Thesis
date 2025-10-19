@@ -19,7 +19,7 @@ namespace Desktop.Views
                 (!DesktopModel.Instance.Flags[appToOpen.tag] &&
                 DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag)))
             {
-                Instantiate(appToOpen, gameObject.transform.parent.parent);    
+                appToOpen.SetActive(true);    
             }
         }
     }

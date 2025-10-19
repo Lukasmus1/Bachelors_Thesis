@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730bc711674f4ed38ee8f8f0c43a11e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.ChatTerminalView
+  usernameText: {fileID: 3410816573449434211}
 --- !u!1 &1799932230038066507
 GameObject:
   m_ObjectHideFlags: 0

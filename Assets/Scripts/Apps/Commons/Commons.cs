@@ -8,7 +8,7 @@ namespace Apps.Commons
     {
         public void CloseApp(GameObject appToDestroy)
         {
-            Destroy(appToDestroy);
+            appToDestroy.SetActive(false);
         }
         
         public void OpenApp()
