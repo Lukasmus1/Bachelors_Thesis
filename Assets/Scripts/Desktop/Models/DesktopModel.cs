@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Desktop.Models
 {
+    [Serializable]
     public class DesktopModel
     {
         //Singleton instance

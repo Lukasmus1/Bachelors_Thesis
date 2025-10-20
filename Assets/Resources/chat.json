@@ -1,0 +1,30 @@
+{
+    "ChatProfiles":
+    [
+        {
+            "UserId": "us1",
+            "Username": "Username1",
+            "ProfilePicture": "",
+            "TypingSpeed": 0,
+            "IsLoaded": true,
+            "Messages": 
+            [
+                "Mes1",
+                "Mes2"
+            ]
+        },
+
+        {
+            "UserId": "us2",
+            "Username": "Username2",
+            "ProfilePicture": "",
+            "TypingSpeed": 0,
+            "IsLoaded": true,
+            "Messages": 
+            [
+                "Mes1",
+                "Mes2"
+            ]
+        }
+    ]
+}

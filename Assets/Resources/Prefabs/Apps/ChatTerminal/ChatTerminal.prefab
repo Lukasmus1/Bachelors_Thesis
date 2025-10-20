@@ -316,6 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.ChatTerminalView
   usernameText: {fileID: 3410816573449434211}
+  contactPrefab: {fileID: 2200908844225053363}
+  contactsParent: {fileID: 817763205358485925}
 --- !u!1 &1799932230038066507
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5874094263567011064}
   - component: {fileID: 200721303188359494}
+  - component: {fileID: 2002089948892663374}
   m_Layer: 5
   m_Name: Contact
   m_TagString: Untagged
@@ -476,6 +479,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2002089948892663374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200908844225053363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64db0d4af6d2d734f8b6683692b3d31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContactProperties
+  usernameText: {fileID: 416013739147295373}
+  statusText: {fileID: 9153147173532567957}
+  profileImage: {fileID: 2615190871062335117}
 --- !u!1 &2392421119240893888
 GameObject:
   m_ObjectHideFlags: 0

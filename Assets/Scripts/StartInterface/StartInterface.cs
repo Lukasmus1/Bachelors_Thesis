@@ -1,12 +1,21 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using User.Commons;
 
 namespace StartInterface
 {
     public class StartInterface : MonoBehaviour
     {
         [SerializeField] private Image backgroundBlur;
+        
+        [SerializeField] private TMP_Text welcomeText;
+
+        private void Awake()
+        {
+            welcomeText.text = $"Welcome back {UserMvc.Instance.DesktopGeneratorController.Username}.";
+        }
 
         public void StartGame(Button clickedButton)
         {
