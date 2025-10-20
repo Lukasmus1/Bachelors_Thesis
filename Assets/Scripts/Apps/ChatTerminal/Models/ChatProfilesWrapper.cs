@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Apps.ChatTerminal.Models
 {
@@ -6,6 +7,6 @@ namespace Apps.ChatTerminal.Models
     public class ChatProfilesWrapper
     {
         // ReSharper disable once InconsistentNaming
-        public ChatProfile[] ChatProfiles;
+        public List<ChatProfileModel> ChatProfiles;
     }
 }

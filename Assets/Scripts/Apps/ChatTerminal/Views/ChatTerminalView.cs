@@ -4,6 +4,7 @@ using Apps.ChatTerminal.Models;
 using Desktop.Commons;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using User.Commons;
 
 namespace Apps.ChatTerminal.Views
@@ -16,22 +17,31 @@ namespace Apps.ChatTerminal.Views
         [SerializeField] private GameObject contactPrefab;
         [SerializeField] private Transform contactsParent;
         
+        [Header("Messages Window")]
+        [SerializeField] private GameObject messagesWindow;
+        [SerializeField] private TMP_Text messagesUsernameText;
+        [SerializeField] private TMP_Text messagesStatusText;
+        [SerializeField] private Image messagesProfileImage;
+        
         private void Awake()
         {
             usernameText.text = UserMvc.Instance.DesktopGeneratorController.Username;
             
-            List<ChatProfile> profiles = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
+            List<ChatProfileModel> profiles = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
             SetContactData(profiles);
         }
 
-        private void SetContactData(List<ChatProfile> profiles)
+        private void SetContactData(List<ChatProfileModel> profiles)
         {
-            foreach (ChatProfile profile in profiles)
+            foreach (ChatProfileModel profile in profiles)
             {
-                var props = Instantiate(contactPrefab, contactsParent).GetComponent<ContactProperties>();
-
-                props.usernameText.text = profile.Username;
-                props.statusText.text = profile.Status.ToUpper(); //ToUpper just in case
+                if (!profile.IsLoaded)
+                {
+                    continue;
+                }
+                GameObject newContact = Instantiate(contactPrefab, contactsParent);
+                newContact.AddComponent<ChatProfile>().LoadData(profile);
+                newContact.GetComponent<ContactView>().SetProperties(messagesWindow, messagesUsernameText, messagesStatusText, messagesProfileImage);
             }
         }
         

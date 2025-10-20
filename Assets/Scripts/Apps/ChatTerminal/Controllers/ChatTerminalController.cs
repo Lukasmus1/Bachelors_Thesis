@@ -8,7 +8,7 @@ namespace Apps.ChatTerminal.Controllers
     {
         private readonly ChatTerminalModel _chatTerminalModel = new();
         
-        public List<ChatProfile> GetChatProfiles()
+        public List<ChatProfileModel> GetChatProfiles()
         {
             return _chatTerminalModel.LoadedChatProfiles;
         }

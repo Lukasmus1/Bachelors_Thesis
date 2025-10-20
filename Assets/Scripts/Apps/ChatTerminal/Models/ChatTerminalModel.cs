@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Apps.ChatTerminal.Models
 {
     public class ChatTerminalModel
     {
-        private List<ChatProfile> _loadedChatProfiles = new();
-        public List<ChatProfile> LoadedChatProfiles
+        private List<ChatProfileModel> _loadedChatProfiles = new();
+        public List<ChatProfileModel> LoadedChatProfiles
         {
             get
             {
@@ -30,10 +31,10 @@ namespace Apps.ChatTerminal.Models
                 throw new Exception("Chat JSON file not found in Resources folder.");
             }
             
-            var chatProfiles = JsonUtility.FromJson<ChatProfilesWrapper>(chatJson.text);
-            foreach (ChatProfile profile in chatProfiles.ChatProfiles)
+            var chatProfiles = JsonConvert.DeserializeObject<ChatProfilesWrapper>(chatJson.text);
+            foreach (ChatProfileModel profile in chatProfiles.ChatProfiles)
             {
-                LoadedChatProfiles.Add(profile);
+                _loadedChatProfiles.Add(profile);
             }
         }
     }
