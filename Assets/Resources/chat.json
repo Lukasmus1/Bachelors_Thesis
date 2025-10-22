@@ -5,8 +5,9 @@
             "UserId": "us1",
             "Username": "Username1",
             "ProfilePicture": "",
-            "TypingSpeed": 0,
+            "TypingSpeed": 5,
             "IsLoaded": true,
+            "CurrentMessageIndex": 0,
             "Messages": 
             [
                 [
@@ -31,8 +32,9 @@
             "UserId": "us2",
             "Username": "Username2",
             "ProfilePicture": "",
-            "TypingSpeed": 0,
+            "TypingSpeed": 6,
             "IsLoaded": true,
+            "CurrentMessageIndex": 0,
             "Messages": 
             [
                 [

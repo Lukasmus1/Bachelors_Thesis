@@ -21,7 +21,6 @@ namespace Apps.ChatTerminal.Views
         private void OnEnable()
         {
             ChatTerminalMvc.Instance.MessageSystemController.SetView(this);
-            SetProperties();
         }
 
         public void SetProperties()
@@ -58,7 +57,7 @@ namespace Apps.ChatTerminal.Views
         public void CreateMessage(string messageContent)
         {
             GameObject msg = Instantiate(messagePrefab, messagePrefabParent);
-            var props = GetComponent<MessageProperties>();
+            var props = msg.GetComponent<MessageProperties>();
             
             props.usernameText.text = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
             //props.profilePicture.sprite = currentProfile.ProfilePicture;

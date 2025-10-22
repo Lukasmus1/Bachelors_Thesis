@@ -10,7 +10,8 @@ namespace Apps.ChatTerminal.Models
         public MessageStatus Status { get; set; }
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
-        public List<List<string>> Messages { get; set; } = new();
+        public int CurrentMessageIndex { get; set; }
+        public List<List<string>> Messages { get; set; }
         public bool IsLoaded { get; set; }
         
         public void LoadData(ChatProfileModel data)
@@ -21,6 +22,7 @@ namespace Apps.ChatTerminal.Models
             ProfilePicture = data.ProfilePicture;
             TypingSpeed = data.TypingSpeed;
             Messages = data.Messages;
+            CurrentMessageIndex = data.CurrentMessageIndex;
             IsLoaded = true;
         }
     }

@@ -12,6 +12,7 @@ namespace Apps.ChatTerminal.Models
         public MessageStatus Status { get; set; } = MessageStatus.Offline;
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
+        public int CurrentMessageIndex { get; set; } = 0;
         public List<List<string>> Messages { get; set; } = new();
         public bool IsLoaded { get; set; }
     }

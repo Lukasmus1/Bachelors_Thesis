@@ -30,9 +30,9 @@ namespace Apps.ChatTerminal.Views
         public void OnClick()
         {
             ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile = GetComponent<ChatProfile>();
-            ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
             messagesWindow.SetActive(true); //This needs to be called before setting properties
             ChatTerminalMvc.Instance.MessageSystemController.SetProperties(); //Must be called after activating the messages window
+            ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
         }
 
         private void SetStatusText()
