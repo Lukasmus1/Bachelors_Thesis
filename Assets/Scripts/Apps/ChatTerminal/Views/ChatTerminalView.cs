@@ -19,9 +19,6 @@ namespace Apps.ChatTerminal.Views
         
         [Header("Messages Window")]
         [SerializeField] private GameObject messagesWindow;
-        [SerializeField] private TMP_Text messagesUsernameText;
-        [SerializeField] private TMP_Text messagesStatusText;
-        [SerializeField] private Image messagesProfileImage;
         
         private void Awake()
         {
@@ -41,7 +38,7 @@ namespace Apps.ChatTerminal.Views
                 }
                 GameObject newContact = Instantiate(contactPrefab, contactsParent);
                 newContact.AddComponent<ChatProfile>().LoadData(profile);
-                newContact.GetComponent<ContactView>().SetProperties(messagesWindow, messagesUsernameText, messagesStatusText, messagesProfileImage);
+                newContact.GetComponent<ContactView>().SetProperties(messagesWindow);
             }
         }
         

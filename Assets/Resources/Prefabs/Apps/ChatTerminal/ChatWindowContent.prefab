@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5791793289286590611}
+  - component: {fileID: 3652216329678481957}
   m_Layer: 5
   m_Name: ChatWindowContent
   m_TagString: Untagged
@@ -37,6 +38,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -900, y: -725}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3652216329678481957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581128353241217357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8b62cfe1f54db8829faf7a67a40577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.MessageSystemView
+  messagePrefab: {fileID: 7401672992000218429, guid: f4e06cfed1431d544b74435185314307, type: 3}
+  messagePrefabParent: {fileID: 1695547288595579686}
 --- !u!1 &1701180494797195997
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +150,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

@@ -9,7 +9,7 @@ namespace Apps.ChatTerminal.Models
     {
         public string UserID { get; set; }
         public string Username { get; set; }
-        public string Status { get; set; } = "";
+        public MessageStatus Status { get; set; } = MessageStatus.Offline;
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
         public List<List<string>> Messages { get; set; } = new();

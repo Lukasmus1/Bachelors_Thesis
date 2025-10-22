@@ -11,37 +11,52 @@ namespace Apps.ChatTerminal.Views
     {
         [SerializeField] private GameObject messagesWindow;
         
-        //Contact properties
-        private Image profileImage;
-        private TMP_Text usernameText;
-        private TMP_Text statusText;
-        
         private ChatProfile profileModel;
-
-        public void SetProperties(GameObject messagesWin, TMP_Text usernameTxt, TMP_Text statusTxt, Image profileImg)
+        private ContactProperties _props;
+        
+        public void SetProperties(GameObject messagesWin)
         {
             messagesWindow = messagesWin;
-            usernameText = usernameTxt;
-            statusText = statusTxt;
-            profileImage = profileImg;
             
             profileModel = GetComponent<ChatProfile>();
+            _props = GetComponent<ContactProperties>();
             
-            var props = GetComponent<ContactProperties>();
-            
-            props.usernameText.text = profileModel.Username;
-            props.statusText.text = profileModel.Status;
+            _props.usernameText.text = profileModel.Username;
+            SetStatusText();
             
             gameObject.SetActive(true);
         }
-
+        
         public void OnClick()
         {
-            //profileImage.sprite = _profile.ProfilePicture;
-            usernameText.text = profileModel.Username;
-            statusText.text = profileModel.Status;
-            
-            messagesWindow.SetActive(true);
+            ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile = GetComponent<ChatProfile>();
+            ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
+            messagesWindow.SetActive(true); //This needs to be called before setting properties
+            ChatTerminalMvc.Instance.MessageSystemController.SetProperties(); //Must be called after activating the messages window
+        }
+
+        private void SetStatusText()
+        {
+            switch (profileModel.Status)
+            {
+                case MessageStatus.NewMessage:
+                    _props.statusText.text = "NEW MESSAGE";
+                    _props.statusText.color = Color.red;
+                    break;
+                
+                case MessageStatus.Typing:
+                    _props.statusText.text = "TYPING...";
+                    _props.statusText.color = Color.black;
+                    break;
+                
+                case MessageStatus.Offline:
+                    _props.statusText.text = "OFFLINE";
+                    _props.statusText.color = Color.black;
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

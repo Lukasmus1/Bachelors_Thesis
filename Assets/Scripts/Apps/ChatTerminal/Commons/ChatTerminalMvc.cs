@@ -16,10 +16,12 @@ namespace Apps.ChatTerminal.Commons
         }
 
         public ChatTerminalController ChatTerminalController { get; set; }
+        public MessageSystemController MessageSystemController { get; set; }
         
         private ChatTerminalMvc()
         {
             ChatTerminalController = new ChatTerminalController();
+            MessageSystemController = new MessageSystemController();
         }
     }
 }
