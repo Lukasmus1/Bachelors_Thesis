@@ -9,7 +9,19 @@ namespace Apps.ChatTerminal.Models
 {
     public class MessageSystemModel
     {
-        public ChatProfile profile;
+        private ChatProfile _currentProfile;
+        public ChatProfile CurrentProfile
+        {
+            get => _currentProfile;
+            set
+            {
+                if (_currentProfile != null && _currentProfile.SeenMessagesIndex <= _currentProfile.CurrentMessageIndex)
+                {
+                    _currentProfile.Status = MessageStatus.NewMessage;
+                }
+                _currentProfile = value;
+            }
+        }
         
         private CancellationTokenSource _token;
         
@@ -27,66 +39,66 @@ namespace Apps.ChatTerminal.Models
             }
             
             _token?.Cancel();
-            profile.Status = MessageStatus.Offline;
+            CurrentProfile.Status = MessageStatus.Offline;
         }
         
         private async Task TypingAsync(CancellationToken token)
         {
-            bool isIndexOverMessages = profile.CurrentMessageIndex >= profile.Messages.Count;
+            bool isIndexOverMessages = CurrentProfile.CurrentMessageIndex >= CurrentProfile.Messages.Count;
             
             //Save start index in case of cancellation
-            int startIndex = profile.SeenMessagesIndex;
+            int startIndex = CurrentProfile.SeenMessagesIndex;
             
             //Try to type new messages
             //If cancelled, revert seen index to start index
             try
             {
                 //Create message history
-                for (int i = 0; i < profile.SeenMessagesIndex; i++)
+                for (int i = 0; i < CurrentProfile.SeenMessagesIndex; i++)
                 {
-                    foreach (string oldMsg in profile.Messages[i])
+                    foreach (string oldMsg in CurrentProfile.Messages[i])
                     {
                         token.ThrowIfCancellationRequested();
                         CreateMessage(oldMsg);
                     }
 
-                    if (i == profile.SeenMessagesIndex - 1 && isIndexOverMessages)
+                    if (i == CurrentProfile.SeenMessagesIndex - 1 && isIndexOverMessages)
                     {
                         break;
                     }
-                    
+
                     CreateDivider();
                 }
-             
+
                 if (isIndexOverMessages)
                 {
                     Debug.Log("No more messages remaining");
                     return;
                 }
-                
-                profile.Status = MessageStatus.Typing;
-                
-                for (int i = profile.SeenMessagesIndex; i <= profile.CurrentMessageIndex; i++)
+
+                CurrentProfile.Status = MessageStatus.Typing;
+
+                for (int i = CurrentProfile.SeenMessagesIndex; i <= CurrentProfile.CurrentMessageIndex; i++)
                 {
-                    foreach (string message in profile.Messages[i])
+                    foreach (string message in CurrentProfile.Messages[i])
                     {
                         //Simulate typing delay based on typing speed divided by number of chars
-                        var delayMs = (int)(message.Length / profile.TypingSpeed * 1000);
+                        var delayMs = (int)(message.Length / CurrentProfile.TypingSpeed * 1000);
                         await Task.Delay(delayMs, token);
 
                         CreateMessage(message);
                     }
 
                     CreateDivider();
-                    profile.SeenMessagesIndex++;
+                    CurrentProfile.SeenMessagesIndex++;
                 }
-                
-                profile.Status = MessageStatus.Offline;
+
+                CurrentProfile.Status = MessageStatus.Offline;
             }
             catch (OperationCanceledException)
             {
-                profile.Status = MessageStatus.Offline;
-                profile.SeenMessagesIndex = startIndex;
+                CurrentProfile.Status = MessageStatus.Offline;
+                CurrentProfile.SeenMessagesIndex = startIndex;
             }
         }
         

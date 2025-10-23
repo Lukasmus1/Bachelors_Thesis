@@ -16,8 +16,8 @@ namespace Apps.ChatTerminal.Controllers
         
         public ChatProfile CurrentProfile 
         {
-            get => _messageSystemModel.profile;
-            set => _messageSystemModel.profile = value;
+            get => _messageSystemModel.CurrentProfile;
+            set => _messageSystemModel.CurrentProfile = value;
         }
         
         public void CreateMessage(string content)

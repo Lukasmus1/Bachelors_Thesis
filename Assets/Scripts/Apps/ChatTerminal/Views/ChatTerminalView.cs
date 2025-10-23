@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
 using Desktop.Commons;
@@ -20,6 +21,12 @@ namespace Apps.ChatTerminal.Views
         [Header("Messages Window")]
         [SerializeField] private GameObject messagesWindow;
         
+        [Header("Message Terminal Icon")]
+        [SerializeField] private RawImage terminalIcon;
+        [SerializeField] private Sprite newMessageIcon;
+        [SerializeField] private Sprite defaultIcon;
+        private readonly List<ChatProfile> _profiles = new();
+        
         private void Awake()
         {
             usernameText.text = UserMvc.Instance.DesktopGeneratorController.Username;
@@ -37,18 +44,28 @@ namespace Apps.ChatTerminal.Views
                     continue;
                 }
                 GameObject newContact = Instantiate(contactPrefab, contactsParent);
-                newContact.AddComponent<ChatProfile>().LoadData(profile);
-                newContact.GetComponent<ContactView>().SetProperties(messagesWindow);
+                var newProfile = newContact.AddComponent<ChatProfile>();
+                newProfile.LoadData(profile);
+                _profiles.Add(newProfile);
+                newContact.GetComponent<ContactView>().SetProperties(messagesWindow, newProfile);
             }
         }
         
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            terminalIcon.texture = defaultIcon.texture;
         }
         
         private void OnDisable()
         {
+            if (_profiles.Any(x => x.Status == MessageStatus.NewMessage))
+            {
+                terminalIcon.texture = newMessageIcon.texture;
+            }
+
+            messagesWindow.SetActive(false);
+            
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
         }
     }

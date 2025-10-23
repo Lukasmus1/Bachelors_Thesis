@@ -14,16 +14,16 @@ namespace Apps.ChatTerminal.Views
         private ChatProfile profileModel;
         private ContactProperties _props;
         
-        private void OnDisable()
+        private void OnDestroy()
         {
             profileModel.MessageStatusChanged -= SetStatusText;
         }
 
-        public void SetProperties(GameObject messagesWin)
+        public void SetProperties(GameObject messagesWin, ChatProfile profile)
         {
             messagesWindow = messagesWin;
-            
-            profileModel = GetComponent<ChatProfile>();
+
+            profileModel = profile;
             profileModel.MessageStatusChanged += SetStatusText;
             
             _props = GetComponent<ContactProperties>();
