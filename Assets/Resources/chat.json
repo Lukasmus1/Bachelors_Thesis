@@ -2,18 +2,20 @@
     "ChatProfiles":
     [
         {
-            "UserId": "us1",
-            "Username": "Username1",
+            "UserId": "ind1",
+            "Username": "IT Department",
             "ProfilePicture": "",
-            "TypingSpeed": 30,
+            "TypingSpeed": 25,
             "IsLoaded": true,
             "CurrentMessageIndex": 0,
+            "SeenMessagesIndex": 0,
             "Messages": 
             [
                 [
-                    "Mes1 Mes1 Mes1 Mes1 Mes1 Mes1 Mes1 Mes1 Mes1",
-                    "Mes2 Mes2Mes2Mes2 Mes2 Mes2 Mes2 Mes2 Mes2 Mes2",
-                    "Mes3 Mes3Mes3Mes3Mes3 Mes3 Mes3 Mes3 Mes3 Mes3 Mes3"
+                    "Hello, I am from IT department. Pleasure to meet you.",
+                    "This chat terminal serves as a way for the station to communicate with you.",
+                    "We will provide you with important information about your case or just help in general.",
+                    "If you have any questions, feel free to come ask me at my desk."
                 ],
                 [
                     "Mes4",
@@ -32,9 +34,10 @@
             "UserId": "us2",
             "Username": "Username2",
             "ProfilePicture": "",
-            "TypingSpeed": 35,
+            "TypingSpeed": 25,
             "IsLoaded": true,
             "CurrentMessageIndex": 0,
+            "SeenMessagesIndex": 0,
             "Messages": 
             [
                 [

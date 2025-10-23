@@ -24,6 +24,7 @@ namespace Apps.ChatTerminal.Models
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; }
+        public int SeenMessagesIndex { get; set; }
         public List<List<string>> Messages { get; set; }
         public bool IsLoaded { get; set; }
         
@@ -36,6 +37,7 @@ namespace Apps.ChatTerminal.Models
             TypingSpeed = data.TypingSpeed;
             Messages = data.Messages;
             CurrentMessageIndex = data.CurrentMessageIndex;
+            SeenMessagesIndex = data.SeenMessagesIndex;
             IsLoaded = true;
         }
     }

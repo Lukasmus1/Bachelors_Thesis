@@ -3608,6 +3608,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1781763477}
     m_Modifications:
     - target: {fileID: 28416349138573931, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 903
+      objectReference: {fileID: 0}
+    - target: {fileID: 28416349138573931, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 28416349138573931, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28416349138573931, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -3637,7 +3649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1695141196054981865, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1739593137786270593, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_Pivot.x
@@ -3719,22 +3731,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2529520086490986370, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
-      propertyPath: m_Spacing
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2529520086490986370, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
-      propertyPath: m_ReverseArrangement
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2529520086490986370, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2529520086490986370, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
-      propertyPath: m_ChildForceExpandHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2687655726053585768, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: statusText
       value: 
@@ -3794,6 +3790,10 @@ PrefabInstance:
     - target: {fileID: 5268662853350143787, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268662853350143787, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5634924645840387732, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_SizeDelta.y

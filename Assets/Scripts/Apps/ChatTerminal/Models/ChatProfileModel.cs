@@ -13,6 +13,7 @@ namespace Apps.ChatTerminal.Models
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; } = 0;
+        public int SeenMessagesIndex { get; set; } = 0;
         public List<List<string>> Messages { get; set; } = new();
         public bool IsLoaded { get; set; }
     }

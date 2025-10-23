@@ -35,6 +35,11 @@ namespace Apps.ChatTerminal.Controllers
             _messageSystemModel.StartMessaging();
         }
         
+        public void StopMessaging()
+        {
+            _messageSystemModel.StopMessaging();
+        }
+        
         public void PrepareMessageView()
         {
             _messageSystemView.SetProperties();
