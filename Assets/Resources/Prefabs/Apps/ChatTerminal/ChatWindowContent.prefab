@@ -52,6 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.MessageSystemView
   messagePrefab: {fileID: 7401672992000218429, guid: f4e06cfed1431d544b74435185314307, type: 3}
   messagePrefabParent: {fileID: 1695547288595579686}
+  messageDividerPrefab: {fileID: 0}
+  usernameText: {fileID: 0}
+  profilePictureImage: {fileID: 0}
+  statusText: {fileID: 0}
 --- !u!1 &1701180494797195997
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +617,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 0
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 5
   m_Viewport: {fileID: 8750283949557126412}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1908803122857759268}
@@ -634,6 +638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695547288595579686}
   - component: {fileID: 3817248046096887503}
+  - component: {fileID: 4192610694424371225}
   m_Layer: 5
   m_Name: Messages
   m_TagString: Untagged
@@ -656,11 +661,11 @@ RectTransform:
   - {fileID: 2598543029588761247}
   m_Father: {fileID: 8750283949557126412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 520}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &3817248046096887503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,14 +684,28 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 6
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4192610694424371225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469433767724476255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &5707187913828846675
 GameObject:
   m_ObjectHideFlags: 0

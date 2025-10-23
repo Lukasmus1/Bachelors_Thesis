@@ -12,6 +12,7 @@ namespace Apps.ChatTerminal.Views
         [Header("Message")]
         [SerializeField] private GameObject messagePrefab;
         [SerializeField] private Transform messagePrefabParent;
+        [SerializeField] private GameObject messageDividerPrefab;
         
         [Header("Contact Info")]
         [SerializeField] private TMP_Text usernameText;
@@ -21,18 +22,31 @@ namespace Apps.ChatTerminal.Views
         private void OnEnable()
         {
             ChatTerminalMvc.Instance.MessageSystemController.SetView(this);
+            ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.MessageStatusChanged += SetStatusText;
         }
-
+        private void OnDisable()
+        {
+            ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.MessageStatusChanged -= SetStatusText;
+        }
+        
         public void SetProperties()
         {
             usernameText.text = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
             //profilePictureImage.sprite = currentProfile.ProfilePicture;
-            SetStatusText();
+            SetStatusText(ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Status);
         }
         
-        private void SetStatusText()
+        public void ClearMessages()
         {
-            switch (ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Status)
+            foreach (Transform child in messagePrefabParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        
+        private void SetStatusText(MessageStatus status)
+        {
+            switch (status)
             {
                 case MessageStatus.NewMessage:
                     statusText.text = "NEW MESSAGE";
@@ -64,6 +78,11 @@ namespace Apps.ChatTerminal.Views
             props.messageText.text = messageContent;
             
             msg.SetActive(true);
+        }
+        
+        public void CreateDivider()
+        { 
+            Instantiate(messageDividerPrefab, messagePrefabParent).SetActive(true);
         }
     }
 }

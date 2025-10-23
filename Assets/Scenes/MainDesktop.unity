@@ -3747,6 +3747,10 @@ PrefabInstance:
       propertyPath: profilePictureImage
       value: 
       objectReference: {fileID: 2111687796}
+    - target: {fileID: 2687655726053585768, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: messageDividerPrefab
+      value: 
+      objectReference: {fileID: 3264808581834799230, guid: 2294de482a325ac44a5e95c0dc2d8b72, type: 3}
     - target: {fileID: 3044301740504234749, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3789,7 +3793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5268662853350143787, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5634924645840387732, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_SizeDelta.y

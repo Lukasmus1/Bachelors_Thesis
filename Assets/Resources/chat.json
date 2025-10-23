@@ -5,15 +5,15 @@
             "UserId": "us1",
             "Username": "Username1",
             "ProfilePicture": "",
-            "TypingSpeed": 5,
+            "TypingSpeed": 30,
             "IsLoaded": true,
             "CurrentMessageIndex": 0,
             "Messages": 
             [
                 [
-                    "Mes1",
-                    "Mes2",
-                    "Mes3"
+                    "Mes1 Mes1 Mes1 Mes1 Mes1 Mes1 Mes1 Mes1 Mes1",
+                    "Mes2 Mes2Mes2Mes2 Mes2 Mes2 Mes2 Mes2 Mes2 Mes2",
+                    "Mes3 Mes3Mes3Mes3Mes3 Mes3 Mes3 Mes3 Mes3 Mes3 Mes3"
                 ],
                 [
                     "Mes4",
@@ -32,7 +32,7 @@
             "UserId": "us2",
             "Username": "Username2",
             "ProfilePicture": "",
-            "TypingSpeed": 6,
+            "TypingSpeed": 35,
             "IsLoaded": true,
             "CurrentMessageIndex": 0,
             "Messages": 

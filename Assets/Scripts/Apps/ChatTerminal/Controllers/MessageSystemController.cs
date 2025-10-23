@@ -1,4 +1,5 @@
-﻿using Apps.ChatTerminal.Models;
+﻿using System;
+using Apps.ChatTerminal.Models;
 using Apps.ChatTerminal.Views;
 
 namespace Apps.ChatTerminal.Controllers
@@ -24,14 +25,20 @@ namespace Apps.ChatTerminal.Controllers
             _messageSystemView.CreateMessage(content);    
         }
         
+        public void CreateDivider()
+        {
+            _messageSystemView.CreateDivider();    
+        }
+        
         public void StartMessaging()
         {
             _messageSystemModel.StartMessaging();
         }
         
-        public void SetProperties()
+        public void PrepareMessageView()
         {
             _messageSystemView.SetProperties();
+            _messageSystemView.ClearMessages();
         }
     }
 }

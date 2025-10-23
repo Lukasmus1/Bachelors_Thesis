@@ -14,15 +14,22 @@ namespace Apps.ChatTerminal.Views
         private ChatProfile profileModel;
         private ContactProperties _props;
         
+        private void OnDisable()
+        {
+            profileModel.MessageStatusChanged -= SetStatusText;
+        }
+
         public void SetProperties(GameObject messagesWin)
         {
             messagesWindow = messagesWin;
             
             profileModel = GetComponent<ChatProfile>();
+            profileModel.MessageStatusChanged += SetStatusText;
+            
             _props = GetComponent<ContactProperties>();
             
             _props.usernameText.text = profileModel.Username;
-            SetStatusText();
+            SetStatusText(profileModel.Status);
             
             gameObject.SetActive(true);
         }
@@ -31,13 +38,13 @@ namespace Apps.ChatTerminal.Views
         {
             ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile = GetComponent<ChatProfile>();
             messagesWindow.SetActive(true); //This needs to be called before setting properties
-            ChatTerminalMvc.Instance.MessageSystemController.SetProperties(); //Must be called after activating the messages window
+            ChatTerminalMvc.Instance.MessageSystemController.PrepareMessageView(); //Must be called after activating the messages window
             ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
         }
 
-        private void SetStatusText()
+        private void SetStatusText(MessageStatus status)
         {
-            switch (profileModel.Status)
+            switch (status)
             {
                 case MessageStatus.NewMessage:
                     _props.statusText.text = "NEW MESSAGE";
