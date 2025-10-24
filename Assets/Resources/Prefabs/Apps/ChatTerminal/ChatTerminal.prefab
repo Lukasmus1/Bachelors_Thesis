@@ -182,6 +182,9 @@ MonoBehaviour:
   contactPrefab: {fileID: 3956741269752487994, guid: 742fdab488886ef4590a944d8dddda48, type: 3}
   contactsParent: {fileID: 817763205358485925}
   messagesWindow: {fileID: 149309411995131904}
+  terminalIcon: {fileID: 0}
+  newMessageIcon: {fileID: 21300000, guid: 32ca6ae6a16c33a44a70c6a0a88deec0, type: 3}
+  defaultIcon: {fileID: 21300000, guid: 8062ddb2a9c2eab4885c9208bc550b0c, type: 3}
 --- !u!1 &1799932230038066507
 GameObject:
   m_ObjectHideFlags: 0
