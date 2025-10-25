@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Apps.FileLoader.Commons;
 using UnityEngine;
 
-namespace Apps.FileLoader.Views
+namespace Apps.FileManager.Views
 {
     public class FileLoaderView : MonoBehaviour
     {
@@ -19,6 +18,7 @@ namespace Apps.FileLoader.Views
         private void LoadLoadedFiles()
         {
             List<GameObject> files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFile();
+            
         }
     }
 }

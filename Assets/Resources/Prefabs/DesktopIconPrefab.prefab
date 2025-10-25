@@ -73,9 +73,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.09803922}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.3137255}
-    m_SelectedColor: {r: 0.3915094, g: 0.6733655, b: 1, a: 0.38431373}
+    m_HighlightedColor: {r: 0.40392157, g: 0.68235296, b: 1, a: 0.49019608}
+    m_PressedColor: {r: 0.31706125, g: 0.5840202, b: 0.8962264, a: 0.49019608}
+    m_SelectedColor: {r: 0.4009434, g: 0.6792149, b: 1, a: 0.38431373}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b8e19a596748cdbc492c3cd4d95db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desktop.Views.AppIconAction
-  _appToOpen: {fileID: 0}
+  appToOpen: {fileID: 0}
 --- !u!1 &1754896089911824195
 GameObject:
   m_ObjectHideFlags: 0
