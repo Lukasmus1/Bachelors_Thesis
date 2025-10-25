@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using Apps.FileLoader.Models;
+using Apps.FileManager.Models;
 using UnityEngine;
 
-namespace Apps.FileLoader.Controllers
+namespace Apps.FileManager.Controllers
 {
     public class FileLoaderController
     {
-        private FileLoaderModel _fileLoaderModel = new();
+        private readonly FileLoaderModel _fileLoaderModel = new();
 
         public List<GameObject> GetLoadedFile()
         {

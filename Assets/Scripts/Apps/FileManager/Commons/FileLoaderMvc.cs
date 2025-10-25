@@ -1,6 +1,6 @@
-﻿using Apps.FileLoader.Controllers;
+﻿using Apps.FileManager.Controllers;
 
-namespace Apps.FileLoader.Commons
+namespace Apps.FileManager.Commons
 {
     public class FileLoaderMvc
     {

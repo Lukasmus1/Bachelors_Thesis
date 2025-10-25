@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using Apps.FileManager.Models;
+using Apps.FileViewer.Commons;
+using TMPro;
 using UnityEngine;
 
 namespace Apps.FileManager.Views
@@ -6,16 +8,22 @@ namespace Apps.FileManager.Views
     public class FileView : MonoBehaviour
     {
         [SerializeField] private TMP_Text fileName;
-        [SerializeField] private GameObject loadFileButton;
+        private GameObject openFileButton;
         
-        public void SetProps(string fName)
+        public void SetProps(GameObject fileObject, GameObject openFButton)
         {
-            fileName.text = fName;
+            // Set the opened file in the FileViewer context
+            FileViewerMvc.Instance.FileLoaderController.OpenedFile = fileObject;
+            
+            var fileModel = fileObject.GetComponent<FileModel>();
+            
+            fileName.text = fileModel.FileName;
+            openFileButton = openFButton;
         }
 
         public void OnClick()
         {
-            loadFileButton.SetActive(true);
+            openFileButton.SetActive(true);
         }
     }
 }

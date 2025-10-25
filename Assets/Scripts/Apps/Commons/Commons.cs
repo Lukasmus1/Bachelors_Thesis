@@ -11,9 +11,9 @@ namespace Apps.Commons
             appToDestroy.SetActive(false);
         }
         
-        public void OpenApp()
+        public void OpenApp(GameObject appToOpen)
         {
-            
+            appToOpen.SetActive(true);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Desktop.Views
                 (!DesktopModel.Instance.Flags[appToOpen.tag] &&
                 DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag)))
             {
-                appToOpen.SetActive(true);    
+                appToOpen.SetActive(true);
             }
         }
     }
