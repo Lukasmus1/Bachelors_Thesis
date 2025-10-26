@@ -15,11 +15,11 @@ namespace Saving.Commons
             }
         }
 
-        public SaveController DesktopGeneratorController { get; set; }
+        public SaveController SavingController { get; set; }
         
         private SavingMvc()
         {
-            DesktopGeneratorController = new SaveController();
+            SavingController = new SaveController();
         }
     }
 }

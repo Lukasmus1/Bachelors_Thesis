@@ -25,11 +25,11 @@ namespace Saving.Models
             stream.Close();
         }
 
-        public void LoadGame()
+        public bool LoadGame()
         {
             if (!File.Exists(_path))
             {
-                return;
+                return false;
             }
             
             BinaryFormatter formatter = new();
@@ -43,6 +43,7 @@ namespace Saving.Models
             }
             
             _model.LoadDataFromModel(data);
+            return true;
         }
     }
 }

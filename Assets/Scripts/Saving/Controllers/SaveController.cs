@@ -4,11 +4,15 @@ namespace Saving.Controllers
 {
     public class SaveController
     {
-        private SaveLogic _modelLogic;
+        private readonly SaveLogic _modelLogic = new();
         
-        public void LoadGame()
+        /// <summary>
+        /// Tries to load a saved game.
+        /// </summary>
+        /// <returns>Returns true if successfully loaded and false if not.</returns>
+        public bool LoadGame()
         {
-            _modelLogic.LoadGame();
+            return _modelLogic.LoadGame();
         }
     }
 }

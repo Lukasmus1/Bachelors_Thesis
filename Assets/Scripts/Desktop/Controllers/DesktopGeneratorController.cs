@@ -13,7 +13,21 @@ namespace Desktop.Controllers
         private WallpaperGeneration _wallpaperGenerator;
         private ColorGeneration _colorSchemeGenerator;
         private IconGenerator _iconGenerator;
+
+        //Random Generators
+        public Texture2D GetRandomWallpaper()
+        {
+            _wallpaperGenerator = new WallpaperGeneratorRandom();
+            return _wallpaperGenerator.GetWallpaperTexture();
+        }
         
+        public Color GetRandomColorScheme()
+        {
+            _colorSchemeGenerator = new ColorGeneration();
+            return _colorSchemeGenerator.GenerateRandomColorScheme();
+        }
+        
+        //User's Generators
         public Texture2D GetUserWallpaper()
         {
             _wallpaperGenerator = new WallpaperGeneratorUser();

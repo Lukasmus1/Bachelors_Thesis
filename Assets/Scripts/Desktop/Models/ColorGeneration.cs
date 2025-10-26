@@ -8,7 +8,7 @@ namespace Desktop.Models
         /// Generates a random color scheme with slight transparency.
         /// </summary>
         /// <returns>Random color scheme</returns>
-        protected static Color GenerateRandomColorScheme()
+        public Color GenerateRandomColorScheme()
         {
             //Generating random color
             Color clr = Random.ColorHSV();

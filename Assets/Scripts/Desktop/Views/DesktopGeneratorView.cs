@@ -48,6 +48,15 @@ namespace Desktop.Views
         }
 
         /// <summary>
+        /// Generate a random desktop.
+        /// </summary>
+        public void GenerateRandomDesktop()
+        {
+            SetDesktopWallpaper(_controller.GetRandomWallpaper());
+            SetColorScheme(_controller.GetRandomColorScheme());
+        }
+        
+        /// <summary>
         /// Sets the desktop wallpaper.
         /// </summary>
         /// <param name="wallpaper">Wallpaper as Texture2D</param>
@@ -58,6 +67,9 @@ namespace Desktop.Views
             
             //Setting the wallpaper in the desktop model
             DesktopModel.Instance.Wallpaper = wallpaper;
+            
+            //Enabling the wallpaper image
+            wallpaperImage.gameObject.SetActive(true);
         }
 
         /// <summary>
