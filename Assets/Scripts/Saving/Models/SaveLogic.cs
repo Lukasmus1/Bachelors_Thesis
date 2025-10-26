@@ -31,15 +31,24 @@ namespace Saving.Models
             {
                 return false;
             }
-            
-            BinaryFormatter formatter = new();
-            FileStream stream = new(_path, FileMode.Open);
-            var data = formatter.Deserialize(stream) as SaveModel;
-            stream.Close();
 
+            SaveModel data = null;
+            try
+            {
+                BinaryFormatter formatter = new();
+                FileStream stream = new(_path, FileMode.Open);
+                data = formatter.Deserialize(stream) as SaveModel;
+                stream.Close();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error loading save file: " + e.Message);
+                return false;
+            }
+            
             if (data == null)
             {
-                throw new Exception("Failed to load save data.");
+                throw new Exception("Successfully loaded the file, but the data is null.");
             }
             
             _model.LoadDataFromModel(data);

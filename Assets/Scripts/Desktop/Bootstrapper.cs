@@ -14,6 +14,7 @@ namespace Desktop
             if (SavingMvc.Instance.SavingController.LoadGame())
             {
                 //GameLoaded
+                
             }
             else
             {
@@ -22,6 +23,11 @@ namespace Desktop
                 
                 _desktopGeneratorView.GenerateRandomDesktop();
             }
+        }
+
+        private void OnApplicationQuit()
+        {
+            SavingMvc.Instance.SavingController.SaveGame();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
@@ -54,6 +55,18 @@ namespace Desktop.Views
         {
             SetDesktopWallpaper(_controller.GetRandomWallpaper());
             SetColorScheme(_controller.GetRandomColorScheme());
+            SaveExistingIcons();
+        }
+
+        /// <summary>
+        /// Saves the existing icons on the desktop.
+        /// </summary>
+        private void SaveExistingIcons()
+        {
+            foreach (GameObject icon in desktopIconObjects.Where(icon => icon.activeSelf))
+            {
+                DesktopMvc.Instance.DesktopGeneratorController.SetDesktopIconIntoContext(icon.GetComponent<IconClassOnObject>());
+            }
         }
         
         /// <summary>
@@ -66,7 +79,7 @@ namespace Desktop.Views
             wallpaperImage.texture = wallpaper;
             
             //Setting the wallpaper in the desktop model
-            DesktopModel.Instance.Wallpaper = wallpaper;
+            DesktopModel.Instance.Wallpaper = wallpaper.EncodeToPNG();
             
             //Enabling the wallpaper image
             wallpaperImage.gameObject.SetActive(true);
@@ -81,10 +94,10 @@ namespace Desktop.Views
             //Setting slight transparency
             clr.a = 0.998f;
             
-            DesktopModel.Instance.ColorScheme = clr;
+            DesktopModel.Instance.ColorScheme = ColorUtility.ToHtmlStringRGBA(clr);
             
             //Getting the current color scheme
-            Color colorScheme = DesktopModel.Instance.ColorScheme;
+            ColorUtility.TryParseHtmlString(DesktopModel.Instance.ColorScheme, out Color colorScheme);
             
             //Setting the color scheme
             bottomBarBackground.color = colorScheme;
@@ -106,10 +119,11 @@ namespace Desktop.Views
                 //Getting the icon prefab default size to calculate the relative scale 
                 //NewScale / OldScale 
                 var oldIconSize = new Vector2(iconObject.GetComponent<RectTransform>().sizeDelta.x, iconObject.GetComponent<RectTransform>().sizeDelta.y); 
-                var iconRelativeScale = new Vector2(icon.Size.x / oldIconSize.x, icon.Size.y / oldIconSize.y);
+                var iconRelativeScale = new Vector2(icon.SizeX / oldIconSize.x, icon.SizeY / oldIconSize.y);
                 
                 //Getting the rest of the icon properties
-                icon.Size = new Vector3(iconRelativeScale.x, iconRelativeScale.y, 1f);
+                icon.SizeX = iconRelativeScale.x;
+                icon.SizeY = iconRelativeScale.y;
                 icon.Font = userFont;
                 
                 //Setting the icon properties

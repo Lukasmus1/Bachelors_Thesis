@@ -48,10 +48,17 @@ namespace Desktop.Views
 
         public void SetProperties(IconClass icon)
         {
-            GetComponent<RectTransform>().localScale = icon.Size;
+            var size = new Vector2(icon.SizeX, icon.SizeY);
+            var position = new Vector2(icon.PositionX, icon.PositionY);
+            
+            GetComponent<RectTransform>().localScale = size;
             GetComponentInChildren<TMP_Text>().text = icon.Name;
-            GetComponent<RectTransform>().anchoredPosition = icon.Position;
-            GetComponentInChildren<RawImage>().texture = icon.Image;
+            GetComponent<RectTransform>().anchoredPosition = position;
+            
+            var tex = new Texture2D(2, 2);
+            tex.LoadImage(icon.Image);
+            GetComponentInChildren<RawImage>().texture = tex;
+            
             GetComponentInChildren<TMP_Text>().font = icon.Font;
         }
 

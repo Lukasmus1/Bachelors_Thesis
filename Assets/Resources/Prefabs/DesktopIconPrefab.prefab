@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8308345691930156779}
   - component: {fileID: 3630315890289126225}
   - component: {fileID: 3776590706474451972}
+  - component: {fileID: 8318631066822367303}
   m_Layer: 5
   m_Name: DesktopIconPrefab
   m_TagString: Untagged
@@ -133,6 +134,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desktop.Views.AppIconAction
   appToOpen: {fileID: 0}
+--- !u!114 &8318631066822367303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474053375335754062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d03710219e4c7eacd3d07b2c87791a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Desktop.Models.IconClassOnObject
 --- !u!1 &1754896089911824195
 GameObject:
   m_ObjectHideFlags: 0

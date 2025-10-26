@@ -20,9 +20,9 @@ namespace Desktop.Models
         }
         
         //Public
-        public Texture2D Wallpaper { get; set; }
-        public Color ColorScheme { get; set; }
-        public List<IconClass> Icons { get; set; }
+        public byte[] Wallpaper { get; set; }
+        public string ColorScheme { get; set; }
+        public List<IconClass> Icons { get; set; } = new();
         public Dictionary<string, bool> Flags { get; set; } = new();
 
         

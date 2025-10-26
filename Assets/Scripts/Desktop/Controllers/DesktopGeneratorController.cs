@@ -52,9 +52,25 @@ namespace Desktop.Controllers
             return fontScript.GetUserFont();
         }
 
+        //Commons
         public void SetDesktopFlag(string flag, bool value)
         {
             DesktopModel.Instance.SetFlag(flag, value);
+        }
+        
+        public void SetDesktopIconIntoContext(IconClassOnObject icon)
+        {
+            //In this instance, we immediately convert the texture right back to byte[]
+            //This is done 'cause I don't want to change all other instances that rely on this implementation
+            var tex = new Texture2D(2, 2);
+            tex.LoadImage(icon.Image);
+            
+            DesktopModel.Instance.Icons.Add(new IconClass(
+                icon.Name,
+                icon.Size,
+                icon.Position,
+                tex
+            ));
         }
     }
 }

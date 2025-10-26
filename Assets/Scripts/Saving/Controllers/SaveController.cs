@@ -14,5 +14,13 @@ namespace Saving.Controllers
         {
             return _modelLogic.LoadGame();
         }
+
+        /// <summary>
+        /// Saves the current game state.
+        /// </summary>
+        public void SaveGame()
+        {
+            _modelLogic.SaveGame();
+        }
     }
 }
