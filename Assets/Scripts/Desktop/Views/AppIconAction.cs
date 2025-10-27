@@ -15,9 +15,9 @@ namespace Desktop.Views
             }
             
             //Check if the app is already open using the Flags dictionary and the gameObject tag
-            if (!DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag) || 
-                (!DesktopModel.Instance.Flags[appToOpen.tag] &&
-                DesktopModel.Instance.Flags.ContainsKey(appToOpen.tag)))
+            if (!DesktopModel.Instance.flags.ContainsKey(appToOpen.tag) || 
+                (!DesktopModel.Instance.flags[appToOpen.tag] &&
+                DesktopModel.Instance.flags.ContainsKey(appToOpen.tag)))
             {
                 appToOpen.SetActive(true);
             }

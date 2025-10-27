@@ -11,16 +11,11 @@ namespace Desktop
         private DesktopGeneratorView _desktopGeneratorView;
         private void Start()
         {
-            if (SavingMvc.Instance.SavingController.LoadGame())
-            {
-                //GameLoaded
-                
-            }
-            else
+            _desktopGeneratorView = GetComponentInChildren<DesktopGeneratorView>();
+            
+            if (!SavingMvc.Instance.SavingController.LoadGame())
             {
                 //New Game
-                _desktopGeneratorView = GetComponentInChildren<DesktopGeneratorView>();
-                
                 _desktopGeneratorView.GenerateRandomDesktop();
             }
         }

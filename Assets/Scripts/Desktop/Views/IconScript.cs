@@ -46,7 +46,7 @@ namespace Desktop.Views
             clickedOnce = false;
         }
 
-        public void SetProperties(IconClass icon)
+        public void SetProperties(IconClass icon, TMP_FontAsset font)
         {
             var size = new Vector2(icon.SizeX, icon.SizeY);
             var position = new Vector2(icon.PositionX, icon.PositionY);
@@ -59,7 +59,7 @@ namespace Desktop.Views
             tex.LoadImage(icon.Image);
             GetComponentInChildren<RawImage>().texture = tex;
             
-            GetComponentInChildren<TMP_Text>().font = icon.Font;
+            GetComponentInChildren<TMP_Text>().font = font;
         }
 
         private void PerformIconAction()

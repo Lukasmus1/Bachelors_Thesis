@@ -4,6 +4,7 @@ using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
 using DesktopGeneration.Models;
+using Saving.Commons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +35,12 @@ namespace Desktop.Views
         private void Awake()
         {
             _controller = DesktopMvc.Instance.DesktopGeneratorController;
+            SavingMvc.Instance.SavingController.OnGameLoaded += RefreshContext;
+        }
+        
+        public void OnDestroy()
+        {
+            SavingMvc.Instance.SavingController.OnGameLoaded -= RefreshContext;
         }
 
         /// <summary>
@@ -57,7 +64,14 @@ namespace Desktop.Views
             SetColorScheme(_controller.GetRandomColorScheme());
             SaveExistingIcons();
         }
-
+        
+        private void RefreshContext()
+        {
+            SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper());
+            SetColorScheme(ColorUtility.TryParseHtmlString("#" + DesktopModel.Instance.colorScheme, out Color color) ? color : Color.darkBlue);
+            SetIcons(DesktopModel.Instance.Icons);
+        }
+        
         /// <summary>
         /// Saves the existing icons on the desktop.
         /// </summary>
@@ -65,7 +79,7 @@ namespace Desktop.Views
         {
             foreach (GameObject icon in desktopIconObjects.Where(icon => icon.activeSelf))
             {
-                DesktopMvc.Instance.DesktopGeneratorController.SetDesktopIconIntoContext(icon.GetComponent<IconClassOnObject>());
+                _controller.SetDesktopIconIntoContext(icon.GetComponent<IconClassOnObject>());
             }
         }
         
@@ -79,7 +93,7 @@ namespace Desktop.Views
             wallpaperImage.texture = wallpaper;
             
             //Setting the wallpaper in the desktop model
-            DesktopModel.Instance.Wallpaper = wallpaper.EncodeToPNG();
+            DesktopModel.Instance.wallpaper = wallpaper.EncodeToPNG();
             
             //Enabling the wallpaper image
             wallpaperImage.gameObject.SetActive(true);
@@ -94,15 +108,14 @@ namespace Desktop.Views
             //Setting slight transparency
             clr.a = 0.998f;
             
-            DesktopModel.Instance.ColorScheme = ColorUtility.ToHtmlStringRGBA(clr);
-            
-            //Getting the current color scheme
-            ColorUtility.TryParseHtmlString(DesktopModel.Instance.ColorScheme, out Color colorScheme);
+            //Saving the color scheme in the desktop model
+            DesktopModel.Instance.colorScheme = ColorUtility.ToHtmlStringRGBA(clr);
             
             //Setting the color scheme
-            bottomBarBackground.color = colorScheme;
+            bottomBarBackground.color = clr;
         }
 
+        //TODO: REDO THIS THING vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
         /// <summary>
         /// Sets the icons and their properties on the desktop.
         /// </summary>
@@ -124,15 +137,14 @@ namespace Desktop.Views
                 //Getting the rest of the icon properties
                 icon.SizeX = iconRelativeScale.x;
                 icon.SizeY = iconRelativeScale.y;
-                icon.Font = userFont;
                 
                 //Setting the icon properties
-                iconObject.GetComponent<IconScript>().SetProperties(icon);
+                iconObject.GetComponent<IconScript>().SetProperties(icon, userFont);
 
                 iconObject.SetActive(true);
             }
         }
-        
+        //TODO: REDO THIS THING ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         
         /// <summary>
         /// Helper method to enable or disable the desktop object and the create desktop button.

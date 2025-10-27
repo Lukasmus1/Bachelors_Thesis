@@ -13,7 +13,6 @@ namespace Desktop.Models
         public float PositionX { get; set; }
         public float PositionY { get; set; }
         public byte[] Image { get; set; }
-        public TMP_FontAsset Font { get; set; }
         
         public IconClass(string name, Vector2 size, Vector2 position, Texture2D image)
         {

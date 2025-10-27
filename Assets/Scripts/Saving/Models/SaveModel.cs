@@ -12,6 +12,7 @@ namespace Saving.Models
         public void LoadDataFromModel(SaveModel saveModel)
         {
             desktop = saveModel.desktop;
+            DesktopModel.Instance = desktop;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Desktop.Models
 {
     public class WallpaperGeneratorRandom : WallpaperGeneration
     {
-        private List<Sprite> wallpapers = Resources.LoadAll<Sprite>("Wallpapers").ToList();
+        private readonly List<Sprite> wallpapers = Resources.LoadAll<Sprite>("Wallpapers").ToList();
 
         public override Texture2D GetWallpaperTexture()
         {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Desktop.Models
@@ -20,21 +21,27 @@ namespace Desktop.Models
         }
         
         //Public
-        public byte[] Wallpaper { get; set; }
-        public string ColorScheme { get; set; }
-        public List<IconClass> Icons { get; set; } = new();
-        public Dictionary<string, bool> Flags { get; set; } = new();
+        public byte[] wallpaper;
 
+        public Texture2D GetWallpaper()
+        {
+            var texture = new Texture2D(2, 2);
+            texture.LoadImage(wallpaper);
+            return texture;
+        }
+        public string colorScheme;
+        public List<IconClass> Icons { get; set; } = new();
+        public Dictionary<string, bool> flags = new();
         
         public void SetFlag(string name, bool value)
         {
-            if (Flags.ContainsKey(name))
+            if (flags.ContainsKey(name))
             {
-                Flags[name] = value;
+                flags[name] = value;
             }
             else
             {
-                Flags.Add(name, value);
+                flags.Add(name, value);
             }
         }
     }
