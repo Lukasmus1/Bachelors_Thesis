@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Desktop.Abstracts;
 using Desktop.Models;
+using Desktop.Models.IconGeneration;
 using DesktopGeneration.Models;
 using DesktopGeneration.Models.IconGeneration;
 using TMPro;
@@ -40,10 +41,10 @@ namespace Desktop.Controllers
             return _colorSchemeGenerator.GenerateUserColorScheme();
         }
         
-        public List<IconClass> GetUserIcons()
+        public List<IconClass> GetUserIcons(Vector3 prefabScale)
         {
             _iconGenerator = new IconGeneratorUser();
-            return _iconGenerator.GenerateIcons();
+            return _iconGenerator.GenerateIcons(prefabScale);
         }
 
         public TMP_FontAsset GetUserFont()

@@ -6089,6 +6089,8 @@ MonoBehaviour:
   desktopIconObjects:
   - {fileID: 1510798435}
   - {fileID: 1972134166}
+  iconPrefab: {fileID: 1474053375335754062, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+  iconParent: {fileID: 1596497919}
 --- !u!1 &1355246812
 GameObject:
   m_ObjectHideFlags: 0

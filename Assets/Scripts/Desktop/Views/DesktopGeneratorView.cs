@@ -31,6 +31,8 @@ namespace Desktop.Views
         //References for icon generation
         [Header("Icons")]
         [SerializeField] private List<GameObject> desktopIconObjects;
+        [SerializeField] private GameObject iconPrefab;
+        [SerializeField] private Transform iconParent;
 
         private void Awake()
         {
@@ -50,7 +52,7 @@ namespace Desktop.Views
         {
             SetDesktopWallpaper(_controller.GetUserWallpaper());
             SetColorScheme(_controller.GetUserColorScheme());
-            SetIcons(_controller.GetUserIcons());
+            SetIcons(_controller.GetUserIcons(iconPrefab.GetComponent<RectTransform>().sizeDelta));
             
             ToggleDesktop(true);
         }
@@ -114,8 +116,7 @@ namespace Desktop.Views
             //Setting the color scheme
             bottomBarBackground.color = clr;
         }
-
-        //TODO: REDO THIS THING vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+        
         /// <summary>
         /// Sets the icons and their properties on the desktop.
         /// </summary>
@@ -123,28 +124,16 @@ namespace Desktop.Views
         private void SetIcons(List<IconClass> icons)
         {
             TMP_FontAsset userFont = _controller.GetUserFont();
-            
-            for (int i = 0; i < icons.Count; i++)
-            {
-                IconClass icon = icons[i];
-                GameObject iconObject = desktopIconObjects[i];
-                
-                //Getting the icon prefab default size to calculate the relative scale 
-                //NewScale / OldScale 
-                var oldIconSize = new Vector2(iconObject.GetComponent<RectTransform>().sizeDelta.x, iconObject.GetComponent<RectTransform>().sizeDelta.y); 
-                var iconRelativeScale = new Vector2(icon.SizeX / oldIconSize.x, icon.SizeY / oldIconSize.y);
-                
-                //Getting the rest of the icon properties
-                icon.SizeX = iconRelativeScale.x;
-                icon.SizeY = iconRelativeScale.y;
-                
-                //Setting the icon properties
-                iconObject.GetComponent<IconScript>().SetProperties(icon, userFont);
 
+            foreach (IconClass iconClass in icons)
+            {
+                GameObject iconObject = Instantiate(iconPrefab, iconParent);
+
+                iconObject.GetComponent<IconScript>().SetProperties(iconClass, userFont);
+                
                 iconObject.SetActive(true);
             }
         }
-        //TODO: REDO THIS THING ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         
         /// <summary>
         /// Helper method to enable or disable the desktop object and the create desktop button.

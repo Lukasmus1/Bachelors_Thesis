@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Desktop.Models;
+using Desktop.Models.IconGeneration;
 using Microsoft.Win32;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace DesktopGeneration.Models.IconGeneration
             { "Control Panel", KnownFolders.ControlPanel }
         };
 
-        public override List<IconClass> GenerateIcons()
+        public override List<IconClass> GenerateIcons(Vector3 prefabScale)
         {
             var completeIcons = new List<IconClass>();
             
@@ -72,9 +73,13 @@ namespace DesktopGeneration.Models.IconGeneration
                     }
                 }
                 
+                //Getting the icon prefab default size to calculate the relative scale 
+                //NewScale / OldScale 
+                var iconRelativeScale = new Vector2(WindowsIconPositionUtil.IconSize.x / prefabScale.x, WindowsIconPositionUtil.IconSize.y / prefabScale.y);
+                
                 completeIcons.Add(new IconClass(
                     iconName,
-                    new Vector2(WindowsIconPositionUtil.IconSize.x, WindowsIconPositionUtil.IconSize.y),
+                    iconRelativeScale,
                     new Vector2(currentIcon.Position.X, -currentIcon.Position.Y),
                     WindowsIconImageUtil.GetFileIcon(allFiles[iconIndex])));
                 

@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Desktop.Models;
 using UnityEngine;
 
-namespace DesktopGeneration.Models
+namespace Desktop.Models.IconGeneration
 {
     public abstract class IconGenerator
     {
-        public abstract List<IconClass> GenerateIcons();
+        public abstract List<IconClass> GenerateIcons(Vector3 prefabScale);
     }
 }
