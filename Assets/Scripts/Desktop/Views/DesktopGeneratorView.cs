@@ -67,6 +67,9 @@ namespace Desktop.Views
             SaveExistingIcons();
         }
         
+        /// <summary>
+        /// Refreshes the desktop.
+        /// </summary>
         private void RefreshContext()
         {
             SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper());
@@ -127,7 +130,12 @@ namespace Desktop.Views
 
             foreach (IconClass iconClass in icons)
             {
-                GameObject iconObject = Instantiate(iconPrefab, iconParent);
+                //If it is already instantiated, just update its properties
+                GameObject iconObject = desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconClass.Name);
+                if (iconObject == null)
+                {
+                    iconObject = Instantiate(iconPrefab, iconParent);
+                }
 
                 iconObject.GetComponent<IconScript>().SetProperties(iconClass, userFont);
                 

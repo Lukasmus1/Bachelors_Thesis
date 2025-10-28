@@ -67,8 +67,8 @@ namespace Desktop.Controllers
             tex.LoadImage(icon.Image);
             
             DesktopModel.Instance.Icons.Add(new IconClass(
-                icon.Name,
-                icon.Size,
+                icon.IconName,
+                icon.Scale,
                 icon.Position,
                 tex
             ));
