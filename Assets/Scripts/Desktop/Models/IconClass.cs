@@ -23,5 +23,15 @@ namespace Desktop.Models
             PositionY = position.y;
             Image = image.EncodeToPNG();
         }
+        
+        public IconClass(IconClassOnObject iconClass)
+        {
+            Name = iconClass.IconName;
+            SizeX = iconClass.Size.x;
+            SizeY = iconClass.Size.y;
+            PositionX = iconClass.Position.x;
+            PositionY = iconClass.Position.y;
+            Image = iconClass.Image;
+        }
     }
 }

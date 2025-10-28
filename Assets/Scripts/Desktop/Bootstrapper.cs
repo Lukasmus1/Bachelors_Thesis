@@ -22,6 +22,7 @@ namespace Desktop
 
         private void OnApplicationQuit()
         {
+            _desktopGeneratorView.SaveExistingIcons();
             SavingMvc.Instance.SavingController.SaveGame();
         }
     }

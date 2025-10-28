@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Desktop.Abstracts;
 using Desktop.Models;
 using Desktop.Models.IconGeneration;
@@ -61,17 +62,13 @@ namespace Desktop.Controllers
         
         public void SetDesktopIconIntoContext(IconClassOnObject icon)
         {
-            //In this instance, we immediately convert the texture right back to byte[]
-            //This is done 'cause I don't want to change all other instances that rely on this implementation
-            var tex = new Texture2D(2, 2);
-            tex.LoadImage(icon.Image);
+            IconClass iconClass = DesktopModel.Instance.Icons.FirstOrDefault(x => x.Name == icon.IconName);
+            if (iconClass != null)
+            {
+                DesktopModel.Instance.Icons.Remove(iconClass);
+            }
             
-            DesktopModel.Instance.Icons.Add(new IconClass(
-                icon.IconName,
-                icon.Scale,
-                icon.Position,
-                tex
-            ));
+            DesktopModel.Instance.Icons.Add(new IconClass(icon));
         }
     }
 }

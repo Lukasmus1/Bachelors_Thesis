@@ -17,7 +17,14 @@ namespace Apps.ChatTerminal.Models
             get => _status;
             set
             {
-                _status = value;
+                if (value == MessageStatus.Offline)
+                {
+                    _status = CurrentMessageIndex > SeenMessagesIndex ? MessageStatus.NewMessage : MessageStatus.Offline;
+                }
+                else
+                {
+                    _status = value;   
+                }
                 MessageStatusChanged?.Invoke(_status);
             }
         }

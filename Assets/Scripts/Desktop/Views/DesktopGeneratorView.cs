@@ -80,7 +80,7 @@ namespace Desktop.Views
         /// <summary>
         /// Saves the existing icons on the desktop.
         /// </summary>
-        private void SaveExistingIcons()
+        public void SaveExistingIcons()
         {
             foreach (GameObject icon in desktopIconObjects.Where(icon => icon.activeSelf))
             {
