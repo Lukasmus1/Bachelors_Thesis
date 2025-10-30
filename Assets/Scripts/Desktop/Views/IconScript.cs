@@ -9,8 +9,10 @@ namespace Desktop.Views
 {
     public class IconScript : MonoBehaviour, ISubmitHandler, IPointerClickHandler
     {
-        private bool clickedOnce = false;
-        private Coroutine doubleClickCoroutine;
+        private bool _clickedOnce = false;
+        private Coroutine _doubleClickCoroutine;
+        
+        
 
         public void OnSubmit(BaseEventData eventData)
         {
@@ -22,28 +24,28 @@ namespace Desktop.Views
         
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (clickedOnce)
+            if (_clickedOnce)
             {
                 PerformIconAction();
-                clickedOnce = false;
-                if (doubleClickCoroutine != null)
+                _clickedOnce = false;
+                if (_doubleClickCoroutine != null)
                 {
-                    StopCoroutine(doubleClickCoroutine);
+                    StopCoroutine(_doubleClickCoroutine);
                 }
             }
             
-            if (doubleClickCoroutine != null)
+            if (_doubleClickCoroutine != null)
             {
-                StopCoroutine(doubleClickCoroutine);
+                StopCoroutine(_doubleClickCoroutine);
             }
             StartCoroutine(DoubleClick());
         }
 
         private IEnumerator DoubleClick()
         {
-            clickedOnce = true;
+            _clickedOnce = true;
             yield return new WaitForSeconds(0.5f);
-            clickedOnce = false;
+            _clickedOnce = false;
         }
 
         public void SetProperties(IconClass icon, TMP_FontAsset font)

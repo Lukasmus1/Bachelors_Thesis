@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Desktop.Models;
+using Story.Commons;
 using UnityEngine;
 
 namespace Saving.Models
@@ -15,13 +16,30 @@ namespace Saving.Models
         public SaveLogic()
         {
             _model.desktop = DesktopModel.Instance;
+            _model.storyModel = StoryMvc.Instance.StoryController.storyModel;
         }
         
         public void SaveGame()
         {
             BinaryFormatter formatter = new();
             FileStream stream = new(_path, FileMode.Create);
-            formatter.Serialize(stream, _model);
+            try
+            {
+                formatter.Serialize(stream, _model);
+            }
+            catch (Exception e)
+            {
+                stream.Close();
+
+                if (File.Exists(_path))
+                {
+                    File.Delete(_path);
+                }
+                
+                Debug.LogError("Error saving game: " + e.Message);
+                return;
+            }
+            
             stream.Close();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -35,6 +36,19 @@ namespace Apps.ChatTerminal.Models
             foreach (ChatProfileModel profile in chatProfiles.ChatProfiles)
             {
                 _loadedChatProfiles.Add(profile);
+            }
+        }
+
+        public void SetChatProfileMessageIndex(string profileId, int messageIndex)
+        {
+            ChatProfileModel profile = LoadedChatProfiles.Find(profile => profile.UserID == profileId);
+            if (profile != null)
+            {
+                profile.CurrentMessageIndex = messageIndex;
+            }
+            else
+            {
+                Debug.LogError($"Chat profile with ID {profileId} not found.");
             }
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using Desktop.Models;
 using UnityEngine;
 
 namespace Apps.Commons
@@ -14,6 +12,7 @@ namespace Apps.Commons
         public void OpenApp(GameObject appToOpen)
         {
             appToOpen.SetActive(true);
+            AppCommonsModel.Instance.OnAppOpened(appToOpen.name);
         }
     }
 }

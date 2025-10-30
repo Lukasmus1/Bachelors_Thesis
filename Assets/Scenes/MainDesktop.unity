@@ -6009,9 +6009,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1342669616}
   - component: {fileID: 1342669615}
-  - component: {fileID: 1342669617}
   - component: {fileID: 1342669618}
   - component: {fileID: 1342669619}
+  - component: {fileID: 1342669620}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -6046,18 +6046,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1342669617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342669614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce3d2a7a88207544ca9ef25a62038fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Story.StoryProgression
 --- !u!114 &1342669618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6091,6 +6079,18 @@ MonoBehaviour:
   - {fileID: 1972134166}
   iconPrefab: {fileID: 1474053375335754062, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
   iconParent: {fileID: 1596497919}
+--- !u!114 &1342669620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342669614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a5fee2abf3a5c46a1e8d5c01c326ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Story.Views.StoryManager
 --- !u!1 &1355246812
 GameObject:
   m_ObjectHideFlags: 0

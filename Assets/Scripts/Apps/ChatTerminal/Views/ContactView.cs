@@ -11,25 +11,25 @@ namespace Apps.ChatTerminal.Views
     {
         [SerializeField] private GameObject messagesWindow;
         
-        private ChatProfile profileModel;
+        private ChatProfile _profileModel;
         private ContactProperties _props;
         
         private void OnDestroy()
         {
-            profileModel.MessageStatusChanged -= SetStatusText;
+            _profileModel.MessageStatusChanged -= SetStatusText;
         }
 
         public void SetProperties(GameObject messagesWin, ChatProfile profile)
         {
             messagesWindow = messagesWin;
 
-            profileModel = profile;
-            profileModel.MessageStatusChanged += SetStatusText;
+            _profileModel = profile;
+            _profileModel.MessageStatusChanged += SetStatusText;
             
             _props = GetComponent<ContactProperties>();
             
-            _props.usernameText.text = profileModel.Username;
-            SetStatusText(profileModel.Status);
+            _props.usernameText.text = _profileModel.Username;
+            SetStatusText(_profileModel.Status);
             
             gameObject.SetActive(true);
         }
