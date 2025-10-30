@@ -29,6 +29,14 @@ namespace Desktop.Controllers
             return _colorSchemeGenerator.GenerateRandomColorScheme();
         }
         
+        /// <summary>
+        /// This is a helper for clearing flags. Used when loading a save.
+        /// </summary>
+        public static void ClearFlags()
+        {
+            DesktopModel.Instance.flags.Clear();
+        }
+        
         //User's Generators
         public Texture2D GetUserWallpaper()
         {
