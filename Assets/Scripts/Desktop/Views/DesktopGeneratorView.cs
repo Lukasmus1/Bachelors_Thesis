@@ -14,7 +14,7 @@ namespace Desktop.Views
     public class DesktopGeneratorView : MonoBehaviour
     {
         //DesktopGenerator Controller
-        private DesktopGeneratorController _controller;
+        private readonly DesktopGeneratorController _controller = DesktopMvc.Instance.DesktopGeneratorController;
         
         //References for activating desktop generation
         [SerializeField] private GameObject desktopObject;
@@ -36,7 +36,6 @@ namespace Desktop.Views
 
         private void Awake()
         {
-            _controller = DesktopMvc.Instance.DesktopGeneratorController;
             SavingMvc.Instance.SavingController.OnGameLoaded += RefreshContext;
         }
         

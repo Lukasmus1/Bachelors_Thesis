@@ -2,8 +2,8 @@
 {
     public enum MessageStatus
     {
+        Offline,
         Typing,
-        NewMessage,
-        Offline
+        NewMessage
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
@@ -44,9 +45,12 @@ namespace Apps.ChatTerminal.Views
                     continue;
                 }
                 GameObject newContact = Instantiate(contactPrefab, contactsParent);
+                
                 var newProfile = newContact.AddComponent<ChatProfile>();
                 newProfile.LoadData(profile);
                 _profiles.Add(newProfile);
+                newProfile.MessageStatusChanged += UpdateIcon;
+                
                 newContact.GetComponent<ContactView>().SetProperties(messagesWindow, newProfile);
             }
         }
@@ -54,19 +58,26 @@ namespace Apps.ChatTerminal.Views
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
-            terminalIcon.texture = defaultIcon.texture;
         }
         
         private void OnDisable()
         {
-            if (_profiles.Any(x => x.Status == MessageStatus.NewMessage))
-            {
-                terminalIcon.texture = newMessageIcon.texture;
-            }
-
             messagesWindow.SetActive(false);
             
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
+        }
+
+        private void OnDestroy()
+        {
+            foreach (ChatProfile profile in _profiles.Where(profile => profile != null))
+            {
+                profile.MessageStatusChanged -= UpdateIcon;
+            }
+        }
+
+        private void UpdateIcon(MessageStatus status)
+        {
+            terminalIcon.texture = _profiles.Any(x => x.Status is MessageStatus.NewMessage or MessageStatus.Typing) ? newMessageIcon.texture : defaultIcon.texture;
         }
     }
 }

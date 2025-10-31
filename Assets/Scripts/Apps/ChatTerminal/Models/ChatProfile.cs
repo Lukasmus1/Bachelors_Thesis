@@ -39,12 +39,12 @@ namespace Apps.ChatTerminal.Models
         {
             UserID = data.UserID;
             Username = data.Username;
-            Status = data.Status;
+            CurrentMessageIndex = data.CurrentMessageIndex;
+            SeenMessagesIndex = data.SeenMessagesIndex;
             ProfilePicture = data.ProfilePicture;
             TypingSpeed = data.TypingSpeed;
             Messages = data.Messages;
-            CurrentMessageIndex = data.CurrentMessageIndex;
-            SeenMessagesIndex = data.SeenMessagesIndex;
+            Status = data.Status;
             IsLoaded = true;
         }
     }

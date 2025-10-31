@@ -9,11 +9,11 @@ namespace Apps.ChatTerminal.Models
     {
         public string UserID { get; set; }
         public string Username { get; set; }
-        public MessageStatus Status { get; set; } = MessageStatus.Offline;
+        public MessageStatus Status { get; set; }
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; } = 0;
-        public int SeenMessagesIndex { get; set; } = 0;
+        public int SeenMessagesIndex { get; set; }
         public List<List<string>> Messages { get; set; } = new();
         public bool IsLoaded { get; set; }
     }

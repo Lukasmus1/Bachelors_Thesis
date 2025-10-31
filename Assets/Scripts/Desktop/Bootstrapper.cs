@@ -1,6 +1,4 @@
-﻿using System;
-using Desktop.Commons;
-using Desktop.Views;
+﻿using Desktop.Views;
 using Saving.Commons;
 using Story.Commons;
 using UnityEngine;
@@ -12,7 +10,7 @@ namespace Desktop
         private DesktopGeneratorView _desktopGeneratorView;
         private StoryMvc _storyMvc;
         
-        private void Start()
+        private void Awake()
         {
             _desktopGeneratorView = GetComponentInChildren<DesktopGeneratorView>();
             _storyMvc = StoryMvc.Instance;
