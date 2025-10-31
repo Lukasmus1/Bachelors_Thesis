@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Apps.ChatTerminal.Models
 {
+    [Serializable]
     public class ChatTerminalModel
     {
         private List<ChatProfileModel> _loadedChatProfiles = new();
@@ -20,7 +21,6 @@ namespace Apps.ChatTerminal.Models
                 return _loadedChatProfiles;
             }
             set => _loadedChatProfiles = value;
-            
         }
         
         private void LoadChatProfiles()

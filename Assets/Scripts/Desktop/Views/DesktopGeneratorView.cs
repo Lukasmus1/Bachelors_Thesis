@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Apps.ChatTerminal.Commons;
+using Apps.ChatTerminal.Views;
 using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
@@ -34,14 +36,9 @@ namespace Desktop.Views
         [SerializeField] private GameObject iconPrefab;
         [SerializeField] private Transform iconParent;
 
-        private void Awake()
+        private void Start()
         {
-            SavingMvc.Instance.SavingController.OnGameLoaded += RefreshContext;
-        }
-        
-        public void OnDestroy()
-        {
-            SavingMvc.Instance.SavingController.OnGameLoaded -= RefreshContext;
+            RefreshContext();
         }
 
         /// <summary>

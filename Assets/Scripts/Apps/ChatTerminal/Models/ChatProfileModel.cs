@@ -10,7 +10,7 @@ namespace Apps.ChatTerminal.Models
         public string UserID { get; set; }
         public string Username { get; set; }
         public MessageStatus Status { get; set; }
-        public Sprite ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; } = 0;
         public int SeenMessagesIndex { get; set; }

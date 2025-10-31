@@ -1,4 +1,6 @@
 using System;
+using Apps.ChatTerminal.Commons;
+using Apps.ChatTerminal.Models;
 using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
@@ -13,6 +15,7 @@ namespace Saving.Models
     {
         public DesktopModel desktop;
         public StoryModel storyModel;
+        public ChatTerminalModel chatTerminalModel;
         
         public void LoadDataFromModel(SaveModel saveModel)
         {
@@ -22,6 +25,9 @@ namespace Saving.Models
             
             storyModel = saveModel.storyModel;
             StoryMvc.Instance.StoryController.storyModel = storyModel;
+            
+            chatTerminalModel = saveModel.chatTerminalModel;
+            ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel = chatTerminalModel;
         }
     }
 }

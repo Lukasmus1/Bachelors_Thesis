@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Apps.ChatTerminal.Commons;
 using Desktop.Models;
 using Story.Commons;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Saving.Models
         {
             _model.desktop = DesktopModel.Instance;
             _model.storyModel = StoryMvc.Instance.StoryController.storyModel;
+            _model.chatTerminalModel = ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel;
         }
         
         public void SaveGame()

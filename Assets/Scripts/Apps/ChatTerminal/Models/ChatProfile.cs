@@ -28,7 +28,7 @@ namespace Apps.ChatTerminal.Models
                 MessageStatusChanged?.Invoke(_status);
             }
         }
-        public Sprite ProfilePicture { get; set; }
+        public Texture2D ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; }
         public int SeenMessagesIndex { get; set; }
@@ -41,7 +41,11 @@ namespace Apps.ChatTerminal.Models
             Username = data.Username;
             CurrentMessageIndex = data.CurrentMessageIndex;
             SeenMessagesIndex = data.SeenMessagesIndex;
-            ProfilePicture = data.ProfilePicture;
+            
+            var tex = new Texture2D(2, 2);
+            tex.LoadImage(data.ProfilePicture);
+            ProfilePicture = tex;
+            
             TypingSpeed = data.TypingSpeed;
             Messages = data.Messages;
             Status = data.Status;

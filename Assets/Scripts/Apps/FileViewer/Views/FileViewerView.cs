@@ -11,8 +11,8 @@ namespace Apps.FileViewer.Views
     {
         //File Display
         [SerializeField] private RectTransform fileHolder;
-        private RectTransform fileHolderBackup;
-        private GameObject instantiatedFileReference;
+        private RectTransform _fileHolderBackup;
+        private GameObject _instantiatedFileReference;
         
         //Zoom Controls
         [SerializeField] private TMP_Text zoomLevelText;
@@ -23,8 +23,8 @@ namespace Apps.FileViewer.Views
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             
-            instantiatedFileReference = Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, fileHolder);
-            fileHolderBackup = fileHolder;
+            _instantiatedFileReference = Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, fileHolder);
+            _fileHolderBackup = fileHolder;
             zoomLevelText.text = "100%";
         }
 
@@ -32,8 +32,8 @@ namespace Apps.FileViewer.Views
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
             
-            Destroy(instantiatedFileReference);
-            fileHolder = fileHolderBackup;
+            Destroy(_instantiatedFileReference);
+            fileHolder = _fileHolderBackup;
             zoomLevelText.text = "100%"; //Maybe redundant, but better safe than sorry
         }
 

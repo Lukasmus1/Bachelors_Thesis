@@ -1,27 +1,33 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Models;
-using NUnit.Framework;
+using Apps.ChatTerminal.Views;
 
 namespace Apps.ChatTerminal.Controllers
 {
     public class ChatTerminalController
     {
-        private readonly ChatTerminalModel _chatTerminalModel = new();
+        public ChatTerminalModel chatTerminalModel = new();
+        
+        private ChatTerminalView _chatTerminalView;
+        public void SetChatTerminalView(ChatTerminalView chatTerminalView)
+        {
+            _chatTerminalView = chatTerminalView;
+        }
         
         public List<ChatProfileModel> GetChatProfiles()
         {
-            return _chatTerminalModel.LoadedChatProfiles;
+            return chatTerminalModel.LoadedChatProfiles;
         }
 
         public ChatProfileModel GetChatProfile(string profileId)
         {
-            return _chatTerminalModel.LoadedChatProfiles.FirstOrDefault(profile => profile.UserID == profileId);
+            return chatTerminalModel.LoadedChatProfiles.FirstOrDefault(profile => profile.UserID == profileId);
         }
 
         public void SetChatProfileMessageIndex(string profileId, int index)
         {
-            _chatTerminalModel.SetChatProfileMessageIndex(profileId, index);
+            chatTerminalModel.SetChatProfileMessageIndex(profileId, index);
         }
     }
 }
