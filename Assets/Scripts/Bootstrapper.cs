@@ -1,29 +1,28 @@
 ﻿using Desktop.Views;
 using Saving.Commons;
 using Story.Commons;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bootstrapper : MonoBehaviour
 {
-    private DesktopGeneratorView _desktopGeneratorView;
-    private StoryMvc _storyMvc;
-        
+    [SerializeField] private SceneAsset mainScene;
+    [SerializeField] private SceneAsset registringScene;
+
+    public static bool LoadedNewGame = false;
+    
     private void Awake()
     {
-        _desktopGeneratorView = GetComponentInChildren<DesktopGeneratorView>();
-        _storyMvc = StoryMvc.Instance;
-            
         if (!SavingMvc.Instance.SavingController.LoadGame())
         {
             //New Game
-            _desktopGeneratorView.GenerateRandomDesktop();
-            _storyMvc.StoryController.InitNew();
+            SceneManager.LoadScene(registringScene.name);
+            LoadedNewGame = true;
+            return;
         }
-    }
-
-    private void OnApplicationQuit()
-    {
-        _desktopGeneratorView.SaveExistingIcons();
-        SavingMvc.Instance.SavingController.SaveGame();
+        
+        //Loaded Game
+        SceneManager.LoadScene(mainScene.name);
     }
 }

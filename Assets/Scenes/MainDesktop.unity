@@ -6009,7 +6009,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1342669616}
   - component: {fileID: 1342669615}
-  - component: {fileID: 1342669618}
   - component: {fileID: 1342669619}
   - component: {fileID: 1342669620}
   m_Layer: 0
@@ -6046,18 +6045,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1342669618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342669614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc93ca0f23104d3cbb076ae7f3b2a093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Desktop.Bootstrapper
 --- !u!114 &1342669619
 MonoBehaviour:
   m_ObjectHideFlags: 0

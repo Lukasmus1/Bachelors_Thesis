@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Views;
@@ -7,6 +8,7 @@ using Desktop.Controllers;
 using Desktop.Models;
 using DesktopGeneration.Models;
 using Saving.Commons;
+using Story.Commons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +37,17 @@ namespace Desktop.Views
         [SerializeField] private List<GameObject> desktopIconObjects;
         [SerializeField] private GameObject iconPrefab;
         [SerializeField] private Transform iconParent;
+
+        private void Awake()
+        {
+            if (!Bootstrapper.LoadedNewGame)
+            {
+                return;
+            }
+            
+            GenerateRandomDesktop();
+            StoryMvc.Instance.StoryController.InitNew();
+        }
 
         private void Start()
         {
@@ -147,6 +160,15 @@ namespace Desktop.Views
             //Enabling the desktop object
             desktopObject.SetActive(enable);
             createDesktopButton.SetActive(!enable);
+        }
+
+        /// <summary>
+        /// Save before exiting the application.
+        /// </summary>
+        private void OnApplicationQuit()
+        {
+            SaveExistingIcons();
+            SavingMvc.Instance.SavingController.SaveGame();
         }
     }
 }
