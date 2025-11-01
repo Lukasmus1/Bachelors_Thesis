@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7893032843637051076}
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
+  - component: {fileID: 6772484532663267758}
   m_Layer: 5
   m_Name: TutorialFile
   m_TagString: Untagged
@@ -65,6 +66,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Models.FileModel
   fileName: Guide
+--- !u!114 &6772484532663267758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341737976566326313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1505eeda01bb8849a115f2b4fa686e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +236,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Hello, \n\nthis file serves as a guide to help you work with file viewer.\n\nIn
     this application you can:\n\t- Move the file using your mouse.\n\t- Zoom in and
-    out using the buttons above, \n\t  or using the scroll wheel on your mouse"
+    out using the buttons above, \n\t  or using the scroll wheel on your mouse\n\t-
+    Some text is also interactable. <u><link=\"ChangeColor\"><color=Black>Try clicking
+    me</color></link></u>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
