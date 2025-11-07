@@ -1,4 +1,5 @@
-﻿using User.Models;
+﻿using System;
+using User.Models;
 
 namespace User.Controllers
 {
@@ -10,6 +11,11 @@ namespace User.Controllers
         {
             get => _userModel.Username;
             set => _userModel.Username = value;
+        }
+        
+        public DateTime GetStartDate()
+        {
+            return _userModel.StartDate;
         }
         
         public void InitUser()

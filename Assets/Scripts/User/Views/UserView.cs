@@ -8,7 +8,7 @@ namespace User.Views
     {
         private void Awake()
         {
-            UserMvc.Instance.DesktopGeneratorController.InitUser();
+            UserMvc.Instance.UserController.InitUser();
         }
     }
 }

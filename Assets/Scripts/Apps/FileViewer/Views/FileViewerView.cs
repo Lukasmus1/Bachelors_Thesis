@@ -18,6 +18,9 @@ namespace Apps.FileViewer.Views
         [SerializeField] private TMP_Text zoomLevelText;
         [SerializeField] private InputActionReference zoomAction;
         private Vector2 _zoomInput;
+        
+        //Metadata
+        [SerializeField] private GameObject metadataPopup;
 
         private void OnEnable()
         {
@@ -35,6 +38,7 @@ namespace Apps.FileViewer.Views
             Destroy(_instantiatedFileReference);
             fileHolder = _fileHolderBackup;
             zoomLevelText.text = "100%"; //Maybe redundant, but better safe than sorry
+            metadataPopup.SetActive(false);
         }
 
         private void Update()
@@ -67,6 +71,11 @@ namespace Apps.FileViewer.Views
             
             fileHolder.localScale = new Vector3((float)newScale, (float)newScale, (float)newScale);
             zoomLevelText.text = Math.Truncate(newScale * 100m) + "%";
+        }
+
+        public void ToggleMetadata()
+        {
+            metadataPopup.SetActive(!metadataPopup.activeSelf);
         }
     }
 }

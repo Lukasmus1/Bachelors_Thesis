@@ -34,7 +34,7 @@ namespace StartInterface
                 return false;
             }
             
-            UserMvc.Instance.DesktopGeneratorController.Username = username;
+            UserMvc.Instance.UserController.Username = username;
             return true;
         }
 

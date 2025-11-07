@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace User.Models
 {
@@ -6,6 +7,7 @@ namespace User.Models
     {
         public string Username { get; set; }
         public Texture2D ProfilePicture { get; set; }
+        public DateTime StartDate { get; set; }
         
         public void InitUser()
         {

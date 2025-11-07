@@ -27,7 +27,7 @@ namespace Apps.ChatTerminal.Views
         private void Awake()
         {
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatTerminalView(this);
-            usernameText.text = UserMvc.Instance.DesktopGeneratorController.Username;
+            usernameText.text = UserMvc.Instance.UserController.Username;
             
             var profiles = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
             SetContactData(profiles);

@@ -14,7 +14,7 @@ namespace StartInterface
 
         private void Awake()
         {
-            welcomeText.text = $"Welcome back {UserMvc.Instance.DesktopGeneratorController.Username}.";
+            welcomeText.text = $"Welcome back {UserMvc.Instance.UserController.Username}.";
         }
 
         public void StartGame(Button clickedButton)

@@ -15,11 +15,11 @@ namespace User.Commons
             }
         }
 
-        public UserController DesktopGeneratorController { get; set; }
+        public UserController UserController { get; set; }
         
         private UserMvc()
         {
-            DesktopGeneratorController = new UserController();
+            UserController = new UserController();
         }
     }
 }

@@ -2307,6 +2307,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579712338}
   m_CullTransparentMesh: 1
+--- !u!1 &580087014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7080588238751693991, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
+  m_PrefabInstance: {fileID: 2843805282539167588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &583831487
 GameObject:
   m_ObjectHideFlags: 0
@@ -10215,6 +10220,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3335595611935332396, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
+      propertyPath: metadataPopup
+      value: 
+      objectReference: {fileID: 580087014}
     - target: {fileID: 3387977996318669801, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
       propertyPath: m_text
       value: File Viewer
@@ -10305,6 +10314,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791274451939351076, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722532028259381101, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
+      propertyPath: m_Name
+      value: UpperBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080588238751693991, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8508251634292383927, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
