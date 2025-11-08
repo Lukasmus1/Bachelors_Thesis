@@ -32,7 +32,7 @@ namespace Apps.ChatTerminal.Models
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; }
         public int SeenMessagesIndex { get; set; }
-        public List<List<string>> Messages { get; set; }
+        public List<List<ChatMessage>> Messages { get; set; }
         public bool IsLoaded { get; set; }
         
         public void LoadData(ChatProfileModel data)

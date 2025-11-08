@@ -182,9 +182,6 @@ MonoBehaviour:
   contactPrefab: {fileID: 3956741269752487994, guid: 742fdab488886ef4590a944d8dddda48, type: 3}
   contactsParent: {fileID: 817763205358485925}
   messagesWindow: {fileID: 149309411995131904}
-  terminalIcon: {fileID: 0}
-  newMessageIcon: {fileID: 21300000, guid: 32ca6ae6a16c33a44a70c6a0a88deec0, type: 3}
-  defaultIcon: {fileID: 21300000, guid: 8062ddb2a9c2eab4885c9208bc550b0c, type: 3}
 --- !u!1 &1799932230038066507
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +920,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652216329678481957, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+      propertyPath: statusText
+      value: 
+      objectReference: {fileID: 5520079020966299866}
+    - target: {fileID: 3652216329678481957, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+      propertyPath: usernameText
+      value: 
+      objectReference: {fileID: 1248297633844101727}
+    - target: {fileID: 3652216329678481957, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+      propertyPath: sentMessagePrefab
+      value: 
+      objectReference: {fileID: 7401672992000218429, guid: c8111edd0cf32eb4f9dd32f5cbec4fdc, type: 3}
+    - target: {fileID: 3652216329678481957, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+      propertyPath: profilePictureImage
+      value: 
+      objectReference: {fileID: 484086684888049275}
+    - target: {fileID: 3652216329678481957, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+      propertyPath: messageDividerPrefab
+      value: 
+      objectReference: {fileID: 3264808581834799230, guid: 2294de482a325ac44a5e95c0dc2d8b72, type: 3}
+    - target: {fileID: 3652216329678481957, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+      propertyPath: recievedMessagePrefab
+      value: 
+      objectReference: {fileID: 7401672992000218429, guid: f4e06cfed1431d544b74435185314307, type: 3}
     - target: {fileID: 5791793289286590611, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1021,11 +1042,44 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1581128353241217357, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
   m_PrefabInstance: {fileID: 1721289586395191629}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &484086684888049275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1248884148913159990, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+  m_PrefabInstance: {fileID: 1721289586395191629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1248297633844101727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 482421549460560658, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+  m_PrefabInstance: {fileID: 1721289586395191629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &5153149921825733086 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5791793289286590611, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
   m_PrefabInstance: {fileID: 1721289586395191629}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5520079020966299866 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6591155893719683479, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
+  m_PrefabInstance: {fileID: 1721289586395191629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &7655599172991238296
 PrefabInstance:
   m_ObjectHideFlags: 0

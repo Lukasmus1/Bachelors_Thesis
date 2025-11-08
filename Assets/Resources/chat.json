@@ -1,62 +1,58 @@
 {
-    "ChatProfiles":
-    [
-        {
-            "UserId": "ind1",
-            "Username": "IT Department",
-            "ProfilePicture": "",
-            "TypingSpeed": 25,
-            "IsLoaded": true,
-            "CurrentMessageIndex": 0,
-            "SeenMessagesIndex": 0,
-            "Messages": 
-            [
-                [
-                    "Hello, I am from IT department. Pleasure to meet you.",
-                    "This chat terminal serves as a way for the station to communicate with you.",
-                    "We will provide you with important information about your case or just help in general.",
-                    "I have sent you a file to help you get familiar with the basics of a 'File Viewer' app.",
-                    "Please open it when you have the time."
-                ],
-                [
-                    "Mes4",
-                    "Mes5",
-                    "Mes6"
-                ],
-                [
-                    "Mes7",
-                    "Mes8",
-                    "Mes9"
-                ]
-            ]
-        },
-
-        {
-            "UserId": "us2",
-            "Username": "Username2",
-            "ProfilePicture": "",
-            "TypingSpeed": 25,
-            "IsLoaded": true,
-            "CurrentMessageIndex": 0,
-            "SeenMessagesIndex": 0,
-            "Messages": 
-            [
-                [
-                    "Mes1",
-                    "Mes2",
-                    "Mes3"
-                ],
-                [
-                    "Mes4",
-                    "Mes5",
-                    "Mes6"
-                ],
-                [
-                    "Mes7",
-                    "Mes8",
-                    "Mes9"
-                ]
-            ]
-        }
-    ]
+  "ChatProfiles": [
+    {
+      "UserId": "ind1",
+      "Username": "IT Department",
+      "ProfilePicture": "",
+      "TypingSpeed": 25,
+      "IsLoaded": true,
+      "CurrentMessageIndex": 0,
+      "SeenMessagesIndex": 0,
+      "Messages": [
+        [
+          {"Sender": "ind1", "Text": "Hello, I am from IT department. Pleasure to meet you."},
+          {"Sender": "ind1", "Text": "This chat terminal serves as a way for the station to communicate with you."},
+          {"Sender": "ind1", "Text": "We will provide you with important information about your case or just help in general."},
+          {"Sender": "ind1", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
+          {"Sender": "ind1", "Text": "Please open it when you have the time."}
+        ],
+        [
+          {"Sender": "ind1", "Text": "Message 4"},
+          {"Sender": "ind1", "Text": "Message 5"},
+          {"Sender": "ind1", "Text": "Message 6"}
+        ],
+        [
+          {"Sender": "ind1", "Text": "Message 7"},
+          {"Sender": "ind1", "Text": "Message 8"},
+          {"Sender": "ind1", "Text": "Message 9"}
+        ]
+      ]
+    },
+    {
+      "UserId": "us2",
+      "Username": "Username2",
+      "ProfilePicture": "",
+      "TypingSpeed": 25,
+      "IsLoaded": true,
+      "CurrentMessageIndex": 0,
+      "SeenMessagesIndex": 0,
+      "Messages": [
+        [
+          {"Sender": "us2", "Text": "Message 1"},
+          {"Sender": "Player", "Text": "Message 2"},
+          {"Sender": "us2", "Text": "Message 3"}
+        ],
+        [
+          {"Sender": "us2", "Text": "Message 4"},
+          {"Sender": "us2", "Text": "Message 5"},
+          {"Sender": "us2", "Text": "Message 6"}
+        ],
+        [
+          {"Sender": "us2", "Text": "Message 7"},
+          {"Sender": "us2", "Text": "Message 8"},
+          {"Sender": "us2", "Text": "Message 9"}
+        ]
+      ]
+    }
+  ]
 }

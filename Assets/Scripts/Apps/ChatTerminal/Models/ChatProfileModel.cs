@@ -14,7 +14,7 @@ namespace Apps.ChatTerminal.Models
         public float TypingSpeed { get; set; }
         public int CurrentMessageIndex { get; set; } = 0;
         public int SeenMessagesIndex { get; set; }
-        public List<List<string>> Messages { get; set; } = new();
+        public List<List<ChatMessage>> Messages { get; set; } = new();
         public bool IsLoaded { get; set; }
     }
 }

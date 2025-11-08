@@ -12,5 +12,11 @@ namespace Apps.FileManager.Controllers
         {
             return _fileLoaderModel.GetLoadedFiles();
         }
+        
+        public List<string> InstantiatedFileNames
+        {
+            get => _fileLoaderModel.InstantiatedFileNames;
+            set => _fileLoaderModel.InstantiatedFileNames = value;
+        }
     }
 }

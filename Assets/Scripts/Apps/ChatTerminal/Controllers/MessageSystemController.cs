@@ -20,7 +20,7 @@ namespace Apps.ChatTerminal.Controllers
             set => _messageSystemModel.CurrentProfile = value;
         }
         
-        public void CreateMessage(string content)
+        public void CreateMessage(ChatMessage content)
         {
             _messageSystemView.CreateMessage(content);    
         }

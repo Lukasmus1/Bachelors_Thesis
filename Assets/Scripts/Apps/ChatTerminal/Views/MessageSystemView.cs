@@ -1,16 +1,19 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
+using Apps.FileViewer.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using User.Commons;
 
 namespace Apps.ChatTerminal.Views
 {
     public class MessageSystemView : MonoBehaviour
     {
         [Header("Message")]
-        [SerializeField] private GameObject messagePrefab;
+        [SerializeField] private GameObject recievedMessagePrefab;
+        [SerializeField] private GameObject sentMessagePrefab;
         [SerializeField] private Transform messagePrefabParent;
         [SerializeField] private GameObject messageDividerPrefab;
         
@@ -68,14 +71,15 @@ namespace Apps.ChatTerminal.Views
             }
         }
         
-        public void CreateMessage(string messageContent)
+        public void CreateMessage(ChatMessage messageContent)
         {
-            GameObject msg = Instantiate(messagePrefab, messagePrefabParent);
+            GameObject msg = Instantiate(messageContent.Sender == "Player" ? sentMessagePrefab : recievedMessagePrefab, messagePrefabParent);
+
             var props = msg.GetComponent<MessageProperties>();
             
-            props.usernameText.text = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
+            props.usernameText.text = messageContent.Sender == "Player" ? UserMvc.Instance.UserController.Username : ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
             //props.profilePicture.sprite = currentProfile.ProfilePicture;
-            props.messageText.text = messageContent;
+            props.messageText.text = messageContent.Text;
             
             msg.SetActive(true);
         }

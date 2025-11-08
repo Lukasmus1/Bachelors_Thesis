@@ -56,7 +56,7 @@ namespace Apps.ChatTerminal.Models
                 //Create message history
                 for (int i = 0; i < CurrentProfile.SeenMessagesIndex; i++)
                 {
-                    foreach (string oldMsg in CurrentProfile.Messages[i])
+                    foreach (ChatMessage oldMsg in CurrentProfile.Messages[i])
                     {
                         token.ThrowIfCancellationRequested();
                         CreateMessage(oldMsg);
@@ -80,10 +80,10 @@ namespace Apps.ChatTerminal.Models
 
                 for (int i = CurrentProfile.SeenMessagesIndex; i <= CurrentProfile.CurrentMessageIndex; i++)
                 {
-                    foreach (string message in CurrentProfile.Messages[i])
+                    foreach (ChatMessage message in CurrentProfile.Messages[i])
                     {
                         //Simulate typing delay based on typing speed divided by number of chars
-                        var delayMs = (int)(message.Length / CurrentProfile.TypingSpeed * 1000);
+                        var delayMs = (int)(message.Text.Length / CurrentProfile.TypingSpeed * 1000);
                         await Task.Delay(delayMs, token);
 
                         CreateMessage(message);
@@ -102,7 +102,7 @@ namespace Apps.ChatTerminal.Models
             }
         }
         
-        private static void CreateMessage(string content)
+        private static void CreateMessage(ChatMessage content)
         {
             ChatTerminalMvc.Instance.MessageSystemController.CreateMessage(content);
         }

@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc93ca0f23104d3cbb076ae7f3b2a093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bootstrapper
-  mainScene: {fileID: 102900000, guid: e7b17d4c8f6dc6b42b1df1d8a02ee370, type: 3}
-  registringScene: {fileID: 102900000, guid: 89858301224ec21479d293db5211f887, type: 3}
+  mainScene: MainDesktop
+  registringScene: RegisteringScene
 --- !u!4 &610135706
 Transform:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace Apps.FileManager.Views
 {
     public class FileView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text fileName;
+        public TMP_Text fileName;
         private GameObject _openFileButton;
         
         public void SetProps(GameObject fileObject, GameObject openFButton)

@@ -1,15 +1,12 @@
-﻿using Desktop.Views;
-using Saving.Commons;
-using Story.Commons;
-using UnityEditor;
+﻿using Saving.Commons;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Bootstrapper : MonoBehaviour
 {
-    [SerializeField] private SceneAsset mainScene;
-    [SerializeField] private SceneAsset registringScene;
-
+    [SerializeField] private string mainScene;
+    [SerializeField] private string registringScene;
+    
     public static bool LoadedNewGame = false;
     
     private void Awake()
@@ -17,12 +14,12 @@ public class Bootstrapper : MonoBehaviour
         if (!SavingMvc.Instance.SavingController.LoadGame())
         {
             //New Game
-            SceneManager.LoadScene(registringScene.name);
+            SceneManager.LoadScene(registringScene);
             LoadedNewGame = true;
             return;
         }
         
         //Loaded Game
-        SceneManager.LoadScene(mainScene.name);
+        SceneManager.LoadScene(mainScene);
     }
 }
