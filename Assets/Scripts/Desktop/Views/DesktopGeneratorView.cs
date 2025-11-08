@@ -6,6 +6,8 @@ using Apps.ChatTerminal.Views;
 using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
+using Desktop.Notification.Commons;
+using Desktop.Notification.Models;
 using DesktopGeneration.Models;
 using Saving.Commons;
 using Story.Commons;
