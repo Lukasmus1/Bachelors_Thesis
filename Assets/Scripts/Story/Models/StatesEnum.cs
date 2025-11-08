@@ -4,6 +4,7 @@ namespace Story.Models
 {
     public enum StatesEnum
     {
-        Start
+        Start,
+        Default
     }
 }

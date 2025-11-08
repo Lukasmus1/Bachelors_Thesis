@@ -48,11 +48,11 @@ namespace Desktop.Views
             }
             
             GenerateRandomDesktop();
-            StoryMvc.Instance.StoryController.InitNew();
         }
 
         private void Start()
         {
+            StoryMvc.Instance.StoryController.InitNew();
             RefreshContext();
         }
 
