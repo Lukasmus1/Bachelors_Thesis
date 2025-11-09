@@ -10,10 +10,19 @@ namespace Apps.Commons
     public class DragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         [SerializeField] private RectTransform objectToDrag;
+
+        //Offsetting the drag to match screen resolution
+        //The implementation assumes a 16:9 aspect ratio with a height of 1440 pixels (set in canvas)
+        private float _deltaOffset;
+        
         public event Action OnEndDragged;
         
         private void Awake()
         {
+            _deltaOffset = 1440f / Screen.height;
+            
+            print(_deltaOffset);
+            
             if (objectToDrag == null)
             {
                 throw new NullReferenceException("Parent to drag and hold is not assigned.");
@@ -24,7 +33,7 @@ namespace Apps.Commons
         {
             if (objectToDrag != null)
             {
-                objectToDrag.anchoredPosition += eventData.delta;
+                objectToDrag.anchoredPosition += eventData.delta * _deltaOffset;
             }
         }
 
