@@ -9,7 +9,6 @@ namespace GameLoading.Controllers
         {
             //Try to load a saved game
             SavingMvc.Instance.SavingController.LoadGame();
-         
         }
         
     }

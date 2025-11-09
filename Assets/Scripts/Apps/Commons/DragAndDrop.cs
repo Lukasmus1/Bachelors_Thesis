@@ -20,9 +20,7 @@ namespace Apps.Commons
         private void Awake()
         {
             _deltaOffset = 1440f / Screen.height;
-            
-            print(_deltaOffset);
-            
+
             if (objectToDrag == null)
             {
                 throw new NullReferenceException("Parent to drag and hold is not assigned.");

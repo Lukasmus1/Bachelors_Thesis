@@ -35,6 +35,7 @@ namespace Desktop.Models
             fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlayOffsetY"), -1f);  
             fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlayDilate"), 1f);
             fontAsset.material.SetFloat(Shader.PropertyToID("_UnderlaySoftness"), 0f);
+            fontAsset.material.SetColor(Shader.PropertyToID("_UnderlayColor"), UnityEngine.Color.black);
             
             return fontAsset;
         }

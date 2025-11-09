@@ -71,7 +71,7 @@ namespace Desktop.Views
         /// <summary>
         /// Generate a random desktop.
         /// </summary>
-        public void GenerateRandomDesktop()
+        private void GenerateRandomDesktop()
         {
             SetDesktopWallpaper(_controller.GetRandomWallpaper());
             SetColorScheme(_controller.GetRandomColorScheme());
@@ -91,7 +91,7 @@ namespace Desktop.Views
         /// <summary>
         /// Saves the existing icons on the desktop.
         /// </summary>
-        public void SaveExistingIcons()
+        private void SaveExistingIcons()
         {
             foreach (GameObject icon in desktopIconObjects.Where(icon => icon.activeSelf))
             {
