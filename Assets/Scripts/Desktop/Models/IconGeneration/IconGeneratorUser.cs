@@ -55,8 +55,6 @@ namespace DesktopGeneration.Models.IconGeneration
             List<WindowsIconPositionUtil.DesktopIcon> iconPositions = WindowsIconPositionUtil.GetDesktopIconPositions();
             iconPositions.ForEach(s => Debug.Log(s));
             
-            var icons = new List<IconClass>();
-            
             for (int iconIndex = 0; iconIndex < allFiles.Count; iconIndex++)
             {
                 //Checking if the icon is a special icon

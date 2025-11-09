@@ -2056,6 +2056,10 @@ PrefabInstance:
       propertyPath: m_text
       value: File Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 7520913683159428712, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 04b72c7bacadc3e4f99d773514b86964, type: 2}
     - target: {fileID: 8526751389689936393, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
       propertyPath: m_Texture
       value: 
@@ -2560,6 +2564,10 @@ PrefabInstance:
     - target: {fileID: 7520913683159428712, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
       propertyPath: m_text
       value: Message Terminal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520913683159428712, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8526751389689936393, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
       propertyPath: m_Texture
