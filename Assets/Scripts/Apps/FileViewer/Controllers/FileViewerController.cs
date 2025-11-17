@@ -1,4 +1,5 @@
-﻿using Apps.FileViewer.Models;
+﻿using System;
+using Apps.FileViewer.Models;
 using UnityEngine;
 
 namespace Apps.FileViewer.Controllers
@@ -6,6 +7,9 @@ namespace Apps.FileViewer.Controllers
     public class FileViewerController
     {
         private readonly FileViewerModel _fileViewerModel = new(); 
+        
+        public Action<string> MetadataOpened;
+        public Action<string> FileOpened;
         
         public GameObject OpenedFile
         {

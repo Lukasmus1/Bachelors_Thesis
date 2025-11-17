@@ -29,18 +29,20 @@
       ]
     },
     {
-      "UserId": "us2",
-      "Username": "Username2",
+      "UserId": "headOfDpt",
+      "Username": "Head of Department",
       "ProfilePicture": "",
-      "TypingSpeed": 25,
-      "IsLoaded": true,
+      "TypingSpeed": 30,
+      "IsLoaded": false,
       "CurrentMessageIndex": 0,
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"Sender": "us2", "Text": "Message 1"},
-          {"Sender": "Player", "Text": "Message 2"},
-          {"Sender": "us2", "Text": "Message 3"}
+          {"Sender": "headOfDpt", "Text": "good morning"},
+          {"Sender": "headOfDpt", "Text": "glad you could figure out the file manager. some morons cant even do that"},
+          {"Sender": "headOfDpt", "Text": "anyway... your first task is to help us catch an online scammer"},
+          {"Sender": "headOfDpt", "Text": "i have sent you an email that we managed to get our hands on. you can open it in the file manager"},
+          {"Sender": "headOfDpt", "Text": "try to find anything useful about the scammer or the victim itself"}
         ],
         [
           {"Sender": "us2", "Text": "Message 4"},

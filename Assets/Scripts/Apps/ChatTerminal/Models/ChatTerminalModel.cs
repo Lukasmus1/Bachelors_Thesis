@@ -23,6 +23,11 @@ namespace Apps.ChatTerminal.Models
             set => _loadedChatProfiles = value;
         }
         
+        
+        /// <summary>
+        /// Load chat profiles from a JSON file located in the Resources folder.
+        /// </summary>
+        /// <exception cref="Exception">Did not find the chat.json in resources folder</exception>
         private void LoadChatProfiles()
         {
             var chatJson = Resources.Load<TextAsset>("chat");
@@ -39,6 +44,11 @@ namespace Apps.ChatTerminal.Models
             }
         }
 
+        /// <summary>
+        /// Set the current message index for a specific chat profile.
+        /// </summary>
+        /// <param name="profileId">ID of the profile.</param>
+        /// <param name="messageIndex">Index of the message.</param>
         public void SetChatProfileMessageIndex(string profileId, int messageIndex)
         {
             ChatProfileModel profile = LoadedChatProfiles.Find(profile => profile.UserID == profileId);
@@ -50,6 +60,21 @@ namespace Apps.ChatTerminal.Models
             {
                 Debug.LogError($"Chat profile with ID {profileId} not found.");
             }
+        }
+
+        /// <summary>
+        /// Set "loaded" flag to true for a specific chat profile.
+        /// </summary>
+        /// <param name="profileId"></param>
+        public void LoadNewProfile(string profileId)
+        {
+            ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(x => x.UserID == profileId);
+            if (profile == null)
+            {
+                throw new NullReferenceException($"Profile with ID {profileId} not found.");
+            }
+            
+            profile.IsLoaded = true;
         }
     }
 }

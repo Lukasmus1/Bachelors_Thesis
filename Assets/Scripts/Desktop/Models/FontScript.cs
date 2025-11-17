@@ -22,11 +22,11 @@ namespace Desktop.Models
             //Font settings
             //Dilate
             fontAsset.material.EnableKeyword("DILATE_ON");
-            fontAsset.material.SetFloat(Shader.PropertyToID("_FaceDilate"), -0.15f);
+            fontAsset.material.SetFloat(Shader.PropertyToID("_FaceDilate"), 0.5f);
             
             //Outline
             fontAsset.material.EnableKeyword("OUTLINE_ON");
-            fontAsset.material.SetFloat(Shader.PropertyToID("_OutlineWidth"), 0.2f);
+            fontAsset.material.SetFloat(Shader.PropertyToID("_OutlineWidth"), 1f);
             fontAsset.material.SetColor(Shader.PropertyToID("_OutlineColor"), UnityEngine.Color.black);
             
             //Underlay

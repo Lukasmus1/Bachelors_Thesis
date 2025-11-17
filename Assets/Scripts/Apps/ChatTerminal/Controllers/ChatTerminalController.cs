@@ -29,5 +29,11 @@ namespace Apps.ChatTerminal.Controllers
         {
             chatTerminalModel.SetChatProfileMessageIndex(profileId, index);
         }
+
+        public void LoadNewProfile(string profileId)
+        {
+            chatTerminalModel.LoadNewProfile(profileId);
+            _chatTerminalView.UpdateContactData();
+        }
     }
 }

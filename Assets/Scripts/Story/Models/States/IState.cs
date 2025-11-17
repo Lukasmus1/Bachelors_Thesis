@@ -6,5 +6,6 @@
         public int NextState { get; }
         public void OnEnter();
         public void OnExit();
+        public void ChangeState();
     }
 }

@@ -474,9 +474,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.ContactView
   messagesWindow: {fileID: 1581128353241217357, guid: ad6b3e7afb90bd742b89452c64bb7b16, type: 3}
-  profileImage: {fileID: 0}
-  usernameText: {fileID: 0}
-  statusText: {fileID: 0}
 --- !u!1 &5583617836434866882
 GameObject:
   m_ObjectHideFlags: 0

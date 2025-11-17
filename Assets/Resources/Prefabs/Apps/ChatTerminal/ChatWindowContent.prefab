@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8b62cfe1f54db8829faf7a67a40577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.MessageSystemView
-  messagePrefab: {fileID: 7401672992000218429, guid: f4e06cfed1431d544b74435185314307, type: 3}
+  recievedMessagePrefab: {fileID: 0}
+  sentMessagePrefab: {fileID: 0}
   messagePrefabParent: {fileID: 1695547288595579686}
   messageDividerPrefab: {fileID: 0}
   usernameText: {fileID: 0}
@@ -403,7 +404,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6844683294346391142}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -664,7 +665,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 520}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &3817248046096887503
 MonoBehaviour:

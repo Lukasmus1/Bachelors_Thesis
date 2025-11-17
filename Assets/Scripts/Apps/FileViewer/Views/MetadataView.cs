@@ -1,4 +1,5 @@
-﻿using Apps.FileViewer.Commons;
+﻿using System;
+using Apps.FileViewer.Commons;
 using Apps.FileViewer.Models;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace Apps.FileViewer.Views
         [SerializeField] private TMP_Text authorText;
         [SerializeField] private TMP_Text commentsText;
         [SerializeField] private TMP_Text createdDateText;
-
+        
         private void Awake()
         {
             var fileProps = FileViewerMvc.Instance.FileLoaderController.OpenedFile.GetComponent<GuideFileProps>();
@@ -19,6 +20,11 @@ namespace Apps.FileViewer.Views
             authorText.text = fileProps.author;
             commentsText.text = fileProps.comments;
             createdDateText.text = fileProps.createdDate;
+        }
+
+        private void OnEnable()
+        {
+            FileViewerMvc.Instance.FileLoaderController.MetadataOpened?.Invoke(titleText.text);
         }
     }
 }

@@ -42,6 +42,10 @@ namespace Apps.ChatTerminal.Models
             CurrentProfile.Status = MessageStatus.Offline;
         }
         
+        /// <summary>
+        /// Simulate typing messages with delay based on typing speed.
+        /// </summary>
+        /// <param name="token">Token to cancel async process</param>
         private async Task TypingAsync(CancellationToken token)
         {
             bool isIndexOverMessages = CurrentProfile.CurrentMessageIndex >= CurrentProfile.Messages.Count;
@@ -50,7 +54,7 @@ namespace Apps.ChatTerminal.Models
             int startIndex = CurrentProfile.SeenMessagesIndex;
             
             //Try to type new messages
-            //If cancelled, revert seen index to start index
+            //If canceled, revert seen index to start index
             try
             {
                 //Create message history

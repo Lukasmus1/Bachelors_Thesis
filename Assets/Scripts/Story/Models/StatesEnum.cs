@@ -5,6 +5,7 @@ namespace Story.Models
     public enum StatesEnum
     {
         Start,
+        MouseQuest,
         Default
     }
 }

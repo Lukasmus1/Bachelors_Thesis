@@ -1,5 +1,4 @@
-﻿using System;
-using Apps.FileManager.Models;
+﻿using Apps.FileManager.Models;
 using Apps.FileViewer.Commons;
 using TMPro;
 using UnityEngine;
@@ -10,11 +9,12 @@ namespace Apps.FileManager.Views
     {
         public TMP_Text fileName;
         private GameObject _openFileButton;
+        private GameObject _fileObject;
         
         public void SetProps(GameObject fileObject, GameObject openFButton)
         {
             // Set the opened file in the FileViewer context
-            FileViewerMvc.Instance.FileLoaderController.OpenedFile = fileObject;
+            _fileObject = fileObject;
             
             var fileModel = fileObject.GetComponent<FileModel>();
             
@@ -24,6 +24,7 @@ namespace Apps.FileManager.Views
 
         public void OnClick()
         {
+            FileViewerMvc.Instance.FileLoaderController.OpenedFile = _fileObject;
             _openFileButton.SetActive(true);
         }
     }

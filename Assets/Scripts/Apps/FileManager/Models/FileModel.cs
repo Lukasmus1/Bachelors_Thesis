@@ -10,5 +10,7 @@ namespace Apps.FileManager.Models
             get => fileName;
             set => fileName = value;
         }
+        
+        public bool IsLoaded { get; set; } = false;
     }
 }

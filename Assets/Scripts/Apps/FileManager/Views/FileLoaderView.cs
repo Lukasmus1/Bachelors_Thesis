@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Models;
@@ -14,10 +15,17 @@ namespace Apps.FileManager.Views
         
         [SerializeField] private GameObject openFileButton;
         
+        
+        private void Awake()
+        {
+            FileLoaderMvc.Instance.FileLoaderController.SetFileLoaderView(this);
+            FileLoaderMvc.Instance.FileLoaderController.onFilesUpdated += UpdateLoadedFiles;
+        }
+
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
-            LoadLoadedFiles();
+            UpdateLoadedFiles();
         }
 
         private void OnDisable()
@@ -26,13 +34,21 @@ namespace Apps.FileManager.Views
             openFileButton.SetActive(false);
         }
 
-        private void LoadLoadedFiles()
+        private void OnDestroy()
         {
-            List<GameObject> files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFile();
+            FileLoaderMvc.Instance.FileLoaderController.onFilesUpdated += UpdateLoadedFiles;
+        }
+
+        /// <summary>
+        /// Shows all files that are loaded in the file loader.
+        /// </summary>
+        private void UpdateLoadedFiles()
+        {
+            var files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFile();
             foreach (GameObject file in files)
             {
-                string fileName = file.GetComponent<FileModel>().FileName;
-                if (FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Contains(fileName))
+                var fileModel = file.GetComponent<FileModel>();
+                if (FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Contains(fileModel.FileName) || !fileModel.IsLoaded)
                 {
                     continue;
                 }
@@ -41,7 +57,7 @@ namespace Apps.FileManager.Views
                 var fileView = fileIcon.GetComponent<FileView>();
                 
                 fileView.SetProps(file, openFileButton);
-                FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Add(fileName);
+                FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Add(fileModel.FileName);
                 fileIcon.SetActive(true);
             }
         }

@@ -29,15 +29,19 @@ namespace Apps.ChatTerminal.Views
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatTerminalView(this);
             usernameText.text = UserMvc.Instance.UserController.Username;
             
-            var profiles = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
-            SetContactData(profiles);
+            UpdateContactData();
         }
 
-        private void SetContactData(List<ChatProfileModel> profiles)
+        /// <summary>
+        /// Updates the contact list with loaded chat profiles.
+        /// </summary>
+        public void UpdateContactData()
         {
+            var profiles = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
+            
             foreach (ChatProfileModel profile in profiles)
             {
-                if (!profile.IsLoaded)
+                if (!profile.IsLoaded || _profiles.Any(x => x.UserID == profile.UserID))
                 {
                     continue;
                 }

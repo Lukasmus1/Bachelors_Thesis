@@ -15,14 +15,40 @@ namespace Apps.FileManager.Models
         {
             //There must always be at least the tutorial file in the loaded files folder
             _loadedFiles = Resources.LoadAll<GameObject>("Prefabs/Apps/FileLoader/LoadedFiles").ToList();
+            
+            //Set all loaded files to not loaded at the start
+            _loadedFiles.ForEach(x => x.GetComponent<FileModel>().IsLoaded = false);
+            
             if (_loadedFiles.Count == 0)
             {
                 throw new Exception("Prefabs/Apps/FileLoader/LoadedFiles Possible rename?");
             }
         }
+        
+        /// <summary>
+        /// Returns all loaded files.
+        /// </summary>
+        /// <returns>List of GameObjects of all loaded files</returns>
         public List<GameObject> GetLoadedFiles()
         {
             return _loadedFiles;
+        }
+
+        /// <summary>
+        /// Sets the IsLoaded flag of a file with the given name.
+        /// </summary>
+        /// <param name="fileName">Name of the file</param>
+        /// <param name="isLoaded">True for loaded, false for not</param>
+        /// <exception cref="Exception">The file name could not be found</exception>
+        public void SetLoadedFileFlag(string fileName, bool isLoaded)
+        {
+            GameObject loadedFile = _loadedFiles.FirstOrDefault(x => x.name == fileName);
+            if (loadedFile == null)
+            {
+                throw new Exception($"File with name {fileName} not found in loaded files.");
+            }
+            
+            loadedFile.GetComponent<FileModel>().IsLoaded = isLoaded;
         }
     }
 }

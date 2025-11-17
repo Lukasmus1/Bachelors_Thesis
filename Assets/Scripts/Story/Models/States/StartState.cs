@@ -1,9 +1,12 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.Commons;
+using Apps.FileManager.Commons;
+using Apps.FileManager.Views;
+using Apps.FileViewer.Commons;
 using Desktop.Notification.Commons;
 using Desktop.Notification.Models;
-using Story.Views;
+using Story.Commons;
 
 namespace Story.Models.States
 {
@@ -11,28 +14,33 @@ namespace Story.Models.States
     public class StartState : IState
     {
         public int State => (int)StatesEnum.Start;
-        public int NextState => (int)StatesEnum.Default;
-
-        public event Action ChangeState;
+        public int NextState => (int)StatesEnum.MouseQuest;
         
         public void OnEnter()
         {
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("ind1", 1);
-            AppCommonsModel.Instance.AppOpened += CheckForStateChange;
+            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("ind1", 0);
+            
+            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
+            
+            FileViewerMvc.Instance.FileLoaderController.FileOpened += CheckForStateChange;
         }
 
         public void OnExit()
         {
-            AppCommonsModel.Instance.AppOpened -= CheckForStateChange;
+            FileViewerMvc.Instance.FileLoaderController.FileOpened -= CheckForStateChange;
+        }
+        
+        public void ChangeState()
+        {
+            StoryMvc.Instance.StoryController.CurrentState = StateFactory.GetState(NextState);
         }
 
         private void CheckForStateChange(string appName)
         {
-            if (appName == "FileViewer")
+            if (appName == "Guide")
             {
-                StoryManager.Instance.ChangeState();
-                ChangeState?.Invoke();
+                ChangeState();
             }
         }
     }

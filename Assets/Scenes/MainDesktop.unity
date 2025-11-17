@@ -725,11 +725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e35094bad000e4ab314d35f08619f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &580087014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7080588238751693991, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
-  m_PrefabInstance: {fileID: 2843805282539167588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &583831487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3709,10 +3704,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3335595611935332396, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
-      propertyPath: metadataPopup
-      value: 
-      objectReference: {fileID: 580087014}
     - target: {fileID: 3387977996318669801, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
       propertyPath: m_text
       value: File Viewer

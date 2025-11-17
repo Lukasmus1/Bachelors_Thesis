@@ -11,7 +11,7 @@ namespace User.Models
         
         public void InitUser()
         {
-            
+            StartDate = DateTime.Now;
         }
     }
 }

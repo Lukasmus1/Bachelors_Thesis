@@ -1,4 +1,5 @@
 using System;
+using Apps.FileManager.Models;
 using Apps.FileViewer.Commons;
 using Desktop.Commons;
 using TMPro;
@@ -26,7 +27,10 @@ namespace Apps.FileViewer.Views
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             
-            _instantiatedFileReference = Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, fileHolder);
+            GameObject fileToOpen = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
+            FileViewerMvc.Instance.FileLoaderController.FileOpened?.Invoke(fileToOpen.GetComponent<FileModel>().FileName);
+            
+            _instantiatedFileReference = Instantiate(fileToOpen, fileHolder);
             _fileHolderBackup = fileHolder;
             zoomLevelText.text = "100%";
         }
