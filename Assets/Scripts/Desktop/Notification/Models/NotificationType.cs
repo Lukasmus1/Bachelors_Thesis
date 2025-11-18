@@ -3,6 +3,7 @@
     public enum NotificationType
     {
         Generic,
-        NewMessage
+        NewMessage,
+        NewFile
     }
 }

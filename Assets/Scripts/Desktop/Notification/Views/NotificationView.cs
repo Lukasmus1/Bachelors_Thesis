@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Desktop.Notification.Commons;
 using TMPro;
 using UnityEngine;
@@ -12,19 +13,54 @@ namespace Desktop.Notification.Views
         [SerializeField] private TMP_Text notificationText;
         [SerializeField] private CanvasGroup notificationCanvasGroup;
         
+        private Coroutine coroutine;
+        private readonly List<string> _notificationQueue = new();
+        private Action notificationDone; 
+        
         private void Awake()
         {
             NotificationMvc.Instance.NotificationController.NotificationView = this;
             gameObject.SetActive(false);
+            notificationDone += CheckForQueuedNotifications;
         }
 
-        private void OnEnable()
+        private void OnDestroy()
         {
-            StartCoroutine(EnableNotification());
+            notificationDone -= CheckForQueuedNotifications;
+        }
+
+        //Activate the notification display
+        public void ActivateNotification()
+        {
+            if (coroutine != null)
+            {
+                return;
+            }
+            
+            gameObject.SetActive(true);
+            coroutine = StartCoroutine(EnableNotification());
+        }
+
+        //Check if there are any queued notifications and display them
+        private void CheckForQueuedNotifications()
+        {
+            //If the queue is empty, return
+            if (_notificationQueue.Count == 0)
+            {
+                return;
+            }
+            
+            //Activate the notification again
+            ActivateNotification();
         }
         
+        //Coroutine to enable the notification for a set amount of time
         private IEnumerator EnableNotification()
         {
+            //Set the notification text to the first item in the queue and remove it from the queue
+            notificationText.text = _notificationQueue[0];
+            _notificationQueue.RemoveAt(0);
+            
             // Fade in
             var elapsed = 0f;
             while (elapsed < 0.5f)
@@ -34,7 +70,7 @@ namespace Desktop.Notification.Views
                 yield return null;
             }
             
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
             
             // Fade out
             elapsed = 0f;
@@ -48,11 +84,16 @@ namespace Desktop.Notification.Views
             yield return new WaitForSeconds(0.5f);
 
             gameObject.SetActive(false);
+            
+            coroutine = null;
+            
+            notificationDone?.Invoke();
         }
 
+        //Setter for notification text
         public void SetNotificationText(string text)
         {
-            notificationText.text = text;
+            _notificationQueue.Add(text);
         }
     }
 }

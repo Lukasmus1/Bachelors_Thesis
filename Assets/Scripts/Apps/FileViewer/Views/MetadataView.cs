@@ -24,7 +24,7 @@ namespace Apps.FileViewer.Views
 
         private void OnEnable()
         {
-            FileViewerMvc.Instance.FileLoaderController.MetadataOpened?.Invoke(titleText.text);
+            FileViewerMvc.Instance.FileLoaderController.metadataOpened?.Invoke(titleText.text);
         }
     }
 }

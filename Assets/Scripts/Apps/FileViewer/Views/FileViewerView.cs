@@ -28,7 +28,7 @@ namespace Apps.FileViewer.Views
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             
             GameObject fileToOpen = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
-            FileViewerMvc.Instance.FileLoaderController.FileOpened?.Invoke(fileToOpen.GetComponent<FileModel>().FileName);
+            FileViewerMvc.Instance.FileLoaderController.fileOpened?.Invoke(fileToOpen.GetComponent<FileModel>().FileName);
             
             _instantiatedFileReference = Instantiate(fileToOpen, fileHolder);
             _fileHolderBackup = fileHolder;
