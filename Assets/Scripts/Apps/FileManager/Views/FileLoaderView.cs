@@ -44,7 +44,7 @@ namespace Apps.FileManager.Views
         /// </summary>
         private void UpdateLoadedFiles()
         {
-            var files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFile();
+            var files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFiles();
             foreach (GameObject file in files)
             {
                 var fileModel = file.GetComponent<FileModel>();

@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileLoader.Views.FileLoaderView
   filePrefab: {fileID: 1657237784455927946, guid: 795734d57980c3c439e0ba633fd9f132, type: 3}
   fileParent: {fileID: 8728442891427496843}
-  openFileButton: {fileID: 0}
+  openFileButton: {fileID: 5540326948019541430}
 --- !u!1 &9070378976538705005
 GameObject:
   m_ObjectHideFlags: 0

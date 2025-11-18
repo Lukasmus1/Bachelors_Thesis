@@ -6,6 +6,7 @@ namespace Story.Models
     {
         Start,
         MouseQuest,
+        ThomasBare,
         Default
     }
 }

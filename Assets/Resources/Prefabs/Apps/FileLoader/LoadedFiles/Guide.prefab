@@ -92,8 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
   title: Guide
-  author: AuthorTBD
+  author: IT Department
   comments: This file exists to help you with using the file viewer.
+  createdDate: 
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ namespace Story.Models.States
             {
                 StatesEnum.Start => new StartState(),
                 StatesEnum.MouseQuest => new MouseQuestState(),
-                
+                StatesEnum.ThomasBare => new ThomasBareState(),
                 StatesEnum.Default => new DefaultState(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };

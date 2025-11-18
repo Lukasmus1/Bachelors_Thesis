@@ -18,7 +18,7 @@ namespace Apps.FileManager.Controllers
             _fileLoaderView = fileLoaderView;
         }
         
-        public List<GameObject> GetLoadedFile()
+        public List<GameObject> GetLoadedFiles()
         {
             return _fileLoaderModel.GetLoadedFiles();
         }

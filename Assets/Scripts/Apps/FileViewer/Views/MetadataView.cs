@@ -13,17 +13,13 @@ namespace Apps.FileViewer.Views
         [SerializeField] private TMP_Text commentsText;
         [SerializeField] private TMP_Text createdDateText;
         
-        private void Awake()
+        private void OnEnable()
         {
             var fileProps = FileViewerMvc.Instance.FileLoaderController.OpenedFile.GetComponent<GuideFileProps>();
             titleText.text = fileProps.title;
             authorText.text = fileProps.author;
             commentsText.text = fileProps.comments;
             createdDateText.text = fileProps.createdDate;
-        }
-
-        private void OnEnable()
-        {
             FileViewerMvc.Instance.FileLoaderController.metadataOpened?.Invoke(titleText.text);
         }
     }

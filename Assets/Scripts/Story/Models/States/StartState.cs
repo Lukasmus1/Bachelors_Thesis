@@ -19,16 +19,18 @@ namespace Story.Models.States
         public void OnEnter()
         {
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("ind1", 0);
+            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 0);
             
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
             
-            FileViewerMvc.Instance.FileLoaderController.FileOpened += CheckForStateChange;
+            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewFile, "Guide");
+            
+            FileViewerMvc.Instance.FileLoaderController.fileOpened += CheckForStateChange;
         }
 
         public void OnExit()
         {
-            FileViewerMvc.Instance.FileLoaderController.FileOpened -= CheckForStateChange;
+            FileViewerMvc.Instance.FileLoaderController.fileOpened -= CheckForStateChange;
         }
         
         public void ChangeState()

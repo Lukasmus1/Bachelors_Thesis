@@ -3741,6 +3741,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3335595611935332396, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
+      propertyPath: fileLoader
+      value: 
+      objectReference: {fileID: 629066893}
     - target: {fileID: 3387977996318669801, guid: 2851e72874e65604a9315cd70b2715ad, type: 3}
       propertyPath: m_text
       value: File Viewer
@@ -4047,10 +4051,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 114.63989
       objectReference: {fileID: 0}
-    - target: {fileID: 5468798595190977435, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
-      propertyPath: openFileButton
-      value: 
-      objectReference: {fileID: 3615018078975431549}
     - target: {fileID: 5490109870400022725, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -55.84497
@@ -4096,11 +4096,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 359387088}
   m_SourcePrefab: {fileID: 100100000, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
---- !u!1 &3615018078975431549 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5540326948019541430, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
-  m_PrefabInstance: {fileID: 3615018078975431548}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

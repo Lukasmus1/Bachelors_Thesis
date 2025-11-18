@@ -63,11 +63,21 @@ namespace Desktop.Controllers
         }
 
         //Commons
+        
+        /// <summary>
+        /// Sets a flag for each app, so I can't open it twice for example.
+        /// </summary>
+        /// <param name="flag">Name of the app</param>
+        /// <param name="value">True if app is open, False if not</param>
         public void SetDesktopFlag(string flag, bool value)
         {
             DesktopModel.Instance.SetFlag(flag, value);
         }
         
+        /// <summary>
+        /// Saves the icon into the desktop model for persistence.
+        /// </summary>
+        /// <param name="icon">The icon to save</param>
         public void SetDesktopIconIntoContext(IconClassOnObject icon)
         {
             IconClass iconClass = DesktopModel.Instance.Icons.FirstOrDefault(x => x.Name == icon.IconName);

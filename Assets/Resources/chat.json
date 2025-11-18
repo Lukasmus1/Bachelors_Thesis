@@ -1,10 +1,10 @@
 {
   "ChatProfiles": [
     {
-      "UserId": "ind1",
+      "UserId": "itDept",
       "Username": "IT Department",
       "ProfilePicture": "",
-      "TypingSpeed": 25,
+      "TypingSpeed": 30,
       "IsLoaded": true,
       "CurrentMessageIndex": 0,
       "SeenMessagesIndex": 0,
@@ -15,16 +15,6 @@
           {"Sender": "ind1", "Text": "We will provide you with important information about your case or just help in general."},
           {"Sender": "ind1", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
           {"Sender": "ind1", "Text": "Please open it when you have the time."}
-        ],
-        [
-          {"Sender": "ind1", "Text": "Message 4"},
-          {"Sender": "ind1", "Text": "Message 5"},
-          {"Sender": "ind1", "Text": "Message 6"}
-        ],
-        [
-          {"Sender": "ind1", "Text": "Message 7"},
-          {"Sender": "ind1", "Text": "Message 8"},
-          {"Sender": "ind1", "Text": "Message 9"}
         ]
       ]
     },
@@ -32,7 +22,7 @@
       "UserId": "headOfDpt",
       "Username": "Head of Department",
       "ProfilePicture": "",
-      "TypingSpeed": 30,
+      "TypingSpeed": 35,
       "IsLoaded": false,
       "CurrentMessageIndex": 0,
       "SeenMessagesIndex": 0,
@@ -45,14 +35,33 @@
           {"Sender": "headOfDpt", "Text": "try to find anything useful about the scammer or the victim itself"}
         ],
         [
-          {"Sender": "us2", "Text": "Message 4"},
-          {"Sender": "us2", "Text": "Message 5"},
-          {"Sender": "us2", "Text": "Message 6"}
-        ],
+          {"Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
+          {"Sender": "Player", "Text": "I have also managed to find the name of the scammer. \"It's Albert Green\""},
+          {"Sender": "headOfDpt", "Text": "the name could and likely is fake"},
+          {"Sender": "headOfDpt", "Text": "but i can add the email to your contacts. try to see if hes of any help"},
+          {"Sender": "headOfDpt", "Text": "good job"}
+        ]
+      ]
+    },
+    {
+      "UserId": "thomasBare",
+      "Username": "Thomas Bare",
+      "ProfilePicture": "",
+      "TypingSpeed": 30,
+      "IsLoaded": false,
+      "CurrentMessageIndex": 0,
+      "SeenMessagesIndex": 0,
+      "Messages": [
         [
-          {"Sender": "us2", "Text": "Message 7"},
-          {"Sender": "us2", "Text": "Message 8"},
-          {"Sender": "us2", "Text": "Message 9"}
+          {"Sender": "Player", "Text": "Good day, sir."},
+          {"Sender": "Player", "Text": "Have you recieved a suspicious email recently?"},
+          {"Sender": "thomasBare", "Text": "Good day. Who are you?"},
+          {"Sender": "Player", "Text": "I work with the police department. We are investigating an online scam case."},
+          {"Sender": "Player", "Text": "We have reason to believe you might be a victim of one."},
+          {"Sender": "thomasBare", "Text": "I don't know how you got that email, but yes, I did."},
+          {"Sender": "thomasBare", "Text": "I have not responded to that offer though."},
+          {"Sender": "thomasBare", "Text": "Actually I wrote to the actual devs asking them about this and they confirmed that it was a scam."},
+          {"Sender": "Player", "Text": "TBDTBDTBDTBDTBD"}
         ]
       ]
     }

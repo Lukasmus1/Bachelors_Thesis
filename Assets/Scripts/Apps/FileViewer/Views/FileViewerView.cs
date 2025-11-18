@@ -23,9 +23,19 @@ namespace Apps.FileViewer.Views
         //Metadata
         [SerializeField] private GameObject metadataPopup;
 
+        //FileLoader 
+        [SerializeField] private GameObject fileLoader;
+        
         private void OnEnable()
         {
-            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            //Close File Loader if open
+            //The check might be redundant, but better safe than sorry
+            if (fileLoader.activeSelf)
+            {
+                fileLoader.SetActive(false);
+            }
+            
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(fileLoader.gameObject.tag, true);
             
             GameObject fileToOpen = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
             FileViewerMvc.Instance.FileLoaderController.fileOpened?.Invoke(fileToOpen.GetComponent<FileModel>().FileName);
@@ -37,7 +47,7 @@ namespace Apps.FileViewer.Views
 
         private void OnDisable()
         {
-            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(fileLoader.gameObject.tag, false);
             
             Destroy(_instantiatedFileReference);
             fileHolder = _fileHolderBackup;
@@ -77,6 +87,9 @@ namespace Apps.FileViewer.Views
             zoomLevelText.text = Math.Truncate(newScale * 100m) + "%";
         }
 
+        /// <summary>
+        /// Toggles the metadata popup visibility.
+        /// </summary>
         public void ToggleMetadata()
         {
             metadataPopup.SetActive(!metadataPopup.activeSelf);
