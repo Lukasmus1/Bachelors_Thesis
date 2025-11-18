@@ -22,11 +22,14 @@ namespace Apps.ChatTerminal.Views
         [Header("Messages Window")]
         [SerializeField] private GameObject messagesWindow;
         
-        private readonly List<ChatProfile> _profiles = new();
+        /// <summary>
+        /// This is public because I am using it in the controller.
+        /// Ideally, this should be in the model itself, unfortunately this is not serializable.
+        /// </summary>
+        public readonly List<ChatProfile> profiles = new();
         
         private void Awake()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatTerminalView(this);
             usernameText.text = UserMvc.Instance.UserController.Username;
             
             UpdateContactData();
@@ -37,11 +40,11 @@ namespace Apps.ChatTerminal.Views
         /// </summary>
         public void UpdateContactData()
         {
-            var profiles = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
+            var profilesFromJson = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
             
-            foreach (ChatProfileModel profile in profiles)
+            foreach (ChatProfileModel profile in profilesFromJson)
             {
-                if (!profile.IsLoaded || _profiles.Any(x => x.UserID == profile.UserID))
+                if (!profile.IsLoaded || profiles.Any(x => x.UserID == profile.UserID))
                 {
                     continue;
                 }
@@ -49,7 +52,7 @@ namespace Apps.ChatTerminal.Views
                 
                 var newProfile = newContact.AddComponent<ChatProfile>();
                 newProfile.LoadData(profile);
-                _profiles.Add(newProfile);
+                profiles.Add(newProfile);
                 
                 newContact.GetComponent<ContactView>().SetProperties(messagesWindow, newProfile);
             }

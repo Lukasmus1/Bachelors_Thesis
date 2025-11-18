@@ -19,7 +19,7 @@ namespace Apps.ChatTerminal.Models
             {
                 if (value == MessageStatus.Offline)
                 {
-                    _status = CurrentMessageIndex > SeenMessagesIndex ? MessageStatus.NewMessage : MessageStatus.Offline;
+                    _status = CurrentMessageIndex >= SeenMessagesIndex ? MessageStatus.NewMessage : MessageStatus.Offline;
                 }
                 else
                 {

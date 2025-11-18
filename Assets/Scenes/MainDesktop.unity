@@ -1342,6 +1342,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1695141196054981865, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
   m_PrefabInstance: {fileID: 919175490}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &919175494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5802028112839250102, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+  m_PrefabInstance: {fileID: 919175490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919175492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730bc711674f4ed38ee8f8f0c43a11e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.ChatTerminalView
 --- !u!1001 &920943805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2081,6 +2092,7 @@ GameObject:
   - component: {fileID: 1342669615}
   - component: {fileID: 1342669619}
   - component: {fileID: 1342669620}
+  - component: {fileID: 1342669621}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -2148,6 +2160,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a5fee2abf3a5c46a1e8d5c01c326ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Story.Views.StoryManager
+--- !u!114 &1342669621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342669614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd68774121c42f4a4898093b7d0f914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScriptReferenceLinker
+  chatTerminalView: {fileID: 919175494}
+  messageSystemView: {fileID: 2078016260}
 --- !u!114 &1390681514 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8526751389689936393, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
@@ -3359,6 +3385,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5037494065075334934, guid: e277499cb04d6ed48b3763cbcdea75e1, type: 3}
   m_PrefabInstance: {fileID: 2024903545}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2078016260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2687655726053585768, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+  m_PrefabInstance: {fileID: 919175490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8b62cfe1f54db8829faf7a67a40577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.ChatTerminal.Views.MessageSystemView
 --- !u!1 &2078747553
 GameObject:
   m_ObjectHideFlags: 0

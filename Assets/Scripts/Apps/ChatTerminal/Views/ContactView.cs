@@ -46,6 +46,11 @@ namespace Apps.ChatTerminal.Views
             ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
         }
 
+        /// <summary>
+        /// Sets the status text based on the provided message status.
+        /// </summary>
+        /// <param name="status">Message status</param>
+        /// <exception cref="ArgumentOutOfRangeException">Throws when we provide a new MessageStatus</exception>
         private void SetStatusText(MessageStatus status)
         {
             switch (status)

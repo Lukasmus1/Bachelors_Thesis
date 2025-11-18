@@ -24,7 +24,6 @@ namespace Apps.ChatTerminal.Views
 
         private void OnEnable()
         {
-            ChatTerminalMvc.Instance.MessageSystemController.SetView(this);
             ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.MessageStatusChanged += SetStatusText;
         }
         private void OnDisable()

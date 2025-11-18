@@ -15,19 +15,20 @@ namespace Apps.ChatTerminal.Controllers
             _chatTerminalView = chatTerminalView;
         }
         
+        
         public List<ChatProfileModel> GetChatProfiles()
         {
-            return chatTerminalModel.LoadedChatProfiles;
+            return chatTerminalModel.LoadedChatProfilesFromJson;
         }
 
         public ChatProfileModel GetChatProfile(string profileId)
         {
-            return chatTerminalModel.LoadedChatProfiles.FirstOrDefault(profile => profile.UserID == profileId);
+            return chatTerminalModel.LoadedChatProfilesFromJson.FirstOrDefault(profile => profile.UserID == profileId);
         }
 
         public void SetChatProfileMessageIndex(string profileId, int index)
         {
-            chatTerminalModel.SetChatProfileMessageIndex(profileId, index);
+            chatTerminalModel.SetChatProfileMessageIndex(profileId, index, _chatTerminalView.profiles);
         }
 
         public void LoadNewProfile(string profileId)

@@ -10,7 +10,7 @@ namespace Apps.ChatTerminal.Models
     public class ChatTerminalModel
     {
         private List<ChatProfileModel> _loadedChatProfiles = new();
-        public List<ChatProfileModel> LoadedChatProfiles
+        public List<ChatProfileModel> LoadedChatProfilesFromJson
         {
             get
             {
@@ -49,16 +49,32 @@ namespace Apps.ChatTerminal.Models
         /// </summary>
         /// <param name="profileId">ID of the profile.</param>
         /// <param name="messageIndex">Index of the message.</param>
-        public void SetChatProfileMessageIndex(string profileId, int messageIndex)
+        /// <param name="loadedProfiles">Already loaded profiles</param>
+        public void SetChatProfileMessageIndex(string profileId, int messageIndex, List<ChatProfile> loadedProfiles)
         {
-            ChatProfileModel profile = LoadedChatProfiles.Find(profile => profile.UserID == profileId);
-            if (profile != null)
+            if (loadedProfiles.Count > 0)
             {
-                profile.CurrentMessageIndex = messageIndex;
+                ChatProfile profile = loadedProfiles.Find(profile => profile.UserID == profileId);
+                if (profile != null)
+                {
+                    profile.CurrentMessageIndex = messageIndex;
+                }
+                else
+                {
+                    Debug.LogError($"Chat profile with ID {profileId} not found.");
+                }
             }
             else
             {
-                Debug.LogError($"Chat profile with ID {profileId} not found.");
+                ChatProfileModel profile = LoadedChatProfilesFromJson.Find(profile => profile.UserID == profileId);
+                if (profile != null)
+                {
+                    profile.CurrentMessageIndex = messageIndex;
+                }
+                else
+                {
+                    Debug.LogError($"Chat profile with ID {profileId} not found.");
+                }
             }
         }
 
