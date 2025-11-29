@@ -1,10 +1,9 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Apps.Autospectogram.Models
 {
-    public class AutospectogramGenerator
+    public class AutospectogramModel
     {
         //Constants
         //At least 1080p texture
@@ -17,8 +16,13 @@ namespace Apps.Autospectogram.Models
         //Default font size
         private const int DEFAULT_FONT_SIZE = 40;
         
-        
-        private void CreateAutospectogram(string inputString, TMP_FontAsset font)
+        /// <summary>
+        /// Creates a 2D texture representing the autospectogram of the provided text using the specified font.
+        /// </summary>
+        /// <param name="inputString">Text to be encoded in the autostereogram</param>
+        /// <param name="font">Font used for the text</param>
+        /// <returns>Autospectogram as Texture2D</returns>
+        public Texture2D CreateAutospectogram(string inputString, TMP_FontAsset font)
         {
             //Final autospectogram texture
             var mainTexture = new Texture2D(GRAYSCALE_TEXTURE_WIDTH + WIDTH_OFFSET, GRAYSCALE_TEXTURE_HEIGHT)
@@ -52,6 +56,8 @@ namespace Apps.Autospectogram.Models
                 }
             }
             mainTexture.Apply();
+            
+            return mainTexture;
         }
 
         /// <summary>
@@ -60,7 +66,7 @@ namespace Apps.Autospectogram.Models
         /// <param name="input">Text to be rendered in grayscale</param>
         /// <param name="font">Font to be used</param>
         /// <returns>grayscale Texture2D</returns>
-        private Texture2D GenerateGrayscale(string input, TMP_FontAsset font)
+        private static Texture2D GenerateGrayscale(string input, TMP_FontAsset font)
         {
             //If the input is longer than 8 characters, reduce font size by 5 for each additional character
             int fontSize = input.Length > 8 ? DEFAULT_FONT_SIZE - (input.Length - 8) * 5 : DEFAULT_FONT_SIZE;
@@ -100,9 +106,9 @@ namespace Apps.Autospectogram.Models
             RenderTexture.active = null;
 
             //Clean up
-            Destroy(parent);
-            Destroy(tempCam.gameObject);
-            Destroy(rt);
+            Object.Destroy(parent);
+            Object.Destroy(tempCam.gameObject);
+            Object.Destroy(rt);
             
             return tex;
         }
@@ -113,7 +119,7 @@ namespace Apps.Autospectogram.Models
         /// <param name="width">Width of the pattern</param>
         /// <param name="height">Height of the pattern</param>
         /// <returns>Pixels with random colors</returns>
-        private Color[] GenerateAutospectogramPattern(int width, int height)
+        private static Color[] GenerateAutospectogramPattern(int width, int height)
         {
             var patternPixels = new Color[width * height];
 
@@ -124,11 +130,6 @@ namespace Apps.Autospectogram.Models
             }
             
             return patternPixels;
-        }
-
-        private void Awake()
-        {
-            CreateAutospectogram();
         }
     }
 }
