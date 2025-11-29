@@ -428,8 +428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 8728442891427496843}
-  m_Horizontal: 1
-  m_Vertical: 0
+  m_Horizontal: 0
+  m_Vertical: 1
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 0
@@ -1429,7 +1429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileLoader.Views.FileLoaderView
   filePrefab: {fileID: 1657237784455927946, guid: 795734d57980c3c439e0ba633fd9f132, type: 3}
   fileParent: {fileID: 8728442891427496843}
-  openFileButton: {fileID: 5540326948019541430}
 --- !u!1 &9070378976538705005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8728442891427496843}
-  - component: {fileID: 9215229756513843430}
+  - component: {fileID: 2038941512944392010}
   m_Layer: 5
   m_Name: Files
   m_TagString: Untagged
@@ -1467,7 +1466,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 123.36}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &9215229756513843430
+--- !u!114 &2038941512944392010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1476,23 +1475,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 9070378976538705005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
     m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 60, y: 80}
+  m_Spacing: {x: 50, y: 50}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1001 &4788190284248200518
 PrefabInstance:
   m_ObjectHideFlags: 0

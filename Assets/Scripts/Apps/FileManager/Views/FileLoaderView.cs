@@ -13,8 +13,6 @@ namespace Apps.FileManager.Views
         [SerializeField] private GameObject filePrefab;
         [SerializeField] private Transform fileParent;
         
-        [SerializeField] private GameObject openFileButton;
-        
         
         private void Awake()
         {
@@ -31,7 +29,6 @@ namespace Apps.FileManager.Views
         private void OnDisable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
-            openFileButton.SetActive(false);
         }
 
         private void OnDestroy()
@@ -56,7 +53,7 @@ namespace Apps.FileManager.Views
                 GameObject fileIcon = Instantiate(filePrefab, fileParent);
                 var fileView = fileIcon.GetComponent<FileView>();
                 
-                fileView.SetProps(file, openFileButton);
+                fileView.SetProps(file);
                 FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Add(fileModel.FileName);
                 fileIcon.SetActive(true);
             }

@@ -2,16 +2,18 @@
 using Apps.FileViewer.Commons;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Apps.FileManager.Views
 {
-    public class FileView : MonoBehaviour
+    public class FileView : MonoBehaviour, IPointerClickHandler
     {
+        [SerializeField] private GameObject contextMenuPrefab;
+        
         public TMP_Text fileName;
-        private GameObject _openFileButton;
         private GameObject _fileObject;
         
-        public void SetProps(GameObject fileObject, GameObject openFButton)
+        public void SetProps(GameObject fileObject)
         {
             // Set the opened file in the FileViewer context
             _fileObject = fileObject;
@@ -19,13 +21,24 @@ namespace Apps.FileManager.Views
             var fileModel = fileObject.GetComponent<FileModel>();
             
             fileName.text = fileModel.FileName;
-            _openFileButton = openFButton;
         }
-
+        
         public void OnClick()
         {
             FileViewerMvc.Instance.FileLoaderController.OpenedFile = _fileObject;
-            _openFileButton.SetActive(true);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                
+            }
+        }
+
+        private void CreateContextMenu()
+        {
+            
         }
     }
 }
