@@ -16,7 +16,6 @@ namespace Apps.FileManager.Views
         
         private void Awake()
         {
-            FileLoaderMvc.Instance.FileLoaderController.SetFileLoaderView(this);
             FileLoaderMvc.Instance.FileLoaderController.onFilesUpdated += UpdateLoadedFiles;
         }
 

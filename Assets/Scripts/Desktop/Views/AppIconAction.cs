@@ -5,7 +5,7 @@ namespace Desktop.Views
 {
     public class AppIconAction : MonoBehaviour, IIconAction
     {
-        [SerializeField] private GameObject appToOpen;
+        public GameObject appToOpen;
         
         public void PerformAction()
         {

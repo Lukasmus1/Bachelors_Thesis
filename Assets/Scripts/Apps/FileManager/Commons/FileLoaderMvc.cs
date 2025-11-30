@@ -16,10 +16,12 @@ namespace Apps.FileManager.Commons
         }
 
         public FileLoaderController FileLoaderController { get; set; }
+        public ContextMenuController ContextMenuController { get; set; }
         
         private FileLoaderMvc()
         {
             FileLoaderController = new FileLoaderController();
+            ContextMenuController = new ContextMenuController();
         }
     }
 }

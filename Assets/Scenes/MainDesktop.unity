@@ -884,6 +884,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2175742751133221832, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
   m_PrefabInstance: {fileID: 3615018078975431548}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &629066895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5468798595190977435, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
+  m_PrefabInstance: {fileID: 3615018078975431548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629066893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef68b514da1dc7248913d1a04e8472d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.FileLoader.Views.FileLoaderView
 --- !u!1 &700669078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,7 +2106,7 @@ GameObject:
   - component: {fileID: 1342669621}
   m_Layer: 0
   m_Name: ScriptHolder
-  m_TagString: Untagged
+  m_TagString: ScriptHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2172,8 +2183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd68774121c42f4a4898093b7d0f914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScriptReferenceLinker
+  chatTerminalApp: {fileID: 919175492}
   chatTerminalView: {fileID: 919175494}
   messageSystemView: {fileID: 2078016260}
+  fileLoaderApp: {fileID: 629066893}
+  fileLoaderView: {fileID: 629066895}
+  fileViewerApp: {fileID: 1995673739}
 --- !u!114 &1390681514 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8526751389689936393, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
@@ -3148,9 +3163,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781763477}
+  - component: {fileID: 1781763478}
   m_Layer: 5
   m_Name: DesktopHolder
-  m_TagString: Untagged
+  m_TagString: DesktopHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3181,6 +3197,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1781763478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781763476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ea8cb3f9654bb987c401d44797f73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DesktopHolderHelper
 --- !u!1 &1873211913
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,7 +4105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5464407252838362124, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 12.390015
+      value: 12.390137
       objectReference: {fileID: 0}
     - target: {fileID: 5468798595190977435, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
       propertyPath: openFileButton

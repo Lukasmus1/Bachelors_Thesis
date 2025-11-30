@@ -7,6 +7,9 @@ TagManager:
   - ChatTerminal
   - FileLoader
   - FileViewer
+  - DesktopHolder
+  - ContextMenu
+  - ScriptHolder
   layers:
   - Default
   - TransparentFX
