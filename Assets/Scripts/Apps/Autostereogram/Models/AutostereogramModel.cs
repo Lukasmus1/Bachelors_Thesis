@@ -7,9 +7,8 @@ namespace Apps.Autostereogram.Models
     public class AutostereogramModel
     {
         //Constants
-        //At least 1080p texture
-        private const int GRAYSCALE_TEXTURE_WIDTH = 880;
-        private const int GRAYSCALE_TEXTURE_HEIGHT = 700;
+        private const int GRAYSCALE_TEXTURE_WIDTH = 704;
+        private const int GRAYSCALE_TEXTURE_HEIGHT = 300;
         //25% offsets for autostereogram pattern
         private const int REPEATING_PATTERN_COUNT = 5;
         private const int WIDTH_OFFSET = GRAYSCALE_TEXTURE_WIDTH / (REPEATING_PATTERN_COUNT - 1);

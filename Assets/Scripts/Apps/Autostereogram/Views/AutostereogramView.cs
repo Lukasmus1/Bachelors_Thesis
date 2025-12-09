@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Apps.Autostereogram.Commons;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +19,6 @@ namespace Apps.Autostereogram.Views
         private RectTransform _asgImageRectTransform;
         
         [SerializeField] private GameObject autostereogramMovingImageHolder;
-        private Color32[] _asgMovingImagePixels;
         private RectTransform _asgMovingImageRectTransform;
         
         [SerializeField] private Image overlappingLayer;
@@ -39,17 +40,18 @@ namespace Apps.Autostereogram.Views
             
             //Get the pixels of both images as Color32 arrays
             _asgImagePixels = autostereogramImageHolder.GetComponent<Image>().sprite.texture.GetPixels32();
-            _asgMovingImagePixels = autostereogramMovingImageHolder.GetComponent<Image>().sprite.texture.GetPixels32();
             
             //Create the overlapping layer texture
             CreateOverlappingLayerTexture();
             
             //Sets the slider's bounds 
-            movingImageSlider.maxValue = _asgMovingImageRectTransform.anchoredPosition.x;
-            movingImageSlider.minValue = _asgImageRectTransform.anchoredPosition.x;
+            movingImageSlider.maxValue = _asgMovingImageRectTransform.rect.width;
+            movingImageSlider.minValue = 0;
             
             //Set the slider initial value
             movingImageSlider.value = _asgImageRectTransform.position.x;
+            
+            File.WriteAllBytes(Application.persistentDataPath + "/auto.png", AutostereogramMvc.Instance.AutostereogramController.GenerateAutospectogram("755463").EncodeToPNG());
         }
         
         /// <summary>
@@ -58,30 +60,37 @@ namespace Apps.Autostereogram.Views
         /// </summary>
         public void SetMovingImage()
         {
-            autostereogramMovingImageHolder.GetComponent<RectTransform>().anchoredPosition = new Vector2(movingImageSlider.value, autostereogramImageHolder.GetComponent<RectTransform>().anchoredPosition.y);
+            autostereogramMovingImageHolder.GetComponent<RectTransform>().anchoredPosition = new Vector2(movingImageSlider.value, autostereogramMovingImageHolder.GetComponent<RectTransform>().anchoredPosition.y);
             
             CheckForOverlappingPixels();
         }
 
         /// <summary>
-        /// Moves the slider by one unit to the left or right.
+        /// Moves the slider by one unit relative to pixel size to the left or right.
         /// Useful for button controls.
         /// </summary>
         /// <param name="left">Should the slider move to the left?</param>
         public void MoveByOne(bool left)
         {
-            movingImageSlider.value += left ? -1 : 1;
+            movingImageSlider.value += left ? -2 : 2;
         }
 
         private void CheckForOverlappingPixels()
         {
-            var overlappingWidth = (int)(430 - _asgMovingImageRectTransform.anchoredPosition.x);
-            var asgImageHeight = (int)_asgImageRectTransform.rect.height;
-            var asgImageWidth = (int)_asgImageRectTransform.rect.width;
-            var movingImageWidth = (int)_asgMovingImageRectTransform.rect.width;
+            int asgImageHeight = (int)_asgImageRectTransform.rect.height / 2;
+            int asgImageWidth = (int)_asgImageRectTransform.rect.width / 2;
+            int overlappingWidth = (int)_asgMovingImageRectTransform.anchoredPosition.x / 2;
 
-            if (overlappingWidth <= 0)
+            // Clear all pixels
+            for (int i = 0; i < _overlappingPixels.Length; i++)
             {
+                _overlappingPixels[i] = Color.clear;
+            }
+
+            if (overlappingWidth <= 0 || overlappingWidth > asgImageWidth)
+            {
+                _overlappingLayerTexture.SetPixels(_overlappingPixels);
+                _overlappingLayerTexture.Apply();
                 return;
             }
 
@@ -89,16 +98,15 @@ namespace Apps.Autostereogram.Views
             {
                 for (int x = 0; x < overlappingWidth; x++)
                 {
-                    var movingIdx = y * movingImageWidth + x;
-                    var staticIdx = y * asgImageWidth + (asgImageWidth - overlappingWidth + x);
+                    var movingIdx = y * asgImageWidth + (asgImageWidth - overlappingWidth + x);
 
-                    if (CompareColor32(_asgMovingImagePixels[movingIdx], _asgImagePixels[staticIdx]))
+                    var staticIdx = y * asgImageWidth + x;
+
+                    var overlappingIdx = y * asgImageWidth + x;
+
+                    if (CompareColor32(_asgImagePixels[movingIdx], _asgImagePixels[staticIdx]))
                     {
-                        _overlappingPixels[movingIdx] = Color.black;
-                    }
-                    else
-                    {
-                        _overlappingPixels[movingIdx] = Color.clear;
+                        _overlappingPixels[overlappingIdx] = Color.black;
                     }
                 }
             }
@@ -107,21 +115,22 @@ namespace Apps.Autostereogram.Views
             _overlappingLayerTexture.Apply();
         }
 
+
         /// <summary>
         /// Compares two Color32 objects for equality.
         /// </summary>
         /// <param name="c1">First color</param>
         /// <param name="c2">Second color</param>
         /// <returns>True if these 2 color are equal</returns>
-        private static bool CompareColor32(Color32 c1, Color32 c2) => c1.a == c2.a && c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
+        private static bool CompareColor32(Color32 c1, Color32 c2) => c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
         
         /// <summary>
         /// Creates a transparent overlapping layer texture on top of the autostereogram moving image.
         /// </summary>
         private void CreateOverlappingLayerTexture()
         {
-            var width = (int)_asgMovingImageRectTransform.rect.width;
-            var height = (int)_asgMovingImageRectTransform.rect.height;
+            var width = (int)_asgMovingImageRectTransform.rect.width / 2;
+            var height = (int)_asgMovingImageRectTransform.rect.height / 2;
 
             var pixels = new List<Color>(width * height);
             for (var i = 0; i < width * height; i++)
@@ -129,7 +138,11 @@ namespace Apps.Autostereogram.Views
                 pixels.Add(Color.clear);
             }
             
-            var overlapTex = new Texture2D(width, height);
+            var overlapTex = new Texture2D(width, height)
+            {
+                filterMode = FilterMode.Point,
+            };
+
             overlapTex.SetPixels(pixels.ToArray());
             overlapTex.Apply();
             _overlappingLayerTexture = overlapTex;
