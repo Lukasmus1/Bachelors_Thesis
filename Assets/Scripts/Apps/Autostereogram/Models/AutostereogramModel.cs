@@ -1,15 +1,16 @@
+using System.IO;
 using TMPro;
 using UnityEngine;
 
-namespace Apps.Autospectogram.Models
+namespace Apps.Autostereogram.Models
 {
-    public class AutospectogramModel
+    public class AutostereogramModel
     {
         //Constants
         //At least 1080p texture
-        private const int GRAYSCALE_TEXTURE_WIDTH = 1920;
-        private const int GRAYSCALE_TEXTURE_HEIGHT = 1080;
-        //25% offsets for autospectogram pattern
+        private const int GRAYSCALE_TEXTURE_WIDTH = 880;
+        private const int GRAYSCALE_TEXTURE_HEIGHT = 700;
+        //25% offsets for autostereogram pattern
         private const int REPEATING_PATTERN_COUNT = 5;
         private const int WIDTH_OFFSET = GRAYSCALE_TEXTURE_WIDTH / (REPEATING_PATTERN_COUNT - 1);
         private const int HEIGHT_OFFSET = GRAYSCALE_TEXTURE_HEIGHT / (REPEATING_PATTERN_COUNT - 1);
@@ -17,27 +18,30 @@ namespace Apps.Autospectogram.Models
         private const int DEFAULT_FONT_SIZE = 40;
         
         /// <summary>
-        /// Creates a 2D texture representing the autospectogram of the provided text using the specified font.
+        /// Creates a 2D texture representing the autostereogram of the provided text using the specified font.
         /// </summary>
         /// <param name="inputString">Text to be encoded in the autostereogram</param>
         /// <param name="font">Font used for the text</param>
-        /// <returns>Autospectogram as Texture2D</returns>
-        public Texture2D CreateAutospectogram(string inputString, TMP_FontAsset font)
+        /// <returns>Autostereogram as Texture2D</returns>
+        public Texture2D CreateAutostereogram(string inputString, TMP_FontAsset font)
         {
-            //Final autospectogram texture
+            //Final autostereogram texture
             var mainTexture = new Texture2D(GRAYSCALE_TEXTURE_WIDTH + WIDTH_OFFSET, GRAYSCALE_TEXTURE_HEIGHT)
             {
                 filterMode = FilterMode.Point
             };
 
             //Get pattern texture
-            Color[] patternPixels = GenerateAutospectogramPattern(WIDTH_OFFSET, GRAYSCALE_TEXTURE_HEIGHT);
+            Color[] patternPixels = GenerateAutostereogramPattern(WIDTH_OFFSET, GRAYSCALE_TEXTURE_HEIGHT);
             
             //Generate greyscale texture from input string
             Texture2D greyscaleTexture = GenerateGrayscale(inputString, font);
             
             //Initial pattern fill
             mainTexture.SetPixels(0, 0, WIDTH_OFFSET, GRAYSCALE_TEXTURE_HEIGHT, patternPixels);
+
+            //Pre-allocate array for row pixels
+            var rowPixels = new Color[GRAYSCALE_TEXTURE_WIDTH];
 
             //Fill the rest of the texture with shifted pixels based on depth from greyscale texture
             for (int x = WIDTH_OFFSET; x < GRAYSCALE_TEXTURE_WIDTH + WIDTH_OFFSET; x++)
@@ -74,6 +78,7 @@ namespace Apps.Autospectogram.Models
             //Create temporary GameObject with TMP
             var parent = new GameObject("TMPObject");
             var tmp = parent.AddComponent<TextMeshPro>();
+            tmp.fontStyle = FontStyles.Bold;
             tmp.font = font;
             tmp.fontSize = fontSize;
             tmp.text = input;
@@ -114,12 +119,12 @@ namespace Apps.Autospectogram.Models
         }
 
         /// <summary>
-        /// Created a random pattern of pixels for the autospectogram background.
+        /// Created a random pattern of pixels for the autostereogram background.
         /// </summary>
         /// <param name="width">Width of the pattern</param>
         /// <param name="height">Height of the pattern</param>
         /// <returns>Pixels with random colors</returns>
-        private static Color[] GenerateAutospectogramPattern(int width, int height)
+        private static Color[] GenerateAutostereogramPattern(int width, int height)
         {
             var patternPixels = new Color[width * height];
 
