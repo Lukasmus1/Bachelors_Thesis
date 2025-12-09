@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Apps.Autostereogram.Commons;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,7 +61,7 @@ namespace Apps.Autostereogram.Views
         {
             autostereogramMovingImageHolder.GetComponent<RectTransform>().anchoredPosition = new Vector2(movingImageSlider.value, autostereogramMovingImageHolder.GetComponent<RectTransform>().anchoredPosition.y);
             
-            CheckForOverlappingPixels();
+            CheckAndSetOverlappingPixels();
         }
 
         /// <summary>
@@ -75,18 +74,24 @@ namespace Apps.Autostereogram.Views
             movingImageSlider.value += left ? -2 : 2;
         }
 
-        private void CheckForOverlappingPixels()
+        /// <summary>
+        /// Checks for overlapping pixels between the autostereogram image and the moving image.
+        /// Sets the overlapping layer texture pixels accordingly.
+        /// </summary>
+        private void CheckAndSetOverlappingPixels()
         {
+            //The texture dimensions divided by 2 because the images are scaled by 2 in the UI
             int asgImageHeight = (int)_asgImageRectTransform.rect.height / 2;
             int asgImageWidth = (int)_asgImageRectTransform.rect.width / 2;
             int overlappingWidth = (int)_asgMovingImageRectTransform.anchoredPosition.x / 2;
 
             // Clear all pixels
-            for (int i = 0; i < _overlappingPixels.Length; i++)
+            for (var i = 0; i < _overlappingPixels.Length; i++)
             {
                 _overlappingPixels[i] = Color.clear;
             }
 
+            //If we don't have overlapping area, return
             if (overlappingWidth <= 0 || overlappingWidth > asgImageWidth)
             {
                 _overlappingLayerTexture.SetPixels(_overlappingPixels);
@@ -94,23 +99,22 @@ namespace Apps.Autostereogram.Views
                 return;
             }
 
-            for (int y = 0; y < asgImageHeight; y++)
+            //Check for overlapping pixels and set them to black in the overlapping layer texture
+            for (var y = 0; y < asgImageHeight; y++)
             {
-                for (int x = 0; x < overlappingWidth; x++)
+                for (int x = overlappingWidth; x < asgImageWidth; x++)
                 {
-                    var movingIdx = y * asgImageWidth + (asgImageWidth - overlappingWidth + x);
-
-                    var staticIdx = y * asgImageWidth + x;
-
-                    var overlappingIdx = y * asgImageWidth + x;
-
-                    if (CompareColor32(_asgImagePixels[movingIdx], _asgImagePixels[staticIdx]))
+                    int asgIndex = x + y * asgImageWidth;
+                    int movingIndex = (x - overlappingWidth) + y * asgImageWidth;
+                    
+                    if (CompareColor32(_asgImagePixels[asgIndex], _asgImagePixels[movingIndex]))
                     {
-                        _overlappingPixels[overlappingIdx] = Color.black;
+                        _overlappingPixels[movingIndex] = Color.black;
                     }
                 }
             }
 
+            //Apply the changes to the overlapping layer texture
             _overlappingLayerTexture.SetPixels(_overlappingPixels);
             _overlappingLayerTexture.Apply();
         }
