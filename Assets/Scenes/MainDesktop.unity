@@ -2505,6 +2505,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1508777947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5011647327304277561, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+  m_PrefabInstance: {fileID: 6788332412712292089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1510798435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1474053375335754062, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
@@ -2664,6 +2675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Apps.Autostereogram.Views.AutostereogramView
   autostereogramImageHolder: {fileID: 1271321449}
   autostereogramMovingImageHolder: {fileID: 215207059}
+  overlappingLayer: {fileID: 1508777947}
   movingImageSlider: {fileID: 524668887}
 --- !u!114 &1583493858
 MonoBehaviour:
@@ -4409,6 +4421,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1781763477}
     m_Modifications:
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1583493857}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveByOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Apps.Autostereogram.Views.AutostereogramView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293216317831528040, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1685492555157743653, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -4463,15 +4507,27 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 8ed47693fe515df41916bc2bb105c78c, type: 3}
     - target: {fileID: 2834385406148409590, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_Color.a
-      value: 0.78431374
+      value: 0.88235295
       objectReference: {fileID: 0}
-    - target: {fileID: 3173434888519683015, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
-      propertyPath: m_Value
+    - target: {fileID: 2834385406148409590, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834385406148409590, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834385406148409590, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3173434888519683015, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
-      propertyPath: m_WholeNumbers
+      propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173434888519683015, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3173434888519683015, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -4499,6 +4555,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3173434888519683015, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1583493857}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveByOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Apps.Autostereogram.Views.AutostereogramView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4534111339775275811, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
@@ -4605,6 +4689,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5011647327304277561, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912862494422662975, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 880
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912862494422662975, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912862494422662975, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912862494422662975, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6229923712422804691, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4682,7 +4786,8 @@ PrefabInstance:
       value: -40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5541396892721350128, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2073294505513378838, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
