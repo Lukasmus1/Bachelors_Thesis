@@ -23,6 +23,9 @@ public class ScriptReferenceLinker : MonoBehaviour
     //File viewer app
     public GameObject fileViewerApp;
     
+    //AutostereogramSolver app
+    public GameObject autostereoApp;
+    
     private void Awake()
     {
         //Chat terminal app
@@ -45,7 +48,8 @@ public class ScriptReferenceLinker : MonoBehaviour
             "ChatTerminal" => chatTerminalApp,
             "FileLoader" => fileLoaderApp,
             "FileViewer" => fileViewerApp,
-            _ => null
+            "AutostereogramSolver" => autostereoApp,
+            _ => throw new Exception("The app tag has not been found!")
         };
     }
 }

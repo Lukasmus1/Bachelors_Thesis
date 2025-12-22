@@ -194,10 +194,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 5
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -219,15 +219,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1306084721506574305, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1306084721506574305, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1306084721506574305, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: AutostereogramSolver
+      objectReference: {fileID: 0}
     - target: {fileID: 2532097449195691962, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
       propertyPath: m_Name
-      value: MenuItem (1)
+      value: OpenAutostereogram
       objectReference: {fileID: 0}
     - target: {fileID: 2809168702983317573, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
       propertyPath: m_text
@@ -316,29 +320,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2532097449195691962, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 208227419931123940}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
---- !u!1 &908928512054683365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2532097449195691962, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
-  m_PrefabInstance: {fileID: 3440460516886395231}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &208227419931123940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908928512054683365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b8e19a596748cdbc492c3cd4d95db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Desktop.Views.AppIconAction
-  appToOpen: {fileID: 0}
 --- !u!224 &5390879566759283988 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7308982637729444939, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
@@ -354,7 +337,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2532097449195691962, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
       propertyPath: m_Name
-      value: MenuItem
+      value: OpenFileViewer
       objectReference: {fileID: 0}
     - target: {fileID: 2809168702983317573, guid: 7522e4ab3c2547947bc5092cdee407a6, type: 3}
       propertyPath: m_text

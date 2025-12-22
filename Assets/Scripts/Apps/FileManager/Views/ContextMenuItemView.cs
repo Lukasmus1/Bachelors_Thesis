@@ -20,10 +20,17 @@ namespace Apps.FileManager.Views
         public void OpenApp(string appTag)
         {
             GameObject appToOpen = referenceLinker.GetApp(appTag);
+            if (appToOpen == null)
+            {
+                throw new NullReferenceException("The app tag has been found but is not set!");
+            }
             
             var appIconAction = GetComponent<AppIconAction>();
             appIconAction.appToOpen = appToOpen;
             appIconAction.PerformAction();
+            
+            //Immediately focus the app 
+            appIconAction.transform.SetAsLastSibling();
             
             //Close the context menu after opening the app
             transform.parent.parent.gameObject.SetActive(false);
