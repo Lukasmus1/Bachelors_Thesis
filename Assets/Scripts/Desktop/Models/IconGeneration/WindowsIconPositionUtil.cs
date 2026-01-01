@@ -225,10 +225,6 @@ namespace DesktopGeneration.Models.IconGeneration
                         iconPosition.X -= offset.X;
                         iconPosition.Y -= offset.Y;
                         
-                        //Normalize the position to the pre-set 2560x1440 resolution of the canvas
-                        iconPosition.X *= 2560 / Screen.width;
-                        iconPosition.Y *= 1440 / Screen.height;
-                        
                         //Adjust the position to be in the center of the icon
                         iconPosition.X += IconSize.x / 2;
                         iconPosition.Y += IconSize.y / 2;
@@ -438,7 +434,6 @@ namespace DesktopGeneration.Models.IconGeneration
             {
                 process.WaitForExit();
                 output = process.StandardOutput.ReadToEnd();
-                Debug.Log(output);
             }
 
             //Parsing the output into X and Y coordinates

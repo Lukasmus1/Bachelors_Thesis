@@ -9,5 +9,6 @@ namespace Apps.FileViewer.Models
         public string author;
         public string comments = UserMvc.Instance.UserController.GetStartDate().ToString("yyyy-MM-dd HH:mm:ss");
         public string createdDate;
+        public FileType intendedFileType;
     }
 }

@@ -4,16 +4,17 @@ namespace Story.Models.States
 {
     public static class StateFactory
     {
-        public static IState GetState(int stateEnum)
+        public static StateClass GetState(int stateEnum)
         {
             var state = (StatesEnum)stateEnum;
             
             return state switch
             {
-                StatesEnum.Start => new StartState(),
-                StatesEnum.MouseQuest => new MouseQuestState(),
-                StatesEnum.ThomasBare => new ThomasBareState(),
-                StatesEnum.Default => new DefaultState(),
+                StatesEnum.Start => new StartStateClass(),
+                StatesEnum.MouseQuest => new MouseQuestStateClass(),
+                StatesEnum.ThomasBare => new ThomasBareStateClass(),
+                StatesEnum.Default => new DefaultStateClass(),
+                StatesEnum.MysteriousFile => new MysteriousFileStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

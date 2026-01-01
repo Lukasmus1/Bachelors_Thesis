@@ -10,22 +10,17 @@ using Story.Views;
 namespace Story.Models.States
 {
     [Serializable]
-    public class DefaultState : IState
+    public class DefaultStateClass : StateClass
     {
-        public int State => (int)StatesEnum.Default;
-        public int NextState => (int)StatesEnum.Default;
-        
-        public void OnEnter()
+        public override int State { get; } = (int)StatesEnum.Default;
+        public override int NextState { get; } = (int)StatesEnum.Default;
+
+        public override void OnEnter()
         {
             throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
         }
 
-        public void OnExit()
-        {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
-        }
-
-        public void ChangeState()
+        public override void OnExit()
         {
             throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
         }

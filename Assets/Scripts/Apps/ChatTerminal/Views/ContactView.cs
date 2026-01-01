@@ -44,6 +44,8 @@ namespace Apps.ChatTerminal.Views
             ChatTerminalMvc.Instance.MessageSystemController.PrepareMessageView(); //Must be called after activating the messages window
             
             ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
+            
+            ChatTerminalMvc.Instance.MessageSystemController.openedContact?.Invoke(_profileModel.UserID);
         }
 
         /// <summary>

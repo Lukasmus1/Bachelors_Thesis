@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Desktop.Models;
-using Desktop.Models.IconGeneration;
+using DesktopGeneration.Models.IconGeneration;
 using Microsoft.Win32;
 using UnityEngine;
 
-namespace DesktopGeneration.Models.IconGeneration
+namespace Desktop.Models.IconGeneration
 {
     public class IconGeneratorUser : IconGenerator
     {
@@ -53,7 +52,6 @@ namespace DesktopGeneration.Models.IconGeneration
 
             //Getting the icon positions
             List<WindowsIconPositionUtil.DesktopIcon> iconPositions = WindowsIconPositionUtil.GetDesktopIconPositions();
-            iconPositions.ForEach(s => Debug.Log(s));
             
             for (int iconIndex = 0; iconIndex < allFiles.Count; iconIndex++)
             {

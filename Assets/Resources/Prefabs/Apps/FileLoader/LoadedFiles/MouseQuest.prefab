@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7893032843637051076}
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
-  - component: {fileID: 6772484532663267758}
   - component: {fileID: 3122839135334631518}
   m_Layer: 5
   m_Name: MouseQuest
@@ -67,18 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Models.FileModel
   fileName: MouseQuest
---- !u!114 &6772484532663267758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341737976566326313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1505eeda01bb8849a115f2b4fa686e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &3122839135334631518
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,12 +11,12 @@ using Story.Commons;
 namespace Story.Models.States
 {
     [Serializable]
-    public class StartState : IState
+    public class StartStateClass : StateClass
     {
-        public int State => (int)StatesEnum.Start;
-        public int NextState => (int)StatesEnum.MouseQuest;
+        public override int State => (int)StatesEnum.Start;
+        public override int NextState => (int)StatesEnum.MouseQuest;
         
-        public void OnEnter()
+        public override void OnEnter()
         {
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 0);
@@ -28,14 +28,9 @@ namespace Story.Models.States
             FileViewerMvc.Instance.FileLoaderController.fileOpened += CheckForStateChange;
         }
 
-        public void OnExit()
+        public override void OnExit()
         {
             FileViewerMvc.Instance.FileLoaderController.fileOpened -= CheckForStateChange;
-        }
-        
-        public void ChangeState()
-        {
-            StoryMvc.Instance.StoryController.CurrentState = StateFactory.GetState(NextState);
         }
 
         private void CheckForStateChange(string appName)

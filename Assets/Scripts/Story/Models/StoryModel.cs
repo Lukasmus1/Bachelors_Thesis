@@ -6,25 +6,25 @@ namespace Story.Models
     [Serializable]
     public class StoryModel
     {
-        private IState _currentState;
-        public IState CurrentState
+        private StateClass currentStateClass;
+        public StateClass CurrentStateClass
         {
-            get => _currentState;
+            get => currentStateClass;
             set
             {
-                if (_currentState != value)
+                if (currentStateClass != value)
                 {
-                    _currentState?.OnExit();
+                    currentStateClass?.OnExit();
                     value.OnEnter();
                     
                 }
-                _currentState = value;
+                currentStateClass = value;
             }
         }
         
         public void Init()
         {
-            CurrentState = new StartState();
+            CurrentStateClass = new StartStateClass();
         }
     }
 }

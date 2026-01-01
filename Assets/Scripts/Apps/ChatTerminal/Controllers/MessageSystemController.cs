@@ -6,6 +6,8 @@ namespace Apps.ChatTerminal.Controllers
 {
     public class MessageSystemController
     {
+        public Action<string> openedContact;
+        
         private MessageSystemView _messageSystemView;
         private readonly MessageSystemModel _messageSystemModel = new();
         

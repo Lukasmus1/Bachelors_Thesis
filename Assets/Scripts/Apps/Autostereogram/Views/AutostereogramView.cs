@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Apps.Autostereogram.Commons;
+using Apps.FileViewer.Commons;
+using Apps.FileViewer.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +31,17 @@ namespace Apps.Autostereogram.Views
 
         private void Awake()
         {
+            //Set the autostereogram image to the opened file's image
+            GameObject openedFile = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
+            Sprite imageToSet = openedFile.GetComponentInChildren<Image>().sprite;
+            autostereogramImageHolder.GetComponent<Image>().sprite = imageToSet;
+            autostereogramMovingImageHolder.GetComponent<Image>().sprite = imageToSet;
+
+            if (openedFile.GetComponent<FileProps>().intendedFileType != FileType.Autostereogram)
+            {
+                return;
+            }
+            
             //Get RectTransforms for easier manipulation
             _asgImageRectTransform = autostereogramImageHolder.GetComponent<RectTransform>();
             _asgMovingImageRectTransform = autostereogramMovingImageHolder.GetComponent<RectTransform>();
@@ -49,9 +60,9 @@ namespace Apps.Autostereogram.Views
             movingImageSlider.minValue = 0;
             
             //Set the slider initial value
-            movingImageSlider.value = _asgImageRectTransform.position.x;
-            
-            File.WriteAllBytes(Application.persistentDataPath + "/auto.png", AutostereogramMvc.Instance.AutostereogramController.GenerateAutospectogram("755463").EncodeToPNG());
+            movingImageSlider.value = movingImageSlider.maxValue;
+
+            //File.WriteAllBytes(Application.persistentDataPath + "/auto.png", AutostereogramMvc.Instance.AutostereogramController.GenerateAutospectogram("755463").EncodeToPNG());
         }
         
         /// <summary>

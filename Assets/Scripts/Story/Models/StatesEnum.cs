@@ -7,6 +7,7 @@ namespace Story.Models
         Start,
         MouseQuest,
         ThomasBare,
+        MysteriousFile,
         Default
     }
 }

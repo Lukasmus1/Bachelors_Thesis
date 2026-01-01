@@ -9,12 +9,12 @@ using Story.Commons;
 namespace Story.Models.States
 {
     [Serializable]
-    public class MouseQuestState : IState
+    public class MouseQuestStateClass : StateClass
     {
-        public int State => (int)StatesEnum.MouseQuest;
-        public int NextState => (int)StatesEnum.ThomasBare;
+        public override int State => (int)StatesEnum.MouseQuest;
+        public override int NextState => (int)StatesEnum.ThomasBare;
         
-        public void OnEnter()
+        public override void OnEnter()
         {
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("headOfDpt");
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 0);
@@ -26,14 +26,9 @@ namespace Story.Models.States
             FileViewerMvc.Instance.FileLoaderController.metadataOpened += CheckForMetadataOpened;
         }
 
-        public void OnExit()
+        public override void OnExit()
         {
             FileViewerMvc.Instance.FileLoaderController.metadataOpened -= CheckForMetadataOpened;
-        }
-        
-        public void ChangeState()
-        {
-            StoryMvc.Instance.StoryController.CurrentState = StateFactory.GetState(NextState);
         }
 
         private void CheckForMetadataOpened(string fileName)

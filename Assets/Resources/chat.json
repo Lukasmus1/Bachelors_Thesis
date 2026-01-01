@@ -61,7 +61,14 @@
           {"Sender": "thomasBare", "Text": "I don't know how you got that email, but yes, I did."},
           {"Sender": "thomasBare", "Text": "I have not responded to that offer though."},
           {"Sender": "thomasBare", "Text": "Actually I wrote to the actual devs asking them about this and they confirmed that it was a scam."},
-          {"Sender": "Player", "Text": "TBDTBDTBDTBDTBD"}
+          {"Sender": "Player", "Text": "Interesting, and did they say anything else that might be useful?"},
+          {"Sender": "thomasBare", "Text": "Not really, they just told me to ignore and delete such emails in the future."},
+          {"Sender": "thomasBare", "Text": "But alongside that email, I also recieved another file."},
+          {"Sender": "thomasBare", "Text": "It seems to just be a random noise. I can send it to you if you want."},
+          {"Sender": "Player", "Text": "Yes, please do. It might be useful."},
+          {"Sender": "thomasBare", "Text": "Alright, sending it now."},
+          {"Sender": "Player", "Text": "Thank you for your cooperation."},
+          {"Sender": "thomasBare", "Text": "You're welcome. Have a good one."}
         ]
       ]
     }

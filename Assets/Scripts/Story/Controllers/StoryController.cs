@@ -7,10 +7,10 @@ namespace Story.Controllers
     {
         public StoryModel storyModel = new();
 
-        public IState CurrentState
+        public StateClass CurrentStateClass
         {
-            get => storyModel.CurrentState;
-            set => storyModel.CurrentState = value;
+            get => storyModel.CurrentStateClass;
+            set => storyModel.CurrentStateClass = value;
         }
 
         public void InitNew()

@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 7893032843637051076}
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
-  - component: {fileID: 6772484532663267758}
   - component: {fileID: 3122839135334631518}
   m_Layer: 5
-  m_Name: Autostereogram
+  m_Name: CypherCode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,19 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f795997a9f47b3b16a2bf93a0e39bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Models.FileModel
-  fileName: AutostereogramTest
---- !u!114 &6772484532663267758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341737976566326313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1505eeda01bb8849a115f2b4fa686e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
+  fileName: CypherCode
 --- !u!114 &3122839135334631518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,10 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5957c934414bc3836e6bd5bd5dc5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
-  title: Autostereogram
-  author: 
-  comments: 
+  title: "f\u0336\u0357\u0302\u0311\u0343\u0340\u0344\u0344\u034E\u0322\u0326\u0345\u031C\u032C\u0331\u031F\u0316\u0328\u0326\u032Ed\u0338\u030F\u0312\u0343\u0308\u034B\u0313\u030F\u0360\u030E\u0353\u0316\u0339\u0359\u0318\u033C\u0333\u0333\u0339\u0333\u032B\u0356\u0316\u032Fs\u0336\u031B\u033E\u0315\u031A\u0308\u0351\u0314\u0313\u0357\u030B\u035D\u0339\u031C\u032F\u0323\u0347g\u0334\u0346\u0308\u0343\u0346\u030E\u0310\u0303\u0315\u0314\u033F\u035B\u034A\u0332\u0322\u033C\u031F\u0359\u032F\u0332\u0355\u0322\u032B"
+  author: "f\u0337\u030B\u033F\u030A\u0312\u034C\u0311\u035D\u034B\u031C\u0329\u0349\u0356\u032A\u0322\u0339\u0359\u0328d\u0336\u0342\u034A\u0302\u0314\u0341\u0310\u032C\u0322\u0353\u0339\u0331s\u0336\u0304\u0344\u0304\u030D\u0330\u0330\u0327\u031Fg\u0335\u0310\u0343\u030E\u0342\u0318\u0353\u0328\u0331\u035C\u0325s\u0335\u0314\u030A\u0315\u0351\u030D\u033E\u033C\u0345\u031F\u0317a\u0334\u031A\u035B\u0300\u030F\u0308\u0344\u033F\u033D\u0348\u0345\u035C\u0348\u0318\u0325\u033Cd\u0337\u0344\u0333\u0325"
+  comments: "s\u0337\u035D\u0309\u0310\u0307\u0304\u030D\u033E\u035D\u034E\u0331\u0330\u0327\u0339\u0330\u0319r\u0334\u0352\u0321e\u0335\u0358\u0307\u0352\u0357\u0359\u033B\u0323\u0332\u0359\u031Ew\u0336\u0300\u0312\u0305\u033F\u033C\u035A\u032D\u0345\u0325\u0359\u0331\u0354"
   createdDate: 
+  intendedFileType: 1
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0e39c511eef6eed4b929f0620bbba18d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6586e9136d417c04abd7c07266ae160d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
