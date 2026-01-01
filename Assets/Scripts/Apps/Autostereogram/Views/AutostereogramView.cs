@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Apps.Autostereogram.Commons;
 using UnityEngine;
@@ -85,11 +86,7 @@ namespace Apps.Autostereogram.Views
             int asgImageWidth = (int)_asgImageRectTransform.rect.width / 2;
             int overlappingWidth = (int)_asgMovingImageRectTransform.anchoredPosition.x / 2;
 
-            // Clear all pixels
-            for (var i = 0; i < _overlappingPixels.Length; i++)
-            {
-                _overlappingPixels[i] = Color.clear;
-            }
+            Array.Clear(_overlappingPixels, 0 , _overlappingPixels.Length);
 
             //If we don't have overlapping area, return
             if (overlappingWidth <= 0 || overlappingWidth > asgImageWidth)
@@ -98,7 +95,7 @@ namespace Apps.Autostereogram.Views
                 _overlappingLayerTexture.Apply();
                 return;
             }
-
+            
             //Check for overlapping pixels and set them to black in the overlapping layer texture
             for (var y = 0; y < asgImageHeight; y++)
             {
