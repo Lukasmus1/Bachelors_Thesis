@@ -40,6 +40,13 @@
           {"Sender": "headOfDpt", "Text": "the name could and likely is fake"},
           {"Sender": "headOfDpt", "Text": "but i can add the email to your contacts. try to see if hes of any help"},
           {"Sender": "headOfDpt", "Text": "good job"}
+        ],
+        [
+          {"Sender": "Player", "Text": "I managed to contact Thomas Bare and in response he sent me a file that seems to be just random noise."},
+          {"Sender": "Player", "Text": "Do you think it could be useful?"},
+          {"Sender": "headOfDpt", "Text": "hmm... hard to say"},
+          {"Sender": "headOfDpt", "Text": "ill send it to our specialists. they might be able to extract something from it"},
+          {"Sender": "headOfDpt", "Text": "ill let you know when i hear back from them"}
         ]
       ]
     },

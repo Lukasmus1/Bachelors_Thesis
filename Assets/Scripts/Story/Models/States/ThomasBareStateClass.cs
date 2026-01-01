@@ -14,6 +14,8 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
+            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 1);
+            
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("thomasBare");
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("thomasBare", 0);
             

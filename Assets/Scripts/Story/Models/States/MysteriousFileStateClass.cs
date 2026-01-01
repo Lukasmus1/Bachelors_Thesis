@@ -1,8 +1,6 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
-using Desktop.Notification.Commons;
-using Desktop.Notification.Models;
 
 namespace Story.Models.States
 {
@@ -15,6 +13,8 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("CypherCode", true);
+            
+            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 2);
         }
 
         public override void OnExit()
