@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Apps.Autostereogram.Commons;
+using Apps.VigenereCipher.Commons;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace User.Models
 {
@@ -19,7 +18,7 @@ namespace User.Models
 
             ProceduralData = new Dictionary<ProceduralDataType, string>
             {
-                { ProceduralDataType.VignereCode, ProceduralDataGeneration.GenerateVigenereCode(5) },
+                { ProceduralDataType.VignereCode, VigenereMvc.Instance.VigenereController.GenerateVigenereKey(5) },
             };
         }
     }
