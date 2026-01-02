@@ -88,7 +88,7 @@ namespace Apps.Autostereogram.Models
             tmp.ForceMeshUpdate();
 
             //Render texture
-            var rt = new RenderTexture(GRAYSCALE_TEXTURE_WIDTH, GRAYSCALE_TEXTURE_HEIGHT, 0);
+            var rt = new RenderTexture(GRAYSCALE_TEXTURE_WIDTH, GRAYSCALE_TEXTURE_HEIGHT, 24);
             var tempCam = new GameObject("TempCam").AddComponent<Camera>();
             tempCam.clearFlags = CameraClearFlags.SolidColor;
             tempCam.backgroundColor = Color.black;

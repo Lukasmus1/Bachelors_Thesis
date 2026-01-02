@@ -5671,6 +5671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d20a6780d2e44fab844179fd95684f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::User.Views.UserView
+  autostereoFile: {fileID: 5341737976566326313, guid: c941482413cc9cc479f5d4543ece4048, type: 3}
 --- !u!4 &1342669616
 Transform:
   m_ObjectHideFlags: 0

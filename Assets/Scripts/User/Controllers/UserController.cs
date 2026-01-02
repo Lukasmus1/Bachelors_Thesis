@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using User.Models;
 
 namespace User.Controllers
@@ -11,6 +12,11 @@ namespace User.Controllers
         {
             get => _userModel.Username;
             set => _userModel.Username = value;
+        }
+        
+        public string ProceduralData(ProceduralDataType dataType)
+        {
+            return _userModel.ProceduralData[dataType];
         }
         
         public DateTime GetStartDate()

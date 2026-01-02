@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Apps.Autostereogram.Commons;
 using UnityEngine;
+using UnityEngine.UI;
+using User.Commons;
+using User.Models;
 
 namespace Apps.FileManager.Models
 {
@@ -18,6 +22,18 @@ namespace Apps.FileManager.Models
             
             //Set all loaded files to not loaded at the start
             _loadedFiles.ForEach(x => x.GetComponent<FileModel>().IsLoaded = false);
+
+            //Proceduraly generate the autostereogram file content
+            GameObject autostereoFile = _loadedFiles.FirstOrDefault(x => x.name == "CypherCode");
+            if (autostereoFile != null)
+            {
+                autostereoFile.GetComponentInChildren<Image>().sprite = 
+                    AutostereogramMvc.Instance.AutostereogramController.GenerateAutostereogram(UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VignereCode));
+            }
+            else
+            {
+                throw new Exception("Trying to access CypherCode file, but it does not exist. Possible rename?");
+            }
             
             if (_loadedFiles.Count == 0)
             {

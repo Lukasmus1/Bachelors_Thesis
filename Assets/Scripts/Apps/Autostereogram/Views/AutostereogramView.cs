@@ -61,8 +61,6 @@ namespace Apps.Autostereogram.Views
             
             //Set the slider initial value
             movingImageSlider.value = movingImageSlider.maxValue;
-
-            //File.WriteAllBytes(Application.persistentDataPath + "/auto.png", AutostereogramMvc.Instance.AutostereogramController.GenerateAutospectogram("755463").EncodeToPNG());
         }
         
         /// <summary>
