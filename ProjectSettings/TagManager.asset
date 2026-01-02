@@ -11,6 +11,7 @@ TagManager:
   - ContextMenu
   - ScriptHolder
   - AutostereogramSolver
+  - CipherSolver
   layers:
   - Default
   - TransparentFX

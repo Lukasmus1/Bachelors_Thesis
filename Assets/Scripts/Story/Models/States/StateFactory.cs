@@ -14,7 +14,7 @@ namespace Story.Models.States
                 StatesEnum.MouseQuest => new MouseQuestStateClass(),
                 StatesEnum.ThomasBare => new ThomasBareStateClass(),
                 StatesEnum.Default => new DefaultStateClass(),
-                StatesEnum.MysteriousFile => new MysteriousFileStateClass(),
+                StatesEnum.MysteriousFile => new AutostereogramState(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

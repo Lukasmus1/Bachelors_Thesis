@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Apps.Autostereogram.Commons;
+using Apps.VigenereCipher.Commons;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using User.Commons;
@@ -23,7 +25,21 @@ namespace Apps.FileManager.Models
             //Set all loaded files to not loaded at the start
             _loadedFiles.ForEach(x => x.GetComponent<FileModel>().IsLoaded = false);
 
-            //Proceduraly generate the autostereogram file content
+            ProceduralyGenerateFileContent();
+            
+            if (_loadedFiles.Count == 0)
+            {
+                throw new Exception("Prefabs/Apps/FileLoader/LoadedFiles Possible rename?");
+            }
+        }
+        
+        /// <summary>
+        /// Proceduraly generates the content of files that require it.
+        /// </summary>
+        /// <exception cref="Exception">Gets thrown when specific file is not found</exception>
+        private void ProceduralyGenerateFileContent()
+        {
+            //Autostereogram file content
             GameObject autostereoFile = _loadedFiles.FirstOrDefault(x => x.name == "CypherCode");
             if (autostereoFile != null)
             {
@@ -35,9 +51,16 @@ namespace Apps.FileManager.Models
                 throw new Exception("Trying to access CypherCode file, but it does not exist. Possible rename?");
             }
             
-            if (_loadedFiles.Count == 0)
+            //Vigenere cipher file content
+            GameObject vigenereFile = _loadedFiles.FirstOrDefault(x => x.name == "MysteriousFile");
+            if (vigenereFile != null)
             {
-                throw new Exception("Prefabs/Apps/FileLoader/LoadedFiles Possible rename?");
+                var text = vigenereFile.GetComponentInChildren<TMP_Text>();
+                text.text = VigenereMvc.Instance.VigenereController.EncryptText(text.text, UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VignereCode));
+            }
+            else
+            {
+                throw new Exception("Trying to access MysteriousFile file, but it does not exist. Possible rename?");
             }
         }
         

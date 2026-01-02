@@ -36,7 +36,7 @@
         ],
         [
           {"Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
-          {"Sender": "Player", "Text": "I have also managed to find the name of the scammer. \"It's Albert Green\""},
+          {"Sender": "Player", "Text": "I have also managed to find the name of the scammer. It's \"Albert Green\""},
           {"Sender": "headOfDpt", "Text": "the name could and likely is fake"},
           {"Sender": "headOfDpt", "Text": "but i can add the email to your contacts. try to see if hes of any help"},
           {"Sender": "headOfDpt", "Text": "good job"}

@@ -5,7 +5,7 @@ namespace Apps.VigenereCipher.Models
 {
     public class VigenereModel
     {
-        private const string CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"=0123456789";
+        private const string CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"-=0123456789";
 
         /// <summary>
         /// Creates a random key for the Vigenere cipher
