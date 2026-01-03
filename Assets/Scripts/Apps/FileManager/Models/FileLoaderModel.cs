@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using User.Commons;
 using User.Models;
+using Object = UnityEngine.Object;
 
 namespace Apps.FileManager.Models
 {
@@ -25,7 +26,7 @@ namespace Apps.FileManager.Models
             //Set all loaded files to not loaded at the start
             _loadedFiles.ForEach(x => x.GetComponent<FileModel>().IsLoaded = false);
 
-            ProceduralyGenerateFileContent();
+            ProcedurallyGenerateFileContent();
             
             if (_loadedFiles.Count == 0)
             {
@@ -34,10 +35,10 @@ namespace Apps.FileManager.Models
         }
         
         /// <summary>
-        /// Proceduraly generates the content of files that require it.
+        /// Procedurally generates the content of files that require it.
         /// </summary>
         /// <exception cref="Exception">Gets thrown when specific file is not found</exception>
-        private void ProceduralyGenerateFileContent()
+        private void ProcedurallyGenerateFileContent()
         {
             //Autostereogram file content
             GameObject autostereoFile = _loadedFiles.FirstOrDefault(x => x.name == "CypherCode");

@@ -23,6 +23,11 @@ namespace Apps.VigenereCipher.Views
 
             _instantiatedFileReference = Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, fileHolder);
             _fileText = _instantiatedFileReference.GetComponentInChildren<TMP_Text>();
+            if (_fileText == null)
+            {
+                Debug.LogWarning("No TMP_Text component found in the instantiated file reference. Need to create funcionality to prevent this from happening");
+                return;
+            }
             _fileTextCopy = _fileText.text;
         }
 
