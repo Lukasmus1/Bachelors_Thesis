@@ -29,7 +29,22 @@ namespace Desktop.Models
             texture.LoadImage(wallpaper);
             return texture;
         }
-        public string colorScheme;
+        
+        private string colorScheme;
+        public string GetColorScheme()
+        {
+            return colorScheme;
+        }
+        public void SetColorScheme(string color)
+        {
+            if (!color.StartsWith("#"))
+            {
+                color = "#" + color;
+            }
+            
+            colorScheme = color;
+        }
+        
         public List<IconClass> Icons { get; set; } = new();
         public Dictionary<string, bool> flags = new();
         

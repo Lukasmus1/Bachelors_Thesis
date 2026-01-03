@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Apps.FileViewer.Views
+namespace Apps.FileScripts
 {
     public class GuideTextInteractionHandler : MonoBehaviour, IPointerClickHandler
     {

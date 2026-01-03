@@ -84,7 +84,7 @@ namespace Desktop.Views
         private void RefreshContext()
         {
             SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper());
-            SetColorScheme(ColorUtility.TryParseHtmlString("#" + DesktopModel.Instance.colorScheme, out Color color) ? color : Color.darkBlue);
+            SetColorScheme(ColorUtility.TryParseHtmlString(DesktopModel.Instance.GetColorScheme(), out Color color) ? color : Color.darkBlue);
             SetIcons(DesktopModel.Instance.Icons);
         }
         
@@ -125,7 +125,7 @@ namespace Desktop.Views
             clr.a = 0.998f;
             
             //Saving the color scheme in the desktop model
-            DesktopModel.Instance.colorScheme = ColorUtility.ToHtmlStringRGBA(clr);
+            DesktopModel.Instance.SetColorScheme(ColorUtility.ToHtmlStringRGBA(clr));
             
             //Setting the color scheme
             bottomBarBackground.color = clr;

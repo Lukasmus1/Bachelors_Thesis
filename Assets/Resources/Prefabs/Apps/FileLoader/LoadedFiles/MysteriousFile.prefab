@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
   - component: {fileID: 3122839135334631518}
+  - component: {fileID: 7072058314644945768}
   m_Layer: 5
   m_Name: MysteriousFile
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MonoBehaviour:
   comments: "s\u0337\u035D\u0309\u0310\u0307\u0304\u030D\u033E\u035D\u034E\u0331\u0330\u0327\u0339\u0330\u0319r\u0334\u0352\u0321e\u0335\u0358\u0307\u0352\u0357\u0359\u033B\u0323\u0332\u0359\u031Ew\u0336\u0300\u0312\u0305\u033F\u033C\u035A\u032D\u0345\u0325\u0359\u0331\u0354"
   createdDate: 
   intendedFileType: 0
+--- !u!114 &7072058314644945768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341737976566326313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdf44ff84014226a3cc244a63e79d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.FileScripts.MysteriousFileInteractionHandler
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +255,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'The head of department asked me to send you this file.
 
-    <link=\"Click\"><u>He
+    <link=\"OnClick\"><u>He
     said you should click me!</u></link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

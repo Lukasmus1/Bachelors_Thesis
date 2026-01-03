@@ -10,10 +10,12 @@ namespace Desktop.Models
         /// <returns>Random color scheme</returns>
         public Color GenerateRandomColorScheme()
         {
-            //Generating random color
-            Color clr = Random.ColorHSV();
+            //Generating a random hue with full brightness and low saturation
+            float h = Random.value;
+            float v = 1;
+            float s = 0.3f;
             
-            return clr;
+            return Color.HSVToRGB(h, s, v);
         }
 
         /// <summary>
