@@ -22,20 +22,10 @@ namespace Apps.FileViewer.Views
         
         //Metadata
         [SerializeField] private GameObject metadataPopup;
-
-        //FileLoader 
-        [SerializeField] private GameObject fileLoader;
         
         private void OnEnable()
         {
-            //Close File Loader if open
-            //The check might be redundant, but better safe than sorry
-            if (fileLoader.activeSelf)
-            {
-                fileLoader.SetActive(false);
-            }
-            
-            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(fileLoader.gameObject.tag, true);
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             
             GameObject fileToOpen = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
             FileViewerMvc.Instance.FileLoaderController.fileOpened?.Invoke(fileToOpen.GetComponent<FileModel>().FileName);
@@ -43,11 +33,14 @@ namespace Apps.FileViewer.Views
             _instantiatedFileReference = Instantiate(fileToOpen, fileHolder);
             _fileHolderBackup = fileHolder;
             zoomLevelText.text = "100%";
+            
+            //Bring to front
+            transform.SetAsLastSibling();
         }
 
         private void OnDisable()
         {
-            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(fileLoader.gameObject.tag, false);
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
             
             Destroy(_instantiatedFileReference);
             fileHolder = _fileHolderBackup;

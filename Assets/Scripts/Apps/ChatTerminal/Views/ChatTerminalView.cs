@@ -61,6 +61,9 @@ namespace Apps.ChatTerminal.Views
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            
+            //Bring to front
+            transform.SetAsLastSibling();
         }
         
         private void OnDisable()

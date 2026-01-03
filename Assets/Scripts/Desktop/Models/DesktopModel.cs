@@ -33,6 +33,11 @@ namespace Desktop.Models
         private string colorScheme;
         public string GetColorScheme()
         {
+            if (string.IsNullOrEmpty(colorScheme))
+            {
+                //Random default color
+                colorScheme = "#E7B2FF";
+            }
             return colorScheme;
         }
         public void SetColorScheme(string color)

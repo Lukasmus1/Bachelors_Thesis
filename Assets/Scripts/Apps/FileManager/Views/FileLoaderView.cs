@@ -23,6 +23,9 @@ namespace Apps.FileManager.Views
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             UpdateLoadedFiles();
+            
+            //Bring to front
+            transform.SetAsLastSibling();
         }
 
         private void OnDisable()

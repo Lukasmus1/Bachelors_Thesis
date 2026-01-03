@@ -84,7 +84,8 @@ namespace Desktop.Views
         private void RefreshContext()
         {
             SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper());
-            SetColorScheme(ColorUtility.TryParseHtmlString(DesktopModel.Instance.GetColorScheme(), out Color color) ? color : Color.darkBlue);
+            //Bright red as a color for error indication
+            SetColorScheme(ColorUtility.TryParseHtmlString(DesktopModel.Instance.GetColorScheme(), out Color color) ? color : Color.red);
             SetIcons(DesktopModel.Instance.Icons);
         }
         

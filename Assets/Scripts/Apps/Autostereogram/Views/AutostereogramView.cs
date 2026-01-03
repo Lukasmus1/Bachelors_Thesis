@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Apps.FileViewer.Commons;
 using Apps.FileViewer.Models;
+using Desktop.Commons;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,7 +63,20 @@ namespace Apps.Autostereogram.Views
             //Set the slider initial value
             movingImageSlider.value = movingImageSlider.maxValue;
         }
-        
+
+        private void OnEnable()
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            
+            //Bring to front
+            transform.SetAsLastSibling();
+        }
+
+        private void OnDisable()
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+        }
+
         /// <summary>
         /// Method to be called when the moving image slider value is changed.
         /// Moves the autostereogram moving image and checks for overlapping pixels.
