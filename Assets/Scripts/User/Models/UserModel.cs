@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Apps.VigenereCipher.Commons;
-using Desktop.Commons;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace User.Models

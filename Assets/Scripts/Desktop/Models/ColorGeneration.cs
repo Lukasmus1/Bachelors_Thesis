@@ -12,8 +12,8 @@ namespace Desktop.Models
         {
             //Generating a random hue with full brightness and low saturation
             float h = Random.value;
+            float s = Random.value;
             float v = 1;
-            float s = 0.3f;
             
             return Color.HSVToRGB(h, s, v);
         }

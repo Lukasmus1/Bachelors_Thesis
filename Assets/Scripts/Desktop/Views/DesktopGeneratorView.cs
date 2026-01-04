@@ -42,6 +42,11 @@ namespace Desktop.Views
 
         private void Awake()
         {
+            if (!Bootstrapper.LoadedNewGame)
+            {
+                return;
+            }
+            
             GenerateRandomDesktop();
         }
 
