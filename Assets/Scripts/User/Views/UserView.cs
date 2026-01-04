@@ -7,7 +7,10 @@ namespace User.Views
     {
         private void Awake()
         {
-            UserMvc.Instance.UserController.InitUser();
+            if (Bootstrapper.LoadedNewGame)
+            {
+                UserMvc.Instance.UserController.InitUser();   
+            }
         }
     }
 }

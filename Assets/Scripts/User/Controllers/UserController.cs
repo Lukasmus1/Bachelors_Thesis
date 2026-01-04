@@ -6,27 +6,27 @@ namespace User.Controllers
 {
     public class UserController
     {
-        private readonly UserModel _userModel = new();
+        public UserModel userModel = new();
         
         public string Username
         {
-            get => _userModel.Username;
-            set => _userModel.Username = value;
+            get => userModel.Username;
+            set => userModel.Username = value;
         }
         
         public string ProceduralData(ProceduralDataType dataType)
         {
-            return _userModel.ProceduralData[dataType];
+            return userModel.ProceduralData.Find(data => data.dataType == dataType)?.dataValue;
         }
         
         public DateTime GetStartDate()
         {
-            return _userModel.StartDate;
+                return userModel.StartDate;
         }
         
         public void InitUser()
         {
-            _userModel.InitUser();
+            userModel.InitUser();
         }
     }
 }

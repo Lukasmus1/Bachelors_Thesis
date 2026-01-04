@@ -7,6 +7,8 @@ using Desktop.Controllers;
 using Desktop.Models;
 using Story.Commons;
 using Story.Models;
+using User.Commons;
+using User.Models;
 
 namespace Saving.Models
 {
@@ -16,7 +18,8 @@ namespace Saving.Models
         public DesktopModel desktop;
         public StoryModel storyModel;
         public ChatTerminalModel chatTerminalModel;
-        public List<string> loadedFiles = FileLoaderMvc.Instance.FileLoaderController.LoadedFileNames;
+        public List<string> loadedFiles;
+        public UserModel userModel;
         
         
         public void LoadDataFromModel(SaveModel saveModel)
@@ -34,6 +37,9 @@ namespace Saving.Models
             
             loadedFiles = saveModel.loadedFiles;
             FileLoaderMvc.Instance.FileLoaderController.LoadFilesFromContext(loadedFiles);
+            
+            userModel = saveModel.userModel;
+            UserMvc.Instance.UserController.userModel = userModel;
         }
     }
 }

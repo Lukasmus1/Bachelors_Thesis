@@ -10,7 +10,7 @@ namespace Desktop.Models
         /// <returns>Random color scheme</returns>
         public Color GenerateRandomColorScheme()
         {
-            //Generating a random hue with full brightness and low saturation
+            //Generating a random hue and random saturation with full brightness
             float h = Random.value;
             float s = Random.value;
             float v = 1;

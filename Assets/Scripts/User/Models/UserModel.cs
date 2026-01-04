@@ -5,21 +5,35 @@ using UnityEngine;
 
 namespace User.Models
 {
+    [Serializable]
     public class UserModel
     {
         public string Username { get; set; }
-        public Texture2D ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
         public DateTime StartDate { get; set; }
-        public Dictionary<ProceduralDataType, string> ProceduralData { get; set; }
+        public List<ProceduralDataEntry> ProceduralData { get; set; }
         
         public void InitUser()
         {
             StartDate = DateTime.Now;
 
-            ProceduralData = new Dictionary<ProceduralDataType, string>
+            ProceduralData = new List<ProceduralDataEntry>
             {
-                { ProceduralDataType.VignereCode, VigenereMvc.Instance.VigenereController.GenerateVigenereKey(5) },
+                new(ProceduralDataType.VignereCode, VigenereMvc.Instance.VigenereController.GenerateVigenereKey(5)),
             };
+        }
+    }
+    
+    [Serializable]
+    public class ProceduralDataEntry
+    {
+        public ProceduralDataType dataType;
+        public string dataValue;
+        
+        public ProceduralDataEntry(ProceduralDataType type, string value)
+        {
+            dataType = type;
+            dataValue = value;
         }
     }
 }

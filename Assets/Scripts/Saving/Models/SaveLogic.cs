@@ -2,9 +2,11 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Apps.ChatTerminal.Commons;
+using Apps.FileManager.Commons;
 using Desktop.Models;
 using Story.Commons;
 using UnityEngine;
+using User.Commons;
 
 namespace Saving.Models
 {
@@ -19,6 +21,8 @@ namespace Saving.Models
             _model.desktop = DesktopModel.Instance;
             _model.storyModel = StoryMvc.Instance.StoryController.storyModel;
             _model.chatTerminalModel = ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel;
+            _model.loadedFiles = FileLoaderMvc.Instance.FileLoaderController.LoadedFileNames;
+            _model.userModel = UserMvc.Instance.UserController.userModel;
         }
         
         public void SaveGame()
