@@ -16,7 +16,6 @@ namespace Story.Models
                 {
                     currentStateClass?.OnExit();
                     value.OnEnter();
-                    
                 }
                 currentStateClass = value;
             }
@@ -25,6 +24,11 @@ namespace Story.Models
         public void Init()
         {
             CurrentStateClass = new StartStateClass();
+        }
+
+        public void LoadFromState()
+        {
+            currentStateClass?.LoadFromState();
         }
     }
 }

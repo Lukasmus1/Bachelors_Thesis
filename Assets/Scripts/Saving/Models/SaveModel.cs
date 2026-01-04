@@ -27,6 +27,7 @@ namespace Saving.Models
             
             storyModel = saveModel.storyModel;
             StoryMvc.Instance.StoryController.storyModel = storyModel;
+            StoryMvc.Instance.StoryController.LoadFromState();
             
             chatTerminalModel = saveModel.chatTerminalModel;
             ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel = chatTerminalModel;

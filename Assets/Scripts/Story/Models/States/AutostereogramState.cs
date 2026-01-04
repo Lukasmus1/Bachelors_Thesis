@@ -16,12 +16,17 @@ namespace Story.Models.States
             
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 2);
 
-            ChatTerminalMvc.Instance.MessageSystemController.openedContact += TransitionCheck;
+            LoadFromState();
         }
 
         public override void OnExit()
         {
             ChatTerminalMvc.Instance.MessageSystemController.openedContact -= TransitionCheck;
+        }
+
+        public override void LoadFromState()
+        {
+            ChatTerminalMvc.Instance.MessageSystemController.openedContact += TransitionCheck;
         }
 
         public void TransitionCheck(string profileId)

@@ -11,6 +11,7 @@ namespace Story.Models.States
         public abstract int NextState { get; }
         public abstract void OnEnter();
         public abstract void OnExit();
+        public abstract void LoadFromState();
 
         protected void ChangeState()
         {

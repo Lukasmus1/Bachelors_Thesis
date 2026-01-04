@@ -17,5 +17,10 @@ namespace Story.Controllers
         {
             storyModel.Init();
         }
+        
+        public void LoadFromState()
+        {
+            storyModel.LoadFromState();
+        }
     }
 }

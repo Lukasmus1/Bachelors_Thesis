@@ -25,12 +25,17 @@ namespace Story.Models.States
             
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewFile, "Guide");
             
-            FileViewerMvc.Instance.FileLoaderController.fileOpened += CheckForStateChange;
+            LoadFromState();
         }
 
         public override void OnExit()
         {
             FileViewerMvc.Instance.FileLoaderController.fileOpened -= CheckForStateChange;
+        }
+
+        public override void LoadFromState()
+        {
+            FileViewerMvc.Instance.FileLoaderController.fileOpened += CheckForStateChange;
         }
 
         private void CheckForStateChange(string appName)

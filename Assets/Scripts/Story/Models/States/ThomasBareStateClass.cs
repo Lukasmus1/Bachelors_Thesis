@@ -21,14 +21,19 @@ namespace Story.Models.States
             
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
             
-            ChatTerminalMvc.Instance.MessageSystemController.openedContact += CheckForContactOpened;
+            LoadFromState();
         }
 
         public override void OnExit()
         {
             ChatTerminalMvc.Instance.MessageSystemController.openedContact -= CheckForContactOpened;
         }
-        
+
+        public override void LoadFromState()
+        {
+            ChatTerminalMvc.Instance.MessageSystemController.openedContact += CheckForContactOpened;
+        }
+
         private void CheckForContactOpened(string profileId)
         {
             if (profileId == "thomasBare")

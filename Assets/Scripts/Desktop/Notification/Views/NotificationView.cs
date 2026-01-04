@@ -95,5 +95,10 @@ namespace Desktop.Notification.Views
         {
             _notificationQueue.Add(text);
         }
+
+        private void OnApplicationQuit()
+        {
+            StopAllCoroutines();
+        }
     }
 }

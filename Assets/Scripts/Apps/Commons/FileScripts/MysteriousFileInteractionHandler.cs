@@ -27,8 +27,6 @@ namespace Apps.Commons.FileScripts
                 
                 if (linkId == "OnClick")
                 {
-                    Debug.Log("OnClick");
-                    
                     ClickedOnLink?.Invoke();
                 }
             }

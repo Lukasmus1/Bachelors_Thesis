@@ -15,14 +15,19 @@ namespace Story.Models.States
         {
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", true);
             
-            MysteriousFileInteractionHandler.ClickedOnLink += OnMysteriousFileLinkClicked;
+            LoadFromState();
         }
 
         public override void OnExit()
         {
             MysteriousFileInteractionHandler.ClickedOnLink -= OnMysteriousFileLinkClicked;
         }
-        
+
+        public override void LoadFromState()
+        {
+            MysteriousFileInteractionHandler.ClickedOnLink += OnMysteriousFileLinkClicked;
+        }
+
         private void OnMysteriousFileLinkClicked()
         {
             //What should happen when the link in the mysterious file is clicked

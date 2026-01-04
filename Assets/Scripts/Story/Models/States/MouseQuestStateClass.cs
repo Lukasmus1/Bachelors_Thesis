@@ -22,12 +22,17 @@ namespace Story.Models.States
             
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MouseQuest", true);
             
-            FileViewerMvc.Instance.FileLoaderController.metadataOpened += CheckForMetadataOpened;
+            LoadFromState();
         }
 
         public override void OnExit()
         {
             FileViewerMvc.Instance.FileLoaderController.metadataOpened -= CheckForMetadataOpened;
+        }
+
+        public override void LoadFromState()
+        {
+            FileViewerMvc.Instance.FileLoaderController.metadataOpened += CheckForMetadataOpened;
         }
 
         private void CheckForMetadataOpened(string fileName)

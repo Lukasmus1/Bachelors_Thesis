@@ -42,17 +42,16 @@ namespace Desktop.Views
 
         private void Awake()
         {
-            if (!Bootstrapper.LoadedNewGame)
-            {
-                return;
-            }
-            
             GenerateRandomDesktop();
         }
 
         private void Start()
         {
-            StoryMvc.Instance.StoryController.InitNew();
+            if (Bootstrapper.LoadedNewGame)
+            {
+                StoryMvc.Instance.StoryController.InitNew();
+            }
+            
             RefreshContext();
         }
 
