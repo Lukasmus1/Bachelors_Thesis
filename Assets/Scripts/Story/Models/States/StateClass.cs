@@ -15,7 +15,6 @@ namespace Story.Models.States
         protected void ChangeState()
         {
             StoryMvc.Instance.StoryController.CurrentStateClass = StateFactory.GetState(NextState);
-            Debug.Log("Changing state to: " + StoryMvc.Instance.StoryController.CurrentStateClass.State);
         }
     }
 }

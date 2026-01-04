@@ -14,24 +14,57 @@ namespace Apps.FileManager.Models
 {
     public class FileLoaderModel
     {
-        private readonly List<GameObject> _loadedFiles;
+        private List<GameObject> _instantiatedFiles;
+        private List<GameObject> InstantiatedFiles
+        {
+            get
+            {
+                if (_instantiatedFiles == null)
+                {
+                    LoadAllFiles();
+                }
+                
+                return _instantiatedFiles;
+            }
+            
+            set => _instantiatedFiles = value;
+        }
+        
+        public List<string> LoadedFileNames { get; set; } = new();
         
         public List<string> InstantiatedFileNames { get; set; } = new();
         
-        public FileLoaderModel()
+
+        public void LoadAllFiles()
         {
-            //There must always be at least the tutorial file in the loaded files folder
-            _loadedFiles = Resources.LoadAll<GameObject>("Prefabs/Apps/FileLoader/LoadedFiles").ToList();
+            //Load all files and create clones of them
+            InstantiatedFiles = Resources.LoadAll<GameObject>("Prefabs/Apps/FileLoader/LoadedFiles").ToList().Select(Object.Instantiate).ToList();
+            InstantiatedFiles.ForEach(x => x.name = x.name.Replace("(Clone)", ""));
             
             //Set all loaded files to not loaded at the start
-            _loadedFiles.ForEach(x => x.GetComponent<FileModel>().IsLoaded = false);
+            InstantiatedFiles.ForEach(x => x.GetComponent<FileModel>().IsLoaded = false);
 
+            //Set loaded files based on context
+            foreach (string fileName in LoadedFileNames)
+            {
+                InstantiatedFiles.Find(x => x.name == fileName).GetComponent<FileModel>().IsLoaded = true;
+            }
+            
             ProcedurallyGenerateFileContent();
             
-            if (_loadedFiles.Count == 0)
+            if (InstantiatedFiles.Count == 0)
             {
                 throw new Exception("Prefabs/Apps/FileLoader/LoadedFiles Possible rename?");
             }
+        }
+
+        /// <summary>
+        /// Loads files from the given context list of loaded file names.
+        /// </summary>
+        /// <param name="loadedFiles">List of file names to load</param>
+        public void LoadFilesFromContext(List<string> loadedFiles)
+        {
+            LoadedFileNames = loadedFiles;
         }
         
         /// <summary>
@@ -41,7 +74,7 @@ namespace Apps.FileManager.Models
         private void ProcedurallyGenerateFileContent()
         {
             //Autostereogram file content
-            GameObject autostereoFile = _loadedFiles.FirstOrDefault(x => x.name == "CypherCode");
+            GameObject autostereoFile = InstantiatedFiles.FirstOrDefault(x => x.name == "CypherCode");
             if (autostereoFile != null)
             {
                 autostereoFile.GetComponentInChildren<Image>().sprite = 
@@ -53,7 +86,7 @@ namespace Apps.FileManager.Models
             }
             
             //Vigenere cipher file content
-            GameObject vigenereFile = _loadedFiles.FirstOrDefault(x => x.name == "MysteriousFile");
+            GameObject vigenereFile = InstantiatedFiles.FirstOrDefault(x => x.name == "MysteriousFile");
             if (vigenereFile != null)
             {
                 var text = vigenereFile.GetComponentInChildren<TMP_Text>();
@@ -71,7 +104,7 @@ namespace Apps.FileManager.Models
         /// <returns>List of GameObjects of all loaded files</returns>
         public List<GameObject> GetLoadedFiles()
         {
-            return _loadedFiles;
+            return InstantiatedFiles;
         }
 
         /// <summary>
@@ -82,10 +115,20 @@ namespace Apps.FileManager.Models
         /// <exception cref="Exception">The file name could not be found</exception>
         public void SetLoadedFileFlag(string fileName, bool isLoaded)
         {
-            GameObject loadedFile = _loadedFiles.FirstOrDefault(x => x.name == fileName);
+            GameObject loadedFile = InstantiatedFiles.FirstOrDefault(x => x.name == fileName);
             if (loadedFile == null)
             {
                 throw new Exception($"File with name {fileName} not found in loaded files.");
+            }
+            
+            //Save to context for saving and loading purposes
+            if (isLoaded && !LoadedFileNames.Contains(fileName))
+            {
+                LoadedFileNames.Add(fileName);
+            }
+            else if (!isLoaded && LoadedFileNames.Contains(fileName))
+            {
+                LoadedFileNames.Remove(fileName);
             }
             
             loadedFile.GetComponent<FileModel>().IsLoaded = isLoaded;

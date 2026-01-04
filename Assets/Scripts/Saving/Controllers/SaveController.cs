@@ -1,5 +1,6 @@
 ﻿using System;
 using Saving.Models;
+using UnityEditor;
 
 namespace Saving.Controllers
 {
@@ -30,6 +31,20 @@ namespace Saving.Controllers
         public void SaveGame()
         {
             _modelLogic.SaveGame();
+        }
+        
+        /// <summary>
+        /// Quits the game, saving first.
+        /// </summary>
+        public void QuitAndSaveGame()
+        {
+            SaveGame();
+            
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }

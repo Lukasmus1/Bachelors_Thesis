@@ -4,7 +4,6 @@ using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
 using Desktop.Notification.Commons;
 using Desktop.Notification.Models;
-using Story.Commons;
 
 namespace Story.Models.States
 {

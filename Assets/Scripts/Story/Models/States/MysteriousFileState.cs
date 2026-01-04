@@ -1,6 +1,7 @@
 ﻿using System;
-using Apps.ChatTerminal.Commons;
+using Apps.Commons.FileScripts;
 using Apps.FileManager.Commons;
+using Saving.Commons;
 
 namespace Story.Models.States
 {
@@ -13,11 +14,24 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", true);
+            
+            MysteriousFileInteractionHandler.ClickedOnLink += OnMysteriousFileLinkClicked;
         }
 
         public override void OnExit()
         {
+            MysteriousFileInteractionHandler.ClickedOnLink -= OnMysteriousFileLinkClicked;
+        }
+        
+        private void OnMysteriousFileLinkClicked()
+        {
+            //What should happen when the link in the mysterious file is clicked
+            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", false);
             
+            
+            ChangeState();
+            
+            SavingMvc.Instance.SavingController.QuitAndSaveGame();
         }
     }
 }

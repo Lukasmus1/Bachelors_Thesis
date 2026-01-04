@@ -22,12 +22,6 @@ namespace Story.Views
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        public void ChangeState()
-        {
-            Debug.Log("uděláno");
-        }
-        
         
         private void OnDestroy()
         {

@@ -3,11 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Apps.FileScripts
+namespace Apps.Commons.FileScripts
 {
     public class MysteriousFileInteractionHandler : MonoBehaviour, IPointerClickHandler
     {
         private TMP_Text _textComponent;
+        
+        public static Action ClickedOnLink;
         
         private void Awake()
         {
@@ -26,6 +28,8 @@ namespace Apps.FileScripts
                 if (linkId == "OnClick")
                 {
                     Debug.Log("OnClick");
+                    
+                    ClickedOnLink?.Invoke();
                 }
             }
         }

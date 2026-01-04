@@ -17,6 +17,11 @@ namespace Apps.FileManager.Controllers
         {
             _fileLoaderView = fileLoaderView;
         }
+
+        public void LoadAllFiles()
+        {
+            _fileLoaderModel.LoadAllFiles();
+        }
         
         public List<GameObject> GetLoadedFiles()
         {
@@ -27,6 +32,18 @@ namespace Apps.FileManager.Controllers
         {
             get => _fileLoaderModel.InstantiatedFileNames;
             set => _fileLoaderModel.InstantiatedFileNames = value;
+        }
+        
+        public List<string> LoadedFileNames
+        {
+            get => _fileLoaderModel.LoadedFileNames;
+            set => _fileLoaderModel.LoadedFileNames = value;
+        }
+        
+        public void LoadFilesFromContext(List<string> loadedFiles)
+        {
+            _fileLoaderModel.LoadFilesFromContext(loadedFiles);
+            onFilesUpdated?.Invoke();
         }
         
         public void SetLoadedFileFlag(string fileName, bool isLoaded)
