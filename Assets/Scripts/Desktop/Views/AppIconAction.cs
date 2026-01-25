@@ -1,4 +1,5 @@
-﻿using Desktop.Models;
+﻿using Desktop.BottomBar.Commons;
+using Desktop.Models;
 using UnityEngine;
 
 namespace Desktop.Views
@@ -19,6 +20,7 @@ namespace Desktop.Views
                 (!DesktopModel.Instance.flags[appToOpen.tag] &&
                 DesktopModel.Instance.flags.ContainsKey(appToOpen.tag)))
             {
+                BottomBarMvc.Instance.BottomBarController.CreateNewBottomBarIcon(appToOpen);
                 appToOpen.SetActive(true);
             }
         }

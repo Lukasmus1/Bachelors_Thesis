@@ -3,6 +3,8 @@ using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Views;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Views;
+using Desktop.BottomBar.Commons;
+using Desktop.BottomBar.Views;
 using UnityEngine;
 
 /// <summary>
@@ -19,6 +21,9 @@ public class ScriptReferenceLinker : MonoBehaviour
     //File loader app
     public GameObject fileLoaderApp;
     [SerializeField] private FileLoaderView fileLoaderView;
+    
+    //Bottom bar
+    [SerializeField] private BottomBarView bottomBarView;
     
     //File viewer app
     public GameObject fileViewerApp;
@@ -37,6 +42,9 @@ public class ScriptReferenceLinker : MonoBehaviour
         
         //File loader app
         FileLoaderMvc.Instance.FileLoaderController.SetFileLoaderView(fileLoaderView);
+        
+        //Bottom bar
+        BottomBarMvc.Instance.BottomBarController.SetBottomBarView(bottomBarView);
     }
 
     /// <summary>

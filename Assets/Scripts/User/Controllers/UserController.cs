@@ -21,7 +21,7 @@ namespace User.Controllers
         
         public DateTime GetStartDate()
         {
-                return userModel.StartDate;
+            return userModel.StartDate;
         }
         
         public void InitUser()

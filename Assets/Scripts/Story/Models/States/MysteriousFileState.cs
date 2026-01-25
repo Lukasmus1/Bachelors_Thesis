@@ -34,7 +34,7 @@ namespace Story.Models.States
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", false);
             
             
-            ChangeState();
+            //ChangeState();
             
             SavingMvc.Instance.SavingController.QuitAndSaveGame();
         }

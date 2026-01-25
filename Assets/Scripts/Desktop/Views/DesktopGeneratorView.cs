@@ -146,6 +146,12 @@ namespace Desktop.Views
 
             foreach (IconClass iconClass in icons)
             {
+                //Sometimes there are null icons in the list, I don't know why
+                if (iconClass.Image == null || string.IsNullOrEmpty(iconClass.Name))
+                {
+                    continue;
+                }
+                
                 //If it is already instantiated, just update its properties
                 GameObject iconObject = desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconClass.Name);
                 if (iconObject == null)

@@ -5,13 +5,13 @@ TagManager:
   serializedVersion: 3
   tags:
   - ChatTerminal
-  - FileLoader
   - FileViewer
   - DesktopHolder
   - ContextMenu
   - ScriptHolder
   - AutostereogramSolver
   - CipherSolver
+  - FileManager
   layers:
   - Default
   - TransparentFX
