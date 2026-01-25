@@ -15,14 +15,19 @@ namespace Desktop.BottomBar.Controllers
             _bottomBarView = view;
         }
         
-        public void CreateNewBottomBarIcon(GameObject objectToReference)
+        public GameObject CreateNewBottomBarIcon(GameObject objectToReference)
         {
-            _bottomBarView.CreateNewIcon(objectToReference);
+           return _bottomBarView.CreateNewIcon(objectToReference);
         }
 
         public void SetPropsToModel(BottomBarItemModel model, GameObject openedApp)
         {
             model.OpenedApp = openedApp;
+        }
+
+        public GameObject GetOpenedApp(BottomBarItemModel model)
+        {
+            return model.OpenedApp;
         }
         
         public void DeleteBottomBarIcon()

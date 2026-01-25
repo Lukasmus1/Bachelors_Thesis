@@ -1,4 +1,5 @@
 using System;
+using Apps.Commons;
 using Apps.FileManager.Models;
 using Apps.FileViewer.Commons;
 using Desktop.Commons;
@@ -8,7 +9,7 @@ using UnityEngine.InputSystem;
 
 namespace Apps.FileViewer.Views
 {
-    public class FileViewerView : MonoBehaviour
+    public class FileViewerView : AppsCommon
     {
         //File Display
         [SerializeField] private RectTransform fileHolder;
@@ -46,6 +47,8 @@ namespace Apps.FileViewer.Views
             fileHolder = _fileHolderBackup;
             zoomLevelText.text = "100%"; //Maybe redundant, but better safe than sorry
             metadataPopup.SetActive(false);
+            
+            DeleteBottomBarIcon();
         }
 
         private void Update()

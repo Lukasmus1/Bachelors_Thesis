@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
+using Apps.Commons;
 using Desktop.Commons;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ using User.Commons;
 
 namespace Apps.ChatTerminal.Views
 {
-    public class ChatTerminalView : MonoBehaviour
+    public class ChatTerminalView : AppsCommon
     {
         [SerializeField] private TMP_Text usernameText;
 
@@ -71,6 +72,8 @@ namespace Apps.ChatTerminal.Views
             messagesWindow.SetActive(false);
             
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
+            
+            DeleteBottomBarIcon();
         }
 
     }

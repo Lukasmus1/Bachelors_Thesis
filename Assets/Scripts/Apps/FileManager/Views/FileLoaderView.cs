@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Apps.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Models;
 using Desktop.Commons;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace Apps.FileManager.Views
 {
-    public class FileLoaderView : MonoBehaviour
+    public class FileLoaderView : AppsCommon
     {
         [Header("Loaded Files")]
         [SerializeField] private GameObject filePrefab;
@@ -23,14 +24,13 @@ namespace Apps.FileManager.Views
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             UpdateLoadedFiles();
-            
-            //Bring to front
-            transform.SetAsLastSibling();
         }
 
         private void OnDisable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
+            
+            DeleteBottomBarIcon();
         }
 
         private void OnDestroy()

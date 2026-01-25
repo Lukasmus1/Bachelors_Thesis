@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Apps.Commons;
 using Apps.FileViewer.Commons;
 using Apps.FileViewer.Models;
 using Desktop.Commons;
@@ -11,7 +12,7 @@ namespace Apps.Autostereogram.Views
     /// <summary>
     /// View to be placed on the GameObject representing the Autostereogram app. (ASG = Autostereogram)
     /// </summary>
-    public class AutostereogramView : MonoBehaviour
+    public class AutostereogramView : AppsCommon
     {
         //ASG Images
         [Header("ASG Images")]
@@ -75,6 +76,7 @@ namespace Apps.Autostereogram.Views
         private void OnDisable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            DeleteBottomBarIcon();
         }
 
         /// <summary>

@@ -24,6 +24,11 @@ namespace Desktop.BottomBar.Views
             iconImage.sprite = icon;
             BottomBarMvc.Instance.BottomBarController.SetPropsToModel(_model, openedApp);
         }
-        
+
+        public void OnClick()
+        {
+            GameObject app = BottomBarMvc.Instance.BottomBarController.GetOpenedApp(_model);
+            app.transform.SetAsLastSibling();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Apps.FileViewer.Commons;
+﻿using Apps.Commons;
+using Apps.FileViewer.Commons;
 using Apps.VigenereCipher.Commons;
 using Desktop.Commons;
 using TMPro;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Apps.VigenereCipher.Views
 {
-    public class VigenereView : MonoBehaviour
+    public class VigenereView : AppsCommon
     {
         //Cipher solving
         [SerializeField] private TMP_InputField keyInputField;
@@ -40,6 +41,8 @@ namespace Apps.VigenereCipher.Views
             
             keyInputField.GetComponent<TMP_InputField>().text = "";
             Destroy(_instantiatedFileReference);
+            
+            DeleteBottomBarIcon();
         }
 
         public void SolveCipher()

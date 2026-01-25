@@ -1,4 +1,5 @@
-﻿using Desktop.BottomBar.Commons;
+﻿using Apps.Commons;
+using Desktop.BottomBar.Commons;
 using Desktop.Models;
 using UnityEngine;
 
@@ -20,7 +21,13 @@ namespace Desktop.Views
                 (!DesktopModel.Instance.flags[appToOpen.tag] &&
                 DesktopModel.Instance.flags.ContainsKey(appToOpen.tag)))
             {
-                BottomBarMvc.Instance.BottomBarController.CreateNewBottomBarIcon(appToOpen);
+                
+                //Create a new bottom bar icon for the opened app
+                GameObject icon = BottomBarMvc.Instance.BottomBarController.CreateNewBottomBarIcon(appToOpen);
+
+                //Set the opened app as the BottomBarIcon's opened app
+                appToOpen.GetComponent<AppsCommon>().BottomBarIcon = icon; 
+                
                 appToOpen.SetActive(true);
             }
         }

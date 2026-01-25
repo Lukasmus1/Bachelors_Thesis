@@ -8,13 +8,15 @@ namespace Desktop.BottomBar.Views
         
         [SerializeField] private Transform bottomBarItemsParent;
         
-        public void CreateNewIcon(GameObject openedApp)
+        public GameObject CreateNewIcon(GameObject openedApp)
         {
             GameObject icon = Instantiate(bottomBarItemPrefab, bottomBarItemsParent);
             
             icon.GetComponent<BottomBarItemView>().SetProps(openedApp);
             
             icon.SetActive(true);
+
+            return icon;
         }
     }
 }
