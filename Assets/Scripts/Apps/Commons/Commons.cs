@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace Apps.Commons
 {
-    public class Commons : MonoBehaviour, IPointerClickHandler
+    public class Commons : MonoBehaviour
     {
         public void CloseApp(GameObject appToDestroy)
         {
@@ -15,11 +15,6 @@ namespace Apps.Commons
             appToOpen.SetActive(true);
             appToOpen.transform.SetAsLastSibling();
             AppCommonsModel.Instance.OnAppOpened(appToOpen.name);
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            transform.SetAsLastSibling();
         }
     }
 }

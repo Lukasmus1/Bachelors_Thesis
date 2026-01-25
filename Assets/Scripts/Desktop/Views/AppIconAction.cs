@@ -28,6 +28,9 @@ namespace Desktop.Views
                 //Set the opened app as the BottomBarIcon's opened app
                 appToOpen.GetComponent<AppsCommon>().BottomBarIcon = icon; 
                 
+                //Highlight the newly created icon
+                BottomBarMvc.Instance.BottomBarController.HighlightIcon(icon);
+                
                 appToOpen.SetActive(true);
             }
         }

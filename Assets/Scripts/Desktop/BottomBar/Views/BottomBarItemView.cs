@@ -8,6 +8,7 @@ namespace Desktop.BottomBar.Views
     public class BottomBarItemView : MonoBehaviour
     {
         [SerializeField] private Image iconImage;
+        public GameObject iconHighlight;
         
         private readonly BottomBarItemModel _model = new();
 
@@ -29,6 +30,8 @@ namespace Desktop.BottomBar.Views
         {
             GameObject app = BottomBarMvc.Instance.BottomBarController.GetOpenedApp(_model);
             app.transform.SetAsLastSibling();
+            
+            BottomBarMvc.Instance.BottomBarController.HighlightIcon(gameObject);
         }
     }
 }

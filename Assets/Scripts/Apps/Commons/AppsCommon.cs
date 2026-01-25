@@ -1,9 +1,10 @@
-﻿using Desktop.Commons;
+﻿using Desktop.BottomBar.Commons;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Apps.Commons
 {
-    public class AppsCommon : MonoBehaviour
+    public class AppsCommon : MonoBehaviour, IPointerClickHandler
     {
         public GameObject BottomBarIcon {get; set;}
         
@@ -13,6 +14,13 @@ namespace Apps.Commons
             {
                 Destroy(BottomBarIcon);
             }
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            transform.SetAsLastSibling();
+            
+            BottomBarMvc.Instance.BottomBarController.HighlightIcon(BottomBarIcon);
         }
     }
 }
