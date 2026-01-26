@@ -3492,6 +3492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e35094bad000e4ab314d35f08619f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quitPopup: {fileID: 3670640011112468739, guid: f959ca6c9bbf6f34cbbf8c0ce3cd7d41, type: 3}
+  canvasTransform: {fileID: 1781763477}
 --- !u!1 &535457408
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,12 @@ namespace Desktop.Views
 {
     public class IconQuitScript : MonoBehaviour
     {
+        [SerializeField] private GameObject quitPopup;
+        [SerializeField] private Transform canvasTransform;
+        
         public void QuitDesktop()
         {
-            print("Quit desktop");
+            Instantiate(quitPopup, canvasTransform);
         }
     }
 }
