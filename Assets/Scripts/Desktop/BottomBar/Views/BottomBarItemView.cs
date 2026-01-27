@@ -14,7 +14,7 @@ namespace Desktop.BottomBar.Views
 
         public void SetProps(GameObject openedApp)
         {
-            Sprite icon = IconImageLinker.appIconDictionary[openedApp.tag];
+            Sprite icon = IconImageLinker.AppIconDictionary[openedApp.tag];
             
             if (icon == null)
             {

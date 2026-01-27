@@ -7,21 +7,23 @@ using UnityEngine;
 /// </summary>
 public class IconImageLinker : MonoBehaviour
 {
-    public static readonly Dictionary<string, Sprite> appIconDictionary = new();
+    public static readonly Dictionary<string, Sprite> AppIconDictionary = new();
 
     [SerializeField] private Sprite fileManager;
     [SerializeField] private Sprite fileViewer;
     [SerializeField] private Sprite autostereogramSolver;
     [SerializeField] private Sprite chatTerminal;
     [SerializeField] private Sprite vigenereCipher;
+    [SerializeField] private Sprite virusFinder;
 
     private void Awake()
     {
-        appIconDictionary.Clear();
-        appIconDictionary.Add("FileManager", fileManager);
-        appIconDictionary.Add("FileViewer", fileViewer);
-        appIconDictionary.Add("AutostereogramSolver", autostereogramSolver);
-        appIconDictionary.Add("ChatTerminal", chatTerminal);
-        appIconDictionary.Add("CipherSolver", vigenereCipher); 
+        AppIconDictionary.Clear();
+        AppIconDictionary.Add("FileManager", fileManager);
+        AppIconDictionary.Add("FileViewer", fileViewer);
+        AppIconDictionary.Add("AutostereogramSolver", autostereogramSolver);
+        AppIconDictionary.Add("ChatTerminal", chatTerminal);
+        AppIconDictionary.Add("CipherSolver", vigenereCipher);
+        AppIconDictionary.Add("VirusFinder", virusFinder);
     }
 }

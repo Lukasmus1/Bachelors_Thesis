@@ -13,7 +13,6 @@ namespace Desktop.Views
         private Coroutine _doubleClickCoroutine;
         
         
-
         public void OnSubmit(BaseEventData eventData)
         {
             if (EventSystem.current.currentSelectedGameObject == gameObject)
@@ -62,6 +61,12 @@ namespace Desktop.Views
             GetComponentInChildren<RawImage>().texture = tex;
             
             GetComponentInChildren<TMP_Text>().font = font;
+        }
+
+        public void SetProperties(Vector2 pos, string iconName)
+        {
+            GetComponentInChildren<TMP_Text>().text = iconName;
+            GetComponent<RectTransform>().anchoredPosition = pos;
         }
 
         private void PerformIconAction()

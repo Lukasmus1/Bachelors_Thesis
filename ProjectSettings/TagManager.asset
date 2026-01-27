@@ -12,6 +12,7 @@ TagManager:
   - AutostereogramSolver
   - CipherSolver
   - FileManager
+  - VirusFinder
   layers:
   - Default
   - TransparentFX

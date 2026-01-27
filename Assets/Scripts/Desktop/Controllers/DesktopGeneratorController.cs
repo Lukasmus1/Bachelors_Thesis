@@ -15,6 +15,7 @@ namespace Desktop.Controllers
         private WallpaperGeneration _wallpaperGenerator;
         private ColorGeneration _colorSchemeGenerator;
         private IconGenerator _iconGenerator;
+        private readonly IconGenerationHelper _iconGeneratorHelper = new();
 
         //Random Generators
         public Texture2D GetRandomWallpaper()
@@ -27,6 +28,11 @@ namespace Desktop.Controllers
         {
             _colorSchemeGenerator = new ColorGeneration();
             return _colorSchemeGenerator.GenerateRandomColorScheme();
+        }
+
+        public Vector2 GenerateRandomIconPosition(Vector2 iconSize)
+        {
+            return _iconGeneratorHelper.GenerateRandomIconPosition(iconSize);
         }
         
         /// <summary>

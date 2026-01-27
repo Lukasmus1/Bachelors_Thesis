@@ -21,7 +21,6 @@ namespace Desktop.Views
                 (!DesktopModel.Instance.flags[appToOpen.tag] &&
                 DesktopModel.Instance.flags.ContainsKey(appToOpen.tag)))
             {
-                
                 //Create a new bottom bar icon for the opened app
                 GameObject icon = BottomBarMvc.Instance.BottomBarController.CreateNewBottomBarIcon(appToOpen);
 
@@ -30,6 +29,9 @@ namespace Desktop.Views
                 
                 //Highlight the newly created icon
                 BottomBarMvc.Instance.BottomBarController.HighlightIcon(icon);
+                
+                //Put the app on top of other apps
+                appToOpen.transform.SetAsLastSibling();
                 
                 appToOpen.SetActive(true);
             }

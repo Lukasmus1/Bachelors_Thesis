@@ -34,6 +34,9 @@ public class ScriptReferenceLinker : MonoBehaviour
     //CipherSolver app
     public GameObject cipherSolverApp;
     
+    //VirusFinder app
+    public GameObject virusFinderApp;
+    
     private void Awake()
     {
         //Chat terminal app
@@ -61,6 +64,7 @@ public class ScriptReferenceLinker : MonoBehaviour
             "FileViewer" => fileViewerApp,
             "AutostereogramSolver" => autostereoApp,
             "CipherSolver" => cipherSolverApp,
+            "VirusFinder" => virusFinderApp,
             _ => throw new Exception("The app tag has not been found!")
         };
     }
