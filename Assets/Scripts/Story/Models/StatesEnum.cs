@@ -9,6 +9,7 @@ namespace Story.Models
         ThomasBare,
         AutostereogramState,
         MysteriousFile,
+        AfterCrash,
         Default
     }
 }

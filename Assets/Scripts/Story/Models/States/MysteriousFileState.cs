@@ -9,7 +9,7 @@ namespace Story.Models.States
     public class MysteriousFileState : StateClass
     {
         public override int State => (int)StatesEnum.MysteriousFile;
-        public override int NextState => (int)StatesEnum.Default;
+        public override int NextState => (int)StatesEnum.AfterCrash;
         
         public override void OnEnter()
         {
@@ -33,8 +33,7 @@ namespace Story.Models.States
             //What should happen when the link in the mysterious file is clicked
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", false);
             
-            
-            //ChangeState();
+            ChangeState();
             
             SavingMvc.Instance.SavingController.QuitAndSaveGame();
         }

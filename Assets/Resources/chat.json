@@ -10,11 +10,17 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"Sender": "ind1", "Text": "Hello, I am from IT department. Pleasure to meet you."},
-          {"Sender": "ind1", "Text": "This chat terminal serves as a way for the station to communicate with you."},
-          {"Sender": "ind1", "Text": "We will provide you with important information about your case or just help in general."},
-          {"Sender": "ind1", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
-          {"Sender": "ind1", "Text": "Please open it when you have the time."}
+          {"Sender": "itDept", "Text": "Hello, I am from IT department. Pleasure to meet you."},
+          {"Sender": "itDept", "Text": "This chat terminal serves as a way for the station to communicate with you."},
+          {"Sender": "itDept", "Text": "We will provide you with important information about your case or just help in general."},
+          {"Sender": "itDept", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
+          {"Sender": "itDept", "Text": "Please open it when you have the time."}
+        ],
+        [
+          {"Sender": "Player", "Text": "Good day, I may have accidentally installed a virus in my system."},
+          {"Sender": "Player", "Text": "Could you please help me?"},
+          {"Sender": "itDept", "Text": "Hello, sorry to hear that."},
+          {"Sender": "itDept", "Text": "TODOTODOTODOTODO"}
         ]
       ]
     },
@@ -47,6 +53,17 @@
           {"Sender": "headOfDpt", "Text": "hmm... hard to say"},
           {"Sender": "headOfDpt", "Text": "ill send it to our specialists. they might be able to extract something from it"},
           {"Sender": "headOfDpt", "Text": "ill let you know when i hear back from them"}
+        ],
+        [
+          {"Sender": "Player", "Text": "Hello, I have clicked the link in the encrypted file you've sent me."},
+          {"Sender": "headOfDpt", "Text": "what? i didnt send you anything, what are you talking about?"},
+          {"Sender": "Player", "Text": "There was a file from you that contained a link to click."},
+          {"Sender": "Player", "Text": "That link crashed my PC."},
+          {"Sender": "headOfDpt", "Text": "are you sure it was from me?"},
+          {"Sender": "headOfDpt", "Text": "because i have no idea what youre talking about"},
+          {"Sender": "headOfDpt", "Text": "you sure youre not being scammed yourself?"},
+          {"Sender": "headOfDpt", "Text": "listen, you might have just installed a virus."},
+          {"Sender": "headOfDpt", "Text": "message the IT dpt about this immediately and have them check your system"}
         ]
       ]
     },
