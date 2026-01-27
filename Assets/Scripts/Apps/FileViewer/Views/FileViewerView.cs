@@ -39,7 +39,7 @@ namespace Apps.FileViewer.Views
             transform.SetAsLastSibling();
         }
 
-        private void OnDisable()
+        protected override void OnDisableChild()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
             
@@ -47,8 +47,6 @@ namespace Apps.FileViewer.Views
             fileHolder = _fileHolderBackup;
             zoomLevelText.text = "100%"; //Maybe redundant, but better safe than sorry
             metadataPopup.SetActive(false);
-            
-            DeleteBottomBarIcon();
         }
 
         private void Update()

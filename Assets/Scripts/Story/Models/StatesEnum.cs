@@ -10,6 +10,8 @@ namespace Story.Models
         AutostereogramState,
         MysteriousFile,
         AfterCrash,
+        VirusFinderMessage,
+        VirusFinder,
         Default
     }
 }

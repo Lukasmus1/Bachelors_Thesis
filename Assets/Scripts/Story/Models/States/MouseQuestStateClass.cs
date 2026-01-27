@@ -39,7 +39,7 @@ namespace Story.Models.States
         {
             if (fileName == "Mouse Quest Beta")
             {
-                ChangeState();
+                ChangeToNextState();
             }
         }
     }

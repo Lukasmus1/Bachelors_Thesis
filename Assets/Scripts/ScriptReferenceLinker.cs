@@ -3,6 +3,8 @@ using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Views;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Views;
+using Apps.VirusFinder.Commons;
+using Apps.VirusFinder.Views;
 using Desktop.BottomBar.Commons;
 using Desktop.BottomBar.Views;
 using UnityEngine;
@@ -36,6 +38,7 @@ public class ScriptReferenceLinker : MonoBehaviour
     
     //VirusFinder app
     public GameObject virusFinderApp;
+    [SerializeField] private VirusFinderView virusFinderView;
     
     private void Awake()
     {
@@ -48,6 +51,9 @@ public class ScriptReferenceLinker : MonoBehaviour
         
         //Bottom bar
         BottomBarMvc.Instance.BottomBarController.SetBottomBarView(bottomBarView);
+        
+        //Virus finder app
+        VirusFinderMvc.Instance.VirusFinderController.SetView(virusFinderView);
     }
 
     /// <summary>

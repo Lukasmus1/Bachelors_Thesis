@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Apps.Commons
 {
-    public class AppsCommon : MonoBehaviour, IPointerClickHandler
+    public abstract class AppsCommon : MonoBehaviour, IPointerClickHandler
     {
         public GameObject BottomBarIcon {get; set;}
         
@@ -22,5 +22,15 @@ namespace Apps.Commons
             
             BottomBarMvc.Instance.BottomBarController.HighlightIcon(BottomBarIcon);
         }
+        
+        protected void OnDisable()
+        {
+            DeleteBottomBarIcon();
+            
+            //Call child class method
+            OnDisableChild();
+        }
+
+        protected abstract void OnDisableChild();
     }
 }

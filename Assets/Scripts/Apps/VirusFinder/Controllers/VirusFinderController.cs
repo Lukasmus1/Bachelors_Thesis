@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Apps.VirusFinder.Models;
+using Apps.VirusFinder.Views;
 using UnityEngine;
 
 namespace Apps.VirusFinder.Controllers
@@ -7,7 +8,17 @@ namespace Apps.VirusFinder.Controllers
     public class VirusFinderController
     {
         private readonly VirusFinderModel _model = new();
-
+        private VirusFinderView _view;
+        
+        /// <summary>
+        /// Sets the view class for this controller.
+        /// </summary>
+        /// <param name="view">The view class</param>
+        public void SetView(VirusFinderView view)
+        {
+            _view = view;
+        }
+        
         /// <summary>
         /// Creates a random number of viruses from 0 up to maxViruses.
         /// </summary>
@@ -35,6 +46,15 @@ namespace Apps.VirusFinder.Controllers
         {
             _model.EnableViruses(virusParent);
             return GetVirusesCount();
+        }
+
+        /// <summary>
+        /// Enables the Virus Finder app.
+        /// </summary>
+        /// <param name="active">Should the app be active</param>
+        public void EnableApp(bool active)
+        {
+            _view.SetActive(active);
         }
     }
 }

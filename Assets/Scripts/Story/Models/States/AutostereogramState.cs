@@ -33,7 +33,7 @@ namespace Story.Models.States
         {
             if (profileId == "headOfDpt")
             {
-                ChangeState();
+                ChangeToNextState();
             }
         }
     }

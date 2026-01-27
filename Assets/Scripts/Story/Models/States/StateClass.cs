@@ -13,7 +13,7 @@ namespace Story.Models.States
         public abstract void OnExit();
         public abstract void LoadFromState();
 
-        protected void ChangeState()
+        protected void ChangeToNextState()
         {
             StoryMvc.Instance.StoryController.CurrentStateClass = StateFactory.GetState(NextState);
         }

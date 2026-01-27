@@ -35,14 +35,12 @@ namespace Apps.VigenereCipher.Views
             transform.SetAsLastSibling();
         }
 
-        private void OnDisable()
+        protected override void OnDisableChild()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
             
             keyInputField.GetComponent<TMP_InputField>().text = "";
             Destroy(_instantiatedFileReference);
-            
-            DeleteBottomBarIcon();
         }
 
         public void SolveCipher()

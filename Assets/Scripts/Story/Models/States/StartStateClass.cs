@@ -42,7 +42,7 @@ namespace Story.Models.States
         {
             if (appName == "Guide")
             {
-                ChangeState();
+                ChangeToNextState();
             }
         }
     }

@@ -16,6 +16,9 @@ namespace Story.Models.States
                 StatesEnum.Default => new DefaultStateClass(),
                 StatesEnum.AutostereogramState => new AutostereogramState(),
                 StatesEnum.MysteriousFile => new MysteriousFileState(),
+                StatesEnum.AfterCrash => new AfterCrashStateClass(),
+                StatesEnum.VirusFinderMessage => new VirusFinderMessageStateClass(),
+                StatesEnum.VirusFinder => new VirusFinderStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

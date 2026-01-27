@@ -20,7 +20,8 @@
           {"Sender": "Player", "Text": "Good day, I may have accidentally installed a virus in my system."},
           {"Sender": "Player", "Text": "Could you please help me?"},
           {"Sender": "itDept", "Text": "Hello, sorry to hear that."},
-          {"Sender": "itDept", "Text": "TODOTODOTODOTODO"}
+          {"Sender": "itDept", "Text": "I have taken a liberty of installing a software called 'Virus Finder'."},
+          {"Sender": "itDept", "Text": "Please run it and delete any viruses it finds."}
         ]
       ]
     },

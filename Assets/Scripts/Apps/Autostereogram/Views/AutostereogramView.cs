@@ -70,10 +70,9 @@ namespace Apps.Autostereogram.Views
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
         }
 
-        private void OnDisable()
+        protected override void OnDisableChild()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
-            DeleteBottomBarIcon();
         }
 
         /// <summary>

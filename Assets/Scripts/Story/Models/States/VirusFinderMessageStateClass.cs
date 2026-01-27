@@ -1,18 +1,17 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
-using Apps.VirusFinder.Commons;
 
 namespace Story.Models.States
 {
     [Serializable]
-    public class AfterCrashStateClass : StateClass
+    public class VirusFinderMessageStateClass : StateClass
     {
-        public override int State { get; } = (int)StatesEnum.AfterCrash;
-        public override int NextState { get; } = (int)StatesEnum.VirusFinderMessage;
+        public override int State { get; } = (int)StatesEnum.VirusFinderMessage;
+        public override int NextState { get; } = (int)StatesEnum.VirusFinder;
 
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 3);
+            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 1);
             
             LoadFromState();
         }
@@ -29,7 +28,7 @@ namespace Story.Models.States
 
         private void TransitionCheck(string contactId)
         {
-            if (contactId == "headOfDpt")
+            if (contactId == "itDept")
             {
                 ChangeToNextState();
             }

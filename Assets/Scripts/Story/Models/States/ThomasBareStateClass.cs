@@ -38,7 +38,7 @@ namespace Story.Models.States
         {
             if (profileId == "thomasBare")
             {
-                ChangeState();
+                ChangeToNextState();
             }
         }
     }

@@ -33,7 +33,7 @@ namespace Story.Models.States
             //What should happen when the link in the mysterious file is clicked
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", false);
             
-            ChangeState();
+            ChangeToNextState();
             
             SavingMvc.Instance.SavingController.QuitAndSaveGame();
         }

@@ -25,12 +25,11 @@ namespace Apps.FileManager.Views
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             UpdateLoadedFiles();
         }
+        
 
-        private void OnDisable()
+        protected override void OnDisableChild()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
-            
-            DeleteBottomBarIcon();
         }
 
         private void OnDestroy()

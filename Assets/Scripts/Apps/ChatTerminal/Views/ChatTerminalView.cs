@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
@@ -7,7 +6,6 @@ using Apps.Commons;
 using Desktop.Commons;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using User.Commons;
 
 namespace Apps.ChatTerminal.Views
@@ -62,19 +60,13 @@ namespace Apps.ChatTerminal.Views
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
-            
-            //Bring to front
-            transform.SetAsLastSibling();
         }
-        
-        private void OnDisable()
+
+        protected override void OnDisableChild()
         {
             messagesWindow.SetActive(false);
             
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
-            
-            DeleteBottomBarIcon();
         }
-
     }
 }
