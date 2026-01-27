@@ -21,6 +21,8 @@ namespace Apps.VirusFinder.Views
 
         private void OnEnable()
         {
+            VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(2);
+            
             resultText.text = "";
             scanProgressBar.value = 0;
             percentageText.text = "0%";
@@ -94,7 +96,13 @@ namespace Apps.VirusFinder.Views
             killStatusTextCoroutine = true;
             scanProgressBar.value = 100;
             percentageText.text = "100%";
-            resultText.text = virusCount == 0 ? "No viruses found." : $"Found {virusCount} viruses.";
+            resultText.text = 
+                virusCount switch
+                {
+                    0 => "No viruses found.",
+                    1 => $"Found {virusCount} virus.",
+                    _ => $"Found {virusCount} viruses."
+                };
             resultText.color = virusCount == 0 ? Color.darkGreen : Color.darkRed;
         }
 

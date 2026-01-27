@@ -1,6 +1,4 @@
 ﻿using System;
-using Apps.Commons;
-using Desktop.BottomBar.Commons;
 using Desktop.Views;
 using UnityEngine;
 

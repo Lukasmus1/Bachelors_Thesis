@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 5757989634877996338}
   - component: {fileID: 7247080582456887457}
   - component: {fileID: 1402210148893993154}
-  - component: {fileID: 8308345691930156779}
   - component: {fileID: 3630315890289126225}
-  - component: {fileID: 3776590706474451972}
   - component: {fileID: 8318631066822367303}
+  - component: {fileID: -4897080728990350295}
   m_Layer: 5
   m_Name: VirusIcon
   m_TagString: Untagged
@@ -96,18 +95,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8308345691930156779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474053375335754062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da24f763438a933439343dac912d98ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3630315890289126225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,19 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.Commons.DragAndDrop
   objectToDrag: {fileID: 5757989634877996338}
---- !u!114 &3776590706474451972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474053375335754062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b8e19a596748cdbc492c3cd4d95db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Desktop.Views.AppIconAction
-  appToOpen: {fileID: 0}
 --- !u!114 &8318631066822367303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d03710219e4c7eacd3d07b2c87791a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desktop.Models.IconClassOnObject
+--- !u!114 &-4897080728990350295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474053375335754062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ac81f566b432fbfa6791ea5af4c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.VirusFinder.Views.VirusIconScript
+  deletePopup: {fileID: 1926736180360436143, guid: 1d5d0d22146622942a5eb68fe93c0729, type: 3}
+  popupParent: {fileID: 0}
 --- !u!1 &1754896089911824195
 GameObject:
   m_ObjectHideFlags: 0

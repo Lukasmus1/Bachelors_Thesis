@@ -21,7 +21,7 @@
           {"Sender": "Player", "Text": "Could you please help me?"},
           {"Sender": "itDept", "Text": "Hello, sorry to hear that."},
           {"Sender": "itDept", "Text": "I have taken a liberty of installing a software called 'Virus Finder'."},
-          {"Sender": "itDept", "Text": "Please run it and delete any viruses it finds."}
+          {"Sender": "itDept", "Text": "Please run it and delete any viruses it may find on the desktop."}
         ]
       ]
     },

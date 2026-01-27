@@ -1,5 +1,4 @@
 ﻿using System;
-using Apps.ChatTerminal.Commons;
 using Apps.VirusFinder.Commons;
 
 namespace Story.Models.States
@@ -17,7 +16,7 @@ namespace Story.Models.States
             //Story-wise this is called a bit late, but for practical purposes it's better to do it here
             VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(5);
             
-            //LoadFromState();
+            LoadFromState();
         }
 
         public override void OnExit()

@@ -4,8 +4,8 @@ namespace Desktop.Models.IconGeneration
 {
     public class IconGenerationHelper
     {
-        //Magic number -> the screen reference resolution is 2560x1440
-        private readonly Vector2 _screenBounds = new(2560, 1440);
+        //Magic number -> the screen reference resolution is 2560x1440, minus the bottom bar height (55)
+        private readonly Vector2 _screenBounds = new(2560, 1440 - 55);
         
         /// <summary>
         /// Generates a random position for an icon within the screen bounds, taking into account the icon size.

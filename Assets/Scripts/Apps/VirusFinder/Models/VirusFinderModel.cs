@@ -14,7 +14,7 @@ namespace Apps.VirusFinder.Models
         public List<GameObject> Viruses { get; private set; } = new();
         
         //Prefab for the virus icon
-        private readonly GameObject _iconPrefab = Resources.Load<GameObject>("Prefabs/VirusIcon");
+        private readonly GameObject _iconPrefab = Resources.Load<GameObject>("Prefabs/Apps/VirusFinder/VirusIcon");
 
         //List of possible virus names
         private readonly string[] listOfNames =
@@ -33,7 +33,7 @@ namespace Apps.VirusFinder.Models
         /// <inheritdoc cref="VirusFinderController.CreateRandomViruses"/>
         public void CreateRandomViruses(int maxCount)
         {
-            for (int i = 0; i < Random.Range(0, maxCount + 1); i++)
+            for (int i = 0; i < Random.Range(1, maxCount + 1); i++)
             {
                 GameObject newVirus = Object.Instantiate(_iconPrefab);
                 
@@ -54,6 +54,13 @@ namespace Apps.VirusFinder.Models
                 virus.transform.SetParent(virusParent);
                 virus.SetActive(true);
             }
+        }
+
+        /// <inheritdoc cref="VirusFinderController.DeleteVirus"/>
+        public void DeleteVirus(GameObject virus)
+        {
+            Viruses.Remove(virus);
+            Object.Destroy(virus);
         }
     }
 }

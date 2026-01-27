@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Apps.VirusFinder.Models;
 using Apps.VirusFinder.Views;
 using UnityEngine;
@@ -55,6 +56,14 @@ namespace Apps.VirusFinder.Controllers
         public void EnableApp(bool active)
         {
             _view.SetActive(active);
+        }
+
+        /// <summary>
+        /// Deletes a virus from the system.
+        /// </summary>
+        public void DeleteVirus(GameObject virus)
+        {
+            _model.DeleteVirus(virus);
         }
     }
 }
