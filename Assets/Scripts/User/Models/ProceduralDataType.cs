@@ -2,6 +2,8 @@
 {
     public enum ProceduralDataType
     {
-        VignereCode
+        VignereCode,
+        VirusName,
+        VirusContent
     }
 }

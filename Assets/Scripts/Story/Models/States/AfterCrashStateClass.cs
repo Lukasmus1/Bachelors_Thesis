@@ -1,6 +1,9 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.VirusFinder.Commons;
+using FourthWall.Commons;
+using User.Commons;
+using User.Models;
 
 namespace Story.Models.States
 {
@@ -13,6 +16,10 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 3);
+            
+            // string fileName = UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VirusName);
+            // string fileContent = UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VirusContent);
+            // FourthWallMvc.Instance.FileGenerationController.CreateHiddenFile(fileName, fileContent);
             
             LoadFromState();
         }

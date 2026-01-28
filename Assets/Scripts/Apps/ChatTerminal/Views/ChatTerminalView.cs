@@ -4,9 +4,11 @@ using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
 using Apps.Commons;
 using Desktop.Commons;
+using FourthWall.Commons;
 using TMPro;
 using UnityEngine;
 using User.Commons;
+using User.Models;
 
 namespace Apps.ChatTerminal.Views
 {

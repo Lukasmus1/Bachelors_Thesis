@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Apps.VigenereCipher.Commons;
+using FourthWall.Commons;
 using UnityEngine;
 
 namespace User.Models
@@ -20,6 +21,8 @@ namespace User.Models
             ProceduralData = new List<ProceduralDataEntry>
             {
                 new(ProceduralDataType.VignereCode, VigenereMvc.Instance.VigenereController.GenerateVigenereKey(5)),
+                new(ProceduralDataType.VirusName, FourthWallMvc.Instance.FileGenerationController.GenerateRandomFileName()),
+                new(ProceduralDataType.VirusContent, FourthWallMvc.Instance.FileGenerationController.GenerateFileData())
             };
             
             SetProfilePicture();
