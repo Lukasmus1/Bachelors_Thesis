@@ -21,12 +21,20 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            throw new NotImplementedException();
+            VirusFinderMvc.Instance.VirusFinderController.onVirusesCountChanged -= TransitionCheck;
         }
 
         public override void LoadFromState()
         {
-            throw new NotImplementedException();
+            VirusFinderMvc.Instance.VirusFinderController.onVirusesCountChanged += TransitionCheck;
+        }
+        
+        private void TransitionCheck(int virusCount)
+        {
+            if (virusCount == 0)
+            {
+                ChangeToNextState();
+            }
         }
     }
 }

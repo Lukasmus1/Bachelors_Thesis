@@ -19,8 +19,6 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("thomasBare");
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("thomasBare", 0);
             
-            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
-            
             LoadFromState();
         }
 

@@ -18,12 +18,9 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 0);
             
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
-            
-            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewFile, "Guide");
             
             LoadFromState();
         }

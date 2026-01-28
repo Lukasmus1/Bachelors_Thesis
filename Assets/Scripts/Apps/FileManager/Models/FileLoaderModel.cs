@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Apps.Autostereogram.Commons;
 using Apps.VigenereCipher.Commons;
+using Desktop.Notification.Commons;
+using Desktop.Notification.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -131,7 +133,13 @@ namespace Apps.FileManager.Models
                 LoadedFileNames.Remove(fileName);
             }
             
-            loadedFile.GetComponent<FileModel>().IsLoaded = isLoaded;
+            var model = loadedFile.GetComponent<FileModel>();
+            model.IsLoaded = isLoaded;
+
+            if (isLoaded)
+            {
+                NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewFile, model.FileName);
+            }
         }
     }
 }

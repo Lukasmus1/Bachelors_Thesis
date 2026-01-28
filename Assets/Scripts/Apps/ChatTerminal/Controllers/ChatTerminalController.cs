@@ -2,6 +2,8 @@
 using System.Linq;
 using Apps.ChatTerminal.Models;
 using Apps.ChatTerminal.Views;
+using Desktop.Notification.Commons;
+using Desktop.Notification.Models;
 
 namespace Apps.ChatTerminal.Controllers
 {
@@ -26,11 +28,21 @@ namespace Apps.ChatTerminal.Controllers
             return chatTerminalModel.LoadedChatProfilesFromJson.FirstOrDefault(profile => profile.UserID == profileId);
         }
 
+        /// <summary>
+        /// Set the message index of a chat profile and instantiate a new message notification.
+        /// </summary>
+        /// <param name="profileId">ID of the profile</param>
+        /// <param name="index">Index to set the messages to</param>
         public void SetChatProfileMessageIndex(string profileId, int index)
         {
             chatTerminalModel.SetChatProfileMessageIndex(profileId, index, _chatTerminalView.profiles);
+            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
         }
 
+        /// <summary>
+        /// Loads a new chat profile into the chat terminal.
+        /// </summary>
+        /// <param name="profileId">ID of the profile</param>
         public void LoadNewProfile(string profileId)
         {
             chatTerminalModel.LoadNewProfile(profileId);

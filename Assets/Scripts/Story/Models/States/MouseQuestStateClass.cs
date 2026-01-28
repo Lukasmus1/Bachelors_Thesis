@@ -18,8 +18,6 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("headOfDpt");
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 0);
             
-            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
-            
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MouseQuest", true);
             
             LoadFromState();

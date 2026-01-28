@@ -11,6 +11,8 @@ namespace Apps.VirusFinder.Controllers
         private readonly VirusFinderModel _model = new();
         private VirusFinderView _view;
         
+        public Action<int> onVirusesCountChanged;
+        
         /// <summary>
         /// Sets the view class for this controller.
         /// </summary>
@@ -27,6 +29,7 @@ namespace Apps.VirusFinder.Controllers
         public void CreateRandomViruses(int maxViruses)
         {
             _model.CreateRandomViruses(maxViruses);
+            onVirusesCountChanged?.Invoke(GetVirusesCount());
         }
 
         /// <summary>
@@ -64,6 +67,7 @@ namespace Apps.VirusFinder.Controllers
         public void DeleteVirus(GameObject virus)
         {
             _model.DeleteVirus(virus);
+            onVirusesCountChanged?.Invoke(GetVirusesCount());
         }
     }
 }
