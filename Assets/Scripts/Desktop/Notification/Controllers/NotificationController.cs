@@ -25,7 +25,7 @@ namespace Desktop.Notification.Controllers
                     {
                         throw new ArgumentNullException(nameof(message), "Message cannot be null for Generic notification type.");
                     }
-                    NotificationView.SetNotificationText(message);
+                    NotificationView.SetNotificationText(message, NotificationType.Generic);
                     break;
                 
                 case NotificationType.NewFile:
@@ -33,11 +33,20 @@ namespace Desktop.Notification.Controllers
                     {
                         throw new ArgumentNullException(nameof(message), "Message cannot be null for Generic notification type.");
                     }
-                    NotificationView.SetNotificationText($"New File Received: \"{message}\"");
+                    NotificationView.SetNotificationText($"New File Received: \"{message}\"", NotificationType.NewFile);
                     break;
                 
                 case NotificationType.NewMessage:
-                    NotificationView.SetNotificationText("New Message Received");
+                    NotificationView.SetNotificationText("New Message Received", NotificationType.NewMessage);
+                    break;
+                
+                case NotificationType.Error:
+                    if (message == null)
+                    {
+                        throw new ArgumentNullException(nameof(message), "Message cannot be null for Error notification type.");
+                    }
+                    
+                    NotificationView.SetNotificationText(message, NotificationType.Error);
                     break;
                 
                 default:

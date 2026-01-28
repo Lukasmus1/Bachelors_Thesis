@@ -4,6 +4,8 @@ using Apps.Commons;
 using Apps.FileViewer.Commons;
 using Apps.FileViewer.Models;
 using Desktop.Commons;
+using Desktop.Notification.Commons;
+using Desktop.Notification.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,11 +33,20 @@ namespace Apps.Autostereogram.Views
         [Header("ASG Slider")]
         [SerializeField] private Slider movingImageSlider;
 
-        private void Awake()
+        private void OnEnable()
         {
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            
             //Set the autostereogram image to the opened file's image
             GameObject openedFile = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
             Sprite imageToSet = openedFile.GetComponentInChildren<Image>().sprite;
+            if (imageToSet == null)
+            {
+                gameObject.SetActive(false);
+                NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.Error, "This file cannot be opened as an autostereogram.");
+                return;
+            }
+            
             autostereogramImageHolder.GetComponent<Image>().sprite = imageToSet;
             autostereogramMovingImageHolder.GetComponent<Image>().sprite = imageToSet;
 
@@ -65,14 +76,9 @@ namespace Apps.Autostereogram.Views
             movingImageSlider.value = movingImageSlider.maxValue;
         }
 
-        private void OnEnable()
-        {
-            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
-        }
-
         protected override void OnDisableChild()
         {
-            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
         }
 
         /// <summary>

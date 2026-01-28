@@ -4,6 +4,7 @@
     {
         Generic,
         NewMessage,
-        NewFile
+        NewFile,
+        Error
     }
 }
