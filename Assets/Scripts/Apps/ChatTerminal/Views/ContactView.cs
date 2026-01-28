@@ -43,7 +43,7 @@ namespace Apps.ChatTerminal.Views
             messagesWindow.SetActive(true); //This needs to be called before setting properties
             ChatTerminalMvc.Instance.MessageSystemController.PrepareMessageView(); //Must be called after activating the messages window
             
-            ChatTerminalMvc.Instance.MessageSystemController.StartMessaging();
+            ChatTerminalMvc.Instance.MessageSystemController.StartMessaging(this);
             
             ChatTerminalMvc.Instance.MessageSystemController.openedContact?.Invoke(_profileModel.UserID);
         }

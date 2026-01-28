@@ -1,6 +1,7 @@
 ﻿using System;
 using Apps.ChatTerminal.Models;
 using Apps.ChatTerminal.Views;
+using UnityEngine;
 
 namespace Apps.ChatTerminal.Controllers
 {
@@ -32,9 +33,9 @@ namespace Apps.ChatTerminal.Controllers
             _messageSystemView.CreateDivider();    
         }
         
-        public void StartMessaging()
+        public void StartMessaging(MonoBehaviour coroutineHost)
         {
-            _messageSystemModel.StartMessaging();
+            _messageSystemModel.StartMessaging(coroutineHost);
         }
         
         public void StopMessaging()

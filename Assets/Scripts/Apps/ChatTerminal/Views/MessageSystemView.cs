@@ -80,6 +80,7 @@ namespace Apps.ChatTerminal.Views
             }
         }
         
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Creates a message in the message view.
         /// </summary>

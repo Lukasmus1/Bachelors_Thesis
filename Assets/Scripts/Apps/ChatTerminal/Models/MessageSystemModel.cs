@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Threading;
 using System.Threading.Tasks;
 using Apps.ChatTerminal.Commons;
 using UnityEngine;
@@ -22,31 +21,31 @@ namespace Apps.ChatTerminal.Models
                 _currentProfile = value;
             }
         }
+
+        private bool _stopMessaging;
+        private bool _isMessaging;
         
-        private CancellationTokenSource _token;
-        
-        public void StartMessaging()
+        public void StartMessaging(MonoBehaviour coroutineHost)
         {
-            _token = new CancellationTokenSource();
-            _ = TypingAsync(_token.Token);
+            _stopMessaging = false;
+            coroutineHost.StartCoroutine(TypingAsync());
         }
 
         public void StopMessaging()
         {
-            if (_token == null)
+            if (!_isMessaging)
             {
                 return;
             }
             
-            _token?.Cancel();
+            _stopMessaging = true;
             CurrentProfile.Status = MessageStatus.Offline;
         }
         
         /// <summary>
         /// Simulate typing messages with delay based on typing speed.
         /// </summary>
-        /// <param name="token">Token to cancel async process</param>
-        private async Task TypingAsync(CancellationToken token)
+        private IEnumerator TypingAsync()
         {
             bool isIndexOverMessages = CurrentProfile.CurrentMessageIndex >= CurrentProfile.Messages.Count;
             
@@ -55,55 +54,73 @@ namespace Apps.ChatTerminal.Models
             
             //Try to type new messages
             //If canceled, revert seen index to start index
-            try
+            //Create message history
+            for (int i = 0; i < CurrentProfile.SeenMessagesIndex; i++)
             {
-                //Create message history
-                for (int i = 0; i < CurrentProfile.SeenMessagesIndex; i++)
+                _isMessaging = true;
+                
+                foreach (ChatMessage oldMsg in CurrentProfile.Messages[i])
                 {
-                    foreach (ChatMessage oldMsg in CurrentProfile.Messages[i])
+                    if (_stopMessaging)
                     {
-                        token.ThrowIfCancellationRequested();
-                        CreateMessage(oldMsg);
+                        InterruptedMessaging(startIndex);
+                        yield break;
                     }
-
-                    if (i == CurrentProfile.SeenMessagesIndex - 1 && isIndexOverMessages)
-                    {
-                        break;
-                    }
-
-                    CreateDivider();
+                    CreateMessage(oldMsg);
                 }
 
-                if (isIndexOverMessages)
+                if (i == CurrentProfile.SeenMessagesIndex - 1 && isIndexOverMessages)
                 {
-                    Debug.Log("No more messages remaining");
-                    return;
+                    break;
                 }
 
-                CurrentProfile.Status = MessageStatus.Typing;
-
-                for (int i = CurrentProfile.SeenMessagesIndex; i <= CurrentProfile.CurrentMessageIndex; i++)
-                {
-                    foreach (ChatMessage message in CurrentProfile.Messages[i])
-                    {
-                        //Simulate typing delay based on typing speed divided by number of chars
-                        var delayMs = (int)(message.Text.Length / CurrentProfile.TypingSpeed * 1000);
-                        await Task.Delay(delayMs, token);
-
-                        CreateMessage(message);
-                    }
-
-                    CreateDivider();
-                    CurrentProfile.SeenMessagesIndex++;
-                }
-
-                CurrentProfile.Status = MessageStatus.Offline;
+                CreateDivider();
             }
-            catch (OperationCanceledException)
+
+            if (isIndexOverMessages)
             {
-                CurrentProfile.Status = MessageStatus.Offline;
-                CurrentProfile.SeenMessagesIndex = startIndex;
+                Debug.Log("No more messages remaining");
+                yield break;
             }
+
+            CurrentProfile.Status = MessageStatus.Typing;
+
+            for (int i = CurrentProfile.SeenMessagesIndex; i <= CurrentProfile.CurrentMessageIndex; i++)
+            {
+                foreach (ChatMessage message in CurrentProfile.Messages[i])
+                {
+                    if (_stopMessaging)
+                    {
+                        InterruptedMessaging(startIndex);
+                        yield break;
+                    }
+                        
+                    //Simulate typing delay based on typing speed divided by number of chars
+                    var delayS = (int)(message.Text.Length / CurrentProfile.TypingSpeed);
+                    yield return new WaitForSeconds(delayS);
+                    
+                    if (_stopMessaging)
+                    {
+                        InterruptedMessaging(startIndex);
+                        yield break;
+                    }
+
+                    CreateMessage(message);
+                }
+
+                CreateDivider();
+                CurrentProfile.SeenMessagesIndex++;
+            }
+
+            CurrentProfile.Status = MessageStatus.Offline;
+            _isMessaging = false;
+        }
+
+        private void InterruptedMessaging(int startIndex)
+        {
+            CurrentProfile.Status = MessageStatus.Offline;
+            CurrentProfile.SeenMessagesIndex = startIndex;
+            _isMessaging = false;
         }
         
         private static void CreateMessage(ChatMessage content)
