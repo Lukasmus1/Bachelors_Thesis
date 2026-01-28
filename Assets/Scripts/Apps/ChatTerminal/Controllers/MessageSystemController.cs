@@ -38,9 +38,9 @@ namespace Apps.ChatTerminal.Controllers
             _messageSystemModel.StartMessaging(coroutineHost);
         }
         
-        public void StopMessaging()
+        public void StopMessaging(MonoBehaviour coroutineHost)
         {
-            _messageSystemModel.StopMessaging();
+            _messageSystemModel.StopMessaging(coroutineHost);
         }
         
         public void PrepareMessageView()

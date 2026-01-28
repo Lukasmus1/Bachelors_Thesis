@@ -17,6 +17,11 @@ namespace Apps.ChatTerminal.Views
             _profileModel.MessageStatusChanged -= SetStatusText;
         }
 
+        private void OnDisable()
+        {
+            ChatTerminalMvc.Instance.MessageSystemController.StopMessaging(this);
+        }
+
         public void SetProperties(GameObject messagesWin, ChatProfile profile)
         {
             messagesWindow = messagesWin;
@@ -37,7 +42,7 @@ namespace Apps.ChatTerminal.Views
         public void OnClick()
         {
             //This is called to stop any ongoing messaging and set the status to offline, hence this must be called before setting the current profile
-            ChatTerminalMvc.Instance.MessageSystemController.StopMessaging();
+            ChatTerminalMvc.Instance.MessageSystemController.StopMessaging(this);
             ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile = GetComponent<ChatProfile>();
             
             messagesWindow.SetActive(true); //This needs to be called before setting properties

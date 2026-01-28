@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Threading.Tasks;
 using Apps.ChatTerminal.Commons;
 using UnityEngine;
 
@@ -22,24 +21,23 @@ namespace Apps.ChatTerminal.Models
             }
         }
 
-        private bool _stopMessaging;
-        private bool _isMessaging;
+        private Coroutine _runningCoroutine;
         
         public void StartMessaging(MonoBehaviour coroutineHost)
         {
-            _stopMessaging = false;
-            coroutineHost.StartCoroutine(TypingAsync());
+            _runningCoroutine = coroutineHost.StartCoroutine(TypingAsync());
         }
 
-        public void StopMessaging()
+        public void StopMessaging(MonoBehaviour coroutineHost)
         {
-            if (!_isMessaging)
+            if (_runningCoroutine == null)
             {
                 return;
             }
             
-            _stopMessaging = true;
-            CurrentProfile.Status = MessageStatus.Offline;
+            InterruptedMessaging(CurrentProfile.SeenMessagesIndex);
+            coroutineHost.StopCoroutine(_runningCoroutine);
+            _runningCoroutine = null;
         }
         
         /// <summary>
@@ -49,23 +47,13 @@ namespace Apps.ChatTerminal.Models
         {
             bool isIndexOverMessages = CurrentProfile.CurrentMessageIndex >= CurrentProfile.Messages.Count;
             
-            //Save start index in case of cancellation
-            int startIndex = CurrentProfile.SeenMessagesIndex;
-            
             //Try to type new messages
             //If canceled, revert seen index to start index
             //Create message history
             for (int i = 0; i < CurrentProfile.SeenMessagesIndex; i++)
             {
-                _isMessaging = true;
-                
                 foreach (ChatMessage oldMsg in CurrentProfile.Messages[i])
                 {
-                    if (_stopMessaging)
-                    {
-                        InterruptedMessaging(startIndex);
-                        yield break;
-                    }
                     CreateMessage(oldMsg);
                 }
 
@@ -89,21 +77,10 @@ namespace Apps.ChatTerminal.Models
             {
                 foreach (ChatMessage message in CurrentProfile.Messages[i])
                 {
-                    if (_stopMessaging)
-                    {
-                        InterruptedMessaging(startIndex);
-                        yield break;
-                    }
-                        
+                    
                     //Simulate typing delay based on typing speed divided by number of chars
                     var delayS = (int)(message.Text.Length / CurrentProfile.TypingSpeed);
                     yield return new WaitForSeconds(delayS);
-                    
-                    if (_stopMessaging)
-                    {
-                        InterruptedMessaging(startIndex);
-                        yield break;
-                    }
 
                     CreateMessage(message);
                 }
@@ -113,14 +90,12 @@ namespace Apps.ChatTerminal.Models
             }
 
             CurrentProfile.Status = MessageStatus.Offline;
-            _isMessaging = false;
         }
 
         private void InterruptedMessaging(int startIndex)
         {
             CurrentProfile.Status = MessageStatus.Offline;
             CurrentProfile.SeenMessagesIndex = startIndex;
-            _isMessaging = false;
         }
         
         private static void CreateMessage(ChatMessage content)
