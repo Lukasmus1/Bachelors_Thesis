@@ -1,7 +1,6 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
-using Apps.FileViewer.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,13 +30,19 @@ namespace Apps.ChatTerminal.Views
             ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.MessageStatusChanged -= SetStatusText;
         }
         
+        /// <summary>
+        /// Sets the properties of the message system view based on the current profile.
+        /// </summary>
         public void SetProperties()
         {
             usernameText.text = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
-            //profilePictureImage.sprite = currentProfile.ProfilePicture;
+            profilePictureImage.sprite = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.ProfilePicture;
             SetStatusText(ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Status);
         }
         
+        /// <summary>
+        /// Clears all messages from the message view.
+        /// </summary>
         public void ClearMessages()
         {
             foreach (Transform child in messagePrefabParent)
@@ -46,6 +51,11 @@ namespace Apps.ChatTerminal.Views
             }
         }
         
+        /// <summary>
+        /// Sets the status text based on the message status.
+        /// </summary>
+        /// <param name="status">Status to set</param>
+        /// <exception cref="ArgumentOutOfRangeException">Gets thrown if we use unspecified MessageStatus</exception>
         private void SetStatusText(MessageStatus status)
         {
             switch (status)
@@ -70,6 +80,10 @@ namespace Apps.ChatTerminal.Views
             }
         }
         
+        /// <summary>
+        /// Creates a message in the message view.
+        /// </summary>
+        /// <param name="messageContent">Content of the message</param>
         public void CreateMessage(ChatMessage messageContent)
         {
             GameObject msg = Instantiate(messageContent.Sender == "Player" ? sentMessagePrefab : recievedMessagePrefab, messagePrefabParent);
@@ -77,12 +91,15 @@ namespace Apps.ChatTerminal.Views
             var props = msg.GetComponent<MessageProperties>();
             
             props.usernameText.text = messageContent.Sender == "Player" ? UserMvc.Instance.UserController.Username : ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
-            //props.profilePicture.sprite = currentProfile.ProfilePicture;
+            props.profilePicture.sprite = messageContent.Sender == "Player" ? UserMvc.Instance.UserController.GetProfilePicture() : ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.ProfilePicture;
             props.messageText.text = messageContent.Text;
             
             msg.SetActive(true);
         }
         
+        /// <summary>
+        /// Creates a divider in the message view.
+        /// </summary>
         public void CreateDivider()
         { 
             Instantiate(messageDividerPrefab, messagePrefabParent).SetActive(true);

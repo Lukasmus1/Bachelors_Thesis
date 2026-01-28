@@ -1,9 +1,7 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Apps.ChatTerminal.Views
 {
@@ -29,6 +27,8 @@ namespace Apps.ChatTerminal.Views
             _props = GetComponent<ContactProperties>();
             
             _props.usernameText.text = _profileModel.Username;
+            _props.profileImage.sprite = _profileModel.ProfilePicture;
+            
             SetStatusText(_profileModel.Status);
             
             gameObject.SetActive(true);

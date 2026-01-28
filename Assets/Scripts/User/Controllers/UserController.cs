@@ -14,6 +14,13 @@ namespace User.Controllers
             set => userModel.Username = value;
         }
         
+        public Sprite GetProfilePicture()
+        {
+            var tex = new Texture2D(2, 2);
+            tex.LoadImage(userModel.ProfilePicture);
+            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        }
+        
         public string ProceduralData(ProceduralDataType dataType)
         {
             return userModel.ProceduralData.Find(data => data.dataType == dataType)?.dataValue;

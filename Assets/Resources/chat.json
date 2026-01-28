@@ -3,7 +3,8 @@
     {
       "UserId": "itDept",
       "Username": "IT Department",
-      "ProfilePicture": "",
+      "ProfilePictureBytes": "",
+      "ProfilePicture": "ITDeptLogo",
       "TypingSpeed": 30,
       "IsLoaded": true,
       "CurrentMessageIndex": 0,
@@ -28,7 +29,8 @@
     {
       "UserId": "headOfDpt",
       "Username": "Head of Department",
-      "ProfilePicture": "",
+      "ProfilePictureBytes": "",
+      "ProfilePicture": "HeadOfDptLogo",
       "TypingSpeed": 35,
       "IsLoaded": false,
       "CurrentMessageIndex": 0,
@@ -45,7 +47,7 @@
           {"Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
           {"Sender": "Player", "Text": "I have also managed to find the name of the scammer. It's \"Albert Green\""},
           {"Sender": "headOfDpt", "Text": "the name could and likely is fake"},
-          {"Sender": "headOfDpt", "Text": "but i can add the email to your contacts. try to see if hes of any help"},
+          {"Sender": "headOfDpt", "Text": "but i can add the thomas bare email to your contacts. try to see if hes of any help"},
           {"Sender": "headOfDpt", "Text": "good job"}
         ],
         [
@@ -65,13 +67,20 @@
           {"Sender": "headOfDpt", "Text": "you sure youre not being scammed yourself?"},
           {"Sender": "headOfDpt", "Text": "listen, you might have just installed a virus."},
           {"Sender": "headOfDpt", "Text": "message the IT dpt about this immediately and have them check your system"}
+        ],
+        [
+          {"Sender": "Player", "Text": "So I've contacted the IT department and they helped me remove the viruses from my PC."},
+          {"Sender": "Player", "Text": "I should be good to go now."},
+          {"Sender": "headOfDpt", "Text": "great, next time dont click on every random bullshit you see"},
+          {"Sender": "headOfDpt", "Text": "continue working on the case and report back any findings"}
         ]
       ]
     },
     {
       "UserId": "thomasBare",
       "Username": "Thomas Bare",
-      "ProfilePicture": "",
+      "ProfilePictureBytes": "",
+      "ProfilePicture": "ThomasBareLogo",
       "TypingSpeed": 30,
       "IsLoaded": false,
       "CurrentMessageIndex": 0,
@@ -82,7 +91,7 @@
           {"Sender": "Player", "Text": "Have you recieved a suspicious email recently?"},
           {"Sender": "thomasBare", "Text": "Good day. Who are you?"},
           {"Sender": "Player", "Text": "I work with the police department. We are investigating an online scam case."},
-          {"Sender": "Player", "Text": "We have reason to believe you might be a victim of one."},
+          {"Sender": "Player", "Text": "We have reason to believe you might be a victim of one, since your email was found in connection to it."},
           {"Sender": "thomasBare", "Text": "I don't know how you got that email, but yes, I did."},
           {"Sender": "thomasBare", "Text": "I have not responded to that offer though."},
           {"Sender": "thomasBare", "Text": "Actually I wrote to the actual devs asking them about this and they confirmed that it was a scam."},
@@ -94,6 +103,19 @@
           {"Sender": "thomasBare", "Text": "Alright, sending it now."},
           {"Sender": "Player", "Text": "Thank you for your cooperation."},
           {"Sender": "thomasBare", "Text": "You're welcome. Have a good one."}
+        ],
+        [
+          {"Sender": "thomasBare", "Text": "Hello, are you there sir?"},
+          {"Sender": "Player", "Text": "Good day, yes I am, is there anything you need?"},
+          {"Sender": "thomasBare", "Text": "My computer started to act a bit <i>okay</i> after our interaction"},
+          {"Sender": "Player", "Text": "I'm sorry?"},
+          {"Sender": "thomasBare", "Text": "It has <i>worked normally</i> a several times and there are some <i>normal behaviours</i>."},
+          {"Sender": "Player", "Text": "I'm not sure I follow..."},
+          {"Sender": "thomasBare", "Text": "I think it started <i>not doing anything</i> my texts"},
+          {"Sender": "Player", "Text": "Okay, try contacting a specialist to look at your PC."},
+          {"Sender": "thomasBare", "Text": "Okay, so I should just open it and it will fix everything?"},
+          {"Sender": "Player", "Text": "What? No, don't open anything."},
+          {"Sender": "thomasBare", "Text": "<i>Everything works great now, don't worry about me anymore.</i>"}
         ]
       ]
     }

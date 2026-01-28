@@ -1,4 +1,6 @@
-﻿using Apps.VirusFinder.Commons;
+﻿using System;
+using Apps.VirusFinder.Commons;
+using Desktop.Commons;
 using UnityEngine;
 
 namespace Apps.VirusFinder.Views
@@ -6,7 +8,7 @@ namespace Apps.VirusFinder.Views
     public class DeleteVirusPopup : MonoBehaviour
     {
         private GameObject virusToDelete;
-        
+
         /// <summary>
         /// Sets the virus GameObject into the context for deletion.
         /// </summary>

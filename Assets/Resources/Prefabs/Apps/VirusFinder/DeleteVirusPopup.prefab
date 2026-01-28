@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4408448749634490750}
   m_Layer: 5
   m_Name: DeleteVirusPopup
-  m_TagString: Untagged
+  m_TagString: VirusPopup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

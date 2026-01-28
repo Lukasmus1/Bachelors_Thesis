@@ -12,6 +12,8 @@ namespace Story.Models
         AfterCrash,
         VirusFinderMessage,
         VirusFinder,
+        AfterVirus,
+        ThomasFinal,
         Default
     }
 }

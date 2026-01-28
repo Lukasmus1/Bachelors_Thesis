@@ -23,7 +23,6 @@ namespace Apps.ChatTerminal.Models
             set => _loadedChatProfiles = value;
         }
         
-        
         /// <summary>
         /// Load chat profiles from a JSON file located in the Resources folder.
         /// </summary>
@@ -32,6 +31,8 @@ namespace Apps.ChatTerminal.Models
         {
             var chatJson = Resources.Load<TextAsset>("chat");
 
+            Sprite[] icons = Resources.LoadAll<Sprite>("Prefabs/Apps/ChatTerminal/PersonIcons");
+            
             if (chatJson == null)
             {
                 throw new Exception("Chat JSON file not found in Resources folder.");
@@ -40,6 +41,11 @@ namespace Apps.ChatTerminal.Models
             var chatProfiles = JsonConvert.DeserializeObject<ChatProfilesWrapper>(chatJson.text);
             foreach (ChatProfileModel profile in chatProfiles.ChatProfiles)
             {
+                Sprite icon = icons.FirstOrDefault(sprite => sprite.name == profile.ProfilePicture);
+                if (icon != null)
+                {
+                    profile.ProfilePictureBytes = icon.texture.EncodeToPNG();
+                }
                 _loadedChatProfiles.Add(profile);
             }
         }

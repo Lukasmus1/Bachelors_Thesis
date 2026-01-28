@@ -21,6 +21,14 @@ namespace User.Models
             {
                 new(ProceduralDataType.VignereCode, VigenereMvc.Instance.VigenereController.GenerateVigenereKey(5)),
             };
+            
+            SetProfilePicture();
+        }
+        
+        public void SetProfilePicture()
+        {
+            var defaultProfilePic = Resources.Load<Texture2D>("Prefabs/Apps/ChatTerminal/PersonIcons/PFP");
+            ProfilePicture = defaultProfilePic.EncodeToPNG();
         }
     }
     
