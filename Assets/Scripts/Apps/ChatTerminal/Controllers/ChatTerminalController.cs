@@ -17,6 +17,13 @@ namespace Apps.ChatTerminal.Controllers
             _chatTerminalView = chatTerminalView;
         }
         
+        public void SaveGameData()
+        {
+            foreach (ChatProfile chatProfile in _chatTerminalView.profiles)
+            {
+                chatTerminalModel.UpdateProfileData(chatProfile);
+            }
+        }
         
         public List<ChatProfileModel> GetChatProfiles()
         {

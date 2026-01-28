@@ -39,7 +39,7 @@ namespace Apps.ChatTerminal.Views
         /// </summary>
         public void UpdateContactData()
         {
-            var profilesFromJson = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
+            List<ChatProfileModel> profilesFromJson = ChatTerminalMvc.Instance.ChatTerminalController.GetChatProfiles();
             
             foreach (ChatProfileModel profile in profilesFromJson)
             {

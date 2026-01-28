@@ -22,6 +22,27 @@ namespace Apps.ChatTerminal.Models
             }
             set => _loadedChatProfiles = value;
         }
+
+        /// <summary>
+        /// Updates the profile data for a given chat profile (used for saving).
+        /// </summary>
+        /// <param name="chatProfile">Currently used profile of the person</param>
+        public void UpdateProfileData(ChatProfile chatProfile)
+        {
+            foreach (ChatProfileModel profile in LoadedChatProfilesFromJson)
+            {
+                if (profile.UserID != chatProfile.UserID)
+                {
+                    continue;
+                }
+                
+                profile.Status = chatProfile.Status;
+                profile.CurrentMessageIndex = chatProfile.CurrentMessageIndex;
+                profile.SeenMessagesIndex = chatProfile.SeenMessagesIndex;
+                profile.IsLoaded = chatProfile.IsLoaded;
+                break;
+            }
+        }
         
         /// <summary>
         /// Load chat profiles from a JSON file located in the Resources folder.

@@ -27,6 +27,10 @@ namespace Saving.Models
         
         public void SaveGame()
         {
+            //Methods to explicitly save the data if required 
+            ChatTerminalMvc.Instance.ChatTerminalController.SaveGameData();
+            
+            
             BinaryFormatter formatter = new();
             FileStream stream = new(_path, FileMode.Create);
             try
