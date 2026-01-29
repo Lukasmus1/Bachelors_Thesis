@@ -9,13 +9,26 @@ namespace FourthWall.FileGeneration.Models
     {
         public void CreateFile(string fileName, string content)
         {
+            //Ensure any existing file is removed
+            DestroyFile(fileName);
+            
             File.WriteAllText(fileName, content);
         }
         
+        /// <inheritdoc cref="FileGenerationController.CreateHiddenFile"/>
         public void CreateHiddenFile(string fileName, string content)
         {
             CreateFile(fileName, content);
             File.SetAttributes(fileName, FileAttributes.Hidden);
+        }
+        
+        /// <inheritdoc cref="FileGenerationController.DestroyFile"/>
+        public void DestroyFile(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
         }
         
         /// <inheritdoc cref="FileGenerationController.GenerateRandomFileName"/>

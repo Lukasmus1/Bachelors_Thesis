@@ -17,6 +17,15 @@ namespace FourthWall.FileGeneration.Controllers
         {
             _model.CreateHiddenFile(fileName, content);
         }
+        
+        /// <summary>
+        /// Destroys the specified file.
+        /// </summary>
+        /// <param name="fileName">Name of the file</param>
+        public void DestroyFile(string fileName)
+        {
+            _model.DestroyFile(fileName);
+        }
 
         /// <summary>
         /// Generates a random file name from a predefined list.

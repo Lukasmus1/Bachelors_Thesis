@@ -42,17 +42,30 @@ namespace Commons
         /// <param name="cancellationToken">Token used for cancelling running timer</param>
         private async Task RunTimerAsync(float seconds, Action onComplete, CancellationToken cancellationToken)
         {
-            while (!cancellationToken.IsCancellationRequested)
+            try
             {
                 await Task.Delay(TimeSpan.FromSeconds(seconds), cancellationToken);
-                onComplete?.Invoke();
+        
+                if (!cancellationToken.IsCancellationRequested)
+                {
+                    onComplete?.Invoke();
+                }
+            }
+            catch (TaskCanceledException)
+            {
+                //Timer was canceled, do nothing
+            }
+            finally
+            {
+                _isRunning = false;
             }
         }
+
         
         /// <summary>
         /// Stops the timer if it is running.
         /// </summary>
-        public void StopTimer()
+        private void StopTimer()
         {
             _cancellationTokenSource?.Cancel();
             _isRunning = false;
@@ -64,6 +77,7 @@ namespace Commons
         public void Dispose()
         {
             StopTimer();
+            onTimerComplete = null;
             _cancellationTokenSource?.Dispose();
         }
     }
