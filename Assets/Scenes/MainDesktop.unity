@@ -6495,6 +6495,7 @@ GameObject:
   - component: {fileID: 667817314}
   - component: {fileID: 667817313}
   - component: {fileID: 667817312}
+  - component: {fileID: 667817318}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: ScriptHolder
@@ -6603,6 +6604,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667817318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667817311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cc4dc2bf924b1a8010416c81053191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1 &669313957
 GameObject:
   m_ObjectHideFlags: 0

@@ -115,7 +115,7 @@
           {"Sender": "Player", "Text": "Okay, try contacting a specialist to look at your PC."},
           {"Sender": "thomasBare", "Text": "Okay, so I should just open it and it will fix everything?"},
           {"Sender": "Player", "Text": "What? No, don't open anything."},
-          {"Sender": "thomasBare", "Text": "<i>Everything works great now, don't worry about me anymore.</i>"}
+          {"Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"}
         ]
       ]
     }

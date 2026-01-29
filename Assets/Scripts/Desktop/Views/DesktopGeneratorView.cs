@@ -181,7 +181,6 @@ namespace Desktop.Views
         private void OnApplicationQuit()
         {
             SaveExistingIcons();
-            SavingMvc.Instance.SavingController.SaveGame();
         }
     }
 }

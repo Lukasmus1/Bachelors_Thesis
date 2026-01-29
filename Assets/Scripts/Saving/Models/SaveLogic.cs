@@ -5,6 +5,7 @@ using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
 using Desktop.Models;
 using Story.Commons;
+using Story.Models.Actions;
 using UnityEngine;
 using User.Commons;
 
@@ -23,6 +24,7 @@ namespace Saving.Models
             _model.chatTerminalModel = ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel;
             _model.loadedFiles = FileLoaderMvc.Instance.FileLoaderController.LoadedFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
+            _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
         }
         
         public void SaveGame()

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Apps.Commons;
 using Apps.FileManager.Models;
 using Apps.FileViewer.Commons;
@@ -8,6 +9,8 @@ using Story.Models.Actions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using User.Commons;
+using User.Models;
 
 namespace Apps.FileViewer.Views
 {
@@ -39,9 +42,6 @@ namespace Apps.FileViewer.Views
             
             //Bring to front
             transform.SetAsLastSibling();
-            
-            //Perform Hidden Virus Action
-            ActionsClass.Instance.PerformAction(ActionType.HiddenVirus);
         }
 
         protected override void OnDisableChild()

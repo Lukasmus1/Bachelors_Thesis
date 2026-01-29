@@ -7,6 +7,7 @@ using Desktop.Controllers;
 using Desktop.Models;
 using Story.Commons;
 using Story.Models;
+using Story.Models.Actions;
 using User.Commons;
 using User.Models;
 
@@ -20,6 +21,7 @@ namespace Saving.Models
         public ChatTerminalModel chatTerminalModel;
         public List<string> loadedFiles;
         public UserModel userModel;
+        public ListOfActionsPersistent persistentActions;
         
         
         public void LoadDataFromModel(SaveModel saveModel)
@@ -40,6 +42,8 @@ namespace Saving.Models
             
             userModel = saveModel.userModel;
             UserMvc.Instance.UserController.userModel = userModel;
+
+            ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
         }
     }
 }
