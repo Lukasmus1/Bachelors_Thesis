@@ -148,8 +148,13 @@ namespace Story.Models.Actions
         private void StartTimerForHiddenVirusCancellation(string fileName)
         {
             t1 = new AsyncTimer();
-            _ = t1.StartTimer(5, () =>
+            _ = t1.StartTimer(120, () =>
             {
+                if (fileDeleteDetection.IsFileDeleted())
+                {
+                    CleanupHiddenVirusAction();
+                    return;
+                }
                 if (fileDeleteDetection == null)
                 {
                     return;

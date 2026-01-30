@@ -32,10 +32,15 @@ namespace FourthWall.FileGeneration.Models
                 throw new FileNotFoundException($"{_monitoredFilePath} not found. Cannot start deletion detection.");
             }
         }
+
+        public bool IsFileDeleted()
+        {
+            return !File.Exists(_monitoredFilePath);
+        }
         
         private void Update()
         {
-            if (!_start || File.Exists(_monitoredFilePath)) return;
+            if (!_start || !IsFileDeleted()) return;
             
             fileDeleted?.Invoke();
             _start = false;
