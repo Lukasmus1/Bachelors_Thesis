@@ -150,6 +150,11 @@ namespace Story.Models.Actions
             t1 = new AsyncTimer();
             _ = t1.StartTimer(5, () =>
             {
+                if (fileDeleteDetection == null)
+                {
+                    return;
+                }
+                
                 var message = $"Windows detected a hidden corrupted file in your system: {Path.GetFullPath(fileName)}";
                 WindowsErrorHandling.ThrowError(message, "File Corruption Error");
                 
