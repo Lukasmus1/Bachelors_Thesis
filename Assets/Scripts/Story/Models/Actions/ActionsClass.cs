@@ -73,11 +73,11 @@ namespace Story.Models.Actions
         /// <summary>
         /// Performs the action specified by the ActionType enum.
         /// </summary>
-        /// <param name="k">ActionType</param>
+        /// <param name="type">ActionType</param>
         /// <exception cref="ArgumentOutOfRangeException">Gets thrown if we use unspecified ActionType</exception>
-        public void PerformAction(ActionType k)
+        public void PerformAction(ActionType type)
         {
-            switch (k)
+            switch (type)
             {
                 case ActionType.HiddenVirus:
                     PerformHiddenVirusAction();
@@ -85,7 +85,7 @@ namespace Story.Models.Actions
                     break;
                 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(k), k, null);
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
         

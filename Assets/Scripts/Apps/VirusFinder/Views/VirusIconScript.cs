@@ -32,6 +32,8 @@ namespace Apps.VirusFinder.Views
         //ReSharper disable Unity.PerformanceAnalysis
         public void PerformAction()
         {
+            EventSystem.current.SetSelectedGameObject(null);
+            
             GameObject popup = Instantiate(deletePopup, gameObject.transform.parent.parent);
             
             popup.GetComponent<DeleteVirusPopup>().SetVirusIntoContext(gameObject);

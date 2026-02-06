@@ -18,9 +18,6 @@ namespace Story.Models.States
         {
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 3);
             
-            //Perform Hidden Virus Action
-            ActionsClass.Instance.PerformAction(ActionType.HiddenVirus);
-            
             LoadFromState();
         }
 

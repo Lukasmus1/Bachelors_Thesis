@@ -1,5 +1,6 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
+using Story.Models.Actions;
 
 namespace Story.Models.States
 {
@@ -12,6 +13,9 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 1);
+            
+            //Perform Hidden Virus Action
+            ActionsClass.Instance.PerformAction(ActionType.HiddenVirus);
             
             LoadFromState();
         }
