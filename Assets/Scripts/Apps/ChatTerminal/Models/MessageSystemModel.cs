@@ -42,6 +42,7 @@ namespace Apps.ChatTerminal.Models
             _runningCoroutine = null;
         }
         
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Simulate typing messages with delay based on typing speed.
         /// </summary>

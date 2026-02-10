@@ -54,7 +54,7 @@ namespace Apps.ChatTerminal.Models
 
             Sprite[] icons = Resources.LoadAll<Sprite>("Prefabs/Apps/ChatTerminal/PersonIcons");
             
-            if (chatJson == null)
+            if (!chatJson)
             {
                 throw new Exception("Chat JSON file not found in Resources folder.");
             }
@@ -63,7 +63,7 @@ namespace Apps.ChatTerminal.Models
             foreach (ChatProfileModel profile in chatProfiles.ChatProfiles)
             {
                 Sprite icon = icons.FirstOrDefault(sprite => sprite.name == profile.ProfilePicture);
-                if (icon != null)
+                if (icon)
                 {
                     profile.ProfilePictureBytes = icon.texture.EncodeToPNG();
                 }
@@ -82,7 +82,7 @@ namespace Apps.ChatTerminal.Models
             if (loadedProfiles.Count > 0)
             {
                 ChatProfile profile = loadedProfiles.Find(profile => profile.UserID == profileId);
-                if (profile != null)
+                if (profile)
                 {
                     profile.CurrentMessageIndex = messageIndex;
                 }

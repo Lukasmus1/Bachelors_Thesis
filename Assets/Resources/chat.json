@@ -130,7 +130,7 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"MessageID": "kp1", "Sender": "kp", "Text": "DO NOT DELETE MY FILES"}
+          {"MessageID": "kpWarning", "Sender": "kp", "Text": "<color=red><b>DO NOT DELETE MY FILES</color></b>"}
         ]
       ]
     }

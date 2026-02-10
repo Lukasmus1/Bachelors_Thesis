@@ -4,6 +4,7 @@ using System.Text;
 using Commons;
 using FourthWall.Commons;
 using FourthWall.FileGeneration.Models;
+using Story.Models.SideActions;
 using UnityEngine;
 using User.Commons;
 using User.Models;
@@ -167,6 +168,7 @@ namespace Story.Models.Actions
             });
         }
         
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Cleanup after the hidden virus action.
         /// </summary>
@@ -188,6 +190,9 @@ namespace Story.Models.Actions
             
             //Cleanup action flag
             ActionsPersistent.SetAction(ActionType.HiddenVirus, false);
+            
+            //Follow up with the AI messaging the player
+            KpDoNotDeleteFiles.MessagePlayer();
         }
     }
 }
