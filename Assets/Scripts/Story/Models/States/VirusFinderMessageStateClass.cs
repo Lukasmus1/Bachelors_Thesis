@@ -22,17 +22,17 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            ChatTerminalMvc.Instance.MessageSystemController.openedContact -= TransitionCheck;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;
         }
 
         public override void LoadFromState()
         {
-            ChatTerminalMvc.Instance.MessageSystemController.openedContact += TransitionCheck;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += TransitionCheck;
         }
 
-        private void TransitionCheck(string contactId)
+        private void TransitionCheck(string messageID)
         {
-            if (contactId == "itDept")
+            if (messageID == "itVirusFinderInstalled")
             {
                 ChangeToNextState();
             }

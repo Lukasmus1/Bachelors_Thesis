@@ -1,8 +1,5 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
-using Desktop.Notification.Commons;
-using Desktop.Notification.Models;
-using Story.Commons;
 
 namespace Story.Models.States
 {
@@ -24,17 +21,17 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            ChatTerminalMvc.Instance.MessageSystemController.openedContact -= CheckForContactOpened;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= CheckForContactOpened;
         }
 
         public override void LoadFromState()
         {
-            ChatTerminalMvc.Instance.MessageSystemController.openedContact += CheckForContactOpened;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += CheckForContactOpened;
         }
 
-        private void CheckForContactOpened(string profileId)
+        private void CheckForContactOpened(string messageID)
         {
-            if (profileId == "thomasBare")
+            if (messageID == "bareFileSent")
             {
                 ChangeToNextState();
             }

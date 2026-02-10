@@ -1,12 +1,7 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
-using Apps.Commons;
 using Apps.FileManager.Commons;
-using Apps.FileManager.Views;
 using Apps.FileViewer.Commons;
-using Desktop.Notification.Commons;
-using Desktop.Notification.Models;
-using Story.Commons;
 
 namespace Story.Models.States
 {

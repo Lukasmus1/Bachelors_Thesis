@@ -5,24 +5,24 @@
       "Username": "IT Department",
       "ProfilePictureBytes": "",
       "ProfilePicture": "ITDeptLogo",
-      "TypingSpeed": 30,
+      "TypingSpeed": 25,
       "IsLoaded": true,
       "CurrentMessageIndex": 0,
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"Sender": "itDept", "Text": "Hello, I am from IT department. Pleasure to meet you."},
-          {"Sender": "itDept", "Text": "This chat terminal serves as a way for the station to communicate with you."},
-          {"Sender": "itDept", "Text": "We will provide you with important information about your case or just help in general."},
-          {"Sender": "itDept", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
-          {"Sender": "itDept", "Text": "Please open it when you have the time."}
+          {"MessageID": "it1", "Sender": "itDept", "Text": "Hello, I am from IT department. Pleasure to meet you."},
+          {"MessageID": "it2", "Sender": "itDept", "Text": "This chat terminal serves as a way for the station to communicate with you."},
+          {"MessageID": "it3", "Sender": "itDept", "Text": "We will provide you with important information about your case or just help in general."},
+          {"MessageID": "it4", "Sender": "itDept", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
+          {"MessageID": "it5", "Sender": "itDept", "Text": "Please open it when you have the time."}
         ],
         [
-          {"Sender": "Player", "Text": "Good day, I may have accidentally installed a virus in my system."},
-          {"Sender": "Player", "Text": "Could you please help me?"},
-          {"Sender": "itDept", "Text": "Hello, sorry to hear that."},
-          {"Sender": "itDept", "Text": "I have taken a liberty of installing a software called 'Virus Finder'."},
-          {"Sender": "itDept", "Text": "Please run it and delete any viruses it may find on the desktop."}
+          {"MessageID": "it6", "Sender": "Player", "Text": "Good day, I may have accidentally installed a virus in my system."},
+          {"MessageID": "it7", "Sender": "Player", "Text": "Could you please help me?"},
+          {"MessageID": "it8", "Sender": "itDept", "Text": "Hello, sorry to hear that."},
+          {"MessageID": "it9", "Sender": "itDept", "Text": "I have taken a liberty of installing a software called 'Virus Finder'."},
+          {"MessageID": "itVirusFinderInstalled", "Sender": "itDept", "Text": "Please run it and delete any viruses it may find on the desktop."}
         ]
       ]
     },
@@ -31,48 +31,48 @@
       "Username": "Head of Department",
       "ProfilePictureBytes": "",
       "ProfilePicture": "HeadOfDptLogo",
-      "TypingSpeed": 35,
+      "TypingSpeed": 20,
       "IsLoaded": false,
       "CurrentMessageIndex": 0,
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"Sender": "headOfDpt", "Text": "good morning"},
-          {"Sender": "headOfDpt", "Text": "glad you could figure out the file manager. some morons cant even do that"},
-          {"Sender": "headOfDpt", "Text": "anyway... your first task is to help us catch an online scammer"},
-          {"Sender": "headOfDpt", "Text": "i have sent you an email that we managed to get our hands on. you can open it in the file manager"},
-          {"Sender": "headOfDpt", "Text": "try to find anything useful about the scammer or the victim itself"}
+          {"MessageID": "dpt1", "Sender": "headOfDpt", "Text": "good morning"},
+          {"MessageID": "dpt2", "Sender": "headOfDpt", "Text": "glad you could figure out the file manager. some morons cant even do that"},
+          {"MessageID": "dpt3", "Sender": "headOfDpt", "Text": "anyway... your first task is to help us catch an online scammer"},
+          {"MessageID": "dpt4", "Sender": "headOfDpt", "Text": "i have sent you an email that we managed to get our hands on. you can open it in the file manager"},
+          {"MessageID": "dpt5", "Sender": "headOfDpt", "Text": "try to find anything useful about the scammer or the victim itself"}
         ],
         [
-          {"Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
-          {"Sender": "Player", "Text": "I have also managed to find the name of the scammer. It's \"Albert Green\""},
-          {"Sender": "headOfDpt", "Text": "the name could and likely is fake"},
-          {"Sender": "headOfDpt", "Text": "but i can add the thomas bare email to your contacts. try to see if hes of any help"},
-          {"Sender": "headOfDpt", "Text": "good job"}
+          {"MessageID": "dpt6", "Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
+          {"MessageID": "dpt7", "Sender": "Player", "Text": "I have also managed to find the name of the scammer. It's \"Albert Green\""},
+          {"MessageID": "dpt8", "Sender": "headOfDpt", "Text": "the name could and likely is fake"},
+          {"MessageID": "dpt9", "Sender": "headOfDpt", "Text": "but i can add the thomas bare email to your contacts. try to see if hes of any help"},
+          {"MessageID": "dpt10", "Sender": "headOfDpt", "Text": "good job"}
         ],
         [
-          {"Sender": "Player", "Text": "I managed to contact Thomas Bare and in response he sent me a file that seems to be just random noise."},
-          {"Sender": "Player", "Text": "Do you think it could be useful?"},
-          {"Sender": "headOfDpt", "Text": "hmm... hard to say"},
-          {"Sender": "headOfDpt", "Text": "ill send it to our specialists. they might be able to extract something from it"},
-          {"Sender": "headOfDpt", "Text": "ill let you know when i hear back from them"}
+          {"MessageID": "dpt11", "Sender": "Player", "Text": "I managed to contact Thomas Bare and in response he sent me a file that seems to be just random noise."},
+          {"MessageID": "dpt12", "Sender": "Player", "Text": "Do you think it could be useful?"},
+          {"MessageID": "dpt13", "Sender": "headOfDpt", "Text": "hmm... hard to say"},
+          {"MessageID": "dpt14", "Sender": "headOfDpt", "Text": "ill send it to our specialists. they might be able to extract something from it"},
+          {"MessageID": "dpt15", "Sender": "headOfDpt", "Text": "ill let you know when i hear back from them"}
         ],
         [
-          {"Sender": "Player", "Text": "Hello, I have clicked the link in the encrypted file you've sent me."},
-          {"Sender": "headOfDpt", "Text": "what? i didnt send you anything, what are you talking about?"},
-          {"Sender": "Player", "Text": "There was a file from you that contained a link to click."},
-          {"Sender": "Player", "Text": "That link crashed my PC."},
-          {"Sender": "headOfDpt", "Text": "are you sure it was from me?"},
-          {"Sender": "headOfDpt", "Text": "because i have no idea what youre talking about"},
-          {"Sender": "headOfDpt", "Text": "you sure youre not being scammed yourself?"},
-          {"Sender": "headOfDpt", "Text": "listen, you might have just installed a virus."},
-          {"Sender": "headOfDpt", "Text": "message the IT dpt about this immediately and have them check your system"}
+          {"MessageID": "dpt16", "Sender": "Player", "Text": "Hello, I have clicked the link in the encrypted file you've sent me."},
+          {"MessageID": "dpt17", "Sender": "headOfDpt", "Text": "what? i didnt send you anything, what are you talking about?"},
+          {"MessageID": "dpt18", "Sender": "Player", "Text": "There was a file from you that contained a link to click."},
+          {"MessageID": "dpt19", "Sender": "Player", "Text": "That link crashed my PC."},
+          {"MessageID": "dpt20", "Sender": "headOfDpt", "Text": "are you sure it was from me?"},
+          {"MessageID": "dpt21", "Sender": "headOfDpt", "Text": "because i have no idea what youre talking about"},
+          {"MessageID": "dpt22", "Sender": "headOfDpt", "Text": "you sure youre not being scammed yourself?"},
+          {"MessageID": "dpt23", "Sender": "headOfDpt", "Text": "listen, you might have just installed a virus."},
+          {"MessageID": "dptMsgIT", "Sender": "headOfDpt", "Text": "message the IT dpt about this immediately and have them check your system"}
         ],
         [
-          {"Sender": "Player", "Text": "So I've contacted the IT department and they helped me remove the viruses from my PC."},
-          {"Sender": "Player", "Text": "I should be good to go now."},
-          {"Sender": "headOfDpt", "Text": "great, next time dont click on every random bullshit you see"},
-          {"Sender": "headOfDpt", "Text": "continue working on the case and report back any findings"}
+          {"MessageID": "dpt25", "Sender": "Player", "Text": "So I've contacted the IT department and they helped me remove the viruses from my PC."},
+          {"MessageID": "dpt26", "Sender": "Player", "Text": "I should be good to go now."},
+          {"MessageID": "dpt27", "Sender": "headOfDpt", "Text": "great, next time dont click on every random bullshit you see"},
+          {"MessageID": "dpt28", "Sender": "headOfDpt", "Text": "continue working on the case and report back any findings"}
         ]
       ]
     },
@@ -81,43 +81,59 @@
       "Username": "Thomas Bare",
       "ProfilePictureBytes": "",
       "ProfilePicture": "ThomasBareLogo",
+      "TypingSpeed": 20,
+      "IsLoaded": false,
+      "CurrentMessageIndex": 0,
+      "SeenMessagesIndex": 0,
+      "Messages": [
+        [
+          {"MessageID": "bare1", "Sender": "Player", "Text": "Good day, sir."},
+          {"MessageID": "bare2", "Sender": "Player", "Text": "Have you recieved a suspicious email recently?"},
+          {"MessageID": "bare3", "Sender": "thomasBare", "Text": "Good day. Who are you?"},
+          {"MessageID": "bare4", "Sender": "Player", "Text": "I work with the police department. We are investigating an online scam case."},
+          {"MessageID": "bare5", "Sender": "Player", "Text": "We have reason to believe you might be a victim of one, since your email was found in connection to it."},
+          {"MessageID": "bare6", "Sender": "thomasBare", "Text": "I don't know how you got that email, but yes, I did."},
+          {"MessageID": "bare7", "Sender": "thomasBare", "Text": "I have not responded to that offer though."},
+          {"MessageID": "bare8", "Sender": "thomasBare", "Text": "Actually I wrote to the actual devs asking them about this and they confirmed that it was a scam."},
+          {"MessageID": "bare9", "Sender": "Player", "Text": "Interesting, and did they say anything else that might be useful?"},
+          {"MessageID": "bare10", "Sender": "thomasBare", "Text": "Not really, they just told me to ignore and delete such emails in the future."},
+          {"MessageID": "bare11", "Sender": "thomasBare", "Text": "But alongside that email, I also recieved another file."},
+          {"MessageID": "bare12", "Sender": "thomasBare", "Text": "It seems to just be a random noise. I can send it to you if you want."},
+          {"MessageID": "bare13", "Sender": "Player", "Text": "Yes, please do. It might be useful."},
+          {"MessageID": "bare14", "Sender": "thomasBare", "Text": "Alright, sending it now."},
+          {"MessageID": "bareFileSent", "Sender": "Player", "Text": "Thank you for your cooperation."},
+          {"MessageID": "bare16", "Sender": "thomasBare", "Text": "You're welcome. Have a good one."}
+        ],
+        [
+          {"MessageID": "bare17", "Sender": "thomasBare", "Text": "Hello, are you there sir?"},
+          {"MessageID": "bare18", "Sender": "Player", "Text": "Good day, yes I am, is there anything you need?"},
+          {"MessageID": "bare19", "Sender": "thomasBare", "Text": "My computer started to act a bit <i>okay</i> after our interaction"},
+          {"MessageID": "bare20", "Sender": "Player", "Text": "I'm sorry?"},
+          {"MessageID": "bare21", "Sender": "thomasBare", "Text": "It has <i>worked normally</i> a several times and there are some <i>normal behaviours</i>."},
+          {"MessageID": "bare22", "Sender": "Player", "Text": "I'm not sure I follow..."},
+          {"MessageID": "bare23", "Sender": "thomasBare", "Text": "I think it started <i>not doing anything</i> my texts"},
+          {"MessageID": "bare24", "Sender": "Player", "Text": "Okay, try contacting a specialist to look at your PC."},
+          {"MessageID": "bare25", "Sender": "thomasBare", "Text": "Okay, so I should just open it and it will fix everything?"},
+          {"MessageID": "bare26", "Sender": "Player", "Text": "What? No, don't open anything."},
+          {"MessageID": "bareFinal", "Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"}
+        ]
+      ]
+    },
+    {
+      "UserId": "kp",
+      "Username": "K-P",
+      "ProfilePictureBytes": "",
+      "ProfilePicture": "KPLogo",
       "TypingSpeed": 30,
       "IsLoaded": false,
       "CurrentMessageIndex": 0,
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"Sender": "Player", "Text": "Good day, sir."},
-          {"Sender": "Player", "Text": "Have you recieved a suspicious email recently?"},
-          {"Sender": "thomasBare", "Text": "Good day. Who are you?"},
-          {"Sender": "Player", "Text": "I work with the police department. We are investigating an online scam case."},
-          {"Sender": "Player", "Text": "We have reason to believe you might be a victim of one, since your email was found in connection to it."},
-          {"Sender": "thomasBare", "Text": "I don't know how you got that email, but yes, I did."},
-          {"Sender": "thomasBare", "Text": "I have not responded to that offer though."},
-          {"Sender": "thomasBare", "Text": "Actually I wrote to the actual devs asking them about this and they confirmed that it was a scam."},
-          {"Sender": "Player", "Text": "Interesting, and did they say anything else that might be useful?"},
-          {"Sender": "thomasBare", "Text": "Not really, they just told me to ignore and delete such emails in the future."},
-          {"Sender": "thomasBare", "Text": "But alongside that email, I also recieved another file."},
-          {"Sender": "thomasBare", "Text": "It seems to just be a random noise. I can send it to you if you want."},
-          {"Sender": "Player", "Text": "Yes, please do. It might be useful."},
-          {"Sender": "thomasBare", "Text": "Alright, sending it now."},
-          {"Sender": "Player", "Text": "Thank you for your cooperation."},
-          {"Sender": "thomasBare", "Text": "You're welcome. Have a good one."}
-        ],
-        [
-          {"Sender": "thomasBare", "Text": "Hello, are you there sir?"},
-          {"Sender": "Player", "Text": "Good day, yes I am, is there anything you need?"},
-          {"Sender": "thomasBare", "Text": "My computer started to act a bit <i>okay</i> after our interaction"},
-          {"Sender": "Player", "Text": "I'm sorry?"},
-          {"Sender": "thomasBare", "Text": "It has <i>worked normally</i> a several times and there are some <i>normal behaviours</i>."},
-          {"Sender": "Player", "Text": "I'm not sure I follow..."},
-          {"Sender": "thomasBare", "Text": "I think it started <i>not doing anything</i> my texts"},
-          {"Sender": "Player", "Text": "Okay, try contacting a specialist to look at your PC."},
-          {"Sender": "thomasBare", "Text": "Okay, so I should just open it and it will fix everything?"},
-          {"Sender": "Player", "Text": "What? No, don't open anything."},
-          {"Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"}
+          {"MessageID": "kp1", "Sender": "kp", "Text": "DO NOT DELETE MY FILES"}
         ]
       ]
     }
+    
   ]
 }

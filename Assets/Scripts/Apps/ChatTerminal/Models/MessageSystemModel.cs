@@ -7,6 +7,8 @@ namespace Apps.ChatTerminal.Models
 {
     public class MessageSystemModel
     {
+        private const float PLAYER_TYPING_SPEED = 30f;
+        
         private ChatProfile _currentProfile;
         public ChatProfile CurrentProfile
         {
@@ -77,15 +79,26 @@ namespace Apps.ChatTerminal.Models
             {
                 foreach (ChatMessage message in CurrentProfile.Messages[i])
                 {
-                    
                     //Simulate typing delay based on typing speed divided by number of chars
-                    var delayS = (int)(message.Text.Length / CurrentProfile.TypingSpeed);
+                    float delayS;
+                    if (message.Sender == "Player")
+                    {
+                        delayS = message.Text.Length / PLAYER_TYPING_SPEED;
+                    }
+                    else
+                    {
+                        delayS = message.Text.Length / CurrentProfile.TypingSpeed;
+                    }
                     yield return new WaitForSeconds(delayS);
 
                     CreateMessage(message);
-                }
 
-                CreateDivider();
+                    ChatTerminalMvc.Instance.MessageSystemController.messageTyped?.Invoke(message.MessageID);
+                    
+                    
+                    //Small delay between each message
+                    yield return  new WaitForSeconds(0.5f);
+                }
                 CurrentProfile.SeenMessagesIndex++;
             }
 
