@@ -21,6 +21,8 @@ namespace Story.Models.States
                 StatesEnum.VirusFinder => new VirusFinderStateClass(),
                 StatesEnum.AfterVirus => new AfterVirusCleanupStateClass(),
                 StatesEnum.ThomasFinal => new ThomasFinalCleanupStateClass(),
+                StatesEnum.AfterThomasFinal => new AfterThomasFinalCleanupStateClass(),
+                StatesEnum.CuratorFirst => new CuratorFirstStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

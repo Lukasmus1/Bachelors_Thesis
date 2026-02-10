@@ -49,10 +49,20 @@ namespace Apps.ChatTerminal.Controllers
         /// <summary>
         /// Loads a new chat profile into the chat terminal.
         /// </summary>
-        /// <param name="profileId">ID of the profile</param>
+        /// <param name="profileId">ID of the profile to load</param>
         public void LoadNewProfile(string profileId)
         {
             chatTerminalModel.LoadNewProfile(profileId);
+            _chatTerminalView.UpdateContactData();
+        }
+
+        /// <summary>
+        /// Unloads a new chat profile into the chat terminal.
+        /// </summary>
+        /// <param name="profileId">ID of the profile to unload</param>
+        public void UnloadProfile(string profileId)
+        {
+            chatTerminalModel.UnloadNewProfile(profileId);
             _chatTerminalView.UpdateContactData();
         }
     }

@@ -1,9 +1,10 @@
 ﻿namespace User.Models
 {
-    public enum ProceduralDataType
+    public enum UserDataType
     {
         VignereCode,
         VirusName,
-        VirusContent
+        VirusContent,
+        DeletedVirusFile
     }
 }

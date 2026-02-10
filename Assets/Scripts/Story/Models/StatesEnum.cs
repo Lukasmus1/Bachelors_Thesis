@@ -14,6 +14,8 @@ namespace Story.Models
         VirusFinder,
         AfterVirus,
         ThomasFinal,
+        AfterThomasFinal,
+        CuratorFirst,
         Default
     }
 }

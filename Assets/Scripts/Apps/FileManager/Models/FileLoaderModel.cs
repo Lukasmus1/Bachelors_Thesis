@@ -80,7 +80,7 @@ namespace Apps.FileManager.Models
             if (autostereoFile != null)
             {
                 autostereoFile.GetComponentInChildren<Image>().sprite = 
-                    AutostereogramMvc.Instance.AutostereogramController.GenerateAutostereogram(UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VignereCode));
+                    AutostereogramMvc.Instance.AutostereogramController.GenerateAutostereogram(UserMvc.Instance.UserController.ProceduralData(UserDataType.VignereCode));
             }
             else
             {
@@ -92,7 +92,7 @@ namespace Apps.FileManager.Models
             if (vigenereFile != null)
             {
                 var text = vigenereFile.GetComponentInChildren<TMP_Text>();
-                text.text = VigenereMvc.Instance.VigenereController.EncryptText(text.text, UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VignereCode));
+                text.text = VigenereMvc.Instance.VigenereController.EncryptText(text.text, UserMvc.Instance.UserController.ProceduralData(UserDataType.VignereCode));
             }
             else
             {

@@ -125,8 +125,8 @@ namespace Story.Models.Actions
         private void PerformHiddenVirusAction()
         {
             //Create hidden virus file
-            string fileName = UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VirusName);
-            string fileContent = UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VirusContent);
+            string fileName = UserMvc.Instance.UserController.ProceduralData(UserDataType.VirusName);
+            string fileContent = UserMvc.Instance.UserController.ProceduralData(UserDataType.VirusContent);
             FourthWallMvc.Instance.FileGenerationController.CreateHiddenFile(fileName, fileContent);
 
             //Attach file deletion detection
@@ -185,7 +185,7 @@ namespace Story.Models.Actions
             }
             
             //Destroy hidden virus file
-            string fileName = UserMvc.Instance.UserController.ProceduralData(ProceduralDataType.VirusName);
+            string fileName = UserMvc.Instance.UserController.ProceduralData(UserDataType.VirusName);
             FourthWallMvc.Instance.FileGenerationController.DestroyFile(fileName);
             
             //Cleanup action flag

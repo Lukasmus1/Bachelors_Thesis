@@ -108,7 +108,7 @@ namespace Apps.ChatTerminal.Models
         /// <summary>
         /// Set "loaded" flag to true for a specific chat profile.
         /// </summary>
-        /// <param name="profileId"></param>
+        /// <param name="profileId">ID of the profile to load</param>
         public void LoadNewProfile(string profileId)
         {
             ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(x => x.UserID == profileId);
@@ -118,6 +118,21 @@ namespace Apps.ChatTerminal.Models
             }
             
             profile.IsLoaded = true;
+        }
+
+        /// <summary>
+        /// Set "loaded" flag to false for a specific chat profile.
+        /// </summary>
+        /// <param name="profileId">ID of the profile to unload</param>
+        public void UnloadNewProfile(string profileId)
+        {
+            ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(x => x.UserID == profileId);
+            if (profile == null)
+            {
+                throw new NullReferenceException($"Profile with ID {profileId} not found.");
+            }
+            
+            profile.IsLoaded = false;
         }
     }
 }

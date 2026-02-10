@@ -73,6 +73,16 @@
           {"MessageID": "dpt26", "Sender": "Player", "Text": "I should be good to go now."},
           {"MessageID": "dpt27", "Sender": "headOfDpt", "Text": "great, next time dont click on every random bullshit you see"},
           {"MessageID": "dpt28", "Sender": "headOfDpt", "Text": "continue working on the case and report back any findings"}
+        ],
+        [
+          {"MessageID": "dpt29", "Sender": "Player", "Text": "Hey, so Thomas Bare, the suspect, just seemed to message me some weird things."},
+          {"MessageID": "dpt30", "Sender": "Player", "Text": "Actually, it sounds like he might be in trouble."},
+          {"MessageID": "dpt31", "Sender": "headOfDpt", "Text": "what are you talking about?"},
+          {"MessageID": "dpt32", "Sender": "Player", "Text": "I'm not sure how to describe it, his messages were just weird and now he's not responding to me at all."},
+          {"MessageID": "dpt33", "Sender": "headOfDpt", "Text": "maybe he just lost connection or something"},
+          {"MessageID": "dpt34", "Sender": "Player", "Text": "Maybe, still, could we get someone to check on him? I think he might be in danger."},
+          {"MessageID": "dpt35", "Sender": "headOfDpt", "Text": "okay send me those messages and ill see if i can do something about it"},
+          {"MessageID": "dptSendingThomasLogs", "Sender": "Player", "Text": "Alright, sending them now, thanks."}
         ]
       ]
     },
@@ -131,6 +141,25 @@
       "Messages": [
         [
           {"MessageID": "kpWarning", "Sender": "kp", "Text": "<color=red><b>DO NOT DELETE MY FILES</color></b>"}
+        ]
+      ]
+    },
+    {
+      "UserId": "curator",
+      "Username": "???",
+      "ProfilePictureBytes": "",
+      "ProfilePicture": "CuratorLogo",
+      "TypingSpeed": 50,
+      "IsLoaded": false,
+      "CurrentMessageIndex": 0,
+      "SeenMessagesIndex": 0,
+      "Messages": [
+        [
+          {"MessageID": "curator1", "Sender": "curator", "Text": "Good day sir, you have been talking about Thomas being in danger, so I checked his messages."},
+          {"MessageID": "curator2", "Sender": "curator", "Text": "You were right, he should have not written that."},
+          {"MessageID": "curator3", "Sender": "curator", "Text": "He was supposed to be important later on..."},
+          {"MessageID": "curator4", "Sender": "Player", "Text": "I'm sorry, who are you?"},
+          {"MessageID": "curatorFirstFinish", "Sender": "curator", "Text": "Don't worry about it, just keep doing detective stuff."}
         ]
       ]
     }

@@ -5,14 +5,14 @@ using Apps.VirusFinder.Commons;
 namespace Story.Models.States
 {
     [Serializable]
-    public class ThomasFinalCleanupStateClass : StateClass
+    public class AfterThomasFinalCleanupStateClass : StateClass
     {
-        public override int State => (int)StatesEnum.ThomasFinal;
-        public override int NextState => (int)StatesEnum.AfterThomasFinal;
+        public override int State => (int)StatesEnum.AfterThomasFinal;
+        public override int NextState => (int)StatesEnum.CuratorFirst;
 
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("thomasBare", 1);
+            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 5);
             
             LoadFromState();
         }
@@ -29,10 +29,12 @@ namespace Story.Models.States
 
         private void TransitionCheck(string messageID)
         {
-            if (messageID == "bareFinal")
+            if (messageID != "dptSendingThomasLogs")
             {
-                ChangeToNextState();
+                return;
             }
+            
+            ChangeToNextState();
         }
     }
 }
