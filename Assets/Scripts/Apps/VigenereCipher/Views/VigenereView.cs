@@ -89,7 +89,7 @@ namespace Apps.VigenereCipher.Views
             string key = keyInputField.text;
             if (key.Length == 0)
             {
-                Debug.LogWarning("Key is empty. Please enter a valid key to solve the cipher.");
+                _fileText.text = _fileTextCopy;
                 return;
             }
             

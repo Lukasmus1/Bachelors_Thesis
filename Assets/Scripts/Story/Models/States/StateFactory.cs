@@ -4,6 +4,12 @@ namespace Story.Models.States
 {
     public static class StateFactory
     {
+        /// <summary>
+        /// Gets the state class corresponding to the given state enum value.
+        /// </summary>
+        /// <param name="stateEnum">Enum value of the state</param>
+        /// <returns>Class associated with the enum</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Gets thrown if there is an enum that has no class</exception>
         public static StateClass GetState(int stateEnum)
         {
             var state = (StatesEnum)stateEnum;
@@ -23,6 +29,7 @@ namespace Story.Models.States
                 StatesEnum.ThomasFinal => new ThomasFinalCleanupStateClass(),
                 StatesEnum.AfterThomasFinal => new AfterThomasFinalCleanupStateClass(),
                 StatesEnum.CuratorFirst => new CuratorFirstStateClass(),
+                StatesEnum.Detective => new NewFilesStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

@@ -83,6 +83,17 @@
           {"MessageID": "dpt34", "Sender": "Player", "Text": "Maybe, still, could we get someone to check on him? I think he might be in danger."},
           {"MessageID": "dpt35", "Sender": "headOfDpt", "Text": "okay send me those messages and ill see if i can do something about it"},
           {"MessageID": "dptSendingThomasLogs", "Sender": "Player", "Text": "Alright, sending them now, thanks."}
+        ],
+        [
+          {"MessageID": "dpt37", "Sender": "headOfDpt", "Text": "hey so we managed to pull a file presumed to be from the scammers pc"},
+          {"MessageID": "dpt38", "Sender": "headOfDpt", "Text": "according to our source, it might be a screenshot of the scammers desktop"},
+          {"MessageID": "dpt39", "Sender": "headOfDpt", "Text": "unfortunately he seems to have encrypted it in some way with a password that we dont have"},
+          {"MessageID": "dpt40", "Sender": "Player", "Text": "Well, that's unfortunate..."},
+          {"MessageID": "dpt41", "Sender": "headOfDpt", "Text": "yeah but our source tells us that the password is a combination of the scammers TODOTODOTODOTODOTODOTODOTODOTODO"},
+          {"MessageID": "dpt42", "Sender": "Player", "Text": "Oh? That's interesting, do we know that information?"},
+          {"MessageID": "dpt43", "Sender": "headOfDpt", "Text": "wouldnt be writing you if we did now would we?"},
+          {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "but we managed to get a few more files from the scammers computer"},
+          {"MessageID": "dptSendingNewFiles", "Sender": "headOfDpt", "Text": "sending them to you now. try to look if you could find anything useful in them"}
         ]
       ]
     },

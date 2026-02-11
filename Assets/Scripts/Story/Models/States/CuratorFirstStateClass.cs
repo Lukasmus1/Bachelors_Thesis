@@ -10,7 +10,7 @@ namespace Story.Models.States
     public class CuratorFirstStateClass : StateClass
     {
         public override int State => (int)StatesEnum.CuratorFirst;
-        public override int NextState => (int)StatesEnum.Default;
+        public override int NextState => (int)StatesEnum.NewFiles;
 
         private bool _shouldUnsubscribe = false;
         

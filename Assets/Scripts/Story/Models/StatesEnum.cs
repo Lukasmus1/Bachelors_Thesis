@@ -16,6 +16,8 @@ namespace Story.Models
         ThomasFinal,
         AfterThomasFinal,
         CuratorFirst,
+        NewFiles,
+        Detective,
         Default
     }
 }
