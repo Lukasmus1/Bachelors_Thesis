@@ -84,7 +84,7 @@ namespace Apps.FileManager.Views
                     continue;
                 }
                 
-                //Get the icon associated with the file
+                // Get the icon associated with the file and set its visibility.
                 GameObject fileIcon = _fileIcons.Find(icon => icon.GetComponentInChildren<TMP_Text>().text == file.GetComponent<FileModel>().FileName);
                 fileIcon.SetActive(!fileModel.IsHidden || showHiddenFilesToggle.isOn);
             }
