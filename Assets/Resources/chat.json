@@ -125,7 +125,9 @@
           {"MessageID": "bare24", "Sender": "Player", "Text": "Okay, try contacting a specialist to look at your PC."},
           {"MessageID": "bare25", "Sender": "thomasBare", "Text": "Okay, so I should just open it and it will fix everything?"},
           {"MessageID": "bare26", "Sender": "Player", "Text": "What? No, don't open anything."},
-          {"MessageID": "bareFinal", "Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"}
+          {"MessageID": "bareFinal", "Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"},
+          {"MessageID": "bare27", "Sender": "Player", "Text": "Wait no, don't go anywhere."},
+          {"MessageID": "bare28", "Sender": "Player", "Text": "Hello?"}
         ]
       ]
     },
@@ -155,9 +157,9 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"MessageID": "curator1", "Sender": "curator", "Text": "Good day sir, you have been talking about Thomas being in danger, so I checked his messages."},
-          {"MessageID": "curator2", "Sender": "curator", "Text": "You were right, he should have not written that."},
-          {"MessageID": "curator3", "Sender": "curator", "Text": "He was supposed to be important later on..."},
+          {"MessageID": "curator1", "Sender": "curator", "Text": "Good day sir, you have been talking about Thomas being in danger, so I his logs."},
+          {"MessageID": "curator2", "Sender": "curator", "Text": "You were right, he was not supposed to write that."},
+          {"MessageID": "curator3", "Sender": "curator", "Text": "Dammit, he was supposed to be important later on..."},
           {"MessageID": "curator4", "Sender": "Player", "Text": "I'm sorry, who are you?"},
           {"MessageID": "curatorFirstFinish", "Sender": "curator", "Text": "Don't worry about it, just keep doing detective stuff."}
         ]

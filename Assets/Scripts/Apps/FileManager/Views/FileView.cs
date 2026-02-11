@@ -31,14 +31,10 @@ namespace Apps.FileManager.Views
             
             fileName.text = fileModel.FileName;
         }
-        
-        public void OnClick()
-        {
-            FileViewerMvc.Instance.FileLoaderController.OpenedFile = _fileObject;
-        }
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            FileViewerMvc.Instance.FileLoaderController.OpenedFile = _fileObject;
             CreateContextMenu(eventData);
         }
 
@@ -46,6 +42,9 @@ namespace Apps.FileManager.Views
         {
             //Instantiate context menu
             GameObject contextMenu = Instantiate(contextMenuPrefab, _contextMenuParent);
+            var contextMenuView = contextMenu.GetComponent<ContextMenuView>();
+            contextMenuView.SelectedFile = _fileObject;
+            contextMenuView.SetShowHideFileButton();
             
             //Set the current context menu in the controller
             FileLoaderMvc.Instance.ContextMenuController.OpenNewContextMenu(contextMenu);

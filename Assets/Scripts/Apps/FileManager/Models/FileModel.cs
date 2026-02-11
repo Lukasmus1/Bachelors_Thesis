@@ -12,5 +12,7 @@ namespace Apps.FileManager.Models
         }
         
         public bool IsLoaded { get; set; } = false;
+        
+        public bool IsHidden { get; set; } = false;
     }
 }

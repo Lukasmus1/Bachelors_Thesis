@@ -1,10 +1,19 @@
 ﻿using System;
+using Apps.FileManager.Commons;
+using Apps.FileManager.Models;
+using TMPro;
 using UnityEngine;
 
 namespace Apps.FileManager.Views
 {
     public class ContextMenuView : MonoBehaviour
     {
+        //Toggling visibility of the file
+        [SerializeField] private GameObject hideShowFileButton;
+        private const string SHOW_FILE_STRING = "Show File";
+        private const string HIDE_FILE_STRING = "Hide File";
+        
+        public GameObject SelectedFile { get; set; }
         private GameObject _parentObject;
         private DesktopHolderHelper _desktopHolderHelper; 
         
@@ -39,6 +48,33 @@ namespace Apps.FileManager.Views
         private void CloseContextMenu()
         {
             gameObject.SetActive(false);
+        }
+        
+        /// <summary>
+        /// Sets the text of the hide/show file button based on the current visibility of the file. If the file is hidden, the button will show "Show File", otherwise it will show "Hide File".
+        /// </summary>
+        public void SetShowHideFileButton()
+        {
+            var fileModel = SelectedFile.GetComponent<FileModel>();
+            hideShowFileButton.GetComponentInChildren<TMP_Text>().text = fileModel.IsHidden ? SHOW_FILE_STRING : HIDE_FILE_STRING;
+        }
+        
+        /// <summary>
+        /// Toggles the visibility of the selected file. If the file is currently hidden, it will be shown, and if it is currently shown, it will be hidden.
+        /// </summary>
+        public void ToggleVisibilityOfFile()
+        {
+            var fileModel = SelectedFile.GetComponent<FileModel>();
+
+            bool shouldHideFile = hideShowFileButton.GetComponentInChildren<TMP_Text>().text != SHOW_FILE_STRING;
+
+            FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility(fileModel.FileName, shouldHideFile);
+            
+            //Update the text of the button after toggling the visibility
+            SetShowHideFileButton();
+            
+            //Closes the context menu after toggling the visibility of the file
+            CloseContextMenu();
         }
     }
 }
