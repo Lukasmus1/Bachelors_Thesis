@@ -125,9 +125,9 @@
           {"MessageID": "bare24", "Sender": "Player", "Text": "Okay, try contacting a specialist to look at your PC."},
           {"MessageID": "bare25", "Sender": "thomasBare", "Text": "Okay, so I should just open it and it will fix everything?"},
           {"MessageID": "bare26", "Sender": "Player", "Text": "What? No, don't open anything."},
-          {"MessageID": "bareFinal", "Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"},
-          {"MessageID": "bare27", "Sender": "Player", "Text": "Wait no, don't go anywhere."},
-          {"MessageID": "bare28", "Sender": "Player", "Text": "Hello?"}
+          {"MessageID": "bare27", "Sender": "thomasBare", "Text": "<i>Yes, that worked, thank you for your help.</i>"},
+          {"MessageID": "bare28", "Sender": "Player", "Text": "What are you talking about???"},
+          {"MessageID": "bareFinal", "Sender": "Player", "Text": "Hello???"}
         ]
       ]
     },

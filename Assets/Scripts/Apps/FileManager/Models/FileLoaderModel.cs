@@ -92,7 +92,7 @@ namespace Apps.FileManager.Models
             if (vigenereFile != null)
             {
                 var text = vigenereFile.GetComponentInChildren<TMP_Text>();
-                text.text = VigenereMvc.Instance.VigenereController.EncryptText(text.text, UserMvc.Instance.UserController.ProceduralData(UserDataType.VignereCode));
+                text.text = CipherMvc.Instance.CipherController.EncryptText(text.text, UserMvc.Instance.UserController.ProceduralData(UserDataType.VignereCode));
             }
             else
             {

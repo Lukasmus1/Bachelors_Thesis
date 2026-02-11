@@ -35,6 +35,8 @@ namespace Story.Models.States
             if (appName == "Guide")
             {
                 ChangeToNextState();
+                
+                FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
             }
         }
     }

@@ -29,7 +29,7 @@ namespace User.Models
 
             ProceduralData = new List<ProceduralDataEntry>
             {
-                new(UserDataType.VignereCode, VigenereMvc.Instance.VigenereController.GenerateVigenereKey(5)),
+                new(UserDataType.VignereCode, CipherMvc.Instance.CipherController.GenerateVigenereKey(5)),
                 new(UserDataType.VirusName, FourthWallMvc.Instance.FileGenerationController.GenerateRandomFileName()),
                 new(UserDataType.VirusContent, FourthWallMvc.Instance.FileGenerationController.GenerateFileData())
             };

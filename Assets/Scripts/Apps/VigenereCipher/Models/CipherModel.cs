@@ -1,17 +1,17 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
+using Apps.VigenereCipher.Controllers;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Apps.VigenereCipher.Models
 {
-    public class VigenereModel
+    public class CipherModel
     {
         private const string CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"-=0123456789";
 
-        /// <summary>
-        /// Creates a random key for the Vigenere cipher
-        /// </summary>
-        /// <param name="keyLen">Desired length of the key</param>
-        /// <returns>Random vigenere cipher key</returns>
+        /// <see cref="CipherController.GenerateVigenereKey"/>
         public string GenerateVigenereKey(int keyLen)
         {
             StringBuilder key = new();
@@ -24,12 +24,7 @@ namespace Apps.VigenereCipher.Models
             return key.ToString();
         }
         
-        /// <summary>
-        /// Encrypts a plain text using the Vigenere cipher with the provided key
-        /// </summary>
-        /// <param name="plainText">The text to encrypt</param>
-        /// <param name="key">Key used for encrytpion</param>
-        /// <returns>Encrypted text</returns>
+        /// <see cref="CipherController.EncryptText"/>
         public string EncryptText(string plainText, string key)
         {
             StringBuilder encrypted = new();
@@ -55,12 +50,7 @@ namespace Apps.VigenereCipher.Models
             return encrypted.ToString();
         }
         
-        /// <summary>
-        /// Decrypts a text using the Vigenere cipher with the provided key
-        /// </summary>
-        /// <param name="plainText">Text to decrypt</param>
-        /// <param name="key">Key for decrytpion</param>
-        /// <returns>Decrypted text</returns>
+        /// <see cref="CipherController.DecryptText"/>
         public string DecryptText(string plainText, string key)
         {
             StringBuilder decrypted = new();
@@ -84,6 +74,40 @@ namespace Apps.VigenereCipher.Models
             }
 
             return decrypted.ToString();
+        }
+
+        /// <see cref="CipherController.EncryptDecryptImage"/>
+        public Texture2D DecryptImage(Texture2D cipherTexture, string key)
+        {
+            //Getting the raw texture data as a byte array
+            byte[] originalTexture = cipherTexture.GetRawTextureData();
+            byte[] textBytes = Encoding.UTF8.GetBytes(key);
+            int seedNum;
+            
+            //Creating a hash of the key to use as a seed for the random number generator (this ensures that the same key will always produce the same random sequence)
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] hash = sha256.ComputeHash(textBytes);
+                seedNum = BitConverter.ToInt32(hash, 0);
+            }
+            
+            //Creating a random number generator with the seed derived from the key that has the same length as the original picture
+            System.Random rnd = new(seedNum);
+            var keyStream = new byte[originalTexture.Length];
+            rnd.NextBytes(keyStream);
+            
+            //XOR cipher
+            for (int i = 0; i < originalTexture.Length; i++)
+            {
+                originalTexture[i] ^= keyStream[i];
+            }
+            
+            //Create a new texture with the same dimensions and format as the original and load the decrypted raw texture data into it
+            var decryptedTexture = new Texture2D(cipherTexture.width, cipherTexture.height, cipherTexture.format, false);
+            decryptedTexture.LoadRawTextureData(originalTexture);
+            decryptedTexture.Apply();
+
+            return decryptedTexture;
         }
     }
 }
