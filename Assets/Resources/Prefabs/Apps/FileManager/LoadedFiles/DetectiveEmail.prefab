@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
   title: Email
-  author: 
-  comments: 
+  author: IT Department
+  comments: Supposed scammer's email exchange screenshot
   createdDate: 
   intendedFileType: 0
 --- !u!114 &-8527522932906991640

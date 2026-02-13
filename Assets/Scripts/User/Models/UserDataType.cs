@@ -6,7 +6,7 @@
         VirusName,
         VirusContent,
         PictureCodeYear,
-        UserRealName,
+        ScammerName,
         PictureCode,
         DeletedVirusFile
     }
