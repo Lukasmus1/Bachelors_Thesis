@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_text: Hello, \n\nthis file serves as a guide to help you work with file viewer.\n\nIn
     this application you can:\n\t- Move the file using your mouse.\n\t- Zoom in and
     out using the buttons above, \n\t  or using the scroll wheel on your mouse\n\t-
-    Some text is also interactable. <u><link=\"ChangeColor\"><color=Black>Try clicking
+    Some text is also interactable. <u><link="ChangeColor"><color=Black>Try clicking
     me</color></link></u>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

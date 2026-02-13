@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
   - component: {fileID: 3122839135334631518}
+  - component: {fileID: -8527522932906991640}
   m_Layer: 5
-  m_Name: MouseQuest
+  m_Name: DetectiveEmailTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -600, y: -920}
+  m_SizeDelta: {x: -650, y: -500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562895037083215593
 MonoBehaviour:
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f795997a9f47b3b16a2bf93a0e39bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Models.FileModel
-  fileName: MouseQuest
+  fileName: Scammer's Email Two
 --- !u!114 &3122839135334631518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,11 +79,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5957c934414bc3836e6bd5bd5dc5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
-  title: Mouse Quest Beta
-  author: Albert Green
-  comments: Sent to thomas.bare@gmail.com
+  title: Email
+  author: IT Department
+  comments: Another supposed scammer's email exchange screenshot
   createdDate: 
   intendedFileType: 0
+--- !u!114 &-8527522932906991640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341737976566326313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9409c05e254c069a001c6bc1fd58a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.Commons.FileScripts.DetectiveEmailInteractionHandler
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +198,7 @@ GameObject:
   - component: {fileID: 2861823480482167900}
   - component: {fileID: 883030278865437350}
   - component: {fileID: 5121071624240296042}
+  - component: {fileID: -2736177264529170620}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -239,26 +253,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Good Morning Mr. Thomas,
-
-
-    I are thrilled to inform you that <color="Red">YOU</color>
-    have been selected as one of the extremely lucky ones to recieve a beta access
-    to our brand new game called <color="Red">The Mouse Quest II</color>.
-
-
-    If
-    you wish to recieve the game files, please respond to this email address: xdevs579@gusronk.com
-
-
-    We''d
-    love to have you playing our game.
-
-
-    Sincerely,
-
-    Lead Developer Albert
-    Green'
+  m_text: "<b>Subject:</b> RE: Requiring assistance\n<b>From:</b> super.bones{birthYear}@gmail.com\n<b>To:</b>
+    ema.cheek5@gmail.com\n<b>Date:</b> 19.10.2025\n\nPlease reply <b>immediately</b>
+    as I am going to lose all this money if you don't help me and you will lose your
+    <b>30%</b> <i>helping fee</i>.\n\n-----------------------------------------------------------------------------------------------------------------------------------------------------------\n<margin-left=50px>\n<b>Subject:</b>
+    Requiring assistance\n<b>From:</b> super.bones{birthYear}@gmail.com\n<b>To:</b>
+    ema.cheek5@gmail.com \n<b>Date:</b> 12.10.2025\n\nGood day,\n\nI am a banker
+    seeking a reliable foreign partner to help transfer the sum of <b>$18.5 million
+    USD </b>belonging to a deceased client. I offer you <b>30%</b> of the total funds
+    for your assistance in providing a bank account for this transaction. <b>Please
+    reply immediately</b> for more details."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -291,7 +295,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -329,3 +333,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &-2736177264529170620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227305280241718725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6366ee97f6b541449155028b9487355a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_SpriteAnimator
