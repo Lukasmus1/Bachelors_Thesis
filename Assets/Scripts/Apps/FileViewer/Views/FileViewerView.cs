@@ -37,6 +37,19 @@ namespace Apps.FileViewer.Views
             FileViewerMvc.Instance.FileLoaderController.fileOpened?.Invoke(fileToOpen.GetComponent<FileModel>().FileName);
             
             _instantiatedFileReference = Instantiate(fileToOpen, fileHolder);
+            
+            //Instantiate and center the file in the file holder
+            var instantiatedRect = _instantiatedFileReference.GetComponent<RectTransform>();
+            // Store original size if it's stretched
+            Vector2 originalSize = instantiatedRect.rect.size;
+            // Set anchors to center
+            instantiatedRect.anchorMin = new Vector2(0.5f, 0.5f);
+            instantiatedRect.anchorMax = new Vector2(0.5f, 0.5f);
+            instantiatedRect.pivot = new Vector2(0.5f, 0.5f);
+            // Set size and position
+            instantiatedRect.sizeDelta = originalSize;
+            instantiatedRect.anchoredPosition = Vector2.zero;
+            
             _fileHolderBackup = fileHolder;
             zoomLevelText.text = "100%";
             

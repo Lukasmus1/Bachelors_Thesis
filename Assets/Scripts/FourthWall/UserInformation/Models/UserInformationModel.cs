@@ -59,7 +59,7 @@ namespace FourthWall.UserInformation.Models
 
             if (result != 0)
             {
-                return userName.ToString();
+                return userName.ToString().ToLower();
             }
             else
             {
