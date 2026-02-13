@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Apps.VigenereCipher.Commons;
 using FourthWall.Commons;
 using UnityEngine;
+using User.Commons;
 
 namespace User.Models
 {
@@ -31,9 +32,16 @@ namespace User.Models
             {
                 new(UserDataType.VignereCode, CipherMvc.Instance.CipherController.GenerateVigenereKey(5)),
                 new(UserDataType.VirusName, FourthWallMvc.Instance.FileGenerationController.GenerateRandomFileName()),
-                new(UserDataType.VirusContent, FourthWallMvc.Instance.FileGenerationController.GenerateFileData())
+                new(UserDataType.VirusContent, FourthWallMvc.Instance.FileGenerationController.GenerateFileData()),
+                new(UserDataType.PictureCodeYear, CipherMvc.Instance.CipherController.GeneratePictureYearCode()),
+                new(UserDataType.UserRealName, FourthWallMvc.Instance.UserInformationController.GetUserRealName()),
+                //Both the user year and user real name are generated once and then saved to be the same for the entire playthrough
+                //The code itself is a combination of the two
+                new(UserDataType.PictureCode, 
+                    FourthWallMvc.Instance.UserInformationController.GetUserRealName() + 
+                    CipherMvc.Instance.CipherController.GeneratePictureYearCode()), 
             };
-
+            
             PersistentData = new List<PersistentData>
             {
                 new(UserDataType.DeletedVirusFile, false)

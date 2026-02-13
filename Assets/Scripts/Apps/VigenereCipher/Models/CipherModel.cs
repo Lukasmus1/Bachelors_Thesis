@@ -9,7 +9,7 @@ namespace Apps.VigenereCipher.Models
 {
     public class CipherModel
     {
-        private const string CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"-=0123456789";
+        private const string VIGENERE_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"-=0123456789";
 
         /// <see cref="CipherController.GenerateVigenereKey"/>
         public string GenerateVigenereKey(int keyLen)
@@ -17,11 +17,31 @@ namespace Apps.VigenereCipher.Models
             StringBuilder key = new();
             while (keyLen > 0)
             {
-                key.Append(CHARS[Random.Range(0, CHARS.Length)]);
+                key.Append(VIGENERE_CHARS[Random.Range(0, VIGENERE_CHARS.Length)]);
                 keyLen--;
             }
             
             return key.ToString();
+        }
+
+        //Cache the random year string so that it doesn't change every time the function is called (which would make it impossible to solve the puzzle)
+        //This information is saved in the UserModel, however to generate the XOR code, I would need to call the ProceduralData at time of initialization, which is impossible
+        private string randomYearString;
+        
+        /// <summary>
+        /// Generates a random year between 1980 and 2005 as a string to be used as a key for the XOR cipher in the picture puzzle.
+        /// </summary>
+        /// <returns>A string of year between 1980 and 2005</returns>
+        public string GeneratePictureYearCode()
+        {
+            if (!string.IsNullOrEmpty(randomYearString))
+            {
+                return randomYearString;
+            }
+            
+            int year = Random.Range(1980, 2005);
+            randomYearString = year.ToString();
+            return year.ToString();
         }
         
         /// <see cref="CipherController.EncryptText"/>
@@ -32,16 +52,16 @@ namespace Apps.VigenereCipher.Models
             
             foreach (char c in plainText)
             {
-                //Ignore characters not in CHARS (such as newline, spaces, etc.)
-                if (!CHARS.Contains(c.ToString()))
+                //Ignore characters not in VIGENERE_CHARS (such as newline, spaces, etc.)
+                if (!VIGENERE_CHARS.Contains(c.ToString()))
                 {
                     encrypted.Append(c);
                     continue;
                 }
                 
-                //Index of the c in CHARS + Index of the key char in CHARS (this is the shift in the alphabet) modulo the length of CHARS
-                int index = (CHARS.IndexOf(c) + CHARS.IndexOf(key[currentKeyIndex])) % CHARS.Length;
-                encrypted.Append(CHARS[index]);
+                //Index of the c in VIGENERE_CHARS + Index of the key char in VIGENERE_CHARS (this is the shift in the alphabet) modulo the length of VIGENERE_CHARS
+                int index = (VIGENERE_CHARS.IndexOf(c) + VIGENERE_CHARS.IndexOf(key[currentKeyIndex])) % VIGENERE_CHARS.Length;
+                encrypted.Append(VIGENERE_CHARS[index]);
                 
                 //Increment key index and loop around if necessary
                 currentKeyIndex = (currentKeyIndex + 1) % key.Length;
@@ -58,16 +78,16 @@ namespace Apps.VigenereCipher.Models
 
             foreach (char c in plainText)
             {
-                //Ignore characters not in CHARS (such as newline, spaces, etc.)
-                if (!CHARS.Contains(c.ToString()))
+                //Ignore characters not in VIGENERE_CHARS (such as newline, spaces, etc.)
+                if (!VIGENERE_CHARS.Contains(c.ToString()))
                 {
                     decrypted.Append(c);
                     continue;
                 }
                 
-                //Index of the c in CHARS - Index of the key char in CHARS (this is the shift in the alphabet) modulo the length of CHARS
-                int index = (CHARS.IndexOf(c) - CHARS.IndexOf(key[currentKeyIndex]) + CHARS.Length) % CHARS.Length;
-                decrypted.Append(CHARS[index]);
+                //Index of the c in VIGENERE_CHARS - Index of the key char in VIGENERE_CHARS (this is the shift in the alphabet) modulo the length of VIGENERE_CHARS
+                int index = (VIGENERE_CHARS.IndexOf(c) - VIGENERE_CHARS.IndexOf(key[currentKeyIndex]) + VIGENERE_CHARS.Length) % VIGENERE_CHARS.Length;
+                decrypted.Append(VIGENERE_CHARS[index]);
                 
                 //Increment key index and loop around if necessary
                 currentKeyIndex = (currentKeyIndex + 1) % key.Length;

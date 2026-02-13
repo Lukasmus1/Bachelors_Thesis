@@ -1,4 +1,5 @@
 ﻿using FourthWall.FileGeneration.Controllers;
+using FourthWall.UserInformation.Controllers;
 using Story.Controllers;
 
 namespace FourthWall.Commons
@@ -17,10 +18,12 @@ namespace FourthWall.Commons
         }
 
         public FileGenerationController FileGenerationController { get; set; }
+        public UserInformationController UserInformationController { get; set; }
         
         private FourthWallMvc()
         {
             FileGenerationController = new FileGenerationController();
+            UserInformationController = new UserInformationController();
         }
     }
 }

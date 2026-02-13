@@ -5,6 +5,9 @@
         VignereCode,
         VirusName,
         VirusContent,
+        PictureCodeYear,
+        UserRealName,
+        PictureCode,
         DeletedVirusFile
     }
 }

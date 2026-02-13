@@ -17,6 +17,15 @@ namespace Apps.VigenereCipher.Controllers
         {
             return cipherModel.GenerateVigenereKey(keyLen);
         }
+
+        /// <summary>
+        /// Generates a random year between 1980 and 2005 as a string to be used as a key for the XOR cipher in the picture puzzle.
+        /// </summary>
+        /// <returns>A random string of year between 1980 and 2005</returns>
+        public string GeneratePictureYearCode()
+        {
+            return cipherModel.GeneratePictureYearCode();
+        }
         
         /// <summary>
         /// Encrypts a plain text using the Vigenere cipher with the provided key

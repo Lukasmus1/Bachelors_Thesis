@@ -40,7 +40,7 @@ namespace Apps.FileManager.Models
         public void LoadAllFiles()
         {
             //Load all files and create clones of them
-            InstantiatedFiles = Resources.LoadAll<GameObject>("Prefabs/Apps/FileLoader/LoadedFiles").ToList().Select(Object.Instantiate).ToList();
+            InstantiatedFiles = Resources.LoadAll<GameObject>("Prefabs/Apps/FileManager/LoadedFiles").ToList().Select(Object.Instantiate).ToList();
             InstantiatedFiles.ForEach(x => x.name = x.name.Replace("(Clone)", ""));
             
             //Set all loaded files to not loaded at the start
