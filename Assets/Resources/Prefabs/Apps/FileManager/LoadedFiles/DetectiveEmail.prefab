@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7893032843637051076}
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
-  - component: {fileID: 6772484532663267758}
   - component: {fileID: 3122839135334631518}
+  - component: {fileID: -8527522932906991640}
   m_Layer: 5
   m_Name: DetectiveEmail
   m_TagString: Untagged
@@ -67,18 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Models.FileModel
   fileName: DetectiveEmail
---- !u!114 &6772484532663267758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341737976566326313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1505eeda01bb8849a115f2b4fa686e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &3122839135334631518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +84,18 @@ MonoBehaviour:
   comments: 
   createdDate: 
   intendedFileType: 0
+--- !u!114 &-8527522932906991640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341737976566326313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9409c05e254c069a001c6bc1fd58a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.Commons.FileScripts.DetectiveEmailInteractionHandler
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,10 +253,70 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Subject:</b>\n<b>From:</b>\n<b>To:</b>\n<b>Date:</b>\n\n<margin-left=20px>
-    <b>Subject:</b>\n<margin-left=20px> <b>From:</b>\n<margin-left=20px> <b>To:</b>\n<margin-left=20px>
-    <b>Date:</b>\n\n<margin-left=40px> <b>Subject:</b>\n<margin-left=40px> <b>From:</b>\n<margin-left=40px>
-    <b>To:</b>\n<margin-left=40px> <b>Date:</b>\n\n\xE1\xE1\xE1\xE1+\u011B\u0161\u010D\u0161\u010D\u011B\u0161fdsf"
+  m_text: '<b>Subject:</b> RE: RE: New tips
+
+    <b>From:</b> troublemaker7724@gmail.com
+
+    <b>To:</b>
+    super.bones{birthYear}@gmail.com
+
+    <b>Date:</b> 05.03.2026
+
+
+    Sup, sorry
+    for the delay, finding gullible enough people takes time.
+
+    I found another
+    dork for us though.  His name is Thomas Bare.
+
+    Here is his address: thomas.bare@gmail.com
+
+    LMK
+    how it goes with him ;).
+
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+    <margin-left=50px>
+
+    <b>Subject:</b>
+    RE: New tips
+
+    <b>From:</b> troublemaker7724@gmail.com
+
+    <b>To:</b> super.bones{birthYear}@gmail.com
+
+    <b>Date:</b>
+    20.02.2026
+
+
+    Sup. The old lady was the only one I really know about right
+    now.
+
+    Gimme a few days, I''ll try to find somene else.
+
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+    <margin-left=100px>
+
+    <b>Subject:</b>
+    New tips
+
+    <b>From:</b> super.bones{birthYear}@gmail.com
+
+    <b>To:</b> troublemaker7724@gmail.com
+
+    <b>Date:</b>
+    18.02.2026
+
+
+    Hey,
+
+    thanks for the tip. I''ve managed to <i>collect</i>
+    a lot of money from her. ;)
+
+    Do you have any more tips for our purposes?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

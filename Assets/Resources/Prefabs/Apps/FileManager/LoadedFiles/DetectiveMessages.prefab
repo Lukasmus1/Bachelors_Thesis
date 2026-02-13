@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6772484532663267758}
   - component: {fileID: 3122839135334631518}
   m_Layer: 5
-  m_Name: Guide
+  m_Name: DetectiveMessages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f795997a9f47b3b16a2bf93a0e39bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Models.FileModel
-  fileName: Guide
+  fileName: Messages
 --- !u!114 &6772484532663267758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,9 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5957c934414bc3836e6bd5bd5dc5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
-  title: Guide
-  author: IT Department
-  comments: This file exists to help you with using the file viewer.
+  title: Messages
+  author: 
+  comments: 
   createdDate: 
   intendedFileType: 0
 --- !u!1 &6046349541798103439
@@ -253,10 +253,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Hello, \n\nthis file serves as a guide to help you work with file viewer.\n\nIn
+    this application you can:\n\t- Move the file using your mouse.\n\t- Zoom in and
+    out using the buttons above, \n\t  or using the scroll wheel on your mouse\n\t-
+    Some text is also interactable. <u><link=\"ChangeColor\"><color=Black>Try clicking
+    me</color></link></u>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
