@@ -10,6 +10,7 @@ namespace Apps.VigenereCipher.Models
     public class CipherModel
     {
         private const string VIGENERE_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"-=0123456789";
+        private readonly string[] _names = {"Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", "Ivan", "Judy", "Karl", "Leo", "Mallory", "Nina", "Oscar", "Peggy", "Quentin", "Rupert"};
 
         /// <see cref="CipherController.GenerateVigenereKey"/>
         public string GenerateVigenereKey(int keyLen)
@@ -29,9 +30,9 @@ namespace Apps.VigenereCipher.Models
         private string randomYearString;
         
         /// <summary>
-        /// Generates a random year between 1980 and 2005 as a string to be used as a key for the XOR cipher in the picture puzzle.
+        /// Generates a random year between 1995 and 2005 as a string to be used as a key for the XOR cipher in the picture puzzle.
         /// </summary>
-        /// <returns>A string of year between 1980 and 2005</returns>
+        /// <returns>A string of year between 1995 and 2005</returns>
         public string GeneratePictureYearCode()
         {
             if (!string.IsNullOrEmpty(randomYearString))
@@ -39,9 +40,22 @@ namespace Apps.VigenereCipher.Models
                 return randomYearString;
             }
             
-            int year = Random.Range(1980, 2005);
+            int year = Random.Range(1995, 2005);
             randomYearString = year.ToString();
             return year.ToString();
+        }
+        
+        //Cache the random name string so that it doesn't change every time the function is called (which would make it impossible to solve the puzzle)
+        //This information is saved in the UserModel, however to generate the picture code, I would need to call the ProceduralData at time of initialization, which is impossible
+        private string randomNameString;
+        
+        /// <summary>
+        /// Generates a random name from the predefined list of names. This is used to generate the scammer's name for the picture code puzzle.
+        /// </summary>
+        /// <returns>A random string first name</returns>
+        public string GenerateRandomName()
+        {
+            return !string.IsNullOrEmpty(randomNameString) ? randomNameString : _names[Random.Range(0, _names.Length)];
         }
         
         /// <see cref="CipherController.EncryptText"/>

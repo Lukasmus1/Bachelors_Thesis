@@ -26,6 +26,11 @@ namespace Apps.VigenereCipher.Controllers
         {
             return cipherModel.GeneratePictureYearCode();
         }
+
+        public string GenerateRandomName()
+        {
+            return cipherModel.GenerateRandomName();
+        }
         
         /// <summary>
         /// Encrypts a plain text using the Vigenere cipher with the provided key
