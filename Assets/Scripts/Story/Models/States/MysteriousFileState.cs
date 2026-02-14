@@ -15,6 +15,9 @@ namespace Story.Models.States
         {
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", true);
             
+            //Create a screenshot of the desktop and save it for later in the story
+            FileLoaderMvc.Instance.FileLoaderController.CreateUsersScreenshotFile();
+            
             LoadFromState();
         }
 

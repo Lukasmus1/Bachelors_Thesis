@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using Apps.FileManager.Models;
 using Apps.FileManager.Views;
+using Apps.VigenereCipher.Commons;
+using FourthWall.Commons;
 using UnityEngine;
+using User.Commons;
+using User.Models;
 
 namespace Apps.FileManager.Controllers
 {
@@ -82,6 +86,34 @@ namespace Apps.FileManager.Controllers
         public void ToggleFileVisibility(string fileName, bool shouldHide)
         {
             _fileLoaderView.ToggleFileVisibility(fileName, shouldHide);
+        }
+        
+        public void CreateUsersScreenshotFile()
+        {
+            //Get the mono behavior from the script reference linker
+            MonoBehaviour monoBehavior = GameObject.FindGameObjectWithTag("ScriptHolder")
+                .GetComponent<ScriptReferenceLinker>()
+                .GetMonoBehavior();
+
+            //Get the screenshot texture from the user information controller and check if it's null
+            Texture2D screenshotTexture;
+            FourthWallMvc.Instance.UserInformationController.Screenshot(monoBehavior, (tex) =>
+            {
+                screenshotTexture = tex;
+                
+                if (!screenshotTexture)
+                {
+                    throw new Exception("The screenshot texture is null!");
+                }
+            
+                //Get the code for encrypting the image from the user data controller and encrypt the image with the cipher controller
+                string code = UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCode);
+                Sprite encryptedImageSprite = CipherMvc.Instance.CipherController.EncryptDecryptImage(screenshotTexture, code);
+            
+                //Finally sets the encrypted image as the user's screenshot file image in the file loader model
+                _fileLoaderModel.SetUserScreenshotFileImage(encryptedImageSprite);
+            });
+            
         }
     }
 }

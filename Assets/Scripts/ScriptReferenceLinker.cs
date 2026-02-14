@@ -74,4 +74,10 @@ public class ScriptReferenceLinker : MonoBehaviour
             _ => throw new Exception("The app tag has not been found!")
         };
     }
+
+    /// <summary>
+    /// Gets the MonoBehaviour reference of this script, used for coroutines in other classes that can't inherit from MonoBehaviour.
+    /// </summary>
+    /// <returns>MonoBehavior instance</returns>
+    public MonoBehaviour GetMonoBehavior() => this;
 }

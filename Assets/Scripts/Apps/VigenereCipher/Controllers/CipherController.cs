@@ -27,9 +27,13 @@ namespace Apps.VigenereCipher.Controllers
             return cipherModel.GeneratePictureYearCode();
         }
 
+        /// <summary>
+        /// Generates a random name from the predefined list of names. This is used to generate the scammer's name for the picture code puzzle.
+        /// </summary>
+        /// <returns>String with a random all lowercase name </returns>
         public string GenerateRandomName()
         {
-            return cipherModel.GenerateRandomName();
+            return cipherModel.GenerateRandomName().ToLower();
         }
         
         /// <summary>

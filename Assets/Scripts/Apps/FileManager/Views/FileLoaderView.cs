@@ -19,7 +19,7 @@ namespace Apps.FileManager.Views
         [SerializeField] private Toggle showHiddenFilesToggle;  
         private bool _showHiddenFilesBool;
 
-        private List<GameObject> _fileIcons = new();
+        private readonly List<GameObject> _fileIcons = new();
         
         private void Awake()
         {

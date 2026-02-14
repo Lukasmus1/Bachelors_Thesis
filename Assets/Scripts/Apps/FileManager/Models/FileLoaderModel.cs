@@ -36,7 +36,10 @@ namespace Apps.FileManager.Models
         
         public List<string> InstantiatedFileNames { get; set; } = new();
         
-
+        /// <summary>
+        /// Loads all files from the Resources folder, creates clones of them, and sets their loaded state based on the context. Also procedurally generates content for specific files that require it.
+        /// </summary>
+        /// <exception cref="Exception">Gets thrown if the path to the files changes</exception>
         public void LoadAllFiles()
         {
             //Load all files and create clones of them
@@ -140,6 +143,22 @@ namespace Apps.FileManager.Models
             {
                 NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewFile, model.FileName);
             }
+        }
+
+        /// <summary>
+        /// Sets the screenshot of the UserScreenshot sprite to the given file.
+        /// </summary>
+        /// <param name="screenshotSprite">Sprite of the image to set</param>
+        /// <exception cref="Exception">Gets thrown if the screenshot file couldn't be found</exception>
+        public void SetUserScreenshotFileImage(Sprite screenshotSprite)
+        {
+            GameObject screenshotFile = InstantiatedFiles.FirstOrDefault(x => x.name == "UserScreenshot");
+            if (screenshotFile == null)
+            {
+                throw new Exception("Trying to access UserScreenshot file, but it does not exist. Possible rename?");
+            }
+            
+            screenshotFile.GetComponentInChildren<Image>().sprite = screenshotSprite;
         }
     }
 }

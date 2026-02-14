@@ -77,3 +77,6 @@ crashlytics-build.properties
 Assets/_Recovery
 Assets/_Recovery.meta
 *.DotSettings
+Docs
+latex
+Doxyfile
