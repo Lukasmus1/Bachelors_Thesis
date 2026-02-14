@@ -91,13 +91,12 @@
           {"MessageID": "dpt40", "Sender": "Player", "Text": "Well, that's unfortunate..."},
           {"MessageID": "dpt41", "Sender": "headOfDpt", "Text": "yeah but our source tells us that the password is a combination of the scammers and and birth year"},
           {"MessageID": "dpt42", "Sender": "Player", "Text": "Oh? That's interesting, do we know that information?"},
-          {"MessageID": "dpt43", "Sender": "headOfDpt", "Text": "wouldnt be writing you if we did now would we?"},
+          {"MessageID": "dpt43", "Sender": "headOfDpt", "Text": "wouldnt be writing you if we did now would I?"},
           {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "but we managed to get a few more files from the scammers computer"},
-          {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "one of them seems to be an email exchange between the scammer and someone finding victims for him"},
-          {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "the other seems to be a screenshot of the scammers messaging app TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"},
-          {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"},
+          {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "two of them seems to be an email exchange between the scammer and someone else"},
+          {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "the other one seems to be a screenshot of the scammers messaging app"},
           {"MessageID": "dpt45", "Sender": "headOfDpt", "Text": "if you find anything else useful in them let us know"},
-          {"MessageID": "dptSendingNewFiles", "Sender": "headOfDpt", "Text": "sending them to you now. try to look if you could find anything useful in them"},
+          {"MessageID": "dptSendingNewFiles", "Sender": "headOfDpt", "Text": "sending them to you now. try to look if you could find anything useful in them"}
         ]
       ]
     },

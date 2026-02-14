@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Apps.Autostereogram.Commons;
-using Apps.VigenereCipher.Commons;
+using Apps.CipherSolver.Commons;
 using Desktop.Notification.Commons;
 using Desktop.Notification.Models;
 using TMPro;

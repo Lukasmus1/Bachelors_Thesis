@@ -1,14 +1,14 @@
-﻿using Apps.Commons;
+﻿using Apps.CipherSolver.Commons;
+using Apps.Commons;
 using Apps.FileViewer.Commons;
-using Apps.VigenereCipher.Commons;
 using Desktop.Commons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Apps.VigenereCipher.Views
+namespace Apps.CipherSolver.Views
 {
-    public class VigenereView : AppsCommon
+    public class CipherView : AppsCommon
     {
         //Cipher solving
         [SerializeField] private TMP_InputField keyInputField;

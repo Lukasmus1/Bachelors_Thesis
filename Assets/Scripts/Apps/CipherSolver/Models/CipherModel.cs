@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Text;
-using Apps.VigenereCipher.Controllers;
+using Apps.CipherSolver.Controllers;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Apps.VigenereCipher.Models
+namespace Apps.CipherSolver.Models
 {
     public class CipherModel
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Apps.VigenereCipher.Commons;
+using Apps.CipherSolver.Commons;
 using FourthWall.Commons;
 using UnityEngine;
 using User.Commons;

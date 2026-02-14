@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Apps.CipherSolver.Commons;
 using Apps.FileManager.Models;
 using Apps.FileManager.Views;
-using Apps.VigenereCipher.Commons;
 using FourthWall.Commons;
 using UnityEngine;
 using User.Commons;

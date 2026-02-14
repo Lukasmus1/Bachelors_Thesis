@@ -1,6 +1,6 @@
-﻿using Apps.VigenereCipher.Controllers;
+﻿using Apps.CipherSolver.Controllers;
 
-namespace Apps.VigenereCipher.Commons
+namespace Apps.CipherSolver.Commons
 {
     public class CipherMvc
     {

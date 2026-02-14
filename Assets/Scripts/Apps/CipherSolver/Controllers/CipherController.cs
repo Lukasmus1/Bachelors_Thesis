@@ -1,12 +1,14 @@
-﻿using Apps.VigenereCipher.Models;
+﻿using System;
+using Apps.CipherSolver.Models;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Apps.VigenereCipher.Controllers
+namespace Apps.CipherSolver.Controllers
 {
     public class CipherController
     {
         private readonly CipherModel cipherModel = new(); 
+        
+        public Action<string> OnDecryptionAttempt;
         
         /// <summary>
         /// Generates a random key for the Vigenere cipher of the specified length
@@ -55,7 +57,9 @@ namespace Apps.VigenereCipher.Controllers
         /// <returns>Encrypted text</returns>
         public string DecryptText(string cipherText, string key)
         {
-            return cipherModel.DecryptText(cipherText, key);
+            string text = cipherModel.DecryptText(cipherText, key); 
+            OnDecryptionAttempt?.Invoke(cipherText);
+            return text;
         }
         
         /// <summary>
@@ -68,7 +72,11 @@ namespace Apps.VigenereCipher.Controllers
         {
             Texture2D tex = cipherModel.DecryptImage(cipherTexture, key);
             
-            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+            var res = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+            
+            //Shouldn't really call it when encrypting, but it should not cause any issues :pray:
+            OnDecryptionAttempt?.Invoke(key);
+            return res;
         }
     }
 }
