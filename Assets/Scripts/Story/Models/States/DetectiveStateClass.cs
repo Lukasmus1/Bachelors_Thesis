@@ -15,7 +15,7 @@ namespace Story.Models.States
     public class DetectiveStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.Detective;
-        public override int NextState { get; } = (int)StatesEnum.Default;
+        public override int NextState { get; } = (int)StatesEnum.FirstChoice;
 
         [NonSerialized] private AsyncTimer t1;
         [NonSerialized] private AsyncTimer t2;
@@ -60,7 +60,7 @@ namespace Story.Models.States
 
         private void OnEmailOpened(string fileName)
         {
-            _ = t1.StartTimer(2, () =>
+            _ = t1.StartTimer(5, () =>
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmail");
             });
@@ -68,7 +68,7 @@ namespace Story.Models.States
         
         private void OnEmailTwoOpened(string fileName)
         {
-            _ = t2.StartTimer(2, () =>
+            _ = t2.StartTimer(5, () =>
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmailTwo");
             });
@@ -76,7 +76,7 @@ namespace Story.Models.States
         
         private void OnMessagesOpened(string fileName)
         {
-            _ = t3.StartTimer(2, () =>
+            _ = t3.StartTimer(5, () =>
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedMessages");
             });
@@ -89,7 +89,7 @@ namespace Story.Models.States
                 return;
             }
             
-            //What should happen after they decrypt the image
+            ChangeToNextState();
         }
     }
 }

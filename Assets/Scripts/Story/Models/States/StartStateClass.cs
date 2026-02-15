@@ -32,7 +32,6 @@ namespace Story.Models.States
         {
             if (appName == "Guide")
             {
-                ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "test");
                 ChangeToNextState();
                 
                 FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);

@@ -157,6 +157,10 @@
       "Messages": [
         [
           {"MessageID": "kpWarning", "Sender": "kp", "Text": "<color=red><b>DO NOT DELETE MY FILES</color></b>"}
+        ],
+        [
+          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>DO NOT TELL HIM THE TRUTH</color></b>"},
+          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>TELL HIM IT'S NOT YOUR SCREENSHOT</color></b>"}
         ]
       ]
     },

@@ -29,7 +29,9 @@ namespace Story.Models.States
                 StatesEnum.ThomasFinal => new ThomasFinalCleanupStateClass(),
                 StatesEnum.AfterThomasFinal => new AfterThomasFinalCleanupStateClass(),
                 StatesEnum.CuratorFirst => new CuratorFirstStateClass(),
-                StatesEnum.Detective => new NewFilesStateClass(),
+                StatesEnum.Detective => new DetectiveStateClass(),
+                StatesEnum.NewFiles => new NewFilesStateClass(),
+                StatesEnum.FirstChoice => new FirstChoiceStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }
