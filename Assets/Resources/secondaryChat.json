@@ -10,19 +10,26 @@
         {
           "MessageGroupID": "openedEmail",
           "MessagesGroup": [
-            {"MessageID":  "mail1", "Sender":  "Player", "Text":  ""}
+            {"MessageID":  "mail1", "Sender": "Player", "Text":  "One of the emails seem to be between the scammer and his accomplice."},
+            {"MessageID":  "mail2", "Sender": "Player", "Text":  "It seems as though the accomplice was providing our scammer with victims to target."},
+            {"MessageID":  "mail3", "Sender": "Player", "Text":  "Thomas Bare was mentioned in it."},
+            {"MessageID":  "mail4", "Sender": "headOfDpt", "Text":  "interesting, try looking for any information about the password in the email."}
           ]
         },
         {
           "MessageGroupID": "openedEmailTwo",
           "MessagesGroup": [
-            {"MessageID":  "idk", "Sender":  "headOfDpt", "Text":  "THIS IS A TEST"}
+            {"MessageID":  "mailTwo1", "Sender": "Player", "Text":  "One of the emails seem to be an attempt to scam another victim."},
+            {"MessageID":  "mailTwo2", "Sender": "headOfDpt", "Text":  "i see, anything useful in it?"},
+            {"MessageID":  "mailTwo3", "Sender": "Player", "Text":  "Not sure, I'll take a look"}
           ]
         },
         {
           "MessageGroupID": "openedMessages",
           "MessagesGroup": [
-            {"MessageID":  "idk", "Sender":  "headOfDpt", "Text":  "THIS IS A TEST"}
+            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and his mother."},
+            {"MessageID":  "message1", "Sender": "Player", "Text": "Seems like the scammer is currently in between jobs and scamming is his only source of income."},
+            {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of scamming good people"}
           ]
         }
       ]

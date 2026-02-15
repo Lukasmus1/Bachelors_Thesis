@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using Apps.ChatTerminal.Commons;
 using Apps.CipherSolver.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
+using Commons;
+using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -14,6 +17,10 @@ namespace Story.Models.States
         public override int State { get; } = (int)StatesEnum.Detective;
         public override int NextState { get; } = (int)StatesEnum.Default;
 
+        [NonSerialized] private AsyncTimer t1;
+        [NonSerialized] private AsyncTimer t2;
+        [NonSerialized] private AsyncTimer t3;
+        
         public override void OnEnter()
         {
             //Puzzle files
@@ -33,6 +40,10 @@ namespace Story.Models.States
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailTwoOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnMessagesOpened;
+            
+            t1?.Dispose();
+            t2?.Dispose();
+            t3?.Dispose();
         }
 
         public override void LoadFromState()
@@ -41,21 +52,34 @@ namespace Story.Models.States
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailTwoOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnMessagesOpened;
+            
+            t1 = new AsyncTimer();
+            t2 = new AsyncTimer();
+            t3 = new AsyncTimer();
         }
 
         private void OnEmailOpened(string fileName)
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmail");
+            _ = t1.StartTimer(2, () =>
+            {
+                ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmail");
+            });
         }
         
         private void OnEmailTwoOpened(string fileName)
         {
-            
+            _ = t2.StartTimer(2, () =>
+            {
+                ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmailTwo");
+            });
         }
         
         private void OnMessagesOpened(string fileName)
         {
-            
+            _ = t3.StartTimer(2, () =>
+            {
+                ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedMessages");
+            });
         }
         
         private void TransitionCheck(string keyAttempt)
