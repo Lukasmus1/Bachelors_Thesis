@@ -29,7 +29,6 @@ namespace Story.Models.States
             }
             
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("curator", 0);
             
             LoadFromState();
         }

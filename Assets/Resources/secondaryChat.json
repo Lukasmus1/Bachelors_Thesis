@@ -1,0 +1,43 @@
+{
+  "ChatProfiles": [
+    {
+      "UserID": "itDept",
+      "Messages": []
+    },
+    {
+      "UserID": "headOfDpt",
+      "Messages": [
+        {
+          "MessageGroupID": "openedEmail",
+          "MessagesGroup": [
+            {"MessageID":  "mail1", "Sender":  "Player", "Text":  ""}
+          ]
+        },
+        {
+          "MessageGroupID": "openedEmailTwo",
+          "MessagesGroup": [
+            {"MessageID":  "idk", "Sender":  "headOfDpt", "Text":  "THIS IS A TEST"}
+          ]
+        },
+        {
+          "MessageGroupID": "openedMessages",
+          "MessagesGroup": [
+            {"MessageID":  "idk", "Sender":  "headOfDpt", "Text":  "THIS IS A TEST"}
+          ]
+        }
+      ]
+    },
+    {
+      "UserID": "thomasBare",
+      "Messages": []
+    },
+    {
+      "UserID": "kp",
+      "Messages": []
+    },
+    {
+      "UserID": "curator",
+      "Messages": []
+    }
+  ]
+}

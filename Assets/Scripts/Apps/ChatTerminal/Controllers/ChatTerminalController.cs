@@ -39,10 +39,20 @@ namespace Apps.ChatTerminal.Controllers
         /// Set the message index of a chat profile and instantiate a new message notification.
         /// </summary>
         /// <param name="profileId">ID of the profile</param>
-        /// <param name="index">Index to set the messages to</param>
-        public void SetChatProfileMessageIndex(string profileId, int index)
+        public void IncreaseChatProfileMessageIndex(string profileId)
         {
-            chatTerminalModel.SetChatProfileMessageIndex(profileId, index, _chatTerminalView.profiles);
+            chatTerminalModel.IncreaseChatProfileMessageIndex(profileId, _chatTerminalView.profiles);
+            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
+        }
+
+        /// <summary>
+        /// Display a new secondary message group in the chat terminal and instantiate a new message notification.
+        /// </summary>
+        /// <param name="userID">ID of the user's messages</param>
+        /// <param name="messageGroupID">ID of the message group</param>
+        public void QueueSecondaryMessage(string userID, string messageGroupID)
+        {
+            chatTerminalModel.QueueSecondaryMessage(userID, messageGroupID);
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
         }
 

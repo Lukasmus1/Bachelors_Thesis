@@ -9,4 +9,11 @@ namespace Apps.ChatTerminal.Models
         // ReSharper disable once InconsistentNaming
         public List<ChatProfileModel> ChatProfiles;
     }
+
+    [Serializable]
+    public class SecondaryChatProfilesWrapper
+    {
+        // ReSharper disable once InconsistentNaming
+        public List<SecondaryChatProfileModel> ChatProfiles;
+    }
 }

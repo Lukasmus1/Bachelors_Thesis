@@ -14,7 +14,7 @@ namespace Story.Models.States
         {
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("CypherCode", true);
             
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 2);
+            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
 
             LoadFromState();
         }

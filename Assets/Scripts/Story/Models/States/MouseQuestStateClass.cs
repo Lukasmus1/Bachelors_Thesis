@@ -16,7 +16,6 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("headOfDpt");
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 0);
             
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MouseQuest", true);
             

@@ -14,7 +14,6 @@ namespace Story.Models.SideActions
         public static void MessagePlayer()
         {
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("kp", 0);
 
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped += MessageTyped;
         }

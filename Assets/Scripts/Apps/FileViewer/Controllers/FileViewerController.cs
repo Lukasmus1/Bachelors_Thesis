@@ -9,7 +9,7 @@ namespace Apps.FileViewer.Controllers
         private readonly FileViewerModel _fileViewerModel = new(); 
         
         public Action<string> metadataOpened;
-        public Action<string> fileOpened;
+        public Action<string> onFileOpened;
         
         public GameObject OpenedFile
         {

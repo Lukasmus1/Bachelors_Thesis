@@ -17,5 +17,6 @@ namespace Apps.ChatTerminal.Models
         public int SeenMessagesIndex { get; set; }
         public List<List<ChatMessage>> Messages { get; set; } = new();
         public bool IsLoaded { get; set; }
+        public List<MessageGroup> SecondaryChatProfileMessages { get; set;}
     }
 }

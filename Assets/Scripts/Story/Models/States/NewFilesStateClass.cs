@@ -13,7 +13,7 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("headOfDpt", 7);
+            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
             
             LoadFromState();
         }

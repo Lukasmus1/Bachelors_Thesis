@@ -12,7 +12,7 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 1);
+            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("itDept");
             
             //Perform Hidden Virus Action
             ActionsClass.Instance.PerformAction(ActionType.HiddenVirus);

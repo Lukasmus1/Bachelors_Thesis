@@ -12,7 +12,7 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("thomasBare", 1);
+            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("thomasBare");
             
             LoadFromState();
         }

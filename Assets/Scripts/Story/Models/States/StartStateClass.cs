@@ -13,8 +13,6 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.SetChatProfileMessageIndex("itDept", 0);
-            
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
             
             LoadFromState();
@@ -22,18 +20,19 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            FileViewerMvc.Instance.FileLoaderController.fileOpened -= CheckForStateChange;
+            FileViewerMvc.Instance.FileLoaderController.onFileOpened -= CheckForStateChange;
         }
 
         public override void LoadFromState()
         {
-            FileViewerMvc.Instance.FileLoaderController.fileOpened += CheckForStateChange;
+            FileViewerMvc.Instance.FileLoaderController.onFileOpened += CheckForStateChange;
         }
 
         private void CheckForStateChange(string appName)
         {
             if (appName == "Guide")
             {
+                ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "test");
                 ChangeToNextState();
                 
                 FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
