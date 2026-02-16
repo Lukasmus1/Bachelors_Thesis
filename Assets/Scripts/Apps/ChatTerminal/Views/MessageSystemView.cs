@@ -24,6 +24,7 @@ namespace Apps.ChatTerminal.Views
         [Header("Choice Message")]
         [SerializeField] private GameObject choiceMessagePrefab;
         [SerializeField] private GameObject choicePrefab;
+        [SerializeField] private Transform choiceBubbleParent;
         private const string SEPARATOR = "||";
 
         [Header("Contact Info")]
@@ -125,7 +126,10 @@ namespace Apps.ChatTerminal.Views
                 int choiceID = GetChoiceIndex(ref choiceCopy);
                 
                 GameObject choiceButton = Instantiate(choicePrefab, choicesParent);
-                choiceButton.GetComponentInChildren<TMP_Text>().text = choiceCopy;
+                
+                var choiceView = choiceButton.GetComponent<ChoiceView>();
+                choiceView.SetBubbleParent(choiceBubbleParent);
+                choiceView.SetText(choiceCopy);
                 
                 UnityAction action = choiceClass.FirstOrDefault(c => c.ChoiceID == choiceID)?.ChoiceAction;
                 if (action == null)

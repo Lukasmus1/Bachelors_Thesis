@@ -1989,6 +1989,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2687655726053585768, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
+      propertyPath: choiceBubbleParent
+      value: 
+      objectReference: {fileID: 957884499}
     - target: {fileID: 3044301740504234749, guid: 7d4ceccfd84bd8c469bd48e96c3159e0, type: 3}
       propertyPath: m_IsActive
       value: 1
