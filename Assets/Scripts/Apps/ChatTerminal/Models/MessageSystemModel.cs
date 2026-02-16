@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using Apps.ChatTerminal.Commons;
 using UnityEngine;
 
@@ -9,7 +10,10 @@ namespace Apps.ChatTerminal.Models
     {
         private const float PLAYER_TYPING_SPEED = 30f;
 
+        //Choice messages helpers
         private bool _isPaused = false;
+        private ChatMessage _messageToInsert;
+        private int _currentMessageIndex;
         
         private ChatProfile _currentProfile;
         public ChatProfile CurrentProfile
@@ -80,8 +84,11 @@ namespace Apps.ChatTerminal.Models
 
             for (int i = CurrentProfile.SeenMessagesIndex; i <= CurrentProfile.CurrentMessageIndex; i++)
             {
-                foreach (ChatMessage message in CurrentProfile.Messages[i])
+                _currentMessageIndex = i;
+                for (var j = 0; j < CurrentProfile.Messages[i].Count; j++)
                 {
+                    ChatMessage message = CurrentProfile.Messages[i][j];
+                    
                     //If the message is a choice 
                     if (message.Sender == "CHOICE")
                     {
@@ -90,6 +97,16 @@ namespace Apps.ChatTerminal.Models
                         TogglePause(true);
                         
                         yield return new WaitUntil(() => !_isPaused);
+                        
+                        //Deletes old choice message
+                        int indexOfDeletedMessage = CurrentProfile.Messages[i].FindIndex(x => x.MessageID == message.MessageID); 
+                        CurrentProfile.Messages[i].RemoveAt(indexOfDeletedMessage);
+                        //Adds the player's choice to the message history and creates the message in the view
+                        CurrentProfile.Messages[i].Insert(indexOfDeletedMessage, _messageToInsert);
+                        
+                        CreateMessage(_messageToInsert);
+                        
+                        continue;
                     }
                     
                     //Simulate typing delay based on typing speed divided by number of chars
@@ -117,6 +134,31 @@ namespace Apps.ChatTerminal.Models
             CurrentProfile.Status = MessageStatus.Offline;
         }
 
+        /// <summary>
+        /// Queues a secondary message from a choice, which allows for adding messages to the message system model based on user choices. ONLY USE THIS WHEN THE MESSAGE SYSTEM IS CURRENTLY PAUSED DURING CHOICE MAKING
+        /// </summary>
+        /// <param name="userID">ID of the user</param>
+        /// <param name="messageGroupID">ID of the message group</param>
+        /// <exception cref="Exception">Gets thrown with more details in description</exception>
+        public void QueueSecondaryMessageFromChoice(string userID, string messageGroupID)
+        {
+            if (!_isPaused)
+            {
+                throw new Exception("Cannot alter the message queue if not currently paused.");
+            }
+            
+            MessageGroup messages = ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroup(userID, messageGroupID);
+            if (messages == null)
+            {
+                throw new Exception($"Message group with ID {messageGroupID} not found for user ID {userID}.");
+            }
+
+            foreach (ChatMessage message in messages.MessagesGroup)
+            {
+                CurrentProfile.Messages[_currentMessageIndex].Add(message);
+            }
+        }
+        
         private void InterruptedMessaging(int startIndex)
         {
             CurrentProfile.Status = MessageStatus.Offline;
@@ -126,6 +168,11 @@ namespace Apps.ChatTerminal.Models
         public void TogglePause(bool value)
         {
             _isPaused = value;
+        }
+        
+        public void AppendMessage(ChatMessage content)
+        {
+            _messageToInsert = content;
         }
         
         private static void CreateMessage(ChatMessage content)

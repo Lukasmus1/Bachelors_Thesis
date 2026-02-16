@@ -110,34 +110,47 @@ namespace Apps.ChatTerminal.Views
             msg.SetActive(true);
         }
 
-        
+        /// <summary>
+        /// Creates a choice in the message terminal based on the provided content. The choice text is in the format "{index}Choice Text||{index}Choice Text||...". The index is used to link the choice to the corresponding action in the ChoiceFactory.
+        /// </summary>
+        /// <param name="content">Message content</param>
+        /// <exception cref="Exception">Gets thrown with specific problem text</exception>
         public void CreateChoiceMessage(ChatMessage content)
         {
+            //Instantiate the choice message prefab and get the parent for the choices
             GameObject choiceMsg = Instantiate(choiceMessagePrefab, messagePrefabParent);
             Transform choicesParent = choiceMsg.transform.Find("Choices");
             
+            //Get the choice class based on the message ID of the content
             string choiceId = content.MessageID;
             List<ChoiceActionClass> choiceClass = ChoiceFactory.GetChoiceClass(choiceId);
 
+            //Split the choice text into individual choices and instantiate a button for each choice
             string[] choicesText = content.Text.Split(SEPARATOR);
             foreach (string choice in choicesText)
             {
                 string choiceCopy = choice;
                 int choiceID = GetChoiceIndex(ref choiceCopy);
                 
+                //Instantiate the choice button and set the text for the choice and the choice bubble.
                 GameObject choiceButton = Instantiate(choicePrefab, choicesParent);
-                
                 var choiceView = choiceButton.GetComponent<ChoiceView>();
                 choiceView.SetBubbleParent(choiceBubbleParent);
                 choiceView.SetText(choiceCopy);
                 
+                //Gets the choice and assigns it to the corresponding choice button.
                 UnityAction action = choiceClass.FirstOrDefault(c => c.ChoiceID == choiceID)?.ChoiceAction;
                 if (action == null)
                 {
                     throw new Exception("Couldn't get the choice action");
                 }
                 
-                choiceButton.GetComponent<Button>().onClick.AddListener(action);
+                choiceButton.GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    Destroy(choiceMsg);
+                    ChatTerminalMvc.Instance.MessageSystemController.AppendChoiceMessage(new ChatMessage(content.MessageID, "Player", choiceCopy));
+                    action();
+                });
             }
         }
 

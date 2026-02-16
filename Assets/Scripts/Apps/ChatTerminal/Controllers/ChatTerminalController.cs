@@ -35,6 +35,11 @@ namespace Apps.ChatTerminal.Controllers
             return chatTerminalModel.LoadedChatProfilesFromJson.FirstOrDefault(profile => profile.UserID == profileId);
         }
 
+        public MessageGroup GetSecondaryMessageGroup(string userID, string messageGroupID)
+        {
+            return chatTerminalModel.GetSecondaryMessageGroup(userID, messageGroupID);
+        }
+        
         /// <summary>
         /// Set the message index of a chat profile and instantiate a new message notification.
         /// </summary>
@@ -44,7 +49,7 @@ namespace Apps.ChatTerminal.Controllers
             chatTerminalModel.IncreaseChatProfileMessageIndex(profileId, _chatTerminalView.profiles);
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
         }
-
+        
         /// <summary>
         /// Display a new secondary message group in the chat terminal and instantiate a new message notification.
         /// </summary>
@@ -55,7 +60,7 @@ namespace Apps.ChatTerminal.Controllers
             chatTerminalModel.QueueSecondaryMessage(userID, messageGroupID);
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
         }
-
+        
         /// <summary>
         /// Loads a new chat profile into the chat terminal.
         /// </summary>

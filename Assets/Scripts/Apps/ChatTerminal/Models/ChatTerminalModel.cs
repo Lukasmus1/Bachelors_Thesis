@@ -88,6 +88,25 @@ namespace Apps.ChatTerminal.Models
             }
         }
 
+        public MessageGroup GetSecondaryMessageGroup(string userID, string messageGroupID)
+        {
+            ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(profile => profile.UserID == userID);
+            if (profile == null)
+            {
+                Debug.LogError($"Chat profile with ID {userID} not found.");
+                return null;
+            }
+            
+            MessageGroup secondaryMessageGroup = profile.SecondaryChatProfileMessages.FirstOrDefault(messageGroup => messageGroup.MessageGroupID == messageGroupID);
+            if (secondaryMessageGroup == null)
+            {
+                Debug.LogError($"Message group with ID {messageGroupID} not found for user ID {userID}.");
+                return null;
+            }
+
+            return secondaryMessageGroup;
+        }
+        
         /// <summary>
         /// Insert a new message group into the messages list of a primary chat profile at the correct index and increase the message index of the profile.
         /// </summary>

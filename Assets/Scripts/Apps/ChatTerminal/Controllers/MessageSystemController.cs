@@ -37,6 +37,25 @@ namespace Apps.ChatTerminal.Controllers
         {
             _messageSystemView.CreateChoiceMessage(content);
         }
+
+        /// <summary>
+        /// Appends a choice message to the message system model. ONLY USE THIS WHEN APPENDING CHOICE MESSAGES DURING CHOICE MAKING.
+        /// </summary>
+        /// <param name="content">Message to append</param>
+        public void AppendChoiceMessage(ChatMessage content)
+        {
+            _messageSystemModel.AppendMessage(content);
+        }
+        
+        /// <summary>
+        /// Queues a secondary message from a choice, which allows for adding messages to the message system model based on user choices. ONLY USE THIS WHEN APPENDING CHOICE MESSAGES DURING CHOICE MAKING.
+        /// </summary>
+        /// <param name="userID">ID of the user</param>
+        /// <param name="messageGroupID">ID of the secondary message</param>
+        public void QueueSecondaryMessageFromChoice(string userID, string messageGroupID)
+        {
+            _messageSystemModel.QueueSecondaryMessageFromChoice(userID, messageGroupID);
+        }
         
         /// <summary>
         /// Creates a divider between message groups.

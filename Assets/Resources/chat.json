@@ -37,12 +37,9 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"MessageID": "dptScreenshotChoice", "Sender": "CHOICE", "Text": "{0}The picture seems to be a screenshot of MY desktop [Truth] || {1}It doesn't look familiar at all [Lie]"},
-        ],
-        [
-          {"MessageID": "dpt1", "Sender": "headOfDpt", "Text": "good morning"},
+          {"MessageID": "dpt1", "Sender": "headOfDpt", "Text": "good day"},
           {"MessageID": "dpt2", "Sender": "headOfDpt", "Text": "glad you could figure out the file manager. some morons cant even do that"},
-          {"MessageID": "dpt3", "Sender": "headOfDpt", "Text": "anyway... your first task is to help us catch an online scammer"},
+          {"MessageID": "dpt3", "Sender": "headOfDpt", "Text": "anyway your first task is to help us catch an online scammer"},
           {"MessageID": "dpt4", "Sender": "headOfDpt", "Text": "i have sent you an email that we managed to get our hands on. you can open it in the file manager"},
           {"MessageID": "dpt5", "Sender": "headOfDpt", "Text": "try to find anything useful about the scammer or the victim itself"}
         ],
@@ -119,10 +116,10 @@
       "Messages": [
         [
           {"MessageID": "bare1", "Sender": "Player", "Text": "Good day, sir."},
-          {"MessageID": "bare2", "Sender": "Player", "Text": "Have you recieved a suspicious email recently?"},
           {"MessageID": "bare3", "Sender": "thomasBare", "Text": "Good day. Who are you?"},
-          {"MessageID": "bare4", "Sender": "Player", "Text": "I work with the police department. We are investigating an online scam case."},
+          {"MessageID": "bare2", "Sender": "Player", "Text": "I work for the police department, we are investigating an online scam case."},
           {"MessageID": "bare5", "Sender": "Player", "Text": "We have reason to believe you might be a victim of one, since your email was found in connection to it."},
+          {"MessageID": "bare2", "Sender": "Player", "Text": "Have you recieved a suspicious email recently?"},
           {"MessageID": "bare6", "Sender": "thomasBare", "Text": "I don't know how you got that email, but yes, I did."},
           {"MessageID": "bare7", "Sender": "thomasBare", "Text": "I have not responded to that offer though."},
           {"MessageID": "bare8", "Sender": "thomasBare", "Text": "Actually I wrote to the actual devs asking them about this and they confirmed that it was a scam."},

@@ -72,5 +72,13 @@ namespace Apps.ChatTerminal.Views
         {
             Destroy(instantiatedBubble);
         }
+
+        private void OnDestroy()
+        {
+            if (instantiatedBubble != null)
+            {
+                Destroy(instantiatedBubble);
+            }
+        }
     }
 }

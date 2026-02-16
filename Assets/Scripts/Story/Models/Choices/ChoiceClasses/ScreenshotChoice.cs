@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Apps.ChatTerminal.Commons;
 using UnityEngine;
 using User.Commons;
 using User.Models;
@@ -14,14 +15,18 @@ namespace Story.Models.Choices.ChoiceClasses
                 () =>
                 {
                     UserMvc.Instance.UserController.userModel.CopsAlignment += (int)Alignment.Cops;
-                    Debug.Log("Cops alignment increased by " + (int)Alignment.Cops);
+                    ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("headOfDpt", "dptScreenshotChoiceTruth");
+                    
+                    ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
                 }),
             new ChoiceActionClass(
                 1,
                 () =>
                 {
                     UserMvc.Instance.UserController.userModel.CopsAlignment += (int)Alignment.AI;
-                    Debug.Log("Cops alignment increased by " + (int)Alignment.AI);
+                    ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("headOfDpt", "dptScreenshotChoiceLie");
+                    
+                    ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
                 })
         };
     }
