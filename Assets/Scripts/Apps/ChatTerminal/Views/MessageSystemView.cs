@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
+using Story.Models.Choices;
+using Story.Models.Choices.ChoiceClasses;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using User.Commons;
 
@@ -16,6 +21,11 @@ namespace Apps.ChatTerminal.Views
         [SerializeField] private Transform messagePrefabParent;
         [SerializeField] private GameObject messageDividerPrefab;
         
+        [Header("Choice Message")]
+        [SerializeField] private GameObject choiceMessagePrefab;
+        [SerializeField] private GameObject choicePrefab;
+        private const string SEPARATOR = "||";
+
         [Header("Contact Info")]
         [SerializeField] private TMP_Text usernameText;
         [SerializeField] private Image profilePictureImage;
@@ -97,6 +107,56 @@ namespace Apps.ChatTerminal.Views
             props.messageText.text = messageContent.Text;
             
             msg.SetActive(true);
+        }
+
+        
+        public void CreateChoiceMessage(ChatMessage content)
+        {
+            GameObject choiceMsg = Instantiate(choiceMessagePrefab, messagePrefabParent);
+            Transform choicesParent = choiceMsg.transform.Find("Choices");
+            
+            string choiceId = content.MessageID;
+            List<ChoiceActionClass> choiceClass = ChoiceFactory.GetChoiceClass(choiceId);
+
+            string[] choicesText = content.Text.Split(SEPARATOR);
+            foreach (string choice in choicesText)
+            {
+                string choiceCopy = choice;
+                int choiceID = GetChoiceIndex(ref choiceCopy);
+                
+                GameObject choiceButton = Instantiate(choicePrefab, choicesParent);
+                choiceButton.GetComponentInChildren<TMP_Text>().text = choiceCopy;
+                
+                UnityAction action = choiceClass.FirstOrDefault(c => c.ChoiceID == choiceID)?.ChoiceAction;
+                if (action == null)
+                {
+                    throw new Exception("Couldn't get the choice action");
+                }
+                
+                choiceButton.GetComponent<Button>().onClick.AddListener(action);
+            }
+        }
+
+        /// <summary>
+        /// Gets the index of the choice from the choice text. The choice text is in the format "{index}Choice Text".
+        /// </summary>
+        /// <param name="choice"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private static int GetChoiceIndex(ref string choice)
+        {
+            int startIndex = choice.IndexOf('{');
+            int endIndex = choice.IndexOf('}');
+
+            if (startIndex == -1 || endIndex == -1 || endIndex <= startIndex)
+            {
+                throw new Exception("Couldn't get the choice index number");
+            }
+            
+            string indexString = choice.Substring(startIndex + 1, endIndex - startIndex - 1);
+            choice = choice.Remove(startIndex, endIndex - startIndex + 1);
+            
+            return int.TryParse(indexString, out int index) ? index : throw new Exception("Couldn't parse the choice index number");
         }
         
         /// <summary>

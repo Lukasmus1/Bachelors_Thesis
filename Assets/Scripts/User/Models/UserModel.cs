@@ -24,6 +24,11 @@ namespace User.Models
         /// </summary>
         public List<PersistentData> PersistentData { get; set; }
         
+        /// <summary>
+        /// Minus values for more AI aligned, plus values for more cop aligned. Used for certain dialogue choices and endings.
+        /// </summary>
+        public int CopsAlignment { get; set; }
+        
         public void InitUser()
         {
             StartDate = DateTime.Now;
@@ -48,6 +53,8 @@ namespace User.Models
             };
             
             SetProfilePicture();
+
+            CopsAlignment = 0;
         }
         
         public void SetProfilePicture()

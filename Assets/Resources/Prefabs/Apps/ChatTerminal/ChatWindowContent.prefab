@@ -54,6 +54,9 @@ MonoBehaviour:
   sentMessagePrefab: {fileID: 0}
   messagePrefabParent: {fileID: 1695547288595579686}
   messageDividerPrefab: {fileID: 0}
+  choiceMessagePrefab: {fileID: 7401672992000218429, guid: 90907557060b47e46b68500cb9c0f149, type: 3}
+  choicePrefabParent: {fileID: 0}
+  choicePrefab: {fileID: 3636094816992820580, guid: 5eabc408738113544ba0337bf8bcd475, type: 3}
   usernameText: {fileID: 0}
   profilePictureImage: {fileID: 0}
   statusText: {fileID: 0}
@@ -160,6 +163,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -960,6 +964,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

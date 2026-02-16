@@ -8,6 +8,8 @@ namespace Apps.ChatTerminal.Models
     public class MessageSystemModel
     {
         private const float PLAYER_TYPING_SPEED = 30f;
+
+        private bool _isPaused = false;
         
         private ChatProfile _currentProfile;
         public ChatProfile CurrentProfile
@@ -80,6 +82,16 @@ namespace Apps.ChatTerminal.Models
             {
                 foreach (ChatMessage message in CurrentProfile.Messages[i])
                 {
+                    //If the message is a choice 
+                    if (message.Sender == "CHOICE")
+                    {
+                        CreateChoiceMessage(message);
+
+                        TogglePause(true);
+                        
+                        yield return new WaitUntil(() => !_isPaused);
+                    }
+                    
                     //Simulate typing delay based on typing speed divided by number of chars
                     float delayS;
                     if (message.Sender == "Player")
@@ -96,9 +108,8 @@ namespace Apps.ChatTerminal.Models
 
                     ChatTerminalMvc.Instance.MessageSystemController.messageTyped?.Invoke(message.MessageID);
                     
-                    
                     //Small delay between each message
-                    yield return  new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.5f);
                 }
                 CurrentProfile.SeenMessagesIndex++;
             }
@@ -111,10 +122,20 @@ namespace Apps.ChatTerminal.Models
             CurrentProfile.Status = MessageStatus.Offline;
             CurrentProfile.SeenMessagesIndex = startIndex;
         }
+
+        public void TogglePause(bool value)
+        {
+            _isPaused = value;
+        }
         
         private static void CreateMessage(ChatMessage content)
         {
             ChatTerminalMvc.Instance.MessageSystemController.CreateMessage(content);
+        }
+
+        private static void CreateChoiceMessage(ChatMessage content)
+        {
+            ChatTerminalMvc.Instance.MessageSystemController.CreateChoiceMessage(content);
         }
 
         private static void CreateDivider()

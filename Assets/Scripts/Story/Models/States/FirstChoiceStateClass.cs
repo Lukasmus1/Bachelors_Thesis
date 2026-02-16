@@ -1,4 +1,6 @@
 ﻿using System;
+using Commons;
+using Saving.Commons;
 
 namespace Story.Models.States
 {
@@ -10,7 +12,12 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            throw new NotImplementedException();
+            AsyncTimer t = new();
+
+            _ = t.StartTimer(5, () =>
+            {
+                SavingMvc.Instance.SavingController.QuitAndSaveGame();
+            });
         }
 
         public override void OnExit()

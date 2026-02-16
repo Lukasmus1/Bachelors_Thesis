@@ -37,6 +37,9 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
+          {"MessageID": "dptScreenshotChoice", "Sender": "CHOICE", "Text": "{0}The picture seems to be a screenshot of MY desktop [Truth] || {1}It doesn't look familiar at all [Lie]"},
+        ],
+        [
           {"MessageID": "dpt1", "Sender": "headOfDpt", "Text": "good morning"},
           {"MessageID": "dpt2", "Sender": "headOfDpt", "Text": "glad you could figure out the file manager. some morons cant even do that"},
           {"MessageID": "dpt3", "Sender": "headOfDpt", "Text": "anyway... your first task is to help us catch an online scammer"},
@@ -97,6 +100,10 @@
           {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "the other one seems to be a screenshot of the scammers messaging app"},
           {"MessageID": "dpt45", "Sender": "headOfDpt", "Text": "if you find anything else useful in them let us know"},
           {"MessageID": "dptSendingNewFiles", "Sender": "headOfDpt", "Text": "sending them to you now. try to look if you could find anything useful in them"}
+        ],
+        [
+          {"MessageID": "dpt47", "Sender": "Player", "Text": "I have managed to find the password and decrypt the image."},
+          {"MessageID": "dptScreenshotChoice", "Sender": "CHOICE", "Text": "{0}The picture seems to be a screenshot of MY desktop [Truth] || {1}It doesn't look familiar at all [Lie]"}
         ]
       ]
     },
@@ -160,7 +167,7 @@
         ],
         [
           {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>DO NOT TELL HIM THE TRUTH</color></b>"},
-          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>TELL HIM IT'S NOT YOUR SCREENSHOT</color></b>"}
+          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>DO NOT MENTION IT'S YOUR COMPUTER</color></b>"}
         ]
       ]
     },

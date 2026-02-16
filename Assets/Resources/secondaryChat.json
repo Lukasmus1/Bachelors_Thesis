@@ -29,7 +29,29 @@
           "MessagesGroup": [
             {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and his mother."},
             {"MessageID":  "message1", "Sender": "Player", "Text": "Seems like the scammer is currently in between jobs and scamming is his only source of income."},
-            {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of scamming good people"}
+            {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of stealing from good people"}
+          ]
+        },
+        {
+          "MessageGroupID": "dptScreenshotChoiceTruth",
+          "MessagesGroup": [
+            {"MessageID":  "dptScreenTruth1", "Sender": "headOfDpt", "Text": "what? what are you talking about??"},
+            {"MessageID":  "dptScreenTruth2", "Sender": "Player", "Text": "The picture is a screenshot of my desktop."},
+            {"MessageID":  "dptScreenTruth3", "Sender": "headOfDpt", "Text": "are you high?"},
+            {"MessageID":  "dptScreenTruth4", "Sender": "Player", "Text": "I'm serious chief..."},
+            {"MessageID":  "dptScreenTruth5", "Sender": "headOfDpt", "Text": "what the fuck, so you are the scammer? or what are you trying to tell me right now"},
+            {"MessageID":  "dptScreenTruth6", "Sender": "Player", "Text": "I'm not the scammer and I have no idea why or how you got this screenshot."},
+            {"MessageID":  "dptScreenTruth7", "Sender": "Player", "Text": "Who sent it to you anyway?"},
+            {"MessageID":  "dptScreenTruth8", "Sender": "headOfDpt", "Text": "im not telling you shit until this situation gets explained"},
+            {"MessageID":  "dptScreenTruth9", "Sender": "headOfDpt", "Text": "you will hear from me in a few minutes hold still until then"}
+          ]
+        },
+        {
+          "MessageGroupID": "dptScreenshotChoiceLie",
+          "MessagesGroup": [
+            {"MessageID":  "dptScreenLie1", "Sender": "headOfDpt", "Text": "would be weird if it did"},
+            {"MessageID":  "dptScreenLie2", "Sender": "headOfDpt", "Text": "send it to me"},
+            {"MessageID":  "dptScreenLie3", "Sender": "Player", "Text": "Sending it now"}
           ]
         }
       ]
