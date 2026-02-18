@@ -47,9 +47,11 @@ namespace Apps.ChatTerminal.Views
         /// </summary>
         public void SetProperties()
         {
+            //Removes any listeners to prevent any unwanted behavior, then sets the properties and adds the listeners back.
+            OnDisable();
             usernameText.text = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Username;
             profilePictureImage.sprite = ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.ProfilePicture;
-            SetStatusText(ChatTerminalMvc.Instance.MessageSystemController.CurrentProfile.Status);
+            OnEnable();
         }
         
         /// <summary>

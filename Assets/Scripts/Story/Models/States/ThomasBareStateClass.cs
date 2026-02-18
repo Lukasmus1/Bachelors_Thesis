@@ -13,21 +13,29 @@ namespace Story.Models.States
         {
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
             
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("thomasBare");
-            
             LoadFromState();
         }
 
         public override void OnExit()
         {
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= CheckForContactOpened;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= LoadThomas;
         }
 
         public override void LoadFromState()
         {
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped += CheckForContactOpened;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += LoadThomas;
         }
 
+        public void LoadThomas(string messageID)
+        {
+            if (messageID == "dptThomasBare")
+            {
+                ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("thomasBare");
+            }
+        }
+        
         private void CheckForContactOpened(string messageID)
         {
             if (messageID == "bareFileSent")

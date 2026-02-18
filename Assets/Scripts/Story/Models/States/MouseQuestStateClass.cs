@@ -15,19 +15,27 @@ namespace Story.Models.States
         {
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("headOfDpt");
             
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MouseQuest", true);
-            
             LoadFromState();
         }
 
         public override void OnExit()
         {
             FileViewerMvc.Instance.FileLoaderController.metadataOpened -= CheckForMetadataOpened;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= LoadMouseQuest;
         }
 
         public override void LoadFromState()
         {
             FileViewerMvc.Instance.FileLoaderController.metadataOpened += CheckForMetadataOpened;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += LoadMouseQuest;
+        }
+        
+        private void LoadMouseQuest(string messageID)
+        {
+            if (messageID == "dptMouseQuest")
+            {
+                FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MouseQuest", true);
+            }
         }
 
         private void CheckForMetadataOpened(string fileName)

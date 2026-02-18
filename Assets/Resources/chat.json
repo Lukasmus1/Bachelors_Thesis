@@ -14,7 +14,7 @@
           {"MessageID": "it1", "Sender": "itDept", "Text": "Hello, I am from IT department. Pleasure to meet you."},
           {"MessageID": "it2", "Sender": "itDept", "Text": "This chat terminal serves as a way for the station to communicate with you."},
           {"MessageID": "it3", "Sender": "itDept", "Text": "We will provide you with important information about your case or just help in general."},
-          {"MessageID": "it4", "Sender": "itDept", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
+          {"MessageID": "itTutorial", "Sender": "itDept", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
           {"MessageID": "it5", "Sender": "itDept", "Text": "Please open it when you have the time."}
         ],
         [
@@ -40,14 +40,14 @@
           {"MessageID": "dpt1", "Sender": "headOfDpt", "Text": "good day"},
           {"MessageID": "dpt2", "Sender": "headOfDpt", "Text": "glad you could figure out the file manager. some morons cant even do that"},
           {"MessageID": "dpt3", "Sender": "headOfDpt", "Text": "anyway your first task is to help us catch an online scammer"},
-          {"MessageID": "dpt4", "Sender": "headOfDpt", "Text": "i have sent you an email that we managed to get our hands on. you can open it in the file manager"},
+          {"MessageID": "dptMouseQuest", "Sender": "headOfDpt", "Text": "i have sent you an email that we managed to get our hands on. you can open it in the file manager"},
           {"MessageID": "dpt5", "Sender": "headOfDpt", "Text": "try to find anything useful about the scammer or the victim itself"}
         ],
         [
           {"MessageID": "dpt6", "Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
           {"MessageID": "dpt7", "Sender": "Player", "Text": "I have also managed to find the name of the scammer. It's \"Albert Green\""},
           {"MessageID": "dpt8", "Sender": "headOfDpt", "Text": "the name could and likely is fake"},
-          {"MessageID": "dpt9", "Sender": "headOfDpt", "Text": "but i can add the thomas bare email to your contacts. try to see if hes of any help"},
+          {"MessageID": "dptThomasBare", "Sender": "headOfDpt", "Text": "but i can add the thomas bare email to your contacts. try to see if hes of any help"},
           {"MessageID": "dpt10", "Sender": "headOfDpt", "Text": "good job"}
         ],
         [
@@ -179,11 +179,9 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"MessageID": "curator1", "Sender": "curator", "Text": "Good day sir, you have been talking about Thomas being in danger, so I his logs."},
+          {"MessageID": "curator1", "Sender": "curator", "Text": "Good day sir, you have been talking about Thomas being in danger."},
           {"MessageID": "curator2", "Sender": "curator", "Text": "You were right, he was not supposed to write that."},
-          {"MessageID": "curator3", "Sender": "curator", "Text": "Dammit, he was supposed to be important later on..."},
-          {"MessageID": "curator4", "Sender": "Player", "Text": "I'm sorry, who are you?"},
-          {"MessageID": "curatorFirstFinish", "Sender": "curator", "Text": "Don't worry about it, just keep doing detective stuff."}
+          {"MessageID": "curatorFirstFinish", "Sender": "curator", "Text": "Just don't worry about it for now, keep doing detective stuff."}
         ]
       ]
     }

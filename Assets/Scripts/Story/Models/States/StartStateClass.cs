@@ -13,21 +13,29 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
-            
             LoadFromState();
         }
 
         public override void OnExit()
         {
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= CheckForStateChange;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= CheckForLoadGuide;
         }
 
         public override void LoadFromState()
         {
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += CheckForStateChange;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += CheckForLoadGuide;
         }
 
+        private void CheckForLoadGuide(string messageID)
+        {
+            if (messageID == "itTutorial")
+            {
+                FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);   
+            }
+        }
+        
         private void CheckForStateChange(string appName)
         {
             if (appName == "Guide")

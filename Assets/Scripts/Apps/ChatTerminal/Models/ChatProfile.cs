@@ -7,8 +7,8 @@ namespace Apps.ChatTerminal.Models
 {
     public class ChatProfile : MonoBehaviour
     {
-        public string UserID { get; set; }
-        public string Username { get; set; }
+        public string UserID { get; private set; }
+        public string Username { get; private set; }
 
         public event Action<MessageStatus> MessageStatusChanged;
         private MessageStatus _status;
@@ -19,21 +19,37 @@ namespace Apps.ChatTerminal.Models
             {
                 if (value == MessageStatus.Offline)
                 {
-                    _status = CurrentMessageIndex >= SeenMessagesIndex ? MessageStatus.NewMessage : MessageStatus.Offline;
+                    UpdateStatusBasedOnMessages();
                 }
                 else
                 {
-                    _status = value;   
+                    _status = value;
+                    MessageStatusChanged?.Invoke(_status);
                 }
-                MessageStatusChanged?.Invoke(_status);
             }
         }
         public Sprite ProfilePicture { get; set; }
         public float TypingSpeed { get; set; }
-        public int CurrentMessageIndex { get; set; }
+        
+        public int currentMessageIndex;
+        public int CurrentMessageIndex
+        {
+            get => currentMessageIndex;
+            set
+            {
+                currentMessageIndex = value;
+                UpdateStatusBasedOnMessages();
+            }
+        }
+        
+        private void UpdateStatusBasedOnMessages()
+        {
+            _status = CurrentMessageIndex >= SeenMessagesIndex ? MessageStatus.NewMessage : MessageStatus.Offline;
+            MessageStatusChanged?.Invoke(_status);
+        }
         public int SeenMessagesIndex { get; set; }
-        public List<List<ChatMessage>> Messages { get; set; }
-        public bool IsLoaded { get; set; }
+        public List<List<ChatMessage>> Messages { get; private set; }
+        public bool IsLoaded { get; private set; }
         
         public void LoadData(ChatProfileModel data)
         {

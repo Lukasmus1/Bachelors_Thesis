@@ -68,6 +68,7 @@ namespace Apps.ChatTerminal.Controllers
         public void LoadNewProfile(string profileId)
         {
             chatTerminalModel.LoadNewProfile(profileId);
+            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
             _chatTerminalView.UpdateContactData();
         }
 
