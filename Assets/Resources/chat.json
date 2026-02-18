@@ -11,10 +11,10 @@
       "SeenMessagesIndex": 0,
       "Messages": [
         [
-          {"MessageID": "it1", "Sender": "itDept", "Text": "Hello, I am from IT department. Pleasure to meet you."},
+          {"MessageID": "it1", "Sender": "itDept", "Text": "Hello, my name is Dave, I am from IT department. Pleasure to meet you."},
           {"MessageID": "it2", "Sender": "itDept", "Text": "This chat terminal serves as a way for the station to communicate with you."},
           {"MessageID": "it3", "Sender": "itDept", "Text": "We will provide you with important information about your case or just help in general."},
-          {"MessageID": "itTutorial", "Sender": "itDept", "Text": "I have sent you a file to help you get familiar with the basics of a 'File Manager' app."},
+          {"MessageID": "itTutorial", "Sender": "itDept", "Text": "I have sent you a file called \"Guide\" to help you get familiar with the basics of a 'File Manager' app."},
           {"MessageID": "it5", "Sender": "itDept", "Text": "Please open it when you have the time."}
         ],
         [

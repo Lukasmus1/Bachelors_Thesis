@@ -45,14 +45,21 @@ namespace Apps.ChatTerminal.Views
             
             foreach (ChatProfileModel profile in profilesFromJson)
             {
+                ChatProfile existingProfile = profiles.FirstOrDefault(x => x.UserID == profile.UserID);
+                
                 if (!profile.IsLoaded)
                 {
-                    if (profiles.Any(x => x.UserID == profile.UserID))
+                    if (existingProfile != null)
                     {
-                        Destroy(profiles.First(x => x.UserID == profile.UserID).gameObject);
+                        Destroy(existingProfile.gameObject);
                     }
                     continue;
                 }
+                if (existingProfile != null)
+                {
+                    continue;
+                }
+                
                 GameObject newContact = Instantiate(contactPrefab, contactsParent);
                 
                 var newProfile = newContact.AddComponent<ChatProfile>();

@@ -43,9 +43,8 @@ namespace Story.Models.States
                 return;
             }
             
-            ChangeToNextState();
-                
             FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
+            ChangeToNextState();
         }
     }
 }
