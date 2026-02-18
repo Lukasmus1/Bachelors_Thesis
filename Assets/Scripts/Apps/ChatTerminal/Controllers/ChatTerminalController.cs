@@ -78,7 +78,7 @@ namespace Apps.ChatTerminal.Controllers
         /// <param name="profileId">ID of the profile to unload</param>
         public void UnloadProfile(string profileId)
         {
-            chatTerminalModel.UnloadNewProfile(profileId);
+            chatTerminalModel.UnloadProfile(profileId);
             _chatTerminalView.UpdateContactData();
         }
     }

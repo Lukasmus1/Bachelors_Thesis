@@ -32,18 +32,20 @@ namespace Story.Models.States
         {
             if (messageID == "itTutorial")
             {
-                FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);   
+                FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
             }
         }
         
         private void CheckForStateChange(string appName)
         {
-            if (appName == "Guide")
+            if (appName != "Guide")
             {
-                ChangeToNextState();
-                
-                FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
+                return;
             }
+            
+            ChangeToNextState();
+                
+            FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
         }
     }
 }

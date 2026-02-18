@@ -178,7 +178,7 @@ namespace Apps.ChatTerminal.Models
         /// Set "loaded" flag to false for a specific chat profile.
         /// </summary>
         /// <param name="profileId">ID of the profile to unload</param>
-        public void UnloadNewProfile(string profileId)
+        public void UnloadProfile(string profileId)
         {
             ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(x => x.UserID == profileId);
             if (profile == null)
