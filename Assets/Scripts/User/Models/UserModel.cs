@@ -29,6 +29,11 @@ namespace User.Models
         /// </summary>
         public int CopsAlignment { get; set; }
         
+        /// <summary>
+        /// Screenshot of the user's game.
+        /// </summary>
+        public byte[] GameScreenshot { get; set; }
+        
         public void InitUser()
         {
             StartDate = DateTime.Now;

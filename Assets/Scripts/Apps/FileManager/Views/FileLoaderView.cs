@@ -66,6 +66,9 @@ namespace Apps.FileManager.Views
                 fileIcon.SetActive(true);
                 
                 _fileIcons.Add(fileIcon);
+
+                // Set the visibility of the file icon based on whether the file is hidden and the toggle state.
+                ToggleFileVisibility(fileModel.FileName, fileModel.IsHidden);
             }
         }
 
@@ -77,19 +80,24 @@ namespace Apps.FileManager.Views
             List<GameObject> files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFiles();
             foreach (GameObject file in files)
             {
-                var fileModel = file.GetComponent<FileModel>();
-
-                if (!fileModel.IsLoaded)
-                {
-                    continue;
-                }
-                
-                // Get the icon associated with the file and set its visibility.
-                GameObject fileIcon = _fileIcons.Find(icon => icon.GetComponentInChildren<TMP_Text>().text == file.GetComponent<FileModel>().FileName);
-                fileIcon.SetActive(!fileModel.IsHidden || showHiddenFilesToggle.isOn);
+                ToggleHideFile(file);
             }
             
             _showHiddenFilesBool = showHiddenFilesToggle.isOn;
+        }
+
+        private void ToggleHideFile(GameObject file)
+        {
+            var fileModel = file.GetComponent<FileModel>();
+
+            if (!fileModel.IsLoaded)
+            {
+                return;
+            }
+            
+            // Get the icon associated with the file and set its visibility.
+            GameObject fileIcon = _fileIcons.Find(icon => icon.GetComponentInChildren<TMP_Text>().text == file.GetComponent<FileModel>().FileName);
+            fileIcon.SetActive(!fileModel.IsHidden || showHiddenFilesToggle.isOn);
         }
         
         /// <see cref="FileLoaderController.ToggleFileVisibility"/> 

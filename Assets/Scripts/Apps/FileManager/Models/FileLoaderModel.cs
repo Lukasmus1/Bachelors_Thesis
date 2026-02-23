@@ -36,6 +36,8 @@ namespace Apps.FileManager.Models
         
         public List<string> InstantiatedFileNames { get; set; } = new();
         
+        public List<string> HiddenFileNames { get; set; } = new();
+        
         /// <summary>
         /// Loads all files from the Resources folder, creates clones of them, and sets their loaded state based on the context. Also procedurally generates content for specific files that require it.
         /// </summary>
@@ -56,6 +58,12 @@ namespace Apps.FileManager.Models
             }
             
             ProcedurallyGenerateFileContent();
+         
+            //Sets the hidden state of files based on loaded context
+            foreach (string fileName in HiddenFileNames)
+            {
+                InstantiatedFiles.Find(x => x.name == fileName).GetComponent<FileModel>().IsHidden = true;
+            }
             
             if (InstantiatedFiles.Count == 0)
             {
@@ -67,9 +75,11 @@ namespace Apps.FileManager.Models
         /// Loads files from the given context list of loaded file names.
         /// </summary>
         /// <param name="loadedFiles">List of file names to load</param>
-        public void LoadFilesFromContext(List<string> loadedFiles)
+        /// <param name="hiddenFiles">List of currently hidden files</param>
+        public void LoadFromSave(List<string> loadedFiles, List<string> hiddenFiles)
         {
             LoadedFileNames = loadedFiles;
+            HiddenFileNames = hiddenFiles;
         }
         
         /// <summary>
@@ -142,6 +152,30 @@ namespace Apps.FileManager.Models
             if (isLoaded)
             {
                 NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewFile, model.FileName);
+            }
+        }
+
+        /// <summary>
+        /// Sets the IsHidden flag of a file with the given name.
+        /// </summary>
+        /// <param name="fileName">Name of the file</param>
+        /// <param name="shouldHide">Should it be hidden</param>
+        /// <exception cref="Exception">Gets thrown if the file doesnt exist</exception>
+        public void SetHiddenFileFlag(string fileName, bool shouldHide)
+        {
+            if (shouldHide)
+            {
+                if (!HiddenFileNames.Contains(fileName))
+                {
+                    HiddenFileNames.Add(fileName);
+                }
+            }
+            else
+            {
+                if (HiddenFileNames.Contains(fileName))
+                {
+                    HiddenFileNames.Remove(fileName);
+                }
             }
         }
 

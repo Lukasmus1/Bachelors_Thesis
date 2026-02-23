@@ -1,4 +1,5 @@
 ﻿using System;
+using Apps.Commons.FileScripts;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Models;
 using Apps.FileViewer.Commons;
@@ -34,6 +35,11 @@ namespace Apps.FileManager.Views
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            //Disgusting hack
+            if (_fileObject.TryGetComponent(out ScreenshotHandler handler))
+            {
+                handler.SetScreenshot();
+            }
             FileViewerMvc.Instance.FileLoaderController.OpenedFile = _fileObject;
             CreateContextMenu(eventData);
         }

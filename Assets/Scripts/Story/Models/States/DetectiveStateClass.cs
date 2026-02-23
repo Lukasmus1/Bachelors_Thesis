@@ -30,13 +30,13 @@ namespace Story.Models.States
             
             //Encrypted image
             FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("UserScreenshot", true);
-            
+                
             LoadFromState();
         }
 
         public override void OnExit()
         {
-            CipherMvc.Instance.CipherController.OnDecryptionAttempt -= TransitionCheck;
+            CipherMvc.Instance.CipherController.onDecryptionAttempt -= TransitionCheck;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailTwoOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnMessagesOpened;
@@ -48,7 +48,7 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
-            CipherMvc.Instance.CipherController.OnDecryptionAttempt += TransitionCheck;
+            CipherMvc.Instance.CipherController.onDecryptionAttempt += TransitionCheck;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailTwoOpened;
             FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnMessagesOpened;

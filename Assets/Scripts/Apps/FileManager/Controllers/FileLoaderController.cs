@@ -57,13 +57,19 @@ namespace Apps.FileManager.Controllers
             set => _fileLoaderModel.LoadedFileNames = value;
         }
         
+        public List<string> HiddenFileNames
+        {
+            get => _fileLoaderModel.HiddenFileNames;
+            set => _fileLoaderModel.HiddenFileNames = value;
+        }
+        
         /// <summary>
         /// Loads files from the given context list of loaded file names and updates the file loader view.
         /// </summary>
         /// <param name="loadedFiles">Files to load</param>
-        public void LoadFilesFromContext(List<string> loadedFiles)
+        public void LoadFromSave(List<string> loadedFiles, List<string> hiddenFiles)
         {
-            _fileLoaderModel.LoadFilesFromContext(loadedFiles);
+            _fileLoaderModel.LoadFromSave(loadedFiles, hiddenFiles);
             onFilesUpdated?.Invoke();
         }
         
@@ -86,6 +92,7 @@ namespace Apps.FileManager.Controllers
         public void ToggleFileVisibility(string fileName, bool shouldHide)
         {
             _fileLoaderView.ToggleFileVisibility(fileName, shouldHide);
+            _fileLoaderModel.SetHiddenFileFlag(fileName, shouldHide); // Sets the flag in model -> used for saving
         }
         
         public void CreateUsersScreenshotFile()
@@ -110,9 +117,13 @@ namespace Apps.FileManager.Controllers
                 string code = UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCode);
                 Sprite encryptedImageSprite = CipherMvc.Instance.CipherController.EncryptDecryptImage(screenshotTexture, code);
             
-                //Finally sets the encrypted image as the user's screenshot file image in the file loader model
-                _fileLoaderModel.SetUserScreenshotFileImage(encryptedImageSprite);
+                //Finally sets the encrypted image as the user's screenshot file image in the file loader and user models
+                UserMvc.Instance.UserController.userModel.GameScreenshot = encryptedImageSprite.texture.EncodeToPNG();
             });
+        }
+
+        public void SetUserScreenshotFile()
+        {
             
         }
     }

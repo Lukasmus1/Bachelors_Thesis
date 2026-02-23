@@ -8,7 +8,7 @@ namespace Apps.CipherSolver.Controllers
     {
         private readonly CipherModel cipherModel = new(); 
         
-        public Action<string> OnDecryptionAttempt;
+        public Action<string> onDecryptionAttempt;
         
         /// <summary>
         /// Generates a random key for the Vigenere cipher of the specified length
@@ -58,7 +58,7 @@ namespace Apps.CipherSolver.Controllers
         public string DecryptText(string cipherText, string key)
         {
             string text = cipherModel.DecryptText(cipherText, key); 
-            OnDecryptionAttempt?.Invoke(cipherText);
+            onDecryptionAttempt?.Invoke(cipherText);
             return text;
         }
         
@@ -75,7 +75,7 @@ namespace Apps.CipherSolver.Controllers
             var res = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
             
             //Shouldn't really call it when encrypting, but it should not cause any issues :pray:
-            OnDecryptionAttempt?.Invoke(key);
+            onDecryptionAttempt?.Invoke(key);
             return res;
         }
     }

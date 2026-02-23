@@ -23,6 +23,7 @@ namespace Saving.Models
             _model.storyModel = StoryMvc.Instance.StoryController.storyModel;
             _model.chatTerminalModel = ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel;
             _model.loadedFiles = FileLoaderMvc.Instance.FileLoaderController.LoadedFileNames;
+            _model.hiddenFiles = FileLoaderMvc.Instance.FileLoaderController.HiddenFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
             _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
         }

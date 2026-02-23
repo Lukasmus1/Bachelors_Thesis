@@ -87,20 +87,26 @@ namespace Apps.CipherSolver.Views
         public void SolveCipher()
         {
             string key = keyInputField.text;
-            if (key.Length == 0)
-            {
-                _fileText.text = _fileTextCopy;
-                return;
-            }
-            
             if (_isTextCypher)
             {
+                if (key.Length == 0)
+                {
+                    _fileText.text = _fileTextCopy;
+                    return;
+                }
+                
                 string decryptedText = CipherMvc.Instance.CipherController.DecryptText(_fileTextCopy, key);
 
                 _fileText.text = decryptedText;
             }
             else
             {
+                if (key.Length == 0)
+                {
+                    //reset image
+                    return;
+                }
+                
                 Sprite decryptedImage = CipherMvc.Instance.CipherController.EncryptDecryptImage(_imageTextureCopy, key);
                 
                 _imageComponent.sprite = decryptedImage;

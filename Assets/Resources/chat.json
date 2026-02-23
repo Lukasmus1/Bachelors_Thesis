@@ -96,7 +96,7 @@
           {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "two of them seems to be an email exchange between the scammer and someone else"},
           {"MessageID": "dpt44", "Sender": "headOfDpt", "Text": "the other one seems to be a screenshot of the scammers messaging app"},
           {"MessageID": "dpt45", "Sender": "headOfDpt", "Text": "if you find anything else useful in them let us know"},
-          {"MessageID": "dptSendingNewFiles", "Sender": "headOfDpt", "Text": "sending them to you now. try to look if you could find anything useful in them"}
+          {"MessageID": "dptSendingNewFiles", "Sender": "headOfDpt", "Text": "sending them to you now."}
         ],
         [
           {"MessageID": "dpt47", "Sender": "Player", "Text": "I have managed to find the password and decrypt the image."},

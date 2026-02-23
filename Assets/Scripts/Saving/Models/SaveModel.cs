@@ -20,6 +20,7 @@ namespace Saving.Models
         public StoryModel storyModel;
         public ChatTerminalModel chatTerminalModel;
         public List<string> loadedFiles;
+        public List<string> hiddenFiles;
         public UserModel userModel;
         public ListOfActionsPersistent persistentActions;
         
@@ -37,12 +38,13 @@ namespace Saving.Models
             chatTerminalModel = saveModel.chatTerminalModel;
             ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel = chatTerminalModel;
             
-            loadedFiles = saveModel.loadedFiles;
-            FileLoaderMvc.Instance.FileLoaderController.LoadFilesFromContext(loadedFiles);
-            
             userModel = saveModel.userModel;
             UserMvc.Instance.UserController.userModel = userModel;
 
+            loadedFiles = saveModel.loadedFiles;
+            hiddenFiles = saveModel.hiddenFiles;
+            FileLoaderMvc.Instance.FileLoaderController.LoadFromSave(loadedFiles, hiddenFiles);
+            
             ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
         }
     }

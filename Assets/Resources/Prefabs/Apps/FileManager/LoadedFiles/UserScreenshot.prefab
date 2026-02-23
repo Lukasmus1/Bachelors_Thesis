@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1562895037083215593}
   - component: {fileID: -6726348148608744330}
   - component: {fileID: 3122839135334631518}
+  - component: {fileID: 576872047478689143}
   m_Layer: 5
   m_Name: UserScreenshot
   m_TagString: Untagged
@@ -82,6 +83,18 @@ MonoBehaviour:
   comments: Supposed screenshot of the scammer's computer screen
   createdDate: 
   intendedFileType: 0
+--- !u!114 &576872047478689143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341737976566326313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40a0a3cc06944d580ee89a95f8e5590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.Commons.FileScripts.ScreenshotHandler
 --- !u!1 &6046349541798103439
 GameObject:
   m_ObjectHideFlags: 0

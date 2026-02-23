@@ -50,6 +50,22 @@ namespace User.Controllers
         {
             userModel.PersistentData.Find(data => data.dataType == dataType).dataValue = value;
         }
+
+        /// <summary>
+        /// Gets the screenshot of the user's game as a Sprite.
+        /// </summary>
+        /// <returns>Sprite of the screenshot of the game</returns>
+        public Sprite GetScreenshot()
+        {
+            if (userModel.GameScreenshot == null)
+            {
+                return null;
+            }
+            
+            var tex = new Texture2D(1, 1);
+            tex.LoadImage(userModel.GameScreenshot);
+            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
+        }
         
         public DateTime GetStartDate()
         {
