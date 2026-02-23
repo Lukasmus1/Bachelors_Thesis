@@ -2,6 +2,7 @@
 using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
+using Desktop.Commons;
 
 namespace Story.Models.States
 {
@@ -43,6 +44,7 @@ namespace Story.Models.States
                 return;
             }
             
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Virus Finder", true);
             FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
             ChangeToNextState();
         }

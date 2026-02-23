@@ -7,6 +7,8 @@ using Apps.VirusFinder.Commons;
 using Apps.VirusFinder.Views;
 using Desktop.BottomBar.Commons;
 using Desktop.BottomBar.Views;
+using Desktop.Commons;
+using Desktop.Views;
 using UnityEngine;
 
 /// <summary>
@@ -40,6 +42,9 @@ public class ScriptReferenceLinker : MonoBehaviour
     public GameObject virusFinderApp;
     [SerializeField] private VirusFinderView virusFinderView;
     
+    //Desktop
+    [SerializeField] private DesktopGeneratorView desktopGeneratorView;
+    
     private void Awake()
     {
         //Chat terminal app
@@ -54,6 +59,9 @@ public class ScriptReferenceLinker : MonoBehaviour
         
         //Virus finder app
         VirusFinderMvc.Instance.VirusFinderController.SetView(virusFinderView);
+        
+        //Desktop
+        DesktopMvc.Instance.DesktopGeneratorController.SetDesktopView(desktopGeneratorView);
     }
 
     /// <summary>

@@ -61,6 +61,8 @@ namespace Desktop.Views
             GetComponentInChildren<RawImage>().texture = tex;
             
             GetComponentInChildren<TMP_Text>().font = font;
+            
+            enabled = icon.IsActive;
         }
 
         public void SetProperties(Vector2 pos, string iconName)

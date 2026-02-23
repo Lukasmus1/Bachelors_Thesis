@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Apps.ChatTerminal.Commons;
-using Apps.ChatTerminal.Views;
 using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
-using Desktop.Notification.Commons;
-using Desktop.Notification.Models;
-using DesktopGeneration.Models;
-using Saving.Commons;
 using Story.Commons;
 using TMPro;
 using UnityEngine;
@@ -57,7 +50,7 @@ namespace Desktop.Views
                 StoryMvc.Instance.StoryController.InitNew();
             }
             
-            RefreshContext();
+            LoadDesktop();
         }
 
         /// <summary>
@@ -79,13 +72,13 @@ namespace Desktop.Views
         {
             SetDesktopWallpaper(_controller.GetRandomWallpaper());
             SetColorScheme(_controller.GetRandomColorScheme());
-            SaveExistingIcons();
+            SaveOrSetupIcons(true);
         }
         
         /// <summary>
-        /// Refreshes the desktop.
+        /// Loads the desktop.
         /// </summary>
-        private void RefreshContext()
+        private void LoadDesktop()
         {
             SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper());
             //Bright red as a color for error indication
@@ -96,11 +89,16 @@ namespace Desktop.Views
         /// <summary>
         /// Saves the existing icons on the desktop.
         /// </summary>
-        private void SaveExistingIcons()
+        private void SaveOrSetupIcons(bool shouldSetup)
         {
-            foreach (GameObject icon in desktopIconObjects.Where(icon => icon.activeSelf))
+            foreach (GameObject icon in desktopIconObjects)
             {
-                _controller.SetDesktopIconIntoContext(icon.GetComponent<IconClassOnObject>());
+                var iconClass = icon.GetComponent<IconClassOnObject>();
+                if (shouldSetup)
+                {
+                    iconClass.SetProps();    
+                }
+                _controller.SetDesktopIconIntoContext(iconClass);
             }
         }
         
@@ -160,8 +158,6 @@ namespace Desktop.Views
                 }
 
                 iconObject.GetComponent<IconScript>().SetProperties(iconClass, userFont);
-                
-                iconObject.SetActive(true);
             }
         }
         
@@ -174,13 +170,23 @@ namespace Desktop.Views
             desktopObject.SetActive(enable);
             createDesktopButton.SetActive(!enable);
         }
+        
+        /// <summary>
+        /// Sets the active state of an icon based on its IconClass.name.
+        /// </summary>
+        /// <param name="iconName">GameObject name of the Icon</param>
+        /// <param name="active">Should it be active</param>
+        public void ToggleIcon(string iconName, bool active)
+        {
+            desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconName)?.SetActive(active);
+        }
 
         /// <summary>
         /// Save before exiting the application.
         /// </summary>
         private void OnApplicationQuit()
         {
-            SaveExistingIcons();
+            SaveOrSetupIcons(false);
         }
     }
 }

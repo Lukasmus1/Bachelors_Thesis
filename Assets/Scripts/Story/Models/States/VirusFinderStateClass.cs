@@ -1,5 +1,6 @@
 ﻿using System;
 using Apps.VirusFinder.Commons;
+using Desktop.Commons;
 
 namespace Story.Models.States
 {
@@ -11,7 +12,7 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            VirusFinderMvc.Instance.VirusFinderController.EnableApp(true);
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Virus Finder", true);
             
             //Story-wise this is called a bit late, but for practical purposes it's better to do it here
             VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(5);

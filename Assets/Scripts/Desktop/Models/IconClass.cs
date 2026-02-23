@@ -13,6 +13,7 @@ namespace Desktop.Models
         public float PositionX { get; set; }
         public float PositionY { get; set; }
         public byte[] Image { get; set; }
+        public bool IsActive { get; set; }
         
         public IconClass(string name, Vector2 size, Vector2 position, Texture2D image)
         {
@@ -32,6 +33,7 @@ namespace Desktop.Models
             PositionX = iconClass.Position.x;
             PositionY = iconClass.Position.y;
             Image = iconClass.Image;
+            IsActive = iconClass.IsActive;
         }
     }
 }

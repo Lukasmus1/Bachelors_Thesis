@@ -52,6 +52,17 @@ namespace Desktop.Models
         
         public List<IconClass> Icons { get; set; } = new();
         public Dictionary<string, bool> flags = new();
+
+        public void ToggleIcon(string name, bool value)
+        {
+            IconClass icon = Icons.Find(i => i.Name == name);
+            if (icon == null)
+            {
+                throw new KeyNotFoundException($"Icon {name} not found");
+            }
+            
+            icon.IsActive = value;
+        }
         
         public void SetFlag(string name, bool value)
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Desktop.Commons;
+using Desktop.Controllers;
+using Desktop.Models;
 using Desktop.Views;
 using TMPro;
 using UnityEngine;
@@ -36,6 +38,18 @@ namespace Apps.VirusFinder.Views
             
             GameObject popup = Instantiate(deletePopup, gameObject.transform.parent.parent);
             
+            //Check if the app is already open using the Flags dictionary and the gameObject tag
+            if (!DesktopModel.Instance.flags.ContainsKey(deletePopup.tag) ||
+                (!DesktopModel.Instance.flags[deletePopup.tag] &&
+                 DesktopModel.Instance.flags.ContainsKey(deletePopup.tag)))
+            {
+                DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(deletePopup.tag, true);
+            }
+            else
+            {
+                return;
+            }
+
             popup.GetComponent<DeleteVirusPopup>().SetVirusIntoContext(gameObject);
 
             popup.GetComponentInChildren<TMP_Text>().text = isOpened ? "This file is corrupted, do you want to <color=red>delete</color> it?" : "Are you sure you want to <color=red>delete</color> this file?";

@@ -46,7 +46,7 @@
         [
           {"MessageID": "dpt6", "Sender": "Player", "Text": "Hello, I have managed to find the email address of the victim. thomas.bare@gmail.com"},
           {"MessageID": "dpt7", "Sender": "Player", "Text": "I have also managed to find the name of the scammer. It's \"Albert Green\""},
-          {"MessageID": "dpt8", "Sender": "headOfDpt", "Text": "the name could and likely is fake"},
+          {"MessageID": "dpt8", "Sender": "headOfDpt", "Text": "the name is likely fake"},
           {"MessageID": "dptThomasBare", "Sender": "headOfDpt", "Text": "but i can add the thomas bare email to your contacts. try to see if hes of any help"},
           {"MessageID": "dpt10", "Sender": "headOfDpt", "Text": "good job"}
         ],

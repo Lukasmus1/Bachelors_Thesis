@@ -2,6 +2,7 @@
 using Apps.ChatTerminal.Commons;
 using Commons;
 using Saving.Commons;
+using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -32,6 +33,7 @@ namespace Story.Models.SideActions
                 UserMvc.Instance.UserController.SetPersistentData(UserDataType.DeletedVirusFile, true);
                 OnKpDoNotDeleteFiles?.Invoke();
                 ChatTerminalMvc.Instance.ChatTerminalController.UnloadProfile("kp");
+                Debug.Log("UNLOAD KP");
                 SavingMvc.Instance.SavingController.QuitAndSaveGame();
             });
             
