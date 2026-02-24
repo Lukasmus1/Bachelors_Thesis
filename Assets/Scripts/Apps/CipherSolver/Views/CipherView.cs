@@ -1,4 +1,5 @@
-﻿using Apps.CipherSolver.Commons;
+﻿using System;
+using Apps.CipherSolver.Commons;
 using Apps.Commons;
 using Apps.FileViewer.Commons;
 using Desktop.Commons;
@@ -84,32 +85,39 @@ namespace Apps.CipherSolver.Views
         /// <summary>
         /// Attempt to solve the cipher using the provided key.
         /// </summary>
-        public void SolveCipher()
+        public async void SolveCipher()
         {
-            string key = keyInputField.text;
-            if (_isTextCypher)
+            try
             {
-                if (key.Length == 0)
+                string key = keyInputField.text;
+                if (_isTextCypher)
                 {
-                    _fileText.text = _fileTextCopy;
-                    return;
-                }
+                    if (key.Length == 0)
+                    {
+                        _fileText.text = _fileTextCopy;
+                        return;
+                    }
                 
-                string decryptedText = CipherMvc.Instance.CipherController.DecryptText(_fileTextCopy, key);
+                    string decryptedText = CipherMvc.Instance.CipherController.DecryptText(_fileTextCopy, key);
 
-                _fileText.text = decryptedText;
-            }
-            else
-            {
-                if (key.Length == 0)
-                {
-                    //reset image
-                    return;
+                    _fileText.text = decryptedText;
                 }
+                else
+                {
+                    if (key.Length == 0)
+                    {
+                        //reset image
+                        return;
+                    }
                 
-                Sprite decryptedImage = CipherMvc.Instance.CipherController.EncryptDecryptImage(_imageTextureCopy, key);
+                    Sprite decryptedImage = await CipherMvc.Instance.CipherController.EncryptDecryptImage(_imageTextureCopy, key);
                 
-                _imageComponent.sprite = decryptedImage;
+                    _imageComponent.sprite = decryptedImage;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
     }

@@ -119,12 +119,19 @@ namespace Apps.ChatTerminal.Models
                     {
                         delayS = message.Text.Length / CurrentProfile.TypingSpeed;
                     }
+
+#if UNITY_EDITOR
+                    delayS = 0.1f;             
+#endif
                     yield return new WaitForSeconds(delayS);
 
                     CreateMessage(message);
 
                     ChatTerminalMvc.Instance.MessageSystemController.messageTyped?.Invoke(message.MessageID);
                     
+#if UNITY_EDITOR
+                    continue;             
+#endif
                     //Small delay between each message
                     yield return new WaitForSeconds(0.5f);
                 }

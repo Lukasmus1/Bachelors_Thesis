@@ -49,6 +49,15 @@ namespace Desktop.Notification.Controllers
                     NotificationView.SetNotificationText(message, NotificationType.Error);
                     break;
                 
+                case NotificationType.NewApp:
+                    if (message == null)
+                    {
+                        throw new ArgumentNullException(nameof(message), "Message cannot be null for NewApp notification type.");
+                    }
+                    
+                    NotificationView.SetNotificationText(message, NotificationType.NewFile);
+                    break;
+                
                 default:
                     throw new ArgumentOutOfRangeException(nameof(notificationType), notificationType, null);
             }

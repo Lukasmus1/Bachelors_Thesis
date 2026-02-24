@@ -104,7 +104,7 @@ namespace Apps.FileManager.Controllers
 
             //Get the screenshot texture from the user information controller and check if it's null
             Texture2D screenshotTexture;
-            FourthWallMvc.Instance.UserInformationController.Screenshot(monoBehavior, (tex) =>
+            FourthWallMvc.Instance.UserInformationController.Screenshot(monoBehavior, async (tex) =>
             {
                 screenshotTexture = tex;
                 
@@ -112,19 +112,16 @@ namespace Apps.FileManager.Controllers
                 {
                     throw new Exception("The screenshot texture is null!");
                 }
-            
+                
                 //Get the code for encrypting the image from the user data controller and encrypt the image with the cipher controller
                 string code = UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCode);
-                Sprite encryptedImageSprite = CipherMvc.Instance.CipherController.EncryptDecryptImage(screenshotTexture, code);
+                Debug.Log(code);
+                Sprite encryptedImageSprite = await CipherMvc.Instance.CipherController.EncryptDecryptImage(screenshotTexture, code);
             
                 //Finally sets the encrypted image as the user's screenshot file image in the file loader and user models
-                UserMvc.Instance.UserController.userModel.GameScreenshot = encryptedImageSprite.texture.EncodeToPNG();
+                UserMvc.Instance.UserController.userModel.EncryptedGameScreenshot =
+                    encryptedImageSprite.texture.GetRawTextureData();
             });
-        }
-
-        public void SetUserScreenshotFile()
-        {
-            
         }
     }
 }

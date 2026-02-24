@@ -5,6 +5,7 @@
         Generic,
         NewMessage,
         NewFile,
+        NewApp,
         Error
     }
 }

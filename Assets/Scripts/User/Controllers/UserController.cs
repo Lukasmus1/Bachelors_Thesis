@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using User.Commons;
 using User.Models;
 
 namespace User.Controllers
@@ -19,6 +20,22 @@ namespace User.Controllers
             var tex = new Texture2D(2, 2);
             tex.LoadImage(userModel.ProfilePicture);
             return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+        }
+
+        public Vector2 ScreenshotSize
+        {
+            get => new Vector2(userModel.ScreenshotHeight, userModel.ScreenshotWidth);
+            set
+            {
+                userModel.ScreenshotHeight = (int)value.x;
+                userModel.ScreenshotWidth = (int)value.y;
+            }   
+        }
+        
+        public int ScreenshotFormat
+        {
+            get => userModel.ScreenshotFormat;
+            set => userModel.ScreenshotFormat = value;
         }
         
         /// <summary>
@@ -57,14 +74,20 @@ namespace User.Controllers
         /// <returns>Sprite of the screenshot of the game</returns>
         public Sprite GetScreenshot()
         {
-            if (userModel.GameScreenshot == null)
+            if (userModel.EncryptedGameScreenshot == null)
             {
                 return null;
             }
             
-            var tex = new Texture2D(1, 1);
-            tex.LoadImage(userModel.GameScreenshot);
-            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
+            var tex = new Texture2D(
+                (int)UserMvc.Instance.UserController.ScreenshotSize.x, 
+                (int)UserMvc.Instance.UserController.ScreenshotSize.y, 
+                (TextureFormat)UserMvc.Instance.UserController.ScreenshotFormat, 
+                false);
+            tex.LoadRawTextureData(userModel.EncryptedGameScreenshot);
+            tex.Apply(false, false);
+            
+            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         }
         
         public DateTime GetStartDate()

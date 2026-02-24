@@ -33,7 +33,10 @@ namespace User.Models
         /// <summary>
         /// Screenshot of the user's game.
         /// </summary>
-        public byte[] GameScreenshot { get; set; }
+        public byte[] EncryptedGameScreenshot { get; set; }
+        public int ScreenshotWidth { get; set; }
+        public int ScreenshotHeight { get; set; }
+        public int ScreenshotFormat { get; set; }
         
         public void InitUser()
         {

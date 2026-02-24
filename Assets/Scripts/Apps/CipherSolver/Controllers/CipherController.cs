@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Apps.CipherSolver.Models;
 using UnityEngine;
 
@@ -68,9 +69,9 @@ namespace Apps.CipherSolver.Controllers
         /// <param name="cipherTexture">Texture of the image to XOR</param>
         /// <param name="key">Key to XOR the image</param>
         /// <returns>Image ran through the XOR cipher</returns>
-        public Sprite EncryptDecryptImage(Texture2D cipherTexture, string key)
+        public async Task<Sprite> EncryptDecryptImage(Texture2D cipherTexture, string key)
         {
-            Texture2D tex = cipherModel.DecryptImage(cipherTexture, key);
+            Texture2D tex = await cipherModel.DecryptImage(cipherTexture, key);
             
             var res = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
             

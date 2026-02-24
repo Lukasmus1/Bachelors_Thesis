@@ -4,6 +4,8 @@ using System.Linq;
 using Desktop.Abstracts;
 using Desktop.Models;
 using Desktop.Models.IconGeneration;
+using Desktop.Notification.Commons;
+using Desktop.Notification.Models;
 using Desktop.Views;
 using TMPro;
 using UnityEngine;
@@ -130,6 +132,11 @@ namespace Desktop.Controllers
             DesktopModel.Instance.ToggleIcon(name, active);
             
             _desktopGeneratorView.ToggleIcon(name, active);
+
+            if (active)
+            {
+                NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewApp, "New App Downloaded: " + name);
+            }
         }
     }
 }

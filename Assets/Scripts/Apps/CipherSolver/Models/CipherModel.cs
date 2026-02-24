@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Text;
+using System.Threading.Tasks;
 using Apps.CipherSolver.Controllers;
 using UnityEngine;
+using User.Commons;
 using Random = UnityEngine.Random;
 
 namespace Apps.CipherSolver.Models
@@ -110,36 +112,44 @@ namespace Apps.CipherSolver.Models
         }
 
         /// <see cref="CipherController.EncryptDecryptImage"/>
-        public Texture2D DecryptImage(Texture2D cipherTexture, string key)
+        public async Task<Texture2D> DecryptImage(Texture2D cipherTexture, string key)
         {
-            //Getting the raw texture data as a byte array
             byte[] originalTexture = cipherTexture.GetRawTextureData();
-            byte[] textBytes = Encoding.UTF8.GetBytes(key);
-            int seedNum;
+            int width = cipherTexture.width;
+            int height = cipherTexture.height;
+            TextureFormat format = cipherTexture.format;
             
-            //Creating a hash of the key to use as a seed for the random number generator (this ensures that the same key will always produce the same random sequence)
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            UserMvc.Instance.UserController.ScreenshotSize = new Vector2(width, height);
+            UserMvc.Instance.UserController.ScreenshotFormat = (int)format;
+            
+            byte[] decryptedData = await Task.Run(() =>
             {
-                byte[] hash = sha256.ComputeHash(textBytes);
-                seedNum = BitConverter.ToInt32(hash, 0);
-            }
-            
-            //Creating a random number generator with the seed derived from the key that has the same length as the original picture
-            System.Random rnd = new(seedNum);
-            var keyStream = new byte[originalTexture.Length];
-            rnd.NextBytes(keyStream);
-            
-            //XOR cipher
-            for (int i = 0; i < originalTexture.Length; i++)
-            {
-                originalTexture[i] ^= keyStream[i];
-            }
-            
-            //Create a new texture with the same dimensions and format as the original and load the decrypted raw texture data into it
-            var decryptedTexture = new Texture2D(cipherTexture.width, cipherTexture.height, cipherTexture.format, false);
-            decryptedTexture.LoadRawTextureData(originalTexture);
-            decryptedTexture.Apply();
+                byte[] textBytes = Encoding.UTF8.GetBytes(key);
+                int seedNum;
 
+                using (var sha256 = System.Security.Cryptography.SHA256.Create())
+                {
+                    byte[] hash = sha256.ComputeHash(textBytes);
+                    seedNum = BitConverter.ToInt32(hash, 0);
+                }
+
+                System.Random rnd = new(seedNum);
+                var keyStream = new byte[originalTexture.Length];
+                rnd.NextBytes(keyStream);
+                
+                // XOR cipher
+                for (int i = 0; i < originalTexture.Length; i++)
+                {
+                    originalTexture[i] ^= keyStream[i];
+                }
+
+                return originalTexture;
+            });
+            
+            var decryptedTexture = new Texture2D(width, height, format, false);
+            decryptedTexture.LoadRawTextureData(decryptedData);
+            decryptedTexture.Apply();
+            
             return decryptedTexture;
         }
     }
