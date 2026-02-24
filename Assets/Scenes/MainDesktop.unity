@@ -8297,6 +8297,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1955425560242322774, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955425560242322774, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2021713072054958846, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8327,11 +8335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2122552688573740599, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2122552688573740599, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1000
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 2122552688573740599, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8389,13 +8397,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3516788579168124553, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -700
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516788579168124553, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 512.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3730467362806716550, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3730467362806716550, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 425
+      value: 512.5
       objectReference: {fileID: 0}
     - target: {fileID: 4046769416916533056, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8408,6 +8424,22 @@ PrefabInstance:
     - target: {fileID: 4046769416916533056, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_SizeDelta.x
       value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148078337853285883, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1950
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148078337853285883, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148078337853285883, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148078337853285883, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 5666059965911043000, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_fontSize
@@ -8424,6 +8456,14 @@ PrefabInstance:
     - target: {fileID: 5666059965911043000, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993241287919241435, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993241287919241435, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 519
       objectReference: {fileID: 0}
     - target: {fileID: 6900082930825137247, guid: 31a0328a3df1e854cbe6054d8d766ee0, type: 3}
       propertyPath: m_Color.b
