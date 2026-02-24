@@ -27,7 +27,19 @@ namespace Apps.ChatTerminal.Views
         /// This is public because I am using it in the controller.
         /// Ideally, this should be in the model itself, unfortunately this is not serializable.
         /// </summary>
-        public readonly List<ChatProfile> profiles = new();
+        private  List<ChatProfile> _profiles = new();
+        public List<ChatProfile> Profiles
+        {
+            get
+            {
+                if (_profiles.Count == 0)
+                {
+                    UpdateContactData();
+                }
+                return _profiles;
+            }
+            set => _profiles = value;
+        }
         
         private void Awake()
         {
@@ -37,7 +49,7 @@ namespace Apps.ChatTerminal.Views
         }
 
         /// <summary>
-        /// Updates the contact list with loaded chat profiles.
+        /// Updates the contact list with loaded chat _profiles.
         /// </summary>
         public void UpdateContactData()
         {
@@ -45,7 +57,7 @@ namespace Apps.ChatTerminal.Views
             
             foreach (ChatProfileModel profile in profilesFromJson)
             {
-                ChatProfile existingProfile = profiles.FirstOrDefault(x => x.UserID == profile.UserID);
+                ChatProfile existingProfile = _profiles.FirstOrDefault(x => x.UserID == profile.UserID);
                 
                 if (!profile.IsLoaded)
                 {
@@ -64,26 +76,26 @@ namespace Apps.ChatTerminal.Views
                 
                 var newProfile = newContact.AddComponent<ChatProfile>();
                 newProfile.LoadData(profile);
-                profiles.Add(newProfile);
+                _profiles.Add(newProfile);
                 
                 newContact.GetComponent<ContactView>().SetProperties(messagesWindow, newProfile);
             }
         }
 
         /// <summary>
-        /// Unloads a chat profile by destroying its game object and removing it from the list of loaded profiles.
+        /// Unloads a chat profile by destroying its game object and removing it from the list of loaded _profiles.
         /// </summary>
         /// <param name="profileId">ID of the profile</param>
         public void UnloadProfile(string profileId)
         {
-            ChatProfile profileToUnload = profiles.FirstOrDefault(profile => profile.UserID == profileId);
+            ChatProfile profileToUnload = _profiles.FirstOrDefault(profile => profile.UserID == profileId);
             if (profileToUnload == null)
             {
                 return;
             }
             
             Destroy(profileToUnload.gameObject);
-            profiles.Remove(profileToUnload);
+            _profiles.Remove(profileToUnload);
         }
         
         private void OnEnable()

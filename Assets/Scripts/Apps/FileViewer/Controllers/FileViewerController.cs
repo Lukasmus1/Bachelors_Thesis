@@ -9,6 +9,10 @@ namespace Apps.FileViewer.Controllers
         private readonly FileViewerModel _fileViewerModel = new(); 
         
         public Action<string> metadataOpened;
+        
+        /// <summary>
+        /// Returns the name of the file as depicted in game -> NOT GameObject NAME
+        /// </summary>
         public Action<string> onFileOpened;
         
         public GameObject OpenedFile

@@ -19,7 +19,7 @@ namespace Apps.ChatTerminal.Controllers
         
         public void SaveGameData()
         {
-            foreach (ChatProfile chatProfile in _chatTerminalView.profiles)
+            foreach (ChatProfile chatProfile in _chatTerminalView.Profiles)
             {
                 chatTerminalModel.UpdateProfileData(chatProfile);
             }
@@ -46,7 +46,7 @@ namespace Apps.ChatTerminal.Controllers
         /// <param name="profileId">ID of the profile</param>
         public void IncreaseChatProfileMessageIndex(string profileId)
         {
-            chatTerminalModel.IncreaseChatProfileMessageIndex(profileId, _chatTerminalView.profiles);
+            chatTerminalModel.IncreaseChatProfileMessageIndex(profileId, _chatTerminalView.Profiles);
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
         }
         
@@ -57,8 +57,7 @@ namespace Apps.ChatTerminal.Controllers
         /// <param name="messageGroupID">ID of the message group</param>
         public void QueueSecondaryMessage(string userID, string messageGroupID)
         {
-            chatTerminalModel.QueueSecondaryMessage(userID, messageGroupID);
-            NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
+            chatTerminalModel.QueueSecondaryMessage(userID, messageGroupID, _chatTerminalView.Profiles);
         }
         
         /// <summary>

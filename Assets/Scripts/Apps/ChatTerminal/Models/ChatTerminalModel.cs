@@ -106,22 +106,29 @@ namespace Apps.ChatTerminal.Models
 
             return secondaryMessageGroup;
         }
-        
+
         /// <summary>
         /// Insert a new message group into the messages list of a primary chat profile at the correct index and increase the message index of the profile.
         /// </summary>
         /// <param name="userID">ID of the profile</param>
         /// <param name="messageGroupID">ID of the message group to display</param>
-        public void QueueSecondaryMessage(string userID, string messageGroupID)
+        public void QueueSecondaryMessage(string userID, string messageGroupID, List<ChatProfile> loadedProfiles)
         {
-            ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(profile => profile.UserID == userID);
+            ChatProfile profile = loadedProfiles.FirstOrDefault(profile => profile.UserID == userID);
             if (profile == null)
             {
                 Debug.LogError($"Chat profile with ID {userID} not found.");
                 return;
             }
-            
-            MessageGroup secondaryMessageGroup = profile.SecondaryChatProfileMessages.FirstOrDefault(messageGroup => messageGroup.MessageGroupID == messageGroupID);
+
+            ChatProfileModel profileModel = _loadedChatProfiles.FirstOrDefault(p => p.UserID == userID);
+            if (profileModel == null)
+            {
+                //This really should never happen, but it keeps the IDE happy
+                throw new NullReferenceException($"Chat profile with ID {userID} not found.");
+            }
+
+            MessageGroup secondaryMessageGroup = profileModel.SecondaryChatProfileMessages.FirstOrDefault(messageGroup => messageGroup.MessageGroupID == messageGroupID);
             if (secondaryMessageGroup == null)
             {
                 Debug.LogError($"Message group with ID {messageGroupID} not found for user ID {userID}.");
@@ -129,7 +136,7 @@ namespace Apps.ChatTerminal.Models
             }
             
             //First increase the message index and then insert the new message group at the correct index in the primary chat profile's messages list
-            profile.Messages.Insert(profile.CurrentMessageIndex, secondaryMessageGroup.MessagesGroup);
+            profile.Messages.Insert(profile.CurrentMessageIndex + 1, secondaryMessageGroup.MessagesGroup);
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex(profile.UserID);
         }
         

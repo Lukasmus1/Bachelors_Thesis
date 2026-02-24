@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using Apps.ChatTerminal.Commons;
 using Apps.CipherSolver.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
 using Commons;
-using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -18,8 +16,11 @@ namespace Story.Models.States
         public override int NextState { get; } = (int)StatesEnum.FirstChoice;
 
         [NonSerialized] private AsyncTimer t1;
+        private bool emailOpened = false;
         [NonSerialized] private AsyncTimer t2;
+        private bool emailTwoOpened = false;
         [NonSerialized] private AsyncTimer t3;
+        private bool messagesOpened = false;
         
         public override void OnEnter()
         {
@@ -37,9 +38,6 @@ namespace Story.Models.States
         public override void OnExit()
         {
             CipherMvc.Instance.CipherController.onDecryptionAttempt -= TransitionCheck;
-            FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailOpened;
-            FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailTwoOpened;
-            FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnMessagesOpened;
             
             t1?.Dispose();
             t2?.Dispose();
@@ -49,9 +47,13 @@ namespace Story.Models.States
         public override void LoadFromState()
         {
             CipherMvc.Instance.CipherController.onDecryptionAttempt += TransitionCheck;
-            FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailOpened;
-            FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailTwoOpened;
-            FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnMessagesOpened;
+            
+            if (!emailOpened)
+                FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailOpened;
+            if (!emailTwoOpened)
+                FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnEmailTwoOpened;
+            if (!messagesOpened)
+                FileViewerMvc.Instance.FileLoaderController.onFileOpened += OnMessagesOpened;
             
             t1 = new AsyncTimer();
             t2 = new AsyncTimer();
@@ -60,25 +62,46 @@ namespace Story.Models.States
 
         private void OnEmailOpened(string fileName)
         {
-            _ = t1.StartTimer(5, () =>
+            if (fileName != "Scammer's Email")
+            {
+                return;
+            }
+            
+            _ = t1.StartTimer(1, () =>
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmail");
+                FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailOpened;
+                emailOpened = true;
             });
         }
         
         private void OnEmailTwoOpened(string fileName)
         {
-            _ = t2.StartTimer(5, () =>
+            if (fileName != "Scammer's Email Two")
+            {
+                return;
+            }
+            
+            _ = t2.StartTimer(1, () =>
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedEmailTwo");
+                FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnEmailTwoOpened;
+                emailTwoOpened = true;
             });
         }
         
         private void OnMessagesOpened(string fileName)
         {
-            _ = t3.StartTimer(5, () =>
+            if (fileName != "Scammer's Messages")
+            {
+                return;
+            }
+            
+            _ = t3.StartTimer(1, () =>
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("headOfDpt", "openedMessages");
+                FileViewerMvc.Instance.FileLoaderController.onFileOpened -= OnMessagesOpened;
+                messagesOpened = true;
             });
         }
         
