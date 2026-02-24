@@ -18,6 +18,8 @@ namespace Desktop.Controllers
         private readonly IconGenerationHelper _iconGeneratorHelper = new();
         private DesktopGeneratorView _desktopGeneratorView;
 
+        private readonly Icons _icons = new();
+        
         //Random Generators
         public Texture2D GetRandomWallpaper()
         {
@@ -35,7 +37,13 @@ namespace Desktop.Controllers
         {
             return _iconGeneratorHelper.GenerateRandomIconPosition(iconSize);
         }
-        
+
+        public List<IconClassOnObject> Icons
+        {
+            get => _icons.IconsOnObjects;
+            set => _icons.IconsOnObjects = value;
+        }
+
         /// <summary>
         /// This is a helper for clearing flags. Used when loading a save.
         /// </summary>
@@ -80,20 +88,31 @@ namespace Desktop.Controllers
         {
             DesktopModel.Instance.SetFlag(flag, value);
         }
-        
+
         /// <summary>
-        /// Saves the icon into the desktop model for persistence.
+        /// Adds an IconClassOnObject to the Icons list in the desktop context.
         /// </summary>
-        /// <param name="icon">The icon to save</param>
-        public void SetDesktopIconIntoContext(IconClassOnObject icon)
+        /// <param name="iconClass">IconClassOnObject instance</param>
+        public void AddIconClassToContext(IconClassOnObject iconClass)
         {
-            IconClass iconClass = DesktopModel.Instance.Icons.FirstOrDefault(x => x.Name == icon.IconName);
-            if (iconClass != null)
+            Icons.Add(iconClass);
+        }
+
+        /// <summary>
+        /// Saves the IconClassOnObject list to the desktop model's Icons list.
+        /// </summary>
+        public void SaveIcons()
+        {
+            foreach (IconClassOnObject icon in Icons)
             {
-                DesktopModel.Instance.Icons.Remove(iconClass);
-            }
+                IconClass iconClass = DesktopModel.Instance.Icons.FirstOrDefault(x => x.Name == icon.IconName);
+                if (iconClass != null)
+                {
+                    DesktopModel.Instance.Icons.Remove(iconClass);
+                }
             
-            DesktopModel.Instance.Icons.Add(new IconClass(icon));
+                DesktopModel.Instance.Icons.Add(new IconClass(icon));
+            }
         }
 
         public void SetDesktopView(DesktopGeneratorView view)

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Desktop.Commons;
 using TMPro;
 using UnityEngine;
+using User.Commons;
 
 namespace Desktop.Models
 {
@@ -55,7 +57,7 @@ namespace Desktop.Models
 
         public void ToggleIcon(string name, bool value)
         {
-            IconClass icon = Icons.Find(i => i.Name == name);
+            IconClassOnObject icon = DesktopMvc.Instance.DesktopGeneratorController.Icons.Find(i => i.IconName == name);
             if (icon == null)
             {
                 throw new KeyNotFoundException($"Icon {name} not found");

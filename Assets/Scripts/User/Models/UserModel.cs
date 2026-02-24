@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Apps.CipherSolver.Commons;
 using FourthWall.Commons;
 using UnityEngine;
@@ -47,10 +48,13 @@ namespace User.Models
                 new(UserDataType.ScammerName, CipherMvc.Instance.CipherController.GenerateRandomName()),
                 //Both the user year and user real name are generated once and then saved to be the same for the entire playthrough
                 //The code itself is a combination of the two
-                new(UserDataType.PictureCode, 
-                    CipherMvc.Instance.CipherController.GenerateRandomName()+ 
-                    CipherMvc.Instance.CipherController.GeneratePictureYearCode()), 
             };
+            string pictureCode = UserMvc.Instance.UserController.ProceduralData(UserDataType.ScammerName) +
+                                 UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCodeYear);
+            
+            ProceduralData.Add(new ProceduralDataEntry(
+                UserDataType.PictureCode, pictureCode));
+            
             
             PersistentData = new List<PersistentData>
             {

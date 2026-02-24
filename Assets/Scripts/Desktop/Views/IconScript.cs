@@ -62,7 +62,7 @@ namespace Desktop.Views
             
             GetComponentInChildren<TMP_Text>().font = font;
             
-            enabled = icon.IsActive;
+            gameObject.SetActive(icon.IsActive);
         }
 
         public void SetProperties(Vector2 pos, string iconName)

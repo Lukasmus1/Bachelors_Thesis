@@ -40,7 +40,7 @@ namespace Desktop.Views
                 return;
             }
             
-            GenerateRandomDesktop();
+            //GenerateRandomDesktop();
         }
 
         private void Start()
@@ -48,9 +48,13 @@ namespace Desktop.Views
             if (Bootstrapper.LoadedNewGame)
             {
                 StoryMvc.Instance.StoryController.InitNew();
+                GenerateRandomDesktop();
+                
             }
-            
-            LoadDesktop();
+            else
+            {
+                LoadDesktop();
+            }
         }
 
         /// <summary>
@@ -72,7 +76,7 @@ namespace Desktop.Views
         {
             SetDesktopWallpaper(_controller.GetRandomWallpaper());
             SetColorScheme(_controller.GetRandomColorScheme());
-            SaveOrSetupIcons(true);
+            SetupIcons();
         }
         
         /// <summary>
@@ -89,16 +93,14 @@ namespace Desktop.Views
         /// <summary>
         /// Saves the existing icons on the desktop.
         /// </summary>
-        private void SaveOrSetupIcons(bool shouldSetup)
+        private void SetupIcons()
         {
             foreach (GameObject icon in desktopIconObjects)
             {
                 var iconClass = icon.GetComponent<IconClassOnObject>();
-                if (shouldSetup)
-                {
-                    iconClass.SetProps();    
-                }
-                _controller.SetDesktopIconIntoContext(iconClass);
+                iconClass.SetProps();
+                
+                _controller.AddIconClassToContext(iconClass);
             }
         }
         
@@ -151,10 +153,11 @@ namespace Desktop.Views
                 }
                 
                 //If it is already instantiated, just update its properties
+                desktopIconObjects.ForEach(x => x.GetComponent<IconClassOnObject>().SetProps());
                 GameObject iconObject = desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconClass.Name);
                 if (iconObject == null)
                 {
-                    iconObject = Instantiate(iconPrefab, iconParent);
+                    continue;
                 }
 
                 iconObject.GetComponent<IconScript>().SetProperties(iconClass, userFont);
@@ -178,7 +181,13 @@ namespace Desktop.Views
         /// <param name="active">Should it be active</param>
         public void ToggleIcon(string iconName, bool active)
         {
-            desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconName)?.SetActive(active);
+            GameObject icon = desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconName);
+            if (icon == null)
+            {
+                throw new KeyNotFoundException($"Icon {iconName} not found");
+            }
+            
+            icon.SetActive(active);
         }
 
         /// <summary>
@@ -186,7 +195,7 @@ namespace Desktop.Views
         /// </summary>
         private void OnApplicationQuit()
         {
-            SaveOrSetupIcons(false);
+            _controller.SaveIcons();
         }
     }
 }
