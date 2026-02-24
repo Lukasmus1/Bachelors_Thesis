@@ -69,6 +69,22 @@ namespace Apps.ChatTerminal.Views
                 newContact.GetComponent<ContactView>().SetProperties(messagesWindow, newProfile);
             }
         }
+
+        /// <summary>
+        /// Unloads a chat profile by destroying its game object and removing it from the list of loaded profiles.
+        /// </summary>
+        /// <param name="profileId">ID of the profile</param>
+        public void UnloadProfile(string profileId)
+        {
+            ChatProfile profileToUnload = profiles.FirstOrDefault(profile => profile.UserID == profileId);
+            if (profileToUnload == null)
+            {
+                return;
+            }
+            
+            Destroy(profileToUnload.gameObject);
+            profiles.Remove(profileToUnload);
+        }
         
         private void OnEnable()
         {

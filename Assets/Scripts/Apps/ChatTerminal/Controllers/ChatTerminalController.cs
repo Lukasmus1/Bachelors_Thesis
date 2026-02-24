@@ -73,13 +73,13 @@ namespace Apps.ChatTerminal.Controllers
         }
 
         /// <summary>
-        /// Unloads a new chat profile into the chat terminal.
+        /// Unloads a chat profile from the chat terminal.
         /// </summary>
         /// <param name="profileId">ID of the profile to unload</param>
         public void UnloadProfile(string profileId)
         {
             chatTerminalModel.UnloadProfile(profileId);
-            _chatTerminalView.UpdateContactData();
+            _chatTerminalView.UnloadProfile(profileId);
         }
     }
 }

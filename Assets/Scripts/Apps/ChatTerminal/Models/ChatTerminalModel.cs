@@ -165,7 +165,7 @@ namespace Apps.ChatTerminal.Models
         /// <param name="profileId">ID of the profile to load</param>
         public void LoadNewProfile(string profileId)
         {
-            ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(x => x.UserID == profileId);
+            ChatProfileModel profile = LoadedChatProfilesFromJson.FirstOrDefault(x => x.UserID == profileId);
             if (profile == null)
             {
                 throw new NullReferenceException($"Profile with ID {profileId} not found.");
@@ -180,7 +180,7 @@ namespace Apps.ChatTerminal.Models
         /// <param name="profileId">ID of the profile to unload</param>
         public void UnloadProfile(string profileId)
         {
-            ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(x => x.UserID == profileId);
+            ChatProfileModel profile = LoadedChatProfilesFromJson.FirstOrDefault(x => x.UserID == profileId);
             if (profile == null)
             {
                 throw new NullReferenceException($"Profile with ID {profileId} not found.");
