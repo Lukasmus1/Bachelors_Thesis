@@ -34,8 +34,6 @@ namespace Apps.VirusFinder.Views
         //ReSharper disable Unity.PerformanceAnalysis
         public void PerformAction()
         {
-            EventSystem.current.SetSelectedGameObject(null);
-            
             //Check if the app is already open using the Flags dictionary and the gameObject tag
             if (!DesktopModel.Instance.flags.ContainsKey(deletePopup.tag) ||
                 (!DesktopModel.Instance.flags[deletePopup.tag] &&

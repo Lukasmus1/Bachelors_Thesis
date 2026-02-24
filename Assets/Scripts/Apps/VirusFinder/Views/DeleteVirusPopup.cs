@@ -2,11 +2,14 @@
 using Apps.VirusFinder.Commons;
 using Desktop.Commons;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Apps.VirusFinder.Views
 {
     public class DeleteVirusPopup : MonoBehaviour
     {
+        [SerializeField] private GameObject confirmButton;
         private GameObject virusToDelete;
 
         /// <summary>
@@ -16,6 +19,7 @@ namespace Apps.VirusFinder.Views
         public void SetVirusIntoContext(GameObject virus)
         {
             virusToDelete = virus;
+            EventSystem.current.SetSelectedGameObject(confirmButton);
         }
 
         /// <summary>
