@@ -25,14 +25,13 @@ namespace Saving.Models
             _model.loadedFiles = FileLoaderMvc.Instance.FileLoaderController.LoadedFileNames;
             _model.hiddenFiles = FileLoaderMvc.Instance.FileLoaderController.HiddenFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
-            _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
         }
         
         public void SaveGame()
         {
             //Methods to explicitly save the data if required 
             ChatTerminalMvc.Instance.ChatTerminalController.SaveGameData();
-            
+            _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
             
             BinaryFormatter formatter = new();
             FileStream stream = new(_path, FileMode.Create);

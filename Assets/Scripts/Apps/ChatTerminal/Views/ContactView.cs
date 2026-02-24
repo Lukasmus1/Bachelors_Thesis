@@ -14,6 +14,11 @@ namespace Apps.ChatTerminal.Views
         
         private void OnDestroy()
         {
+            if (_profileModel == null)
+            {
+                return;
+            }
+            
             _profileModel.MessageStatusChanged -= SetStatusText;
         }
 
