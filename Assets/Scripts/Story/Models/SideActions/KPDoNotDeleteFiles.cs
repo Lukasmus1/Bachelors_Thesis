@@ -33,7 +33,6 @@ namespace Story.Models.SideActions
                 UserMvc.Instance.UserController.SetPersistentData(UserDataType.DeletedVirusFile, true);
                 OnKpDoNotDeleteFiles?.Invoke();
                 ChatTerminalMvc.Instance.ChatTerminalController.UnloadProfile("kp");
-                Debug.Log("UNLOAD KP");
                 SavingMvc.Instance.SavingController.QuitAndSaveGame();
             });
             

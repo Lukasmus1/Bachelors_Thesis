@@ -33,7 +33,6 @@ namespace Story.Models.States
         {
             if (messageID == "itTutorial")
             {
-                DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Virus Finder", true);
                 FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
             }
         }

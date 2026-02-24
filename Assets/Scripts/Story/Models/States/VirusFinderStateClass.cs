@@ -12,7 +12,7 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("VirusFinder", true);
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Virus Finder", true);
             
             //Story-wise this is called a bit late, but for practical purposes it's better to do it here
             VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(5);

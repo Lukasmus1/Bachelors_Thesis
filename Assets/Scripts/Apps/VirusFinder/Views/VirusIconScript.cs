@@ -36,8 +36,6 @@ namespace Apps.VirusFinder.Views
         {
             EventSystem.current.SetSelectedGameObject(null);
             
-            GameObject popup = Instantiate(deletePopup, gameObject.transform.parent.parent);
-            
             //Check if the app is already open using the Flags dictionary and the gameObject tag
             if (!DesktopModel.Instance.flags.ContainsKey(deletePopup.tag) ||
                 (!DesktopModel.Instance.flags[deletePopup.tag] &&
@@ -49,7 +47,9 @@ namespace Apps.VirusFinder.Views
             {
                 return;
             }
-
+            
+            GameObject popup = Instantiate(deletePopup, gameObject.transform.parent.parent);
+            
             popup.GetComponent<DeleteVirusPopup>().SetVirusIntoContext(gameObject);
 
             popup.GetComponentInChildren<TMP_Text>().text = isOpened ? "This file is corrupted, do you want to <color=red>delete</color> it?" : "Are you sure you want to <color=red>delete</color> this file?";

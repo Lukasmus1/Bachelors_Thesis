@@ -1,4 +1,5 @@
 ﻿using System;
+using Desktop.Commons;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Desktop.Models
         
         private RectTransform _transformComponent;
 
-        public void SetProps()
+        public void InitProps()
         {
             _transformComponent = GetComponent<RectTransform>();
             var textComponent = GetComponentInChildren<TMP_Text>();
@@ -31,6 +32,18 @@ namespace Desktop.Models
             GetComponent<Apps.Commons.DragAndDrop>().OnEndDragged += UpdatePosition;
         }
 
+        public void SetProps(IconClass icon)
+        {
+            IconName = icon.Name;
+            Size = new Vector2(icon.SizeX, icon.SizeY);
+            Position = new Vector2(icon.PositionX, icon.PositionY);
+            Image = icon.Image;
+            Font = GetComponentInChildren<TMP_Text>().font;
+            IsActive = icon.IsActive;
+            
+            DesktopMvc.Instance.DesktopGeneratorController.Icons.Add(this);
+        }
+        
         private void OnDisable()
         {
             GetComponent<Apps.Commons.DragAndDrop>().OnEndDragged -= UpdatePosition;

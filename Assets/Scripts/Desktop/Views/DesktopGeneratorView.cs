@@ -98,7 +98,7 @@ namespace Desktop.Views
             foreach (GameObject icon in desktopIconObjects)
             {
                 var iconClass = icon.GetComponent<IconClassOnObject>();
-                iconClass.SetProps();
+                iconClass.InitProps();
                 
                 _controller.AddIconClassToContext(iconClass);
             }
@@ -153,13 +153,14 @@ namespace Desktop.Views
                 }
                 
                 //If it is already instantiated, just update its properties
-                desktopIconObjects.ForEach(x => x.GetComponent<IconClassOnObject>().SetProps());
+                desktopIconObjects.ForEach(x => x.GetComponent<IconClassOnObject>().InitProps());
                 GameObject iconObject = desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconClass.Name);
                 if (iconObject == null)
                 {
                     continue;
                 }
 
+                iconObject.GetComponent<IconClassOnObject>().SetProps(iconClass);
                 iconObject.GetComponent<IconScript>().SetProperties(iconClass, userFont);
             }
         }

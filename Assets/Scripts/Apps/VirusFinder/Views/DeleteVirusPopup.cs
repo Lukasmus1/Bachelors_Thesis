@@ -34,5 +34,10 @@ namespace Apps.VirusFinder.Views
         {
             Destroy(gameObject);
         }
+
+        private void OnDisable()
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(tag, false);
+        }
     }
 }
