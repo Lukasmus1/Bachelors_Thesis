@@ -1,6 +1,5 @@
 ﻿using System;
-using Commons;
-using Saving.Commons;
+using Apps.ChatTerminal.Commons;
 
 namespace Story.Models.States
 {
@@ -12,22 +11,29 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            AsyncTimer t = new();
-
-            _ = t.StartTimer(5, () =>
-            {
-                SavingMvc.Instance.SavingController.QuitAndSaveGame();
-            });
+            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
+            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("kp");
         }
 
         public override void OnExit()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void LoadFromState()
         {
-            throw new NotImplementedException();
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += OnMessageTyped;
+        }
+
+        private void OnMessageTyped(string message)
+        {
+            if (message != "kpFirstChoice")
+            {
+                return;
+            }
+            
+            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= OnMessageTyped;
         }
     }
 }

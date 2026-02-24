@@ -4,6 +4,7 @@ using Apps.CipherSolver.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
 using Commons;
+using Saving.Commons;
 using User.Commons;
 using User.Models;
 
@@ -112,7 +113,13 @@ namespace Story.Models.States
                 return;
             }
             
-            ChangeToNextState();
+            var t = new AsyncTimer();
+            _ = t.StartTimer(5, () =>
+            {
+                ChangeToNextState();
+                SavingMvc.Instance.SavingController.QuitAndSaveGame();
+            });
+            
         }
     }
 }

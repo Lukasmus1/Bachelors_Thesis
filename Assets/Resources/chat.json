@@ -163,8 +163,8 @@
           {"MessageID": "kpWarning", "Sender": "kp", "Text": "<color=red><b>DO NOT DELETE MY FILES</color></b>"}
         ],
         [
-          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>DO NOT TELL HIM THE TRUTH</color></b>"},
-          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>DO NOT MENTION IT'S YOUR COMPUTER</color></b>"}
+          {"MessageID": "kpChoice1", "Sender": "kp", "Text": "<color=red><b>DO NOT TELL THEM THE TRUTH</color></b>"},
+          {"MessageID": "kpFirstChoice", "Sender": "kp", "Text": "<color=red><b>DO NOT SAY IT'S YOUR COMPUTER SCREEN</color></b>"}
         ]
       ]
     },
