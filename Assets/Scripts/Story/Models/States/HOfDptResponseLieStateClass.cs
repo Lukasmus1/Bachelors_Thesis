@@ -3,9 +3,9 @@
 namespace Story.Models.States
 {
     [Serializable]
-    public class DefaultStateClass : StateClass
+    public class HOfDptResponseLieStateClass : StateClass
     {
-        public override int State { get; } = (int)StatesEnum.Default;
+        public override int State { get; } = (int)StatesEnum.HOfDptResponseLie;
         public override int NextState { get; set; } = (int)StatesEnum.Default;
 
         public override void OnEnter()

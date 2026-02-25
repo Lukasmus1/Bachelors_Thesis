@@ -8,7 +8,7 @@ namespace Story.Models.States
     public class AutostereogramState : StateClass
     {
         public override int State => (int)StatesEnum.AutostereogramState;
-        public override int NextState => (int)StatesEnum.MysteriousFile;
+        public override int NextState { get; set; } = (int)StatesEnum.MysteriousFile;
         
         public override void OnEnter()
         {

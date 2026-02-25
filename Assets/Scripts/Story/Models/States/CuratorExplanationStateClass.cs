@@ -3,6 +3,7 @@ using Apps.ChatTerminal.Commons;
 using FourthWall.Commons;
 using FourthWall.FileGeneration.Models;
 using User.Commons;
+using User.Models;
 
 namespace Story.Models.States
 {
@@ -10,7 +11,7 @@ namespace Story.Models.States
     public class CuratorExplanationStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.CuratorExplanation;
-        public override int NextState { get; } = (int)StatesEnum.Default;
+        public override int NextState { get; set; } = (int)StatesEnum.Default;
         
         public override void OnEnter()
         {
@@ -19,6 +20,16 @@ namespace Story.Models.States
             
             FourthWallMvc.Instance.FileGenerationController.CreateFile(path, content, false);
             FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, $"An unknown file has been found: {path}", "New File");
+            
+            // Next state is dependent on the player's choice in the first choice
+            if (UserMvc.Instance.UserController.GetPersistentData(UserDataType.FirstChoiceSideWithCops))
+            {
+                NextState = (int)StatesEnum.HOfDptResponseTruth;
+            }
+            else
+            {
+                NextState = (int)StatesEnum.HOfDptResponseLie;
+            }
             
             ChangeToNextState();
         }

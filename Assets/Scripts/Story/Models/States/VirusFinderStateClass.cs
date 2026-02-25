@@ -8,7 +8,7 @@ namespace Story.Models.States
     public class VirusFinderStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.VirusFinder;
-        public override int NextState { get; } = (int)StatesEnum.AfterVirus;
+        public override int NextState { get; set; } = (int)StatesEnum.AfterVirus;
 
         public override void OnEnter()
         {

@@ -21,6 +21,8 @@ namespace Story.Models
         FirstChoice,
         FirstConsequences,
         CuratorExplanation,
+        HOfDptResponseLie,
+        HOfDptResponseTruth,
         Default
     }
 }

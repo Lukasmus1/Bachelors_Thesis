@@ -9,7 +9,7 @@ namespace Story.Models.States
     public class NewFilesStateClass : StateClass
     {
         public override int State => (int)StatesEnum.NewFiles;
-        public override int NextState => (int)StatesEnum.Detective;
+        public override int NextState { get; set; } = (int)StatesEnum.Detective;
         
         public override void OnEnter()
         {

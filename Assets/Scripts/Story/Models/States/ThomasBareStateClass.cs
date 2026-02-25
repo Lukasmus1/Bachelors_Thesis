@@ -7,7 +7,7 @@ namespace Story.Models.States
     public class ThomasBareStateClass : StateClass
     {
         public override int State => (int)StatesEnum.ThomasBare;
-        public override int NextState => (int)StatesEnum.AutostereogramState;
+        public override int NextState { get; set; } = (int)StatesEnum.AutostereogramState;
         
         public override void OnEnter()
         {

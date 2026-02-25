@@ -9,7 +9,7 @@ namespace Story.Models.States
     public class MouseQuestStateClass : StateClass
     {
         public override int State => (int)StatesEnum.MouseQuest;
-        public override int NextState => (int)StatesEnum.ThomasBare;
+        public override int NextState { get; set; } = (int)StatesEnum.ThomasBare;
         
         public override void OnEnter()
         {

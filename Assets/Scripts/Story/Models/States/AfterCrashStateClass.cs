@@ -12,7 +12,7 @@ namespace Story.Models.States
     public class AfterCrashStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.AfterCrash;
-        public override int NextState { get; } = (int)StatesEnum.VirusFinderMessage;
+        public override int NextState { get; set; } = (int)StatesEnum.VirusFinderMessage;
 
         public override void OnEnter()
         {

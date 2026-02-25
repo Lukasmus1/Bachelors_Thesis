@@ -8,7 +8,7 @@ namespace Story.Models.States
     public abstract class StateClass
     {
         public abstract int State { get; }
-        public abstract int NextState { get; }
+        public abstract int NextState { get; set; }
         public abstract void OnEnter();
         public abstract void OnExit();
         public abstract void LoadFromState();

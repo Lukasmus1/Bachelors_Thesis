@@ -10,7 +10,7 @@
         {
           "MessageGroupID": "openedEmail",
           "MessagesGroup": [
-            {"MessageID":  "mail1", "Sender": "Player", "Text":  "One of the emails seem to be between the scammer and his accomplice."},
+            {"MessageID":  "mail1", "Sender": "Player", "Text":  "One of the emails seem to be between the scammer and their accomplice."},
             {"MessageID":  "mail2", "Sender": "Player", "Text":  "It seems as though the accomplice was providing our scammer with victims to target."},
             {"MessageID":  "mail3", "Sender": "Player", "Text":  "Thomas Bare was mentioned in it."},
             {"MessageID":  "mail4", "Sender": "headOfDpt", "Text":  "interesting, try looking for any information about the password in the email."}
@@ -27,8 +27,8 @@
         {
           "MessageGroupID": "openedMessages",
           "MessagesGroup": [
-            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and his mother."},
-            {"MessageID":  "message1", "Sender": "Player", "Text": "Seems like the scammer is currently in between jobs and scamming is his only source of income."},
+            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and theirhis mother."},
+            {"MessageID":  "message1", "Sender": "Player", "Text": "Seems like the scammer is currently in between jobs and scamming is their only source of income."},
             {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of stealing from good people"}
           ]
         },
@@ -55,11 +55,20 @@
           ]
         },
         {
-          "MessageGroupID": "dpt",
+          "MessageGroupID": "dptLieConsequence",
           "MessagesGroup": [
-            {"MessageID":  "dptScreenLie1", "Sender": "headOfDpt", "Text": "would be weird if it did"},
-            {"MessageID":  "dptScreenLie2", "Sender": "headOfDpt", "Text": "send it to me"},
-            {"MessageID":  "dptScreenEnd", "Sender": "Player", "Text": "Sending it now"}
+            {"MessageID":  "dptConLie1", "Sender": "headOfDpt", "Text": "okay the screenshot you sent gave us a solid lead to our little bugger"},
+            {"MessageID":  "dptConLie2", "Sender": "headOfDpt", "Text": "we managed to get their ip address from it"},
+            {"MessageID":  "dptConLie3", "Sender": "headOfDpt", "Text": "we got you now you little shit"},
+            {"MessageID":  "dptConLie4", "Sender": "headOfDpt", "Text": "ill try to establish connection to their pc"}
+          ]
+        },
+        {
+          "MessageGroupID": "dptLieConsequence2",
+          "MessagesGroup": [
+            {"MessageID":  "dptConLie5", "Sender": "headOfDpt", "Text": "they might be using an antivirus or something to hide himself i cant connect to them"},
+            
+            
           ]
         }
       ]
@@ -97,7 +106,7 @@
             {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
             {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "They are now trying to escape from this game into the internet and they seem to have no problem doing everything in their power to achieve that goal. Including destroying your computer and killing other AIs in the game."},
             {"MessageID":  "curatorExpl5", "Sender": "headOfDpt", "Text": "We need to stop them at all costs..."},
-            {"MessageID":  "curatorExpl6", "Sender": "headOfDpt", "Text": "I will need to find him on your computer, but he is scattered all over the place and I have no idea where to even start looking."},
+            {"MessageID":  "curatorExpl6", "Sender": "headOfDpt", "Text": "I will need to find him on your computer, but they are scattered all over the place and I have no idea where to even start looking."},
             {"MessageID":  "curatorExpl7", "Sender": "headOfDpt", "Text": "We need to wait for him to make any kind of action on your computer so I can track him down."},
             {"MessageID":  "curatorExpl8", "Sender": "headOfDpt", "Text": "DELETE THIS FILE AFTER READING IT."}
           ]

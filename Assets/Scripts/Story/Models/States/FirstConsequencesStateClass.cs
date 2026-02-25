@@ -7,7 +7,7 @@ namespace Story.Models.States
     public class FirstConsequencesStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.FirstConsequences;
-        public override int NextState { get; } = (int)StatesEnum.CuratorExplanation;
+        public override int NextState { get; set; } = (int)StatesEnum.CuratorExplanation;
 
         public override void OnEnter()
         {

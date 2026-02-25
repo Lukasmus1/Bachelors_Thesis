@@ -8,7 +8,7 @@ namespace Story.Models.States
     public class ThomasFinalCleanupStateClass : StateClass
     {
         public override int State => (int)StatesEnum.ThomasFinal;
-        public override int NextState => (int)StatesEnum.AfterThomasFinal;
+        public override int NextState { get; set; } = (int)StatesEnum.AfterThomasFinal;
 
         public override void OnEnter()
         {

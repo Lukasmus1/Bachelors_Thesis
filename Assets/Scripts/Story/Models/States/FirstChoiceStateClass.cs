@@ -8,7 +8,7 @@ namespace Story.Models.States
     public class FirstChoiceStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.FirstChoice;
-        public override int NextState { get; } = (int)StatesEnum.FirstConsequences;
+        public override int NextState { get; set; } = (int)StatesEnum.FirstConsequences;
 
         public override void OnEnter()
         {

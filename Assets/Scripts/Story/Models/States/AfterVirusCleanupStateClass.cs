@@ -8,7 +8,7 @@ namespace Story.Models.States
     public class AfterVirusCleanupStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.AfterVirus;
-        public override int NextState { get; } = (int)StatesEnum.ThomasFinal;
+        public override int NextState { get; set; } = (int)StatesEnum.ThomasFinal;
 
         public override void OnEnter()
         {

@@ -10,7 +10,7 @@ namespace Story.Models.States
     public class StartStateClass : StateClass
     {
         public override int State => (int)StatesEnum.Start;
-        public override int NextState => (int)StatesEnum.MouseQuest;
+        public override int NextState { get; set; } = (int)StatesEnum.MouseQuest;
         
         public override void OnEnter()
         {

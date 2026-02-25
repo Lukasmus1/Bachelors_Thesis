@@ -14,7 +14,7 @@ namespace Story.Models.States
     public class DetectiveStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.Detective;
-        public override int NextState { get; } = (int)StatesEnum.FirstChoice;
+        public override int NextState { get; set; } = (int)StatesEnum.FirstChoice;
 
         [NonSerialized] private AsyncTimer t1;
         private bool emailOpened = false;
