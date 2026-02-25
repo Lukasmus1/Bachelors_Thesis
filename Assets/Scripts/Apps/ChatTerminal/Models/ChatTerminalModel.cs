@@ -112,7 +112,9 @@ namespace Apps.ChatTerminal.Models
         /// </summary>
         /// <param name="userID">ID of the profile</param>
         /// <param name="messageGroupID">ID of the message group to display</param>
-        public void QueueSecondaryMessage(string userID, string messageGroupID, List<ChatProfile> loadedProfiles)
+        /// <param name="loadedProfiles">Loaded profiles in the view class</param>
+        /// <param name="immediatelyDisplay">Should the message be displayed immediately?</param>
+        public void QueueSecondaryMessage(string userID, string messageGroupID, List<ChatProfile> loadedProfiles, bool immediatelyDisplay = true)
         {
             ChatProfile profile = loadedProfiles.FirstOrDefault(profile => profile.UserID == userID);
             if (profile == null)
@@ -137,7 +139,9 @@ namespace Apps.ChatTerminal.Models
             
             //First increase the message index and then insert the new message group at the correct index in the primary chat profile's messages list
             profile.Messages.Insert(profile.CurrentMessageIndex + 1, secondaryMessageGroup.MessagesGroup);
-            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex(profile.UserID);
+            
+            if (immediatelyDisplay)
+                ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex(profile.UserID);
         }
         
         /// <summary>

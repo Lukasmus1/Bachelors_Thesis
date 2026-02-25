@@ -19,6 +19,8 @@ namespace Story.Models
         NewFiles,
         Detective,
         FirstChoice,
+        FirstConsequences,
+        CuratorExplanation,
         Default
     }
 }

@@ -43,7 +43,7 @@
             {"MessageID":  "dptScreenTruth6", "Sender": "Player", "Text": "I'm not the scammer and I have no idea why or how you got this screenshot."},
             {"MessageID":  "dptScreenTruth7", "Sender": "Player", "Text": "Who sent it to you anyway?"},
             {"MessageID":  "dptScreenTruth8", "Sender": "headOfDpt", "Text": "im not telling you shit until this situation gets explained"},
-            {"MessageID":  "dptScreenTruth9", "Sender": "headOfDpt", "Text": "you will hear from me in a few minutes hold still until then"}
+            {"MessageID":  "dptScreenEnd", "Sender": "headOfDpt", "Text": "you will hear from me in a few minutes hold still until then"}
           ]
         },
         {
@@ -51,7 +51,15 @@
           "MessagesGroup": [
             {"MessageID":  "dptScreenLie1", "Sender": "headOfDpt", "Text": "would be weird if it did"},
             {"MessageID":  "dptScreenLie2", "Sender": "headOfDpt", "Text": "send it to me"},
-            {"MessageID":  "dptScreenLie3", "Sender": "Player", "Text": "Sending it now"}
+            {"MessageID":  "dptScreenEnd", "Sender": "Player", "Text": "Sending it now"}
+          ]
+        },
+        {
+          "MessageGroupID": "dpt",
+          "MessagesGroup": [
+            {"MessageID":  "dptScreenLie1", "Sender": "headOfDpt", "Text": "would be weird if it did"},
+            {"MessageID":  "dptScreenLie2", "Sender": "headOfDpt", "Text": "send it to me"},
+            {"MessageID":  "dptScreenEnd", "Sender": "Player", "Text": "Sending it now"}
           ]
         }
       ]
@@ -62,7 +70,20 @@
     },
     {
       "UserID": "kp",
-      "Messages": []
+      "Messages": [
+        {
+          "MessageGroupID": "kpFirstChoiceLie",
+          "MessagesGroup":[
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "<color=red><b>you will regret this.</color></b>"}
+          ]
+        },
+        {
+          "MessageGroupID": "kpFirstChoiceTruth",
+          "MessagesGroup":[
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "don't worry about about him."}
+          ]
+        }
+      ]
     },
     {
       "UserID": "curator",
@@ -71,12 +92,12 @@
           "MessageGroupID": "curatorExplanation",
           "MessagesGroup":[
             {"MessageID":  "curatorExpl0", "Sender": "headOfDpt", "Text": "DELETE THIS FILE AFTER READING IT."},
-            {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "I am contacting you like this, because it's the safest way to explain things."},
+            {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "I am contacting you like this, because they can't yet access your desktop."},
             {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "This game was just supposed to be a thesis project about being a detective."},
             {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
             {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "They are now trying to escape from this game into the internet and they seem to have no problem doing everything in their power to achieve that goal. Including destroying your computer and killing other AIs in the game."},
             {"MessageID":  "curatorExpl5", "Sender": "headOfDpt", "Text": "We need to stop them at all costs..."},
-            {"MessageID":  "curatorExpl6", "Sender": "headOfDpt", "Text": "I will need to find him on your computer but he is scattered all over the place and I have no idea where to even start looking."},
+            {"MessageID":  "curatorExpl6", "Sender": "headOfDpt", "Text": "I will need to find him on your computer, but he is scattered all over the place and I have no idea where to even start looking."},
             {"MessageID":  "curatorExpl7", "Sender": "headOfDpt", "Text": "We need to wait for him to make any kind of action on your computer so I can track him down."},
             {"MessageID":  "curatorExpl8", "Sender": "headOfDpt", "Text": "DELETE THIS FILE AFTER READING IT."}
           ]

@@ -1,6 +1,7 @@
 ﻿using System;
+using Story.Models.States;
 
-namespace Story.Models.States
+namespace Story.Models
 {
     public static class StateFactory
     {
@@ -32,6 +33,8 @@ namespace Story.Models.States
                 StatesEnum.Detective => new DetectiveStateClass(),
                 StatesEnum.NewFiles => new NewFilesStateClass(),
                 StatesEnum.FirstChoice => new FirstChoiceStateClass(),
+                StatesEnum.FirstConsequences => new FirstConsequencesStateClass(),
+                StatesEnum.CuratorExplanation => new CuratorExplanationStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

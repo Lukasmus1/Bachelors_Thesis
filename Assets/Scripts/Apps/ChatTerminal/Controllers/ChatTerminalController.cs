@@ -35,9 +35,34 @@ namespace Apps.ChatTerminal.Controllers
             return chatTerminalModel.LoadedChatProfilesFromJson.FirstOrDefault(profile => profile.UserID == profileId);
         }
 
+        /// <summary>
+        /// Gets the MessageGroup object of a secondary message group.
+        /// </summary>
+        /// <param name="userID">ID of the user's secondary message</param>
+        /// <param name="messageGroupID">ID of the secondary message group</param>
+        /// <returns></returns>
         public MessageGroup GetSecondaryMessageGroup(string userID, string messageGroupID)
         {
             return chatTerminalModel.GetSecondaryMessageGroup(userID, messageGroupID);
+        }
+        
+        /// <summary>
+        /// Gets the concatenated text of all messages in a secondary message group, separated by new lines.
+        /// </summary>
+        /// <param name="userID">ID of the user's secondary message</param>
+        /// <param name="messageGroupID">ID of the secondary message group</param>
+        /// <returns></returns>
+        public string GetSecondaryMessageGroupConcat(string userID, string messageGroupID)
+        {
+            var result = "";
+            MessageGroup messages = GetSecondaryMessageGroup(userID, messageGroupID);
+
+            foreach (ChatMessage msg in messages.MessagesGroup)
+            {
+                result += msg.Text + "\n";
+            }
+            
+            return result;
         }
         
         /// <summary>
@@ -49,15 +74,16 @@ namespace Apps.ChatTerminal.Controllers
             chatTerminalModel.IncreaseChatProfileMessageIndex(profileId, _chatTerminalView.Profiles);
             NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewMessage);
         }
-        
+
         /// <summary>
         /// Display a new secondary message group in the chat terminal and instantiate a new message notification.
         /// </summary>
         /// <param name="userID">ID of the user's messages</param>
         /// <param name="messageGroupID">ID of the message group</param>
-        public void QueueSecondaryMessage(string userID, string messageGroupID)
+        /// <param name="immediatelyDisplay">Should the message be display immediately?</param>
+        public void QueueSecondaryMessage(string userID, string messageGroupID, bool immediatelyDisplay = true)
         {
-            chatTerminalModel.QueueSecondaryMessage(userID, messageGroupID, _chatTerminalView.Profiles);
+            chatTerminalModel.QueueSecondaryMessage(userID, messageGroupID, _chatTerminalView.Profiles, immediatelyDisplay);
         }
         
         /// <summary>

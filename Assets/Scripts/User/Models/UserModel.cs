@@ -38,6 +38,11 @@ namespace User.Models
         public int ScreenshotHeight { get; set; }
         public int ScreenshotFormat { get; set; }
         
+        /// <summary>
+        /// Path to the file where the curator explains the lore.
+        /// </summary>
+        public string CuratorExplanationFilePath { get; private set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\_README_.txt";
+        
         public void InitUser()
         {
             StartDate = DateTime.Now;
@@ -61,7 +66,8 @@ namespace User.Models
             
             PersistentData = new List<PersistentData>
             {
-                new(UserDataType.DeletedVirusFile, false)
+                new(UserDataType.DeletedVirusFile, false),
+                new(UserDataType.FirstChoiceSideWithCops, false)
             };
             
             SetProfilePicture();

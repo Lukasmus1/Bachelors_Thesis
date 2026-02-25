@@ -38,6 +38,8 @@ namespace User.Controllers
             set => userModel.ScreenshotFormat = value;
         }
         
+        public string CuratorExplanationFilePath => userModel.CuratorExplanationFilePath;
+        
         /// <summary>
         /// Returns the value of a procedural data entry based on the provided UserDataType.
         /// </summary>

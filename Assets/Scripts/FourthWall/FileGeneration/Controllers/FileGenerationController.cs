@@ -7,15 +7,17 @@ namespace FourthWall.FileGeneration.Controllers
     public class FileGenerationController
     {
         private readonly FileCreationModel _model = new();
-        
+        private readonly WindowsErrorHandling _winErrorHandling = new();
+
         /// <summary>
-        /// Creates a hidden file with the specified name and content.
+        /// Creates a file with the specified name and content. Optionally it could be a hidden file.
         /// </summary>
         /// <param name="fileName">Path of the file</param>
         /// <param name="content">Content of the file</param>
-        public void CreateHiddenFile(string fileName, string content)
+        /// <param name="hidden">Should the file be hidden?</param>
+        public void CreateFile(string fileName, string content, bool hidden)
         {
-            _model.CreateHiddenFile(fileName, content);
+            _model.CreateHiddenFile(fileName, content, hidden);
         }
         
         /// <summary>
@@ -43,6 +45,31 @@ namespace FourthWall.FileGeneration.Controllers
         public string GenerateFileData()
         {
             return _model.GenerateFileData();
+        }
+
+        /// <summary>
+        /// Created a new windows dialog based on the specified type, message and title.
+        /// </summary>
+        /// <param name="dialogType">Type of the dialog</param>
+        /// <param name="message">Message of the dialog window</param>
+        /// <param name="title">Title of the window</param>
+        /// <exception cref="ArgumentOutOfRangeException">Gets thrown if unknown dialogTypeis used</exception>
+        public void ThrowWindowsDialog(DialogType dialogType, string message, string title)
+        {
+            switch (dialogType)
+            {
+                case DialogType.Error:
+                    _winErrorHandling.ThrowError(message, title);
+                    break;
+                case DialogType.Info:
+                    _winErrorHandling.ThrowInfo(message, title);
+                    break;
+                case DialogType.Warning:
+                    _winErrorHandling.ThrowWarning(message, title);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(dialogType), dialogType, null);
+            }
         }
     }
 }

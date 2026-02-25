@@ -7,7 +7,7 @@ namespace FourthWall.FileGeneration.Models
 {
     public class FileCreationModel
     {
-        public void CreateFile(string fileName, string content)
+        private void CreateFile(string fileName, string content)
         {
             //Ensure any existing file is removed
             DestroyFile(fileName);
@@ -15,11 +15,13 @@ namespace FourthWall.FileGeneration.Models
             File.WriteAllText(fileName, content);
         }
         
-        /// <inheritdoc cref="FileGenerationController.CreateHiddenFile"/>
-        public void CreateHiddenFile(string fileName, string content)
+        /// <inheritdoc cref="FileGenerationController.CreateFile"/>
+        public void CreateHiddenFile(string fileName, string content, bool hidden)
         {
             CreateFile(fileName, content);
-            File.SetAttributes(fileName, FileAttributes.Hidden);
+            
+            if (hidden)
+                File.SetAttributes(fileName, FileAttributes.Hidden);
         }
         
         /// <inheritdoc cref="FileGenerationController.DestroyFile"/>

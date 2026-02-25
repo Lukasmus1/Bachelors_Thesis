@@ -37,7 +37,7 @@ namespace Story.Models.Actions
                 }
                 
                 var message = $"Windows detected a hidden corrupted file in your system: {Path.GetFullPath(fileName)}";
-                WindowsErrorHandling.ThrowError(message, "File Corruption Error");
+                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, message, "File Corruption Error");
                 
                 StartTimerForHiddenVirusCancellation(fileName);
             });
@@ -52,7 +52,7 @@ namespace Story.Models.Actions
             //Create hidden virus file
             string fileName = UserMvc.Instance.UserController.ProceduralData(UserDataType.VirusName);
             string fileContent = UserMvc.Instance.UserController.ProceduralData(UserDataType.VirusContent);
-            FourthWallMvc.Instance.FileGenerationController.CreateHiddenFile(fileName, fileContent);
+            FourthWallMvc.Instance.FileGenerationController.CreateFile(fileName, fileContent, true);
 
             //Attach file deletion detection
             GameObject scriptHolder = GameObject.FindWithTag("ScriptHolder");
