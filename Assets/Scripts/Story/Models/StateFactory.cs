@@ -35,6 +35,9 @@ namespace Story.Models
                 StatesEnum.FirstChoice => new FirstChoiceStateClass(),
                 StatesEnum.FirstConsequences => new FirstConsequencesStateClass(),
                 StatesEnum.CuratorExplanation => new CuratorExplanationStateClass(),
+                StatesEnum.HOfDptResponseLie => new HOfDptResponseLieStateClass(),
+                StatesEnum.HOfDptResponseTruth => new HOfDptResponseTruthStateClass(),
+                StatesEnum.CuratorDetector => new CuratorDetectorStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

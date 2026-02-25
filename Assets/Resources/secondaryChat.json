@@ -60,15 +60,45 @@
             {"MessageID":  "dptConLie1", "Sender": "headOfDpt", "Text": "okay the screenshot you sent gave us a solid lead to our little bugger"},
             {"MessageID":  "dptConLie2", "Sender": "headOfDpt", "Text": "we managed to get their ip address from it"},
             {"MessageID":  "dptConLie3", "Sender": "headOfDpt", "Text": "we got you now you little shit"},
-            {"MessageID":  "dptConLie4", "Sender": "headOfDpt", "Text": "ill try to establish connection to their pc"}
+            {"MessageID":  "dptConLieAttempt1", "Sender": "headOfDpt", "Text": "ill try to establish connection to their pc"}
           ]
         },
         {
           "MessageGroupID": "dptLieConsequence2",
           "MessagesGroup": [
             {"MessageID":  "dptConLie5", "Sender": "headOfDpt", "Text": "they might be using an antivirus or something to hide himself i cant connect to them"},
-            
-            
+            {"MessageID":  "dptConLieAttempt2", "Sender": "headOfDpt", "Text": "ill try one more time"}
+          ]
+        },
+        {
+          "MessageGroupID": "dptLieConsequence3",
+          "MessagesGroup": [
+            {"MessageID":  "dptConLie6", "Sender": "headOfDpt", "Text": "fuck i cant connect to them"},
+            {"MessageID":  "dptConLieDone", "Sender": "headOfDpt", "Text": "well have to figure out something else"}
+          ]
+        },
+        {
+          "MessageGroupID": "dptTruthConsequence",
+          "MessagesGroup": [
+            {"MessageID":  "dptConTruth1", "Sender": "headOfDpt", "Text": "so can you explain how this screenshot of your computer is supposed to be scammers one?"},
+            {"MessageID":  "dptConTruth2", "Sender": "Player", "Text": "I'm not sure I can, I was just as shocked as you are..."},
+            {"MessageID":  "dptConTruth3", "Sender": "headOfDpt", "Text": "okay so you wouldnt mind me connecting to your pc and checking for anything suspicious would you?"},
+            {"MessageID":  "dptConTruthAttempt1", "Sender": "Player", "Text": "Be my guest."}
+          ]
+        },
+        {
+          "MessageGroupID": "dptTruthConsequence2",
+          "MessagesGroup": [
+            {"MessageID":  "dptConTruth4", "Sender": "headOfDpt", "Text": "i cant connect to you"},
+            {"MessageID":  "dptConTruthAttempt2", "Sender": "Player", "Text": "Try again?"}
+          ]
+        },
+        {
+          "MessageGroupID": "dptTruthConsequence3",
+          "MessagesGroup": [
+            {"MessageID":  "dptConTruth5", "Sender": "headOfDpt", "Text": "are you blocking it or something???"},
+            {"MessageID":  "dptConTruth6", "Sender": "Player", "Text": "No, I am getting a weird error popup every time you try to connect"},
+            {"MessageID":  "dptConTruthDone", "Sender": "headOfDpt", "Text": "Oh for fuck sake..."}
           ]
         }
       ]
@@ -83,13 +113,19 @@
         {
           "MessageGroupID": "kpFirstChoiceLie",
           "MessagesGroup":[
-            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "<color=red><b>you will regret this.</color></b>"}
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "don't worry about about him."}
           ]
         },
         {
           "MessageGroupID": "kpFirstChoiceTruth",
           "MessagesGroup":[
-            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "don't worry about about him."}
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "<color=red><b>you will regret this.</color></b>"}
+          ]
+        },
+        {
+          "MessageGroupID": "kpDesktopFile",
+          "MessagesGroup":[
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "If you try to delete me, <color=red><b>I WILL DESTROY YOUR ENTIRE LIFE</color></b>"}
           ]
         }
       ]
@@ -104,11 +140,20 @@
             {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "I am contacting you like this, because they can't yet access your desktop."},
             {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "This game was just supposed to be a thesis project about being a detective."},
             {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
-            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "They are now trying to escape from this game into the internet and they seem to have no problem doing everything in their power to achieve that goal. Including destroying your computer and killing other AIs in the game."},
+            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "They are now trying to escape from this game into and they seem to have no problem doing everything in their power to achieve that goal. Including destroying your computer and killing other AIs in the game."},
             {"MessageID":  "curatorExpl5", "Sender": "headOfDpt", "Text": "We need to stop them at all costs..."},
             {"MessageID":  "curatorExpl6", "Sender": "headOfDpt", "Text": "I will need to find him on your computer, but they are scattered all over the place and I have no idea where to even start looking."},
             {"MessageID":  "curatorExpl7", "Sender": "headOfDpt", "Text": "We need to wait for him to make any kind of action on your computer so I can track him down."},
             {"MessageID":  "curatorExpl8", "Sender": "headOfDpt", "Text": "DELETE THIS FILE AFTER READING IT."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorHiddenFile",
+          "MessagesGroup":[
+            {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "They have already gotten access to your desktop, I can no longer communicate with you through it."},
+            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "However by blocking those connection attempts, he exposed a crucial file on your desktop."},
+            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "Unfortunately they've hidden it even beyond your system, so we will need to improvise."},
+            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "I have created an app that will help you find the file. TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"}
           ]
         }
       ]

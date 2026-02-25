@@ -14,7 +14,7 @@ namespace Story.Models.Choices.ChoiceClasses
                 0,
                 () =>
                 {
-                    UserMvc.Instance.UserController.userModel.CopsAlignment += (int)Alignment.Cops;
+                    UserMvc.Instance.UserController.IncreaseCopsAlignment(Alignment.CopsFirstChoice);
                     UserMvc.Instance.UserController.SetPersistentData(UserDataType.FirstChoiceSideWithCops, true);
                     ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("headOfDpt", "dptScreenshotChoiceTruth");
                     
@@ -26,7 +26,7 @@ namespace Story.Models.Choices.ChoiceClasses
                 1,
                 () =>
                 {
-                    UserMvc.Instance.UserController.userModel.CopsAlignment += (int)Alignment.AI;
+                    UserMvc.Instance.UserController.IncreaseCopsAlignment(Alignment.AIFirstChoice);
                     UserMvc.Instance.UserController.SetPersistentData(UserDataType.FirstChoiceSideWithCops, false);
                     ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("headOfDpt", "dptScreenshotChoiceLie");
                     

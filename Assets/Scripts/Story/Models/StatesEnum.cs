@@ -23,6 +23,7 @@ namespace Story.Models
         CuratorExplanation,
         HOfDptResponseLie,
         HOfDptResponseTruth,
+        CuratorDetector,
         Default
     }
 }

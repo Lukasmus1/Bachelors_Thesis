@@ -34,7 +34,6 @@ namespace Story.Models.States
                 return;
             }
             
-            ChatTerminalMvc.Instance.ChatTerminalController.UnloadProfile("kp");
             ChangeToNextState();
         }
     }

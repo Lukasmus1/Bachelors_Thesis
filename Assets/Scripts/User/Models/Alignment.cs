@@ -2,7 +2,8 @@
 {
     public enum Alignment
     {
-        Cops = 10,
-        AI = -10 
+        CopsFirstChoice = 10,
+        AIFirstChoice = -10,
+        AIDesktopFile = -5
     }
 }

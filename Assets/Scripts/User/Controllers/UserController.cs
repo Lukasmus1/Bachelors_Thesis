@@ -92,6 +92,15 @@ namespace User.Controllers
             return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         }
         
+        /// <summary>
+        /// Increases the alignment with the cops by a certain amount. The amount is determined by the Alignment enum value passed as a parameter.
+        /// </summary>
+        /// <param name="amount">Alignment enum value</param>
+        public void IncreaseCopsAlignment(Alignment amount)
+        {
+            userModel.CopsAlignment += (int)amount;
+        }
+        
         public DateTime GetStartDate()
         {
             return userModel.StartDate;
