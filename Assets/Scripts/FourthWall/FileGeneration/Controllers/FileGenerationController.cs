@@ -71,5 +71,14 @@ namespace FourthWall.FileGeneration.Controllers
                     throw new ArgumentOutOfRangeException(nameof(dialogType), dialogType, null);
             }
         }
+
+        /// <summary>
+        /// Creates a hidden file in a random location based on the user's environment.
+        /// </summary>
+        /// <returns>Path to the hidden file</returns>
+        public string CreateImportantHiddenFileLocation()
+        {
+            return _model.CreateImportantFileLocation();
+        }
     }
 }

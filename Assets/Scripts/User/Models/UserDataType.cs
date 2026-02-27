@@ -9,6 +9,7 @@
         ScammerName,
         PictureCode,
         NumberPatternCode,
+        ImportantFileLocation,
         DeletedVirusFile,
         FirstChoiceSideWithCops
     }

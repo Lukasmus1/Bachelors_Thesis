@@ -47,7 +47,7 @@ namespace Apps.CipherSolver.Controllers
         /// <returns>Encrypted text</returns>
         public string EncryptText(string plainText, string key)
         {
-            return cipherModel.EncryptText(plainText, key);
+            return cipherModel.EncryptDecryptText(plainText, key, true);
         }
         
         /// <summary>
@@ -58,9 +58,33 @@ namespace Apps.CipherSolver.Controllers
         /// <returns>Encrypted text</returns>
         public string DecryptText(string cipherText, string key)
         {
-            string text = cipherModel.DecryptText(cipherText, key); 
+            string text = cipherModel.EncryptDecryptText(cipherText, key, false); 
             onDecryptionAttempt?.Invoke(cipherText);
             return text;
+        }
+        
+        /// <summary>
+        /// Decrypts a cipher text using the Vigenere cipher with an incomplete key.
+        /// </summary>
+        /// <param name="cipherText">Text to decrypt</param>
+        /// <param name="key">Key used for decryption</param>
+        /// <returns>Decrypted text</returns>
+        public string IncompleteKeyDecrypt(string cipherText, string key)
+        {
+            string text = cipherModel.EncryptDecryptTextWithIncompleteKey(cipherText, key, false); 
+            onDecryptionAttempt?.Invoke(cipherText);
+            return text;
+        }
+
+        /// <summary>
+        /// Encrypts a plain text using the Vigenere cipher with an incomplete key.
+        /// </summary>
+        /// <param name="plainText">Text to encrypt</param>
+        /// <param name="key">Key used for encryption</param>
+        /// <returns>Encrypted text</returns>
+        public string IncompleteKeyEncrypt(string plainText, string key)
+        {
+            return cipherModel.EncryptDecryptTextWithIncompleteKey(plainText, key, true);
         }
         
         /// <summary>

@@ -54,9 +54,8 @@ namespace User.Models
                 new(UserDataType.VirusContent, FourthWallMvc.Instance.FileGenerationController.GenerateFileData()),
                 new(UserDataType.PictureCodeYear, CipherMvc.Instance.CipherController.GeneratePictureYearCode()),
                 new(UserDataType.ScammerName, CipherMvc.Instance.CipherController.GenerateRandomName()),
-                new(UserDataType.NumberPatternCode, FourthWallMvc.Instance.NumberPatternController.CreateRandomNumberPattern())
-                //Both the user year and user real name are generated once and then saved to be the same for the entire playthrough
-                //The code itself is a combination of the two
+                new(UserDataType.NumberPatternCode, FourthWallMvc.Instance.NumberPatternController.CreateRandomNumberPattern()),
+                new(UserDataType.ImportantFileLocation, FourthWallMvc.Instance.FileGenerationController.CreateImportantHiddenFileLocation())
             };
             string pictureCode = UserMvc.Instance.UserController.ProceduralData(UserDataType.ScammerName) +
                                  UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCodeYear);

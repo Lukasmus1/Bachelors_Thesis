@@ -151,9 +151,12 @@
           "MessageGroupID": "curatorHiddenFile",
           "MessagesGroup":[
             {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "They have already gotten access to your desktop, I can no longer communicate with you through it."},
-            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "However by blocking those connection attempts, he exposed a crucial file on your desktop."},
-            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "Unfortunately they've hidden it even beyond your system, so we will need to improvise."},
-            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "I have created an app that will help you find the file. TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"}
+            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "However by blocking those connection attempts, he exposed a crucial file for me."},
+            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "The file contains a path to one of his important hidden files on your computer."},
+            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "Unfortunately they've encrypted it and I don't have the key."},
+            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "I have managed to pull a encryption table from the development files of the game. But it contains a lot of numbers and I don't know what the correct combination is."},
+            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "There was alongside it, however, an application called \"TODOTODOTODO\" that could help you."},
+            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {location}TODOTODOTODOTODOTODOTODOTODOTODO"}
           ]
         }
       ]

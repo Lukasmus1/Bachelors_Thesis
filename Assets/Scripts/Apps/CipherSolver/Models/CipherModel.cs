@@ -10,10 +10,10 @@ namespace Apps.CipherSolver.Models
 {
     public class CipherModel
     {
-        private const string VIGENERE_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\"-=0123456789";
+        private const string VIGENERE_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\\<>/\"-=0123456789";
         private readonly string[] _names = {"Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", "Ivan", "Judy", "Karl", "Leo", "Mallory", "Nina", "Oscar", "Peggy", "Quentin", "Rupert"};
 
-        /// <see cref="CipherController.GenerateVigenereKey"/>
+        /// <inheritdoc cref="CipherController.GenerateVigenereKey"/>
         public string GenerateVigenereKey(int keyLen)
         {
             StringBuilder key = new();
@@ -58,9 +58,15 @@ namespace Apps.CipherSolver.Models
         {
             return !string.IsNullOrEmpty(randomNameString) ? randomNameString : _names[Random.Range(0, _names.Length)];
         }
-        
-        /// <see cref="CipherController.EncryptText"/>
-        public string EncryptText(string plainText, string key)
+
+        /// <summary>
+        /// Uses a vigenere cipher to encrypt or decrypt the provided text based on the isEncrypt flag.
+        /// </summary>
+        /// <param name="plainText">Text to encrypt or decrypt</param>
+        /// <param name="key">Key to encrypt or decrypt with</param>
+        /// <param name="isEncrypt">Are we encrypting?</param>
+        /// <returns></returns>
+        public string EncryptDecryptText(string plainText, string key, bool isEncrypt)
         {
             StringBuilder encrypted = new();
             var currentKeyIndex = 0;
@@ -74,8 +80,7 @@ namespace Apps.CipherSolver.Models
                     continue;
                 }
                 
-                //Index of the c in VIGENERE_CHARS + Index of the key char in VIGENERE_CHARS (this is the shift in the alphabet) modulo the length of VIGENERE_CHARS
-                int index = (VIGENERE_CHARS.IndexOf(c) + VIGENERE_CHARS.IndexOf(key[currentKeyIndex])) % VIGENERE_CHARS.Length;
+                int index = GetIndex(c, isEncrypt, key, currentKeyIndex);
                 encrypted.Append(VIGENERE_CHARS[index]);
                 
                 //Increment key index and loop around if necessary
@@ -84,34 +89,46 @@ namespace Apps.CipherSolver.Models
             
             return encrypted.ToString();
         }
-        
-        /// <see cref="CipherController.DecryptText"/>
-        public string DecryptText(string plainText, string key)
+
+        /// <summary>
+        /// The only difference between encryption and decryption in a vigenere cipher is whether we add or subtract the key index, so this function handles both based on the isEncrypt flag.
+        /// </summary>
+        /// <param name="c">Current char</param>
+        /// <param name="isEncrypt">Are we encrypting?</param>
+        /// <param name="key">Key to encrypt or decrypt</param>
+        /// <param name="currentKeyIndex">Current index</param>
+        /// <returns>Index</returns>
+        private int GetIndex(char c, bool isEncrypt, string key, int currentKeyIndex)
         {
-            StringBuilder decrypted = new();
-            var currentKeyIndex = 0;
-
-            foreach (char c in plainText)
-            {
-                //Ignore characters not in VIGENERE_CHARS (such as newline, spaces, etc.)
-                if (!VIGENERE_CHARS.Contains(c.ToString()))
-                {
-                    decrypted.Append(c);
-                    continue;
-                }
-                
-                //Index of the c in VIGENERE_CHARS - Index of the key char in VIGENERE_CHARS (this is the shift in the alphabet) modulo the length of VIGENERE_CHARS
-                int index = (VIGENERE_CHARS.IndexOf(c) - VIGENERE_CHARS.IndexOf(key[currentKeyIndex]) + VIGENERE_CHARS.Length) % VIGENERE_CHARS.Length;
-                decrypted.Append(VIGENERE_CHARS[index]);
-                
-                //Increment key index and loop around if necessary
-                currentKeyIndex = (currentKeyIndex + 1) % key.Length;
-            }
-
-            return decrypted.ToString();
+            if (isEncrypt)
+                return (VIGENERE_CHARS.IndexOf(c) + VIGENERE_CHARS.IndexOf(key[currentKeyIndex])) % VIGENERE_CHARS.Length;
+            else
+                return (VIGENERE_CHARS.IndexOf(c) - VIGENERE_CHARS.IndexOf(key[currentKeyIndex]) + VIGENERE_CHARS.Length) % VIGENERE_CHARS.Length;
         }
 
-        /// <see cref="CipherController.EncryptDecryptImage"/>
+        /// <summary>
+        /// Creates a new key based on the provided key, but with random characters.
+        /// This is done because the key doesn't always have the same characters as the alphabet we use for the vigenere cipher.
+        /// </summary>
+        /// <param name="plainText">Text to encrypt or decrypt</param>
+        /// <param name="key">Key used for encryption or decryption</param>
+        /// <param name="isEncrypt">Are we encrypting?</param>
+        /// <returns></returns>
+        public string EncryptDecryptTextWithIncompleteKey(string plainText, string key, bool isEncrypt)
+        {
+            StringBuilder newKey = new();
+            
+            System.Random rnd = new(key.GetHashCode());
+            
+            for (var i = 0; i < key.Length; i++)
+            {
+                newKey.Append(VIGENERE_CHARS[rnd.Next(0, VIGENERE_CHARS.Length)]);
+            }
+            
+            return EncryptDecryptText(plainText, newKey.ToString(), isEncrypt);
+        }
+
+        /// <inheritdoc cref="CipherController.EncryptDecryptImage"/>
         public async Task<Texture2D> DecryptImage(Texture2D cipherTexture, string key)
         {
             byte[] originalTexture = cipherTexture.GetRawTextureData();

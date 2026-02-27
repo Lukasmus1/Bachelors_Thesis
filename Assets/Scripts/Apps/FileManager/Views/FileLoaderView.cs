@@ -100,7 +100,7 @@ namespace Apps.FileManager.Views
             fileIcon.SetActive(!fileModel.IsHidden || showHiddenFilesToggle.isOn);
         }
         
-        /// <see cref="FileLoaderController.ToggleFileVisibility"/> 
+        /// <inheritdoc cref="FileLoaderController.ToggleFileVisibility"/> 
         public void ToggleFileVisibility(string fileName, bool shouldHide)
         {
             List<GameObject> files = FileManagerMvc.Instance.FileManagerController.GetLoadedFiles();

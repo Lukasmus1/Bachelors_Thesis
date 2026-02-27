@@ -153,6 +153,22 @@ namespace Apps.FileManager.Models
             {
                 throw new Exception("Trying to access NumberPattern file, but it does not exist. Possible rename?");
             }
+            
+            //Important Hidden file content
+            GameObject importantHiddenFile = InstantiatedFiles.FirstOrDefault(x => x.name == "FileLocation");
+            if (importantHiddenFile != null)
+            {
+                var text = importantHiddenFile.GetComponentInChildren<TMP_Text>();
+                
+                string fileLocation = UserMvc.Instance.UserController.ProceduralData(UserDataType.ImportantFileLocation);
+                string encryptedLocation = CipherMvc.Instance.CipherController.IncompleteKeyEncrypt(fileLocation, UserMvc.Instance.UserController.ProceduralData(UserDataType.NumberPatternCode));
+                
+                text.text = encryptedLocation;
+            }
+            else
+            {
+                throw new Exception("Trying to access FileLocation file, but it does not exist. Possible rename?");
+            }
         }
         
         /// <summary>

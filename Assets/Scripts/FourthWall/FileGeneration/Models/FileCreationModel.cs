@@ -66,5 +66,30 @@ namespace FourthWall.FileGeneration.Models
             
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(data));
         }
+
+        /// <inheritdoc cref="FileGenerationController.CreateImportantHiddenFileLocation"/>
+        public string CreateImportantFileLocation()
+        {
+            //Create a new directory that mimics a random directory in the LocalAppData\low folder.
+            string localAppDataLow = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+                "..", 
+                "LocalLow"
+            );
+            string fullPath = Path.GetFullPath(localAppDataLow); //Removes the .. and gives us the actual path to the LocalLow folder
+            string[] dirs = Directory.GetDirectories(fullPath);
+            string randomPath = dirs[new Random().Next(dirs.Length)] + "_Backup";
+            Directory.CreateDirectory(randomPath);
+            
+            //Create a hidden file in that directory with the generated content.
+            const string fileName = "do_not_delete.txt";
+            string filePath = Path.Combine(randomPath, fileName);
+
+            string content = GenerateFileData();
+            
+            CreateHiddenFile(filePath, content, true);
+            
+            return filePath;
+        }
     }
 }

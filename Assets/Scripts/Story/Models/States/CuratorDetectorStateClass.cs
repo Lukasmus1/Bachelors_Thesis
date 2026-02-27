@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Apps.ChatTerminal.Commons;
+using Apps.FileManager.Commons;
 using Commons;
 using FourthWall.Commons;
 using FourthWall.FileGeneration.Models;
@@ -28,12 +29,13 @@ namespace Story.Models.States
             AsyncTimer t = new();
             _ = t.StartTimer(2, () =>
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
+                LoadFromState();
+                
+                FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("NumberPattern", true);
+                FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("FileLocation", true);
                 
                 t.Dispose();
             });
-            
-            LoadFromState();
         }
 
         public override void OnExit()
@@ -43,6 +45,8 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
+            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
+            
             GUIUtility.systemCopyBuffer =
                 ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("curator",
                     "curatorHiddenFile");

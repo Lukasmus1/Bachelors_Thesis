@@ -1,6 +1,7 @@
 ﻿using System;
 using Apps.CipherSolver.Commons;
 using Apps.Commons;
+using Apps.Commons.FileScripts;
 using Apps.FileViewer.Commons;
 using Desktop.Commons;
 using TMPro;
@@ -28,11 +29,17 @@ namespace Apps.CipherSolver.Views
         [SerializeField] private RectTransform fileHolder;
         private GameObject _instantiatedFileReference;
 
+        private bool _IsCompleteKey;
+
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
 
             _instantiatedFileReference = Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, fileHolder);
+
+            //If the file has the CipherIncompleteKey component, it means that the key used to encrypt the file was incomplete.
+            _IsCompleteKey = !_instantiatedFileReference.TryGetComponent<CipherIncompleteKey>(out _);
+            
             _fileText = _instantiatedFileReference.GetComponentInChildren<TMP_Text>();
             if (_fileText == null)
             {
@@ -97,8 +104,10 @@ namespace Apps.CipherSolver.Views
                         _fileText.text = _fileTextCopy;
                         return;
                     }
-                
-                    string decryptedText = CipherMvc.Instance.CipherController.DecryptText(_fileTextCopy, key);
+
+                    string decryptedText = _IsCompleteKey
+                        ? CipherMvc.Instance.CipherController.DecryptText(_fileTextCopy, key)
+                        : CipherMvc.Instance.CipherController.IncompleteKeyDecrypt(_fileTextCopy, key); 
 
                     _fileText.text = decryptedText;
                 }
