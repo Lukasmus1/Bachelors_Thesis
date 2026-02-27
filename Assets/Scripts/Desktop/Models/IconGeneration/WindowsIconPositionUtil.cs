@@ -4,9 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
-namespace DesktopGeneration.Models.IconGeneration
+namespace Desktop.Models.IconGeneration
 {
     public abstract class WindowsIconPositionUtil
     {

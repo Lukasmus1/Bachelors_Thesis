@@ -6571,6 +6571,7 @@ MonoBehaviour:
   cipherSolverApp: {fileID: 954162104}
   virusFinderApp: {fileID: 478663820}
   virusFinderView: {fileID: 478663823}
+  mainCanvas: {fileID: 595002733}
   desktopGeneratorView: {fileID: 667817315}
 --- !u!114 &667817314
 MonoBehaviour:

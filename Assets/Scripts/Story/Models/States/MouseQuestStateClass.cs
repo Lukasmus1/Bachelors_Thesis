@@ -34,7 +34,7 @@ namespace Story.Models.States
         {
             if (messageID == "dptMouseQuest")
             {
-                FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MouseQuest", true);
+                FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("MouseQuest", true);
             }
         }
 

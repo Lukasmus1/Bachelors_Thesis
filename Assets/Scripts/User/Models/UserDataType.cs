@@ -8,6 +8,7 @@
         PictureCodeYear,
         ScammerName,
         PictureCode,
+        NumberPatternCode,
         DeletedVirusFile,
         FirstChoiceSideWithCops
     }

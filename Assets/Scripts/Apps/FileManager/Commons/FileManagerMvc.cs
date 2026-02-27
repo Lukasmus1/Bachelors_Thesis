@@ -2,25 +2,25 @@
 
 namespace Apps.FileManager.Commons
 {
-    public class FileLoaderMvc
+    public class FileManagerMvc
     {
         //Singleton instance
-        private static FileLoaderMvc _instance;
-        public static FileLoaderMvc Instance
+        private static FileManagerMvc _instance;
+        public static FileManagerMvc Instance
         {
             get
             {
-                _instance ??= new FileLoaderMvc();
+                _instance ??= new FileManagerMvc();
                 return _instance;
             }
         }
 
-        public FileLoaderController FileLoaderController { get; set; }
+        public FileLoaderController FileManagerController { get; set; }
         public ContextMenuController ContextMenuController { get; set; }
         
-        private FileLoaderMvc()
+        private FileManagerMvc()
         {
-            FileLoaderController = new FileLoaderController();
+            FileManagerController = new FileLoaderController();
             ContextMenuController = new ContextMenuController();
         }
     }

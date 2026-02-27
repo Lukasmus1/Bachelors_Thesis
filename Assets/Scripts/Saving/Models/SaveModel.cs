@@ -43,7 +43,7 @@ namespace Saving.Models
 
             loadedFiles = saveModel.loadedFiles;
             hiddenFiles = saveModel.hiddenFiles;
-            FileLoaderMvc.Instance.FileLoaderController.LoadFromSave(loadedFiles, hiddenFiles);
+            FileManagerMvc.Instance.FileManagerController.LoadFromSave(loadedFiles, hiddenFiles);
             
             ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
         }

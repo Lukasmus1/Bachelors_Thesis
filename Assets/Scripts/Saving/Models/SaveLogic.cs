@@ -22,8 +22,8 @@ namespace Saving.Models
             _model.desktop = DesktopModel.Instance;
             _model.storyModel = StoryMvc.Instance.StoryController.storyModel;
             _model.chatTerminalModel = ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel;
-            _model.loadedFiles = FileLoaderMvc.Instance.FileLoaderController.LoadedFileNames;
-            _model.hiddenFiles = FileLoaderMvc.Instance.FileLoaderController.HiddenFileNames;
+            _model.loadedFiles = FileManagerMvc.Instance.FileManagerController.LoadedFileNames;
+            _model.hiddenFiles = FileManagerMvc.Instance.FileManagerController.HiddenFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
         }
         

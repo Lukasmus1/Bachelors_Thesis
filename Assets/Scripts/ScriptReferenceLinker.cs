@@ -42,6 +42,9 @@ public class ScriptReferenceLinker : MonoBehaviour
     public GameObject virusFinderApp;
     [SerializeField] private VirusFinderView virusFinderView;
     
+    //Main canvas holder
+    [SerializeField] private GameObject mainCanvas;
+    
     //Desktop
     [SerializeField] private DesktopGeneratorView desktopGeneratorView;
     
@@ -52,7 +55,7 @@ public class ScriptReferenceLinker : MonoBehaviour
         ChatTerminalMvc.Instance.MessageSystemController.SetView(messageSystemView);
         
         //File loader app
-        FileLoaderMvc.Instance.FileLoaderController.SetFileLoaderView(fileLoaderView);
+        FileManagerMvc.Instance.FileManagerController.SetFileLoaderView(fileLoaderView);
         
         //Bottom bar
         BottomBarMvc.Instance.BottomBarController.SetBottomBarView(bottomBarView);
@@ -88,4 +91,10 @@ public class ScriptReferenceLinker : MonoBehaviour
     /// </summary>
     /// <returns>MonoBehavior instance</returns>
     public MonoBehaviour GetMonoBehavior() => this;
+    
+    /// <summary>
+    /// Gets the desktop holder game object.
+    /// </summary>
+    /// <returns>Desktop holder GameObject</returns>
+    public GameObject GetMainCanvas() => mainCanvas;
 }

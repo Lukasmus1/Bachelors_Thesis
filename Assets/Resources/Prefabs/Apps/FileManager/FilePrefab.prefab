@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileManager.Views.FileView
   contextMenuPrefab: {fileID: 8011406198256179045, guid: 97e4bc3f90a836945b9076bee5b7e4a3, type: 3}
+  contextOpenOnlyMenuPrefab: {fileID: 8011406198256179045, guid: 0073a1afe34991043b5df34ee4a53ac3, type: 3}
   fileName: {fileID: 3850839491469660923}
 --- !u!1 &6686506018436622489
 GameObject:
@@ -251,6 +252,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

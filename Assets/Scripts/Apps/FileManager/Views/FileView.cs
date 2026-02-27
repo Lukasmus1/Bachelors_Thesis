@@ -13,6 +13,7 @@ namespace Apps.FileManager.Views
     public class FileView : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private GameObject contextMenuPrefab;
+        [SerializeField] private GameObject contextOpenOnlyMenuPrefab;
         private Transform _contextMenuParent;
         
         public TMP_Text fileName;
@@ -40,20 +41,28 @@ namespace Apps.FileManager.Views
             {
                 handler.SetScreenshot();
             }
+            
             FileViewerMvc.Instance.FileLoaderController.OpenedFile = _fileObject;
-            CreateContextMenu(eventData);
+            
+            if (_fileObject.name == "NumberPattern")
+            {
+                CreateContextMenu(eventData, contextOpenOnlyMenuPrefab);
+                return;
+            }
+            
+            CreateContextMenu(eventData, contextMenuPrefab);
         }
 
-        private void CreateContextMenu(PointerEventData data)
+        private void CreateContextMenu(PointerEventData data, GameObject contextMenuType)
         {
             //Instantiate context menu
-            GameObject contextMenu = Instantiate(contextMenuPrefab, _contextMenuParent);
+            GameObject contextMenu = Instantiate(contextMenuType, _contextMenuParent);
             var contextMenuView = contextMenu.GetComponent<ContextMenuView>();
             contextMenuView.SelectedFile = _fileObject;
             contextMenuView.SetShowHideFileButton();
             
             //Set the current context menu in the controller
-            FileLoaderMvc.Instance.ContextMenuController.OpenNewContextMenu(contextMenu);
+            FileManagerMvc.Instance.ContextMenuController.OpenNewContextMenu(contextMenu);
             
             //Setting the position to the right corner of the context menu
             var contextMenuRect = contextMenu.GetComponent<RectTransform>();

@@ -12,7 +12,7 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("CypherCode", true);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("CypherCode", true);
             
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
 

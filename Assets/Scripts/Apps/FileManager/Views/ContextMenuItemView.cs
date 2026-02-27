@@ -1,4 +1,5 @@
 ﻿using System;
+using Apps.FileViewer.Commons;
 using Desktop.Views;
 using UnityEngine;
 
@@ -35,5 +36,16 @@ namespace Apps.FileManager.Views
             //Close the context menu after opening the app
             transform.parent.parent.gameObject.SetActive(false);
         }
+
+        /// <summary>
+        /// Opens the fullscreen in the desktop holder.
+        /// </summary>
+        public void OpenOnly()
+        {
+            GameObject desktopHolder = GameObject.FindGameObjectWithTag("ScriptHolder")
+                .GetComponent<ScriptReferenceLinker>().GetMainCanvas();
+            
+            Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, desktopHolder.transform);
+        }   
     }
 }

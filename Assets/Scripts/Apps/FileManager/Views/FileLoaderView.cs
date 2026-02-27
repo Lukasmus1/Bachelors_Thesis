@@ -24,7 +24,7 @@ namespace Apps.FileManager.Views
         private void Awake()
         {
             _showHiddenFilesBool = showHiddenFilesToggle.isOn;
-            FileLoaderMvc.Instance.FileLoaderController.onFilesUpdated += UpdateLoadedFiles;
+            FileManagerMvc.Instance.FileManagerController.onFilesUpdated += UpdateLoadedFiles;
         }
 
         private void OnEnable()
@@ -41,7 +41,7 @@ namespace Apps.FileManager.Views
 
         private void OnDestroy()
         {
-            FileLoaderMvc.Instance.FileLoaderController.onFilesUpdated += UpdateLoadedFiles;
+            FileManagerMvc.Instance.FileManagerController.onFilesUpdated += UpdateLoadedFiles;
         }
 
         /// <summary>
@@ -49,11 +49,11 @@ namespace Apps.FileManager.Views
         /// </summary>
         private void UpdateLoadedFiles()
         {
-            List<GameObject> files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFiles();
+            List<GameObject> files = FileManagerMvc.Instance.FileManagerController.GetLoadedFiles();
             foreach (GameObject file in files)
             {
                 var fileModel = file.GetComponent<FileModel>();
-                if (FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Contains(fileModel.FileName) || !fileModel.IsLoaded)
+                if (FileManagerMvc.Instance.FileManagerController.InstantiatedFileNames.Contains(fileModel.FileName) || !fileModel.IsLoaded)
                 {
                     continue;
                 }
@@ -62,7 +62,7 @@ namespace Apps.FileManager.Views
                 var fileView = fileIcon.GetComponent<FileView>();
                 
                 fileView.SetProps(file);
-                FileLoaderMvc.Instance.FileLoaderController.InstantiatedFileNames.Add(fileModel.FileName);
+                FileManagerMvc.Instance.FileManagerController.InstantiatedFileNames.Add(fileModel.FileName);
                 fileIcon.SetActive(true);
                 
                 _fileIcons.Add(fileIcon);
@@ -77,7 +77,7 @@ namespace Apps.FileManager.Views
         /// </summary>
         public void ToggleHiddenFiles()
         {
-            List<GameObject> files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFiles();
+            List<GameObject> files = FileManagerMvc.Instance.FileManagerController.GetLoadedFiles();
             foreach (GameObject file in files)
             {
                 ToggleHideFile(file);
@@ -103,7 +103,7 @@ namespace Apps.FileManager.Views
         /// <see cref="FileLoaderController.ToggleFileVisibility"/> 
         public void ToggleFileVisibility(string fileName, bool shouldHide)
         {
-            List<GameObject> files = FileLoaderMvc.Instance.FileLoaderController.GetLoadedFiles();
+            List<GameObject> files = FileManagerMvc.Instance.FileManagerController.GetLoadedFiles();
 
             GameObject file = files.Find(file => file.GetComponent<FileModel>().FileName == fileName);
             

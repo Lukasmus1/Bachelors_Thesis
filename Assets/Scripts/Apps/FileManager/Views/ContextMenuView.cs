@@ -68,7 +68,7 @@ namespace Apps.FileManager.Views
 
             bool shouldHideFile = hideShowFileButton.GetComponentInChildren<TMP_Text>().text != SHOW_FILE_STRING;
 
-            FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility(fileModel.FileName, shouldHideFile);
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility(fileModel.FileName, shouldHideFile);
             
             //Update the text of the button after toggling the visibility
             SetShowHideFileButton();

@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Apps.Autostereogram.Commons;
 using Apps.CipherSolver.Commons;
 using Desktop.Notification.Commons;
 using Desktop.Notification.Models;
+using FourthWall.Commons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using User.Commons;
 using User.Models;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Apps.FileManager.Models
 {
@@ -110,6 +113,45 @@ namespace Apps.FileManager.Models
             else
             {
                 throw new Exception("Trying to access MysteriousFile file, but it does not exist. Possible rename?");
+            }
+            
+            //Number sequence file content
+            GameObject numberPattern = InstantiatedFiles.FirstOrDefault(x => x.name == "NumberPattern");
+            if (numberPattern != null)
+            {
+                //This is based on the specific pattern used in the NumberPattern file.
+                //const int numRows = 6;
+                const int numCols = 38;
+                const int maxNumCount = 228;
+                
+                //The pattern is an image with rigid holes. 
+                //To make sure the numbers line up with the holes we have to generate the code in the same spot every time.
+                //These numbers represent the indexes of the positions relative to the start of the pattern (0)
+                int[] relativeNumSpots = { 0, 11, 54, 82, 133 };
+
+                //I want the number code pattern to not always be at the same place, so I offset it by their maximum tested amounts.
+                const int maxXOffset = 19;
+                const int maxYOffset = 3;
+                int randomXOffset = Random.Range(1, maxXOffset); //I don't want it to start at the top most left, so I start at 1 for the x offset
+                int randomYOffset = Random.Range(0, maxYOffset);
+                
+                string numberPatternCode = UserMvc.Instance.UserController.ProceduralData(UserDataType.NumberPatternCode);
+                
+                StringBuilder numberNoise = new();
+                numberNoise.Append(FourthWallMvc.Instance.NumberPatternController.CreateRandomNumberNoise(maxNumCount, false));
+                
+                for (int i = 0; i < relativeNumSpots.Length; i++)
+                {
+                    int numIndex = relativeNumSpots[i] + randomXOffset + (randomYOffset * numCols);
+                    numberNoise[numIndex] = numberPatternCode[i];
+                }
+                
+                var numberText = numberPattern.GetComponentInChildren<TMP_Text>();
+                numberText.text = numberNoise.ToString();
+            }
+            else
+            {
+                throw new Exception("Trying to access NumberPattern file, but it does not exist. Possible rename?");
             }
         }
         

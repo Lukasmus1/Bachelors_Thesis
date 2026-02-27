@@ -16,5 +16,10 @@ namespace Apps.Commons
             appToOpen.transform.SetAsLastSibling();
             AppCommonsModel.Instance.OnAppOpened(appToOpen.name);
         }
+
+        public void DestroyApp(GameObject appToDestroy)
+        {
+            Destroy(appToDestroy);
+        }
     }
 }

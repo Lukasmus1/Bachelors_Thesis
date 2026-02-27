@@ -13,10 +13,10 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", true);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("MysteriousFile", true);
             
             //Create a screenshot of the desktop and save it for later in the story
-            FileLoaderMvc.Instance.FileLoaderController.CreateUsersScreenshotFile();
+            FileManagerMvc.Instance.FileManagerController.CreateUsersScreenshotFile();
             
             LoadFromState();
         }
@@ -34,7 +34,7 @@ namespace Story.Models.States
         private void OnMysteriousFileLinkClicked()
         {
             //What should happen when the link in the mysterious file is clicked
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("MysteriousFile", false);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("MysteriousFile", false);
             
             ChangeToNextState();
             

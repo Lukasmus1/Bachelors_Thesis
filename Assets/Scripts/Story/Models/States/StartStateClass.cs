@@ -33,7 +33,7 @@ namespace Story.Models.States
         {
             if (messageID == "itTutorial")
             {
-                FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("Guide", true);
+                FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("Guide", true);
             }
         }
         
@@ -44,7 +44,7 @@ namespace Story.Models.States
                 return;
             }
             
-            FileLoaderMvc.Instance.FileLoaderController.ToggleFileVisibility("Guide", true);
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("Guide", true);
             ChangeToNextState();
         }
     }

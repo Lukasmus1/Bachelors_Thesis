@@ -26,12 +26,12 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             //Puzzle files
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("DetectiveEmail", true);
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("DetectiveEmailTwo", true);
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("DetectiveMessages", true);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("DetectiveEmail", true);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("DetectiveEmailTwo", true);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("DetectiveMessages", true);
             
             //Encrypted image
-            FileLoaderMvc.Instance.FileLoaderController.SetLoadedFileFlag("UserScreenshot", true);
+            FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("UserScreenshot", true);
                 
             LoadFromState();
         }
