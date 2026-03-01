@@ -255,7 +255,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'The head of department asked me to send you this file.
 
-    <link="OnClick"><u>He
+    <link="OnClick"><u>They
     said you should click me!</u></link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

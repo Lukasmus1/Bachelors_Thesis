@@ -9,7 +9,6 @@ using Story.Models.Actions;
 using UnityEngine;
 using User.Commons;
 using User.Models;
-using Object = UnityEngine.Object;
 
 namespace Story.Models.States
 {

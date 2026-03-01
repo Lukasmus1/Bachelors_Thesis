@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Story.Models.Actions
 {
@@ -10,10 +11,7 @@ namespace Story.Models.Actions
     [Serializable]
     public class ListOfActionsPersistent
     {
-        public List<Pair> actions = new()
-        {
-            (new Pair(ActionType.HiddenVirus, false))
-        };
+        public List<Pair> actions = new();
 
         public bool GetAction(ActionType key)
         {
@@ -22,7 +20,14 @@ namespace Story.Models.Actions
 
         public void SetAction(ActionType key, bool value)
         {
-            actions.Find(x => x.key == key).value = value;
+            if (actions.Any(x => x.key == key))
+            {
+                actions.Find(x => x.key == key).value = value;   
+            }
+            else
+            {
+                actions.Add(new Pair(key, value));
+            }
         }
     }
     
