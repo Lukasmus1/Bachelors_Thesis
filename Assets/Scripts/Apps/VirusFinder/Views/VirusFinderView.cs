@@ -13,7 +13,6 @@ namespace Apps.VirusFinder.Views
         [SerializeField] private Slider scanProgressBar;
         [SerializeField] private TMP_Text percentageText;
         [SerializeField] private TMP_Text resultText;
-        [SerializeField] private Transform virusIconParent;
         [SerializeField] private GameObject virusFinderIcon;
 
         private bool killScanCoroutine = false;
@@ -91,7 +90,7 @@ namespace Apps.VirusFinder.Views
                 yield break;
             }
 
-            int virusCount = VirusFinderMvc.Instance.VirusFinderController.FindViruses(virusIconParent);
+            int virusCount = VirusFinderMvc.Instance.VirusFinderController.FindViruses();
 
             killStatusTextCoroutine = true;
             scanProgressBar.value = 100;

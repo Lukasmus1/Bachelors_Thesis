@@ -37,6 +37,17 @@ namespace User.Controllers
             get => userModel.ScreenshotFormat;
             set => userModel.ScreenshotFormat = value;
         }
+
+        /// <summary>
+        /// Deletes the saved screenshot so the save file is no longer 19MB+.
+        /// </summary>
+        public void ClearScreenshot()
+        {
+            userModel.ScreenshotFormat = 0;
+            userModel.ScreenshotHeight = 0;
+            userModel.ScreenshotWidth = 0;
+            userModel.EncryptedGameScreenshot = null;
+        }
         
         public string CuratorExplanationFilePath => userModel.CuratorExplanationFilePath;
         

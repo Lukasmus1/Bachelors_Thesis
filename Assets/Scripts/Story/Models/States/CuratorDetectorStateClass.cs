@@ -5,9 +5,11 @@ using Apps.FileManager.Commons;
 using Commons;
 using FourthWall.Commons;
 using FourthWall.FileGeneration.Models;
+using Story.Models.Actions;
 using UnityEngine;
 using User.Commons;
 using User.Models;
+using Object = UnityEngine.Object;
 
 namespace Story.Models.States
 {
@@ -34,13 +36,15 @@ namespace Story.Models.States
                 FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("NumberPattern", true);
                 FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("FileLocation", true);
                 
+                ActionsClass.Instance.PerformAction(ActionType.ImportantFile);
+                
                 t.Dispose();
             });
         }
 
         public override void OnExit()
         {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
+            ImportantFile.OnImportantFileDeleted -= ChangeToNextState;
         }
 
         public override void LoadFromState()
@@ -50,6 +54,8 @@ namespace Story.Models.States
             GUIUtility.systemCopyBuffer =
                 ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("curator",
                     "curatorHiddenFile");
+            
+            ImportantFile.OnImportantFileDeleted += ChangeToNextState;
         }
     }
 }

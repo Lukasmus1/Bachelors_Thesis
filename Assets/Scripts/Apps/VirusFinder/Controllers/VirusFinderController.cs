@@ -44,11 +44,10 @@ namespace Apps.VirusFinder.Controllers
         /// <summary>
         /// Enables viruses on the desktop and returns the number of viruses present.
         /// </summary>
-        /// <param name="virusParent">Parent transform for the virus icons</param>
         /// <returns>Number of viruses</returns>
-        public int FindViruses(Transform virusParent)
+        public int FindViruses()
         {
-            _model.EnableViruses(virusParent);
+            _model.EnableViruses();
             return GetVirusesCount();
         }
 

@@ -72,12 +72,17 @@ namespace Story.Models.Actions
             {
                 case ActionType.HiddenVirus:
                     HiddenVirus.PerformHiddenVirusAction();
-                    ActionsPersistent.SetAction(ActionType.HiddenVirus, true);
                     break;
                 
+                case ActionType.ImportantFile:
+                    ImportantFile.SetupFileDeletionDetection();
+                    break;
+                    
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
+            
+            ActionsPersistent.SetAction(type, true);
         }
         
         /// <summary>

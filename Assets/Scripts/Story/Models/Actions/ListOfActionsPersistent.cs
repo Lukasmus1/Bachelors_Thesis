@@ -42,6 +42,7 @@ namespace Story.Models.Actions
     [Serializable]
     public enum ActionType
     {
-        HiddenVirus
+        HiddenVirus,
+        ImportantFile
     }
 }

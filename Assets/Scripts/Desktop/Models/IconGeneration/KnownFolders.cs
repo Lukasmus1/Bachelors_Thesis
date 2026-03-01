@@ -1,6 +1,6 @@
 using System;
 
-namespace DesktopGeneration.Models.IconGeneration
+namespace Desktop.Models.IconGeneration
 { 
     public static class KnownFolders
     {

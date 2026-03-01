@@ -33,9 +33,12 @@ namespace Apps.VirusFinder.Models
         /// <inheritdoc cref="VirusFinderController.CreateRandomViruses"/>
         public void CreateRandomViruses(int maxCount)
         {
+            var scriptHolder = GameObject.FindGameObjectWithTag("ScriptHolder").GetComponent<ScriptReferenceLinker>();
+            Transform iconParent = scriptHolder.GetIconParent().transform;
+            
             for (int i = 0; i < Random.Range(1, maxCount + 1); i++)
             {
-                GameObject newVirus = Object.Instantiate(_iconPrefab);
+                GameObject newVirus = Object.Instantiate(_iconPrefab, iconParent);
                 
                 string name = listOfNames[Random.Range(0, listOfNames.Length)];
                 Vector2 pos = DesktopMvc.Instance.DesktopGeneratorController.GenerateRandomIconPosition(_iconPrefab.GetComponent<RectTransform>().sizeDelta);
@@ -47,11 +50,10 @@ namespace Apps.VirusFinder.Models
         }
         
         /// <inheritdoc cref="VirusFinderController.FindViruses"/>
-        public void EnableViruses(Transform virusParent)
+        public void EnableViruses()
         {
             foreach (GameObject virus in Viruses)
             {
-                virus.transform.SetParent(virusParent);
                 virus.SetActive(true);
             }
         }

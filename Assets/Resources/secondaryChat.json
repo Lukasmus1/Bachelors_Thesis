@@ -125,7 +125,7 @@
         {
           "MessageGroupID": "kpDesktopFile",
           "MessagesGroup":[
-            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "If you try to delete me, <color=red><b>I WILL DESTROY YOUR ENTIRE LIFE</color></b>"}
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "<color=red><b>don't you dare delete me</color></b>"}
           ]
         }
       ]

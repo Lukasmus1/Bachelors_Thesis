@@ -31,12 +31,12 @@ namespace Saving.Models
             DesktopModel.Instance = desktop;
             DesktopGeneratorController.ClearFlags(); //Clear any flags that may have stuck
             
+            chatTerminalModel = saveModel.chatTerminalModel;
+            ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel = chatTerminalModel;
+            
             storyModel = saveModel.storyModel;
             StoryMvc.Instance.StoryController.storyModel = storyModel;
             StoryMvc.Instance.StoryController.LoadFromState();
-            
-            chatTerminalModel = saveModel.chatTerminalModel;
-            ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel = chatTerminalModel;
             
             userModel = saveModel.userModel;
             UserMvc.Instance.UserController.userModel = userModel;

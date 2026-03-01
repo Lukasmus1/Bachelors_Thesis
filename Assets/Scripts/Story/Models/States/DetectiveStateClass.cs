@@ -43,6 +43,8 @@ namespace Story.Models.States
             t1?.Dispose();
             t2?.Dispose();
             t3?.Dispose();
+
+            UserMvc.Instance.UserController.ClearScreenshot();
         }
 
         public override void LoadFromState()

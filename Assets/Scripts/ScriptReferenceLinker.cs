@@ -48,6 +48,9 @@ public class ScriptReferenceLinker : MonoBehaviour
     //Desktop
     [SerializeField] private DesktopGeneratorView desktopGeneratorView;
     
+    //Icon parent
+    [SerializeField] private GameObject iconParent;
+    
     private void Awake()
     {
         //Chat terminal app
@@ -97,4 +100,6 @@ public class ScriptReferenceLinker : MonoBehaviour
     /// </summary>
     /// <returns>Desktop holder GameObject</returns>
     public GameObject GetMainCanvas() => mainCanvas;
+
+    public GameObject GetIconParent() => iconParent;
 }
