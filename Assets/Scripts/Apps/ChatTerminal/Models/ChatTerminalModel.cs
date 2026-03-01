@@ -152,7 +152,7 @@ namespace Apps.ChatTerminal.Models
         public void IncreaseChatProfileMessageIndex(string profileId, List<ChatProfile> loadedProfiles)
         {
             ChatProfile profile = loadedProfiles.Find(profile => profile.UserID == profileId);
-            if (loadedProfiles.Count > 0 && profile != null)
+            if (loadedProfiles.Count > 0 && profile)
             {
                 profile.CurrentMessageIndex++;
             }

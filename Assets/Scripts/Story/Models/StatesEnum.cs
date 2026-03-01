@@ -4,6 +4,7 @@ namespace Story.Models
 {
     public enum StatesEnum
     {
+        Default,
         Start,
         MouseQuest,
         ThomasBare,
@@ -24,6 +25,6 @@ namespace Story.Models
         HOfDptResponseLie,
         HOfDptResponseTruth,
         CuratorDetector,
-        Default
+        Question,
     }
 }

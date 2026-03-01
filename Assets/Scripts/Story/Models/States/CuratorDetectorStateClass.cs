@@ -16,7 +16,7 @@ namespace Story.Models.States
     public class CuratorDetectorStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.CuratorDetector;
-        public override int NextState { get; set; } = (int)StatesEnum.Default;
+        public override int NextState { get; set; } = (int)StatesEnum.Question;
 
         public override void OnEnter()
         {

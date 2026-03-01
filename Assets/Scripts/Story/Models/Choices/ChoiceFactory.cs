@@ -11,6 +11,7 @@ namespace Story.Models.Choices
             return choiceID switch
             {
                 "dptScreenshotChoice" => new ScreenshotChoice().Actions,
+                "curatorQuestionChoice" => new QuestionChoice().Actions,
                 _ => throw new Exception("choiceID does not have a corresponding ChoiceClass")
             };
         }

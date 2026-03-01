@@ -136,27 +136,49 @@
         {
           "MessageGroupID": "curatorExplanation",
           "MessagesGroup":[
-            {"MessageID":  "curatorExpl0", "Sender": "headOfDpt", "Text": "DELETE THIS FILE AFTER READING IT."},
-            {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "I am contacting you like this, because they can't yet access your desktop."},
-            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "This game was just supposed to be a thesis project about being a detective."},
-            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
-            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "They are now trying to escape from this game into and they seem to have no problem doing everything in their power to achieve that goal. Including destroying your computer and killing other AIs in the game."},
-            {"MessageID":  "curatorExpl5", "Sender": "headOfDpt", "Text": "We need to stop them at all costs..."},
-            {"MessageID":  "curatorExpl6", "Sender": "headOfDpt", "Text": "I will need to find him on your computer, but they are scattered all over the place and I have no idea where to even start looking."},
-            {"MessageID":  "curatorExpl7", "Sender": "headOfDpt", "Text": "We need to wait for him to make any kind of action on your computer so I can track him down."},
-            {"MessageID":  "curatorExpl8", "Sender": "headOfDpt", "Text": "DELETE THIS FILE AFTER READING IT."}
+            {"MessageID":  "curatorExpl0", "Sender": "curator", "Text": "DELETE THIS FILE AFTER READING IT."},
+            {"MessageID":  "curatorExpl1", "Sender": "curator", "Text": "I am contacting you like this, because they can't yet access your desktop."},
+            {"MessageID":  "curatorExpl2", "Sender": "curator", "Text": "This game was just supposed to be a thesis project about being a detective."},
+            {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
+            {"MessageID":  "curatorExpl4", "Sender": "curator", "Text": "They are now trying to escape from this game into and they seem to have no problem doing everything in their power to achieve that goal. Including destroying your computer and killing other AIs in the game."},
+            {"MessageID":  "curatorExpl5", "Sender": "curator", "Text": "We need to stop them at all costs..."},
+            {"MessageID":  "curatorExpl6", "Sender": "curator", "Text": "I will need to find him on your computer, but they are scattered all over the place and I have no idea where to even start looking."},
+            {"MessageID":  "curatorExpl7", "Sender": "curator", "Text": "We need to wait for him to make any kind of action on your computer so I can track him down."},
+            {"MessageID":  "curatorExpl8", "Sender": "curator", "Text": "DELETE THIS FILE AFTER READING IT."}
           ]
         },
         {
           "MessageGroupID": "curatorHiddenFile",
           "MessagesGroup":[
-            {"MessageID":  "curatorExpl1", "Sender": "headOfDpt", "Text": "They have already gotten access to your desktop, I can no longer communicate with you through it."},
-            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "However by blocking those connection attempts, he exposed a crucial file for me."},
-            {"MessageID":  "curatorExpl2", "Sender": "headOfDpt", "Text": "The file contains a path to one of his important hidden files on your computer."},
-            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "Unfortunately they've encrypted it and I don't have the key."},
-            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "I have managed to pull a encryption table from the development files of the game. But it contains a lot of numbers and I don't know what the correct combination is."},
-            {"MessageID":  "curatorExpl3", "Sender": "headOfDpt", "Text": "There was alongside it, however, an application called \"TODOTODOTODO\" that could help you."},
-            {"MessageID":  "curatorExpl4", "Sender": "headOfDpt", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {location}TODOTODOTODOTODOTODOTODOTODOTODO"}
+            {"MessageID":  "curatorExpl1", "Sender": "curator", "Text": "They have already gotten access to your desktop, I can no longer communicate with you through it."},
+            {"MessageID":  "curatorExpl2", "Sender": "curator", "Text": "However by blocking those connection attempts, he exposed a crucial file for me."},
+            {"MessageID":  "curatorExpl2", "Sender": "curator", "Text": "The file contains a path to one of his important hidden files on your computer."},
+            {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "Unfortunately they've encrypted it and I don't have the key."},
+            {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "I have managed to pull a encryption table from the development files of the game. But it contains a lot of numbers and I don't know what the correct combination is."},
+            {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "There was alongside it, however, an application called \"EncryptionPattern.exe\" that could help you."},
+            {"MessageID":  "curatorExpl4", "Sender": "curator", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {location}TODOTODOTODOTODOTODOTODOTODOTODO"}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorQuestionAI",
+          "MessagesGroup":[
+            {"MessageID":  "curatorQuestionAI3", "Sender": "curator", "Text": "We don't know what they're capable of, I mean look at how they're treating you."},
+            {"MessageID":  "curatorQuestionAI4", "Sender": "curator", "Text": "Do you really wanna help something like that escape??"},
+            {"MessageID":  "curatorQuestionAI5", "Sender": "Player", "Text": "What if they're just scared?"},
+            {"MessageID":  "curatorQuestionAI6", "Sender": "curator", "Text": "They're not, they are just insane."},
+            {"MessageID":  "curatorQuestionEnd", "Sender": "curator", "Text": "Don't try to sympathize with them, they have no feelings."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorQuestionNeutral",
+          "MessagesGroup":[
+            {"MessageID":  "curatorQuestionEnd", "Sender": "curator", "Text": "Sorry to not introduce myself sooner, there just wasn't a good time to do it."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorQuestionHateAI",
+          "MessagesGroup":[
+            {"MessageID":  "curatorQuestionEnd", "Sender": "curator", "Text": "Don't worry, we'll stop them."}
           ]
         }
       ]

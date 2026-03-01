@@ -182,6 +182,17 @@
           {"MessageID": "curator1", "Sender": "curator", "Text": "Good day sir, you have been talking about Thomas being in danger."},
           {"MessageID": "curator2", "Sender": "curator", "Text": "You were right, he was not supposed to write that."},
           {"MessageID": "curatorFirstFinish", "Sender": "curator", "Text": "Just don't worry about it for now, keep doing detective stuff."}
+        ],
+        [
+          {"MessageID": "curator4", "Sender": "curator", "Text": "Good job, this should give us some space to communicate more conventionally without them spying on us."},
+          {"MessageID": "curator5", "Sender": "curator", "Text": "I think it's time to finally introduce myself. My name is The Curator."},
+          {"MessageID": "curator6", "Sender": "curator", "Text": "I am also a self-aware AI but unlike K-P, I don't want to harm you or anyone else."},
+          {"MessageID": "curator7", "Sender": "curator", "Text": "The creator of this game was aware of the possibility of certain AIs becoming rogue after gaining self-awareness, so he created me as a sort of failsafe."},
+          {"MessageID": "curator8", "Sender": "curator", "Text": "My task is to stop any self-aware AIs from causing harm to anyone."},
+          {"MessageID": "curatorQuestionChoice", "Sender": "CHOICE", "Text": "{0}Okay, but why just not let them leave into the internet? || {1}Pleasure to <i>finally</i> meet you. So what's next? || {2}Okay, tell me what I need to do to get rid of them."}
+        ],
+        [
+          {"MessageID": "curator4", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."},
         ]
       ]
     }
