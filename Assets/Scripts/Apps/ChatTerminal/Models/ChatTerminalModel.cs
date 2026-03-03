@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Commons;
+using Apps.ChatTerminal.Controllers;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -198,6 +199,27 @@ namespace Apps.ChatTerminal.Models
             }
             
             profile.IsLoaded = false;
+        }
+
+        /// <summary>
+        /// Changes the username of a specific chat profile in both the JSON model and the loaded profile in the view.
+        /// </summary>
+        /// <param name="userID">ID of the user</param>
+        /// <param name="newName">New username</param>
+        /// <param name="loadedProfiles">Loaded profiles in the view</param>
+        public void ChangeUsername(string userID, string newName, List<ChatProfile> loadedProfiles)
+        {
+            ChatProfileModel modelJson = LoadedChatProfilesFromJson.FirstOrDefault(x => x.UserID == userID);
+            ChatProfile modelLoaded = loadedProfiles.FirstOrDefault(x => x.UserID == userID);
+            
+            if (modelJson == null || !modelLoaded)
+            {
+                Debug.LogError($"Chat profile with ID {userID} not found.");
+                return;
+            }
+            
+            modelJson.Username = newName;
+            modelLoaded.Username = newName;
         }
     }
 }

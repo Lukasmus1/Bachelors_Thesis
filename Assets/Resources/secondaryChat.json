@@ -100,6 +100,20 @@
             {"MessageID":  "dptConTruth6", "Sender": "Player", "Text": "No, I am getting a weird error popup every time you try to connect"},
             {"MessageID":  "dptConTruthDone", "Sender": "headOfDpt", "Text": "Oh for fuck sake..."}
           ]
+        },
+        {
+          "MessageGroupID": "dptChoiceHelp",
+          "MessagesGroup": [
+            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "we found that the scammer is using your computer for his operation"},
+            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "his "}
+          ]
+        },
+        {
+          "MessageGroupID": "dptChoiceIgnore",
+          "MessagesGroup": [
+            {"MessageID":  "dptChoiceIgnore1", "Sender": "headOfDpt", "Text": "hello????"},
+            {"MessageID":  "dptChoiceEnd", "Sender": "headOfDpt", "Text": "oh for fuck sake"}
+          ]
         }
       ]
     },

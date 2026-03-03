@@ -106,5 +106,15 @@ namespace Apps.ChatTerminal.Controllers
             chatTerminalModel.UnloadProfile(profileId);
             _chatTerminalView.UnloadProfile(profileId);
         }
+
+        /// <summary>
+        /// Changes the username of a specific chat profile in both the JSON model and the loaded profile in the view.
+        /// </summary>
+        /// <param name="userID">ID of the user</param>
+        /// <param name="newName">New username</param>
+        public void ChangeUsername(string userID, string newName)
+        {
+            chatTerminalModel.ChangeUsername(userID, newName, _chatTerminalView.Profiles);
+        }
     }
 }

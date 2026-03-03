@@ -8,7 +8,7 @@ namespace Apps.ChatTerminal.Models
     public class ChatProfile : MonoBehaviour
     {
         public string UserID { get; private set; }
-        public string Username { get; private set; }
+        public string Username { get; set; }
 
         public event Action<MessageStatus> MessageStatusChanged;
         private MessageStatus _status;

@@ -101,6 +101,13 @@
         [
           {"MessageID": "dpt47", "Sender": "Player", "Text": "I have managed to find the password and decrypt the image."},
           {"MessageID": "dptScreenshotChoice", "Sender": "CHOICE", "Text": "{0}The picture seems to be a screenshot of MY desktop [Truth] || {1}It doesn't look familiar at all [Lie]"}
+        ],
+        [
+          {"MessageID": "dpt48", "Sender": "headOfDpt", "Text": "so ive managed to pull some more information on this guy and i think this time we got him"},
+          {"MessageID": "dptLastTask", "Sender": "headOfDpt", "Text": "are you there?"}
+        ],
+        [
+          {"MessageID": "dptChoice", "Sender": "CHOICE", "Text": "{0}Yes, I'm here. What did you find? || {1}[Ignore]"}
         ]
       ]
     },
@@ -192,7 +199,11 @@
           {"MessageID": "curatorQuestionChoice", "Sender": "CHOICE", "Text": "{0}Okay, but why just not let them leave into the internet? || {1}Pleasure to <i>finally</i> meet you. So what's next? || {2}Okay, tell me what I need to do to get rid of them."}
         ],
         [
-          {"MessageID": "curator4", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."},
+          {"MessageID": "w", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."}
+        ],
+        [
+          {"MessageID": "curator11", "Sender": "curator", "Text": "You don't need to pretend play a detective anymore, he's not important right now."},
+          {"MessageID": "curatorLastDetective", "Sender": "curator", "Text": "Focus on finding K-P's main file and deleting it."}
         ]
       ]
     }
