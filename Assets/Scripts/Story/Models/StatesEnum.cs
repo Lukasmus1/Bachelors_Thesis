@@ -26,6 +26,7 @@ namespace Story.Models
         HOfDptResponseTruth,
         CuratorDetector,
         Question,
-        HelpChoice
+        HelpChoice,
+        Aggression 
     }
 }

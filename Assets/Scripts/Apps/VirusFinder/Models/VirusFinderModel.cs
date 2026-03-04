@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Apps.VirusFinder.Controllers;
+using Commons;
 using Desktop.Commons;
 using Desktop.Models;
 using Desktop.Views;
@@ -33,7 +34,7 @@ namespace Apps.VirusFinder.Models
         /// <inheritdoc cref="VirusFinderController.CreateRandomViruses"/>
         public void CreateRandomViruses(int maxCount)
         {
-            var scriptHolder = GameObject.FindGameObjectWithTag("ScriptHolder").GetComponent<ScriptReferenceLinker>();
+            ScriptReferenceLinker scriptHolder = Tools.GetScriptReferenceLinker();
             Transform iconParent = scriptHolder.GetIconParent().transform;
             
             for (int i = 0; i < Random.Range(1, maxCount + 1); i++)

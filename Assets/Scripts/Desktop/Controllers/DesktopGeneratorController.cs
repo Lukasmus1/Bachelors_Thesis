@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Commons;
 using Desktop.Abstracts;
 using Desktop.Models;
 using Desktop.Models.IconGeneration;
@@ -136,6 +137,19 @@ namespace Desktop.Controllers
             if (active)
             {
                 NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.NewApp, "New App Downloaded: " + name);
+            }
+        }
+
+        /// <summary>
+        /// Closes all apps
+        /// </summary>
+        public void CloseAllApps()
+        {
+            List<GameObject> linker = Tools.GetScriptReferenceLinker().GetAllApps();
+
+            foreach (GameObject obj in linker.Where(obj => obj.activeSelf))
+            {
+                obj.SetActive(false);
             }
         }
     }

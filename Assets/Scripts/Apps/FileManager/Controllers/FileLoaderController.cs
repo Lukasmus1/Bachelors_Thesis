@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Apps.CipherSolver.Commons;
 using Apps.FileManager.Models;
 using Apps.FileManager.Views;
+using Commons;
 using FourthWall.Commons;
 using UnityEngine;
 using User.Commons;
@@ -98,9 +99,7 @@ namespace Apps.FileManager.Controllers
         public void CreateUsersScreenshotFile()
         {
             //Get the mono behavior from the script reference linker
-            MonoBehaviour monoBehavior = GameObject.FindGameObjectWithTag("ScriptHolder")
-                .GetComponent<ScriptReferenceLinker>()
-                .GetMonoBehavior();
+            MonoBehaviour monoBehavior = Tools.GetScriptReferenceLinker().GetMonoBehavior();
 
             //Get the screenshot texture from the user information controller and check if it's null
             Texture2D screenshotTexture;

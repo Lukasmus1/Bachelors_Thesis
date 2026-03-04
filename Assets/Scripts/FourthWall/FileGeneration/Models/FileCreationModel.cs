@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Text;
+using Commons;
 using FourthWall.FileGeneration.Controllers;
+using UnityEngine;
+using Random = System.Random;
 
 namespace FourthWall.FileGeneration.Models
 {
@@ -13,6 +17,28 @@ namespace FourthWall.FileGeneration.Models
             DestroyFile(fileName);
             
             File.WriteAllText(fileName, content);
+        }
+
+        /// <summary>
+        /// Creates multiple files with the specified names and a delay between each creation. The content of each file is the same as its name.
+        /// </summary>
+        /// <param name="dir">Directory to save the files</param>
+        /// <param name="text">Name and content of the file</param>
+        /// <param name="delay">Delay between creations</param>
+        public void CreateMultipleFilesWithDelay(string dir, string[] text, float delay)
+        {
+            MonoBehaviour mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
+            
+            mb.StartCoroutine(CreateMultipleFileWithDelayCoroutine(dir, text, delay));
+        }
+        
+        private IEnumerator CreateMultipleFileWithDelayCoroutine(string dir, string[] fileName, float delay)
+        {
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                CreateFile($"{dir}\\{10+i}_{fileName[i]}.txt", fileName[i]);
+                yield return new WaitForSeconds(delay);
+            }
         }
         
         /// <inheritdoc cref="FileGenerationController.CreateFile"/>
@@ -90,6 +116,20 @@ namespace FourthWall.FileGeneration.Models
             CreateHiddenFile(filePath, content, true);
             
             return filePath;
+        }
+
+        /// <summary>
+        /// Opens the Windows file explorer at the specified path.
+        /// </summary>
+        /// <param name="path"></param>
+        public void OpenFileExplorer(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            
+            System.Diagnostics.Process.Start("explorer.exe", path);
         }
     }
 }

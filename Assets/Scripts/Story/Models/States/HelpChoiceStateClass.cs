@@ -58,9 +58,13 @@ namespace Story.Models.States
 
         private void TransitionCheck(string messageID)
         {
-            if (messageID != "dptChoiceEnd")
+            if (messageID == "dptChoiceHelpEnd")
             {
-                return;
+                NextState = (int)StatesEnum.Default;
+            }
+            else if (messageID == "dptChoiceIgnoreEnd")
+            {
+                NextState = (int)StatesEnum.Aggression;
             }
 
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;

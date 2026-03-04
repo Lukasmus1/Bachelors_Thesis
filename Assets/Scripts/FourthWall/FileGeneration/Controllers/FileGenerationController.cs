@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Commons;
 using FourthWall.FileGeneration.Models;
 
 namespace FourthWall.FileGeneration.Controllers
@@ -79,6 +80,19 @@ namespace FourthWall.FileGeneration.Controllers
         public string CreateImportantHiddenFileLocation()
         {
             return _model.CreateImportantFileLocation();
+        }
+
+        /// <summary>
+        /// Force opens file explorer and creates several files in a sequence. Every file has a word given in the text.
+        /// Each file is created with a delay, so they don't appear all at once. The files are created in the specified directory.
+        /// </summary>
+        /// <param name="text">Names of the files</param>
+        /// <param name="directoryPath">Path to the directory in which to create the files in sequence</param>
+        /// <param name="delay">Delay between each file creation</param>
+        public void CreateCreepyFileSequence(string text, string directoryPath, float delay)
+        {
+            _model.OpenFileExplorer(directoryPath);
+            _model.CreateMultipleFilesWithDelay(directoryPath, text.Split(" "), delay);
         }
     }
 }

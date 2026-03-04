@@ -105,14 +105,15 @@
           "MessageGroupID": "dptChoiceHelp",
           "MessagesGroup": [
             {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "we found that the scammer is using your computer for his operation"},
-            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "his "}
+            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "his "},
+            {"MessageID":  "dptChoiceHelpEnd", "Sender": "headOfDpt", "Text": "his "}
           ]
         },
         {
           "MessageGroupID": "dptChoiceIgnore",
           "MessagesGroup": [
             {"MessageID":  "dptChoiceIgnore1", "Sender": "headOfDpt", "Text": "hello????"},
-            {"MessageID":  "dptChoiceEnd", "Sender": "headOfDpt", "Text": "oh for fuck sake"}
+            {"MessageID":  "dptChoiceIgnoreEnd", "Sender": "headOfDpt", "Text": "oh for fuck sake"}
           ]
         }
       ]
@@ -140,6 +141,12 @@
           "MessageGroupID": "kpDesktopFile",
           "MessagesGroup":[
             {"MessageID": "kpConsequence", "Sender": "kp", "Text": "<color=red><b>don't you dare delete me</color></b>"}
+          ]
+        },
+        {
+          "MessageGroupID": "kpLastWarning",
+          "MessagesGroup":[
+            {"MessageID": "kpConsequence", "Sender": "kp", "Text": "LAST WARNING LEAVE ME ALONE"}
           ]
         }
       ]

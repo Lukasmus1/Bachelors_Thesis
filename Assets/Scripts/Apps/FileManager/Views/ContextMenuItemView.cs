@@ -1,5 +1,6 @@
 ﻿using System;
 using Apps.FileViewer.Commons;
+using Commons;
 using Desktop.Views;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Apps.FileManager.Views
         
         private void Awake()
         {
-            referenceLinker = GameObject.FindGameObjectWithTag("ScriptHolder").GetComponent<ScriptReferenceLinker>();
+            referenceLinker = Tools.GetScriptReferenceLinker();
         }
 
         /// <summary>
@@ -42,8 +43,7 @@ namespace Apps.FileManager.Views
         /// </summary>
         public void OpenOnly()
         {
-            GameObject desktopHolder = GameObject.FindGameObjectWithTag("ScriptHolder")
-                .GetComponent<ScriptReferenceLinker>().GetMainCanvas();
+            GameObject desktopHolder = Tools.GetScriptReferenceLinker().GetMainCanvas();
             
             Instantiate(FileViewerMvc.Instance.FileLoaderController.OpenedFile, desktopHolder.transform);
         }   

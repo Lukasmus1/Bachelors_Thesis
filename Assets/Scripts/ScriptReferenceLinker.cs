@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Views;
 using Apps.FileManager.Commons;
@@ -89,6 +90,23 @@ public class ScriptReferenceLinker : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Gets all the apps in a list, used for example to close all apps at once.
+    /// </summary>
+    /// <returns>List of all apps on the desktop</returns>
+    public List<GameObject> GetAllApps()
+    {
+        return new List<GameObject>
+        {
+            chatTerminalApp,
+            fileLoaderApp,
+            fileViewerApp,
+            autostereoApp,
+            cipherSolverApp,
+            virusFinderApp
+        };
+    }
+    
     /// <summary>
     /// Gets the MonoBehaviour reference of this script, used for coroutines in other classes that can't inherit from MonoBehaviour.
     /// </summary>

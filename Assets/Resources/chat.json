@@ -204,6 +204,12 @@
         [
           {"MessageID": "curator11", "Sender": "curator", "Text": "You don't need to pretend play a detective anymore, he's not important right now."},
           {"MessageID": "curatorLastDetective", "Sender": "curator", "Text": "Focus on finding K-P's main file and deleting it."}
+        ],
+        [
+          {"MessageID": "curator13", "Sender": "curator", "Text": "Okay so deleting this last K-P's file, made him quite angry."},
+          {"MessageID": "curator14", "Sender": "curator", "Text": "Expect him to do some stuff to scare you, but don't worry, as long as I'm here, I can stop him from doing anything actually harmful to you or your computer."},
+          {"MessageID": "curator15", "Sender": "curator", "Text": "This behaviour actually serves us quite well, because it could reveal this last file."},
+          {"MessageID": "curatorKPAggression", "Sender": "curator", "Text": "Now, just try to"}
         ]
       ]
     }
