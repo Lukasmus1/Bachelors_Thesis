@@ -57,10 +57,23 @@
             var decryptedText = decryptVigenere(encryptedText);
             
             let nameLen = parseInt(decryptedText.substring(0, 4));
-            //err check
-            let name = decryptedText.substring(4, nameLen);
-            //err check
+            if (isNaN(nameLen) || nameLen <= 0)
+            {
+                throw new Error("bad link");
+            }
+            
+            let name = decryptedText.substring(4, 4 + nameLen);
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            if (name.length != nameLen)
+            {
+                throw new Error("bad link");
+            }
+
             let hash = decryptedText.slice(-10);
+            if (decryptedText.substring(4 + nameLen, decryptedText.length - 10).length != 0)
+            {
+                throw new Error("bad link");
+            }
 
             if (!compareHash(name, hash))
             {
@@ -84,7 +97,7 @@
 
             const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
-            return hashHex.substring(0, 10) === hash;
+            return hashHex.substring(0, 10).localeCompare(hash) === 0;
         }
 
         function decryptVigenere(text)

@@ -65,8 +65,9 @@ namespace Apps.CipherSolver.Models
         /// <param name="plainText">Text to encrypt or decrypt</param>
         /// <param name="key">Key to encrypt or decrypt with</param>
         /// <param name="isEncrypt">Are we encrypting?</param>
+        /// <param name="alphabet">Optional alphabet used for encryption or decryption</param>
         /// <returns></returns>
-        public string EncryptDecryptText(string plainText, string key, bool isEncrypt)
+        public string EncryptDecryptText(string plainText, string key, bool isEncrypt, string alphabet = VIGENERE_CHARS)
         {
             StringBuilder encrypted = new();
             var currentKeyIndex = 0;
@@ -74,14 +75,14 @@ namespace Apps.CipherSolver.Models
             foreach (char c in plainText)
             {
                 //Ignore characters not in VIGENERE_CHARS (such as newline, spaces, etc.)
-                if (!VIGENERE_CHARS.Contains(c.ToString()))
+                if (!alphabet.Contains(c.ToString()))
                 {
                     encrypted.Append(c);
                     continue;
                 }
                 
-                int index = GetIndex(c, isEncrypt, key, currentKeyIndex);
-                encrypted.Append(VIGENERE_CHARS[index]);
+                int index = GetIndex(c, isEncrypt, key, currentKeyIndex, alphabet);
+                encrypted.Append(alphabet[index]);
                 
                 //Increment key index and loop around if necessary
                 currentKeyIndex = (currentKeyIndex + 1) % key.Length;
@@ -97,13 +98,14 @@ namespace Apps.CipherSolver.Models
         /// <param name="isEncrypt">Are we encrypting?</param>
         /// <param name="key">Key to encrypt or decrypt</param>
         /// <param name="currentKeyIndex">Current index</param>
+        /// <param name="alphabet">Optional alphabet used for encryption or decryption</param>
         /// <returns>Index</returns>
-        private int GetIndex(char c, bool isEncrypt, string key, int currentKeyIndex)
+        private int GetIndex(char c, bool isEncrypt, string key, int currentKeyIndex, string alphabet)
         {
             if (isEncrypt)
-                return (VIGENERE_CHARS.IndexOf(c) + VIGENERE_CHARS.IndexOf(key[currentKeyIndex])) % VIGENERE_CHARS.Length;
+                return (alphabet.IndexOf(c) + alphabet.IndexOf(key[currentKeyIndex])) % alphabet.Length;
             else
-                return (VIGENERE_CHARS.IndexOf(c) - VIGENERE_CHARS.IndexOf(key[currentKeyIndex]) + VIGENERE_CHARS.Length) % VIGENERE_CHARS.Length;
+                return (alphabet.IndexOf(c) - alphabet.IndexOf(key[currentKeyIndex]) + alphabet.Length) % alphabet.Length;
         }
 
         /// <summary>

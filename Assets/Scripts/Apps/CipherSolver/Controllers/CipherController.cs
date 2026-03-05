@@ -38,16 +38,17 @@ namespace Apps.CipherSolver.Controllers
         {
             return cipherModel.GenerateRandomName().ToLower();
         }
-        
+
         /// <summary>
         /// Encrypts a plain text using the Vigenere cipher with the provided key
         /// </summary>
         /// <param name="plainText">Text to encrypt</param>
         /// <param name="key">Cipher key</param>
+        /// <param name="alphabet">Optional alphabet used for encryption</param>
         /// <returns>Encrypted text</returns>
-        public string EncryptText(string plainText, string key)
+        public string EncryptText(string plainText, string key, string alphabet = null)
         {
-            return cipherModel.EncryptDecryptText(plainText, key, true);
+            return alphabet == null ? cipherModel.EncryptDecryptText(plainText, key, true) : cipherModel.EncryptDecryptText(plainText, key, true, alphabet);
         }
         
         /// <summary>
@@ -55,10 +56,11 @@ namespace Apps.CipherSolver.Controllers
         /// </summary>
         /// <param name="cipherText">Text to encrypt</param>
         /// <param name="key">Cipher key</param>
+        /// /// <param name="alphabet">Optional alphabet used for encryption</param>
         /// <returns>Encrypted text</returns>
-        public string DecryptText(string cipherText, string key)
+        public string DecryptText(string cipherText, string key, string alphabet = null)
         {
-            string text = cipherModel.EncryptDecryptText(cipherText, key, false); 
+            string text = alphabet == null ? cipherModel.EncryptDecryptText(cipherText, key, false) : cipherModel.EncryptDecryptText(cipherText, key, false, alphabet);
             onDecryptionAttempt?.Invoke(cipherText);
             return text;
         }
