@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+</head>
+<body>
+    <script>
+        window.onload = showMsg();
+
+        async function showMsg() 
+        {
+            try 
+            {
+                var decodedName = await getNameFromEcnodedText();
+            } 
+            catch (e) 
+            {
+                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 50px;'>404 - PAGE NOT FOUND</h1>";   
+                throw e;
+            }
+
+            var h1Node = document.createElement("h1");
+            var h1Text = document.createTextNode("Thank you, " + decodedName + ".")
+
+            h1Node.appendChild(h1Text);
+
+            document.body.appendChild(h1Node);
+        }
+
+        function getStringFromUrl()   
+        {
+            const params = new URLSearchParams(window.location.search);
+            const encodedText = params.get('m');
+
+            if (encodedText)
+            {
+                return encodedText;
+            }
+            else
+            {
+                throw new Error("bad link");
+            }
+        }
+
+        async function getNameFromEcnodedText()
+        {
+            let text = getStringFromUrl();
+
+            if (text.length < 14)
+            {
+                throw new Error("bad link");
+            }
+
+            var encryptedText = getStringFromUrl();
+            var decryptedText = decryptVigenere(encryptedText);
+            
+            let nameLen = parseInt(decryptedText.substring(0, 4));
+            //err check
+            let name = decryptedText.substring(4, nameLen);
+            //err check
+            let hash = decryptedText.slice(-10);
+
+            if (!compareHash(name, hash))
+            {
+                throw new Error("bad link");
+            }
+            else
+            {
+                return name;
+            }
+
+            return await compareHash(encryptedText, hash);
+        }   
+
+        async function compareHash(stringToHash, hash)
+        {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(stringToHash);
+
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            return hashHex.substring(0, 10) === hash;
+        }
+
+        function decryptVigenere(text)
+        {
+            const alphabet = "7ĚŠČ8ŘŽ9ÝÁÍ0ÉQWERTZUIOPÚASDFGH1JKLŮ-MNBVCXYěšč2řžýáíéúpoiuz3trewqasd4fghjklůmn5bvcxy6";
+            const key = "plushie";
+
+            var res = "";
+            var currentKeyIndex = 0;
+            for (let i = 0; i < text.length; i++)
+            {
+                let c = text[i];
+
+                if (!alphabet.includes(c))
+                {
+                    res += c;
+                    continue;
+                }
+
+                let index = (alphabet.indexOf(c) - alphabet.indexOf(key[currentKeyIndex]) + alphabet.length) % alphabet.length; 
+
+                res += alphabet[index];
+
+                currentKeyIndex = (currentKeyIndex + 1) % key.length;
+            }
+
+            return res;
+        }
+    </script>
+
+</body>
+</html>

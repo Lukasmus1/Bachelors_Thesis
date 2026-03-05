@@ -1,0 +1,7 @@
+7ĚŠČ8ŘŽ9ÝÁÍ0ÉQWERTZUIOPÚASDFGH1JKLŮ-MNBVCXYěšč2řžýáíéúpoiuz3trewqasd4fghjklůmn5bvcxy6
+plushie
+
+
+first 4 -> length of the name 
+following -> name
+last 10 chars -> first 10 chars of hash of the name
