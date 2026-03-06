@@ -11,8 +11,9 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
+            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("curator");
-            ChatTerminalMvc.Instance.ChatTerminalController.ChangeUsername("kp", "Curator");
+            ChatTerminalMvc.Instance.ChatTerminalController.ChangeUsername("curator", "Curator");
         }
 
         public override void OnExit()
