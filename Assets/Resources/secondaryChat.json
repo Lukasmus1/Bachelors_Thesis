@@ -104,9 +104,11 @@
         {
           "MessageGroupID": "dptChoiceHelp",
           "MessagesGroup": [
-            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "we found that the scammer is using your computer for his operation"},
-            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "his "},
-            {"MessageID":  "dptChoiceHelpEnd", "Sender": "headOfDpt", "Text": "his "}
+            {"MessageID":  "dptChoiceHelp1", "Sender": "headOfDpt", "Text": "we found that the scammer is using your computer for their operation"},
+            {"MessageID":  "dptChoiceHelp2", "Sender": "headOfDpt", "Text": "have you seen something like K-P on your pc? in any context?"},
+            {"MessageID":  "dptChoiceHelp3", "Sender": "Player", "Text": "Yes, I did"},
+            {"MessageID":  "dptChoiceHelp2", "Sender": "headOfDpt", "Text": "okay this should be enough to get him"},
+            {"MessageID":  "dptChoiceHelpEnd", "Sender": "headOfDpt", "Text": "thank you for your help detective, ill reach out soon with details about their arrest"}
           ]
         },
         {

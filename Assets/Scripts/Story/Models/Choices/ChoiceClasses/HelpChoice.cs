@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Apps.ChatTerminal.Commons;
-using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -16,6 +15,8 @@ namespace Story.Models.Choices.ChoiceClasses
                 {
                     ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("headOfDpt", "dptChoiceHelp");
                     ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
+                    
+                    UserMvc.Instance.UserController.SetPersistentData(UserDataType.LastHelpChoiceHelp, true);
                 }),
             new ChoiceActionClass(
                 1,
@@ -23,6 +24,8 @@ namespace Story.Models.Choices.ChoiceClasses
                 {
                     ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("headOfDpt", "dptChoiceIgnore");
                     ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
+                    
+                    UserMvc.Instance.UserController.SetPersistentData(UserDataType.LastHelpChoiceHelp, false);
                 })
         };
     }

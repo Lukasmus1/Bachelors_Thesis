@@ -40,6 +40,9 @@ namespace Story.Models
                 StatesEnum.CuratorDetector => new CuratorDetectorStateClass(),
                 StatesEnum.Question => new QuestionStateClass(),
                 StatesEnum.HelpChoice => new HelpChoiceStateClass(),
+                StatesEnum.ItHelp => new ItHelpStateClass(),
+                StatesEnum.Preparation => new PreparationStateClass(),
+                StatesEnum.PreAggression => new PreAggressionStateClass(),
                 StatesEnum.Aggression => new AggressionStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };

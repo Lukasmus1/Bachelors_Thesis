@@ -14,6 +14,8 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
             
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped += ContinuationCheck;
+            
+            LoadFromState();
         }
 
         public override void OnExit()
@@ -60,11 +62,11 @@ namespace Story.Models.States
         {
             if (messageID == "dptChoiceHelpEnd")
             {
-                NextState = (int)StatesEnum.Default;
+                NextState = (int)StatesEnum.ItHelp;
             }
             else if (messageID == "dptChoiceIgnoreEnd")
             {
-                NextState = (int)StatesEnum.Aggression;
+                NextState = (int)StatesEnum.Preparation;
             }
 
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;

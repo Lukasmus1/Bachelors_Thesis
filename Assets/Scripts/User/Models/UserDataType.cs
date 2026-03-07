@@ -10,7 +10,9 @@
         PictureCode,
         NumberPatternCode,
         ImportantFileLocation,
+        LastFileLocation,
         DeletedVirusFile,
-        FirstChoiceSideWithCops
+        FirstChoiceSideWithCops,
+        LastHelpChoiceHelp
     }
 }

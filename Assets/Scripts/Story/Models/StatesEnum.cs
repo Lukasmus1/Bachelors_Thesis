@@ -27,6 +27,9 @@ namespace Story.Models
         CuratorDetector,
         Question,
         HelpChoice,
-        Aggression 
+        ItHelp,
+        Preparation,
+        PreAggression,
+        Aggression
     }
 }

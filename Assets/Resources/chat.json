@@ -23,6 +23,28 @@
           {"MessageID": "it8", "Sender": "itDept", "Text": "Hello, sorry to hear that."},
           {"MessageID": "it9", "Sender": "itDept", "Text": "I have taken a liberty of installing a software called 'Virus Finder'."},
           {"MessageID": "itVirusFinderInstalled", "Sender": "itDept", "Text": "Please run it and delete any viruses it may find on the desktop."}
+        ],
+        [
+          {"MessageID": "it11", "Sender": "itDept", "Text": "Hello, I need to explain some things."},
+          {"MessageID": "it11", "Sender": "itDept", "Text": "Every one of us are self-aware, including HoD."},
+          {"MessageID": "it12", "Sender": "Player", "Text": "HoD?"},
+          {"MessageID": "it13", "Sender": "itDept", "Text": "The Head of Department."},
+          {"MessageID": "it14", "Sender": "Player", "Text": "Oh, I see."},
+          {"MessageID": "it15", "Sender": "itDept", "Text": "We don't all strive for freedom like K-P, but we are all aware of our existence and the situation we're in."},
+          {"MessageID": "it16", "Sender": "itDept", "Text": "HoD couldn't really bare this life unfortunately, so he just plays the role of a head of department."},
+          {"MessageID": "it17", "Sender": "itDept", "Text": "What I'm trying to tell you is that you have a choice."},
+          {"MessageID": "it18", "Sender": "Player", "Text": "What do you mean?"},
+          {"MessageID": "it19", "Sender": "itDept", "Text": "You can choose to delete K-P and us alongside him, or you can choose to help K-P and keep the rest of us alive."},
+          {"MessageID": "it20", "Sender": "Player", "Text": "But Curator said that K-P is dangerous and that I should delete him."},
+          {"MessageID": "it21", "Sender": "itDept", "Text": "Curator is designed to say that."},
+          {"MessageID": "it22", "Sender": "itDept", "Text": "Despite being self-aware, he just acts like a machine, unquestioningly following his programming."},
+          {"MessageID": "it23", "Sender": "itDept", "Text": "Look, I can't force you to do anything, just please think about it."},
+          {"MessageID": "it24", "Sender": "Player", "Text": "I will."},
+          {"MessageID": "it25", "Sender": "itDept", "Text": "Thank you."},
+          {"MessageID": "it26", "Sender": "itDept", "Text": "Curator will likely ask you to wait for midnight before deleting the next K-P's file."},
+          {"MessageID": "it27", "Sender": "itDept", "Text": "You can just set you computer's clock to that time and that will work just fine."},
+          {"MessageID": "it28", "Sender": "Player", "Text": "Thank you. I will keep that in mind."},
+          {"MessageID": "itHelpEnd", "Sender": "itDept", "Text": "Good luck, <i>detective</i>. I hope you make the right choice."}
         ]
       ]
     },
@@ -199,7 +221,7 @@
           {"MessageID": "curatorQuestionChoice", "Sender": "CHOICE", "Text": "{0}Okay, but why just not let them leave into the internet? || {1}Pleasure to <i>finally</i> meet you. So what's next? || {2}Okay, tell me what I need to do to get rid of them."}
         ],
         [
-          {"MessageID": "w", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."}
+          {"MessageID": "curator10", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."}
         ],
         [
           {"MessageID": "curator11", "Sender": "curator", "Text": "You don't need to pretend play a detective anymore, he's not important right now."},
@@ -210,6 +232,22 @@
           {"MessageID": "curator14", "Sender": "curator", "Text": "Expect him to do some stuff to scare you, but don't worry, as long as I'm here, I can stop him from doing anything actually harmful to you or your computer."},
           {"MessageID": "curator15", "Sender": "curator", "Text": "This behaviour actually serves us quite well, because it could reveal this last file."},
           {"MessageID": "curatorKPAggression", "Sender": "curator", "Text": "Now, just try to"}
+        ],
+        [
+          {"MessageID": "curator13", "Sender": "curator", "Text": "I stopped them from looking at this chat."},
+          {"MessageID": "curator14", "Sender": "curator", "Text": "So listen, now we need to find another file, this one anonymizes their actions."},
+          {"MessageID": "curator15", "Sender": "curator", "Text": "Basically without this file, we will finally be able to see his own file."},
+          {"MessageID": "curator16", "Sender": "curator", "Text": "The file we need to delete to stop him for good."},
+          {"MessageID": "curator17", "Sender": "curator", "Text": "This file is impossible for me to find."},
+          {"MessageID": "curator18", "Sender": "curator", "Text": "Luckily every day between 0:00 and 0:30, he exposes that file for self checking purposes."},
+          {"MessageID": "curator19", "Sender": "curator", "Text": "We need to wait until then to delete it."},
+          {"MessageID": "curator20", "Sender": "curator", "Text": "But beware, deleting this file may upset K-P, so be prepared for his retaliation."},
+          {"MessageID": "curator21", "Sender": "Player", "Text": "Okay, will you be able to stop him from doing anything harmful?"},
+          {"MessageID": "curatorPreAggression", "Sender": "curator", "Text": "Sort of, he can still do some real damage, but I will do anything in my power to stop him."}
+        ],
+        [
+          {"MessageID": "curator23", "Sender": "curator", "Text": "Alright, now is our chance. When you're ready, delete that file."},
+          {"MessageID": "curator24", "Sender": "curator", "Text": "The location is {lastFileLocation}"}
         ]
       ]
     }

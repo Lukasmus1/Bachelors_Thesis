@@ -48,11 +48,11 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
-            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
-            
             GUIUtility.systemCopyBuffer =
                 ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("curator",
                     "curatorHiddenFile");
+            
+            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
             
             ImportantFile.OnImportantFileDeleted += ChangeToNextState;
         }

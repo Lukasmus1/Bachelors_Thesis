@@ -83,6 +83,23 @@ namespace FourthWall.FileGeneration.Controllers
         }
 
         /// <summary>
+        /// Creates a location of the last important file for K-P. 
+        /// </summary>
+        /// <returns>Location of the last important file</returns>
+        public string CreateLastFileLocation()
+        {
+            return _model.CreateLastFileLocation();
+        }
+        
+        /// <summary>
+        /// Creates the last important K-P's file.
+        /// </summary>
+        public void CreateLastImportantFile()
+        {
+            _model.CreateLastImportantFile();
+        }
+        
+        /// <summary>
         /// Force opens file explorer and creates several files in a sequence. Every file has a word given in the text.
         /// Each file is created with a delay, so they don't appear all at once. The files are created in the specified directory.
         /// </summary>

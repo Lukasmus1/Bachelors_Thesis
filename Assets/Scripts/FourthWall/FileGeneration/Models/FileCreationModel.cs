@@ -5,6 +5,8 @@ using System.Text;
 using Commons;
 using FourthWall.FileGeneration.Controllers;
 using UnityEngine;
+using User.Commons;
+using User.Models;
 using Random = System.Random;
 
 namespace FourthWall.FileGeneration.Models
@@ -96,19 +98,13 @@ namespace FourthWall.FileGeneration.Models
         /// <inheritdoc cref="FileGenerationController.CreateImportantHiddenFileLocation"/>
         public string CreateImportantFileLocation()
         {
-            //Create a new directory that mimics a random directory in the LocalAppData\low folder.
-            string localAppDataLow = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
-                "..", 
-                "LocalLow"
-            );
-            string fullPath = Path.GetFullPath(localAppDataLow); //Removes the .. and gives us the actual path to the LocalLow folder
+            string fullPath = GetLocalAppDataLowPath();
             string[] dirs = Directory.GetDirectories(fullPath);
             string randomPath = dirs[new Random().Next(dirs.Length)] + "_Backup";
             Directory.CreateDirectory(randomPath);
             
             //Create a hidden file in that directory with the generated content.
-            const string fileName = "do_not_delete.txt";
+            string fileName = GenerateRandomFileName();
             string filePath = Path.Combine(randomPath, fileName);
 
             string content = GenerateFileData();
@@ -116,6 +112,44 @@ namespace FourthWall.FileGeneration.Models
             CreateHiddenFile(filePath, content, true);
             
             return filePath;
+        }
+
+        /// <inheritdoc cref="FileGenerationController.CreateLastFileLocation"/>
+        public string CreateLastFileLocation()
+        {
+            string localLowPath = GetLocalAppDataLowPath();
+            const string dirName = "SelfChecker";
+            string newDirPath = Path.Combine(localLowPath, dirName);
+
+            string fileName = GenerateRandomFileName();
+            string filePath = Path.Combine(newDirPath, fileName);
+
+            return filePath;
+        }
+
+        /// <inheritdoc cref="FileGenerationController.CreateLastImportantFile"/>
+        public void CreateLastImportantFile()
+        {
+            string path = UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation);
+            string content = GenerateFileData();
+            
+            CreateFile(path, content);
+        }
+        
+        /// <summary>
+        /// Returns the path to the LocalLow folder of the user's computer.
+        /// </summary>
+        /// <returns>The path to the LocalLow folder of the user's computer.</returns>
+        private string GetLocalAppDataLowPath()
+        {
+            //Create a new directory that mimics a random directory in the LocalAppData\low folder.
+            string localAppDataLow = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+                "..", 
+                "LocalLow"
+            );
+            
+            return Path.GetFullPath(localAppDataLow); //Removes the .. and gives us the actual path to the LocalLow folder
         }
 
         /// <summary>

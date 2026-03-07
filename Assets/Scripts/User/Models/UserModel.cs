@@ -55,7 +55,8 @@ namespace User.Models
                 new(UserDataType.PictureCodeYear, CipherMvc.Instance.CipherController.GeneratePictureYearCode()),
                 new(UserDataType.ScammerName, CipherMvc.Instance.CipherController.GenerateRandomName()),
                 new(UserDataType.NumberPatternCode, FourthWallMvc.Instance.NumberPatternController.CreateRandomNumberPattern()),
-                new(UserDataType.ImportantFileLocation, FourthWallMvc.Instance.FileGenerationController.CreateImportantHiddenFileLocation())
+                new(UserDataType.ImportantFileLocation, FourthWallMvc.Instance.FileGenerationController.CreateImportantHiddenFileLocation()),
+                new(UserDataType.LastFileLocation, FourthWallMvc.Instance.FileGenerationController.CreateLastFileLocation()),
             };
             string pictureCode = UserMvc.Instance.UserController.ProceduralData(UserDataType.ScammerName) +
                                  UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCodeYear);
@@ -67,7 +68,8 @@ namespace User.Models
             PersistentData = new List<PersistentData>
             {
                 new(UserDataType.DeletedVirusFile, false),
-                new(UserDataType.FirstChoiceSideWithCops, false)
+                new(UserDataType.FirstChoiceSideWithCops, false),
+                new(UserDataType.LastHelpChoiceHelp, false)
             };
             
             SetProfilePicture();

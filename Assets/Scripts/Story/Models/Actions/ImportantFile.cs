@@ -1,4 +1,5 @@
 ﻿using System;
+using Commons;
 using FourthWall.Commons;
 using FourthWall.FileGeneration.Models;
 using UnityEngine;
@@ -16,11 +17,7 @@ namespace Story.Models.Actions
         
         public static void SetupFileDeletionDetection()
         {
-            GameObject scriptHolder = GameObject.FindWithTag("ScriptHolder");
-            if (!scriptHolder)
-            {
-                throw new Exception("ScriptHolder not found in scene. Cannot attach FileDeletionDetectionModel.");
-            }
+            GameObject scriptHolder = Tools.GetScriptHolder();
             _fileDeleteDetection = scriptHolder.AddComponent<FileDeletionDetectionModel>();
             string filePath = UserMvc.Instance.UserController.ProceduralData(UserDataType.ImportantFileLocation);
             _fileDeleteDetection.StartDetection(filePath, OnDeletion);

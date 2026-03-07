@@ -1,8 +1,4 @@
 ﻿using System;
-using Apps.ChatTerminal.Commons;
-using Commons;
-using Desktop.Commons;
-using FourthWall.Commons;
 
 namespace Story.Models.States
 {
@@ -14,9 +10,7 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("curator");
-            
-            LoadFromState();
+            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
         }
 
         public override void OnExit()
@@ -26,27 +20,7 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += NewFileCheck;
-        }
-
-        private void NewFileCheck(string messageID)
-        {
-            if (messageID != "curatorKPAggression")
-            {
-                return;
-            }
-            
-            var timer = new AsyncTimer();
-
-            _ = timer.StartTimer(1, () =>
-            {
-                DesktopMvc.Instance.DesktopGeneratorController.CloseAllApps();
-
-                string files = ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("kp", "kpLastWarning").Remove('\n'); 
-                FourthWallMvc.Instance.FileGenerationController.CreateCreepyFileSequence(files, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\-", 1);
-                
-                timer.Dispose();
-            });
+            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
         }
     }
 }
