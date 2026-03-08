@@ -5,6 +5,8 @@ using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Controllers;
 using Newtonsoft.Json;
 using UnityEngine;
+using User.Commons;
+using User.Models;
 
 namespace Apps.ChatTerminal.Models
 {
@@ -68,6 +70,8 @@ namespace Apps.ChatTerminal.Models
             
             foreach (ChatProfileModel profile in chatProfiles.ChatProfiles)
             {
+                UpdateProceduralData(profile.Messages);
+                
                 Sprite icon = icons.FirstOrDefault(sprite => sprite.name == profile.ProfilePicture);
                 if (icon)
                 {
@@ -83,12 +87,55 @@ namespace Apps.ChatTerminal.Models
                 else
                 {
                     profile.SecondaryChatProfileMessages = secondaryChat.Messages;   
+                    UpdateProceduralData(secondaryChat.Messages);
                 }
                 
                 _loadedChatProfiles.Add(profile);
             }
         }
 
+        /// <summary>
+        /// Replaces the tags in the chat messages with the corresponding procedural data for the user.
+        /// </summary>
+        /// <param name="messages">Messages to replace the tags in</param>
+        private void UpdateProceduralData(List<List<ChatMessage>> messages)
+        {
+            foreach (ChatMessage t in messages.SelectMany(chatMessages => chatMessages))
+            {
+                UpdateProceduralData(t);
+            }
+        }
+        
+        /// <summary>
+        /// Replaces the tags in the chat messages with the corresponding procedural data for the user.
+        /// </summary>
+        /// <param name="messageGroups">MessageGroup to replace the tags in</param>
+        private void UpdateProceduralData(List<MessageGroup> messageGroups)
+        {
+            foreach (ChatMessage chatMessage in messageGroups.SelectMany(group => group.MessagesGroup))
+            {
+                UpdateProceduralData(chatMessage);
+            }
+        }
+        
+        /// <summary>
+        /// Replaces the specific tags in the chat message with the corresponding procedural data for the user.
+        /// </summary>
+        /// <param name="chatMessage">ChatMessage to edit</param>
+        private void UpdateProceduralData(ChatMessage chatMessage)
+        {
+            chatMessage.Text = chatMessage.Text.Replace("{lastFileLocation}",
+                UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation));
+            
+            //More procedural data can be added here as needed
+        }
+        
+        /// <summary>
+        /// Gets the message group with the given ID from the secondary chat profile of the user with the given ID.
+        /// </summary>
+        /// <param name="userID">ID of the user</param>
+        /// <param name="messageGroupID">ID of the message group</param>
+        /// <returns>MessageGroup of given secondary message</returns>
         public MessageGroup GetSecondaryMessageGroup(string userID, string messageGroupID)
         {
             ChatProfileModel profile = _loadedChatProfiles.FirstOrDefault(profile => profile.UserID == userID);

@@ -27,7 +27,7 @@
         {
           "MessageGroupID": "openedMessages",
           "MessagesGroup": [
-            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and theirhis mother."},
+            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and theirs mother."},
             {"MessageID":  "message1", "Sender": "Player", "Text": "Seems like the scammer is currently in between jobs and scamming is their only source of income."},
             {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of stealing from good people"}
           ]

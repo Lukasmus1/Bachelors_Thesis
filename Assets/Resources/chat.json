@@ -247,7 +247,7 @@
         ],
         [
           {"MessageID": "curator23", "Sender": "curator", "Text": "Alright, now is our chance. When you're ready, delete that file."},
-          {"MessageID": "curator24", "Sender": "curator", "Text": "The location is {lastFileLocation}"}
+          {"MessageID": "curatorAggressionStart", "Sender": "curator", "Text": "The location is {lastFileLocation}"}
         ]
       ]
     }
