@@ -10,10 +10,10 @@ using User.Models;
 namespace Story.Models.States
 {
     [Serializable]
-    public class PreAggressionStateClass : StateClass
+    public class PreFinaleStateClass : StateClass
     {
-        public override int State { get; } = (int)StatesEnum.PreAggression;
-        public override int NextState { get; set; } = (int)StatesEnum.Aggression;
+        public override int State { get; } = (int)StatesEnum.PreFinale;
+        public override int NextState { get; set; } = (int)StatesEnum.EndingChoice;
 
         public override void OnEnter()
         {

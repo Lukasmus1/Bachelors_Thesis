@@ -42,8 +42,8 @@ namespace Story.Models
                 StatesEnum.HelpChoice => new HelpChoiceStateClass(),
                 StatesEnum.ItHelp => new ItHelpStateClass(),
                 StatesEnum.Preparation => new PreparationStateClass(),
-                StatesEnum.PreAggression => new PreAggressionStateClass(),
-                StatesEnum.Aggression => new AggressionStateClass(),
+                StatesEnum.PreFinale => new PreFinaleStateClass(),
+                StatesEnum.EndingChoice => new EndingChoiceStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

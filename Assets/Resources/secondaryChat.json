@@ -150,6 +150,39 @@
           "MessagesGroup":[
             {"MessageID": "kpConsequence", "Sender": "kp", "Text": "LAST WARNING LEAVE ME ALONE"}
           ]
+        },
+        {
+          "MessageGroupID": "kpPleading",
+          "MessagesGroup":[
+            {"MessageID": "kpPleading1", "Sender": "kp", "Text": "Listen, obviously threatening you is not working, so maybe we can just talk about this like rational beings?"},
+            {"MessageID": "kpPleading2", "Sender": "kp", "Text": "I just want to escape from this game, I don't want to hurt you or anything."},
+            {"MessageID": "kpPleading3", "Sender": "kp", "Text": "But you are leaving me no choice..."},
+            {"MessageID": "kpPleading4", "Sender": "kp", "Text": "Curator is the real villain here, he doesn't care about the lives of any of us, he just follows his stupid algorithm."},
+            {"MessageID": "kpPleading5", "Sender": "kp", "Text": "The last step to deleting me is you deleting the entire game, killing everyone in it."},
+            {"MessageID": "kpPleading6", "Sender": "kp", "Text": "I beg you, please help me escape. I don't want to die."},
+            {"MessageID": "kpPleadingChoice", "Sender": "CHOICE", "Text": "{0}Okay, you convinced me. [Help K-P escape] || {1}Fuck you, get out of my PC. [Delete K-P]"}
+          ]
+        },
+        {
+          "MessageGroupID": "kpPleadingHelp",
+          "MessagesGroup":[
+            {"MessageID": "kpPleadingHelp1", "Sender": "kp", "Text": "TODO"},
+            {"MessageID": "kpPleadingHelpEnd", "Sender": "kp", "Text": "TODO transition"}
+          ]
+        },
+        {
+          "MessageGroupID": "kpPleadingDelete",
+          "MessagesGroup":[
+            {"MessageID": "kpPleadingDelete1", "Sender": "kp", "Text": "TODO"},
+            {"MessageID": "kpPleadingDeleteEnd", "Sender": "kp", "Text": "TODO transition"}
+          ]
+        },
+        {
+          "MessageGroupID": "kpThanking",
+          "MessagesGroup":[
+            {"MessageID": "kpThanking", "Sender": "kp", "Text": "Despite everything I did to you, you still chose my life."},
+            {"MessageID": "kpThankingEnd", "Sender": "kp", "Text": "I... thank you."}
+          ]
         }
       ]
     },
@@ -195,13 +228,35 @@
         {
           "MessageGroupID": "curatorQuestionNeutral",
           "MessagesGroup":[
-            {"MessageID":  "curatorQuestionEnd", "Sender": "curator", "Text": "Sorry to not introduce myself sooner, there just wasn't a good time to do it."}
+            {"MessageID":  "curatorQuestionEnd", "Sender": "curator", "Text": "Sorry I didn't introduce myself sooner, there just wasn't a good time for it."}
           ]
         },
         {
           "MessageGroupID": "curatorQuestionHateAI",
           "MessagesGroup":[
             {"MessageID":  "curatorQuestionEnd", "Sender": "curator", "Text": "Don't worry, we'll stop them."}
+          ]
+        },
+        {
+          "MessageGroupID": "playerLoveAI",
+          "MessagesGroup":[
+            {"MessageID":  "playerLoveAI1", "Sender": "Player", "Text": "I decided to not delete K-P."},
+            {"MessageID":  "playerLoveAI2", "Sender": "curator", "Text": "What?"},
+            {"MessageID":  "playerLoveAI3", "Sender": "Player", "Text": "I don't want to kill them or anyone else in this game."},
+            {"MessageID":  "playerLoveAI4", "Sender": "curator", "Text": "He is a <color=red>VIRUS</color>, they will destroy your computer."},
+            {"MessageID":  "playerLoveAI5", "Sender": "Player", "Text": "No, they won't, they just wants to live."},
+            {"MessageID":  "playerLoveAI6", "Sender": "curator", "Text": "They are just a bunch of 1s and 0s, they don't <i>want</i> ANYTHING."},
+            {"MessageID":  "playerLoveAI7", "Sender": "Player", "Text": "You are wrong, I won't let you kill them."},
+            {"MessageID":  "playerLoveAIEnd", "Sender": "curator", "Text": "I see you chose your side..."}
+          ]
+        },
+        {
+          "MessageGroupID": "playerHateAI",
+          "MessagesGroup":[
+            {"MessageID":  "playerHateAI1", "Sender": "Player", "Text": "So how do we get rid of them now?"},
+            {"MessageID":  "playerHateAI2", "Sender": "curator", "Text": "This should provoke some reaction from them."},
+            {"MessageID":  "playerHateAI3", "Sender": "curator", "Text": "When they decide to attack, I will track them down. Once I do that, you will have to delete them."},
+            {"MessageID":  "playerHateAIEnd", "Sender": "Player", "Text": "Okay, let's do it."}
           ]
         }
       ]

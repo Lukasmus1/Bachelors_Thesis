@@ -24,7 +24,7 @@ namespace Story.Models.States
             if (File.Exists(UserMvc.Instance.UserController.CuratorExplanationFilePath))
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpDesktopFile");
-                UserMvc.Instance.UserController.IncreaseCopsAlignment(Alignment.AIDesktopFile);
+                UserMvc.Instance.UserController.IncreaseCuratorAlignment(Alignment.AIDesktopFile);
             }
 
             AsyncTimer t = new();

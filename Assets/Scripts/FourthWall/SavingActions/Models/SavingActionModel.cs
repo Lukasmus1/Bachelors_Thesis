@@ -17,6 +17,7 @@ namespace FourthWall.SavingActions.Models
             switch (oldEnding)
             {
                 case Endings.None:
+                    //No previous playthrough, so do nothing
                     break;
                 case Endings.PlayerHelpsAI:
                     FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "You already helped me once, can you please do it again?", "Thank you");

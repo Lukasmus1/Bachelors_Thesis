@@ -5,7 +5,7 @@
     /// </summary>
     public enum Alignment
     {
-        CopsFirstChoice = 10,
+        CuratorFirstChoice = 10,
         AIFirstChoice = -10,
         AIDesktopFile = 5,
         QuestionAI = -10,

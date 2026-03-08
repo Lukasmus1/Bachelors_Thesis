@@ -26,9 +26,9 @@ namespace User.Models
         public List<PersistentData> PersistentData { get; set; }
         
         /// <summary>
-        /// Minus values for more AI aligned, plus values for more cop aligned. Used for certain dialogue choices and endings.
+        /// Minus values for more AI aligned, plus values for more curator aligned. Used for certain dialogue choices and endings.
         /// </summary>
-        public int CopsAlignment { get; set; }
+        public int CuratorAlignment { get; set; }
         
         /// <summary>
         /// Screenshot of the user's game.
@@ -74,7 +74,7 @@ namespace User.Models
             
             SetProfilePicture();
 
-            CopsAlignment = 0;
+            CuratorAlignment = 0;
         }
         
         public void SetProfilePicture()

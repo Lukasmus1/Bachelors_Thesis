@@ -1,6 +1,5 @@
 ﻿using System;
 using Story.Commons;
-using UnityEngine;
 
 namespace Story.Models.States
 {

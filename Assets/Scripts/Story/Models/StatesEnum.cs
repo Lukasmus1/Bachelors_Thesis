@@ -29,7 +29,9 @@ namespace Story.Models
         HelpChoice,
         ItHelp,
         Preparation,
-        PreAggression,
-        Aggression
+        PreFinale,
+        EndingChoice,
+        EndingFightForAI,
+        EndingFightForCurator
     }
 }

@@ -10,7 +10,7 @@ namespace Story.Models.States
     public class PreparationStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.Preparation;
-        public override int NextState { get; set; } = (int)StatesEnum.PreAggression;
+        public override int NextState { get; set; } = (int)StatesEnum.PreFinale;
 
         public override void OnEnter()
         {

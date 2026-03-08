@@ -38,5 +38,12 @@ namespace Story.Controllers
             
             storyModel.Ending = ending;
         }
+
+        /// <summary>
+        /// Gets the maximum or minimum value of the sum of all alignments, depending on the boolean parameter.
+        /// </summary>
+        /// <param name="maximumAlignment">Do I want the maximum possible alignment?</param>
+        /// <returns>Max or min possible alignment</returns>
+        public int GetExtremeAlignment(bool maximumAlignment) => storyModel.GetExtremeAlignment(maximumAlignment);
     }
 }

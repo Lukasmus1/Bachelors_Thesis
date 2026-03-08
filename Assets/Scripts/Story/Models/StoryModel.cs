@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Commons;
 using Story.Models.States;
+using User.Models;
 
 namespace Story.Models
 {
@@ -32,5 +36,13 @@ namespace Story.Models
         {
             currentStateClass?.LoadFromState();
         } 
+        
+        public int GetExtremeAlignment(bool maximumAlignment)
+        {
+            List<Alignment> alignments = Enum.GetValues(typeof(Alignment)).OfType<Alignment>().ToList();
+            List<int> al = alignments.Select(x => (int)x).ToList();
+            
+            return maximumAlignment ? Tools.GetMaxSumOfList(al) : Tools.GetMinSumOfList(al);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Story.Models.Choices.ChoiceClasses
             0,
             () =>
             {
-                UserMvc.Instance.UserController.IncreaseCopsAlignment(Alignment.QuestionAI);
+                UserMvc.Instance.UserController.IncreaseCuratorAlignment(Alignment.QuestionAI);
                 
                 ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("curator", "curatorQuestionAI");
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
@@ -33,7 +33,7 @@ namespace Story.Models.Choices.ChoiceClasses
             2,
             () =>
             {
-                UserMvc.Instance.UserController.IncreaseCopsAlignment(Alignment.QuestionAIHate);
+                UserMvc.Instance.UserController.IncreaseCuratorAlignment(Alignment.QuestionAIHate);
                 
                 ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("curator", "curatorQuestionHateAI");
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);

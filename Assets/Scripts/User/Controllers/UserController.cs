@@ -104,12 +104,21 @@ namespace User.Controllers
         }
         
         /// <summary>
-        /// Increases the alignment with the cops by a certain amount. The amount is determined by the Alignment enum value passed as a parameter.
+        /// Increases the alignment with the curator by a certain amount. The amount is determined by the Alignment enum value passed as a parameter.
         /// </summary>
         /// <param name="amount">Alignment enum value</param>
-        public void IncreaseCopsAlignment(Alignment amount)
+        public void IncreaseCuratorAlignment(Alignment amount)
         {
-            userModel.CopsAlignment += (int)amount;
+            userModel.CuratorAlignment += (int)amount;
+        }
+        
+        /// <summary>
+        /// Gets the current alignment with the curator. A positive value means the user is more aligned with the curator, while a negative value means the user is more aligned with the AI.
+        /// </summary>
+        /// <returns>Alignment with the curator</returns>
+        public int GetCuratorAlignment()
+        {
+            return userModel.CuratorAlignment;
         }
         
         public DateTime GetStartDate()
