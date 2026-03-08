@@ -21,6 +21,8 @@ namespace Story.Models
             }
         }
         
+        public Endings Ending { get; set; } = Endings.None;
+        
         public void Init()
         {
             CurrentStateClass = new StartStateClass();
@@ -29,6 +31,6 @@ namespace Story.Models
         public void LoadFromState()
         {
             currentStateClass?.LoadFromState();
-        }
+        } 
     }
 }

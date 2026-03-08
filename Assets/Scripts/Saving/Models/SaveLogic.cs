@@ -5,6 +5,7 @@ using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
 using Desktop.Models;
 using Story.Commons;
+using Story.Models;
 using Story.Models.Actions;
 using UnityEngine;
 using User.Commons;
@@ -14,6 +15,7 @@ namespace Saving.Models
     public class SaveLogic
     {
         private readonly string _path = Application.persistentDataPath + "/savefile.sav";
+        private readonly string _oldPath = Application.persistentDataPath + "/savefile_old.dat";
         
         private readonly SaveModel _model = new();
         
@@ -25,8 +27,12 @@ namespace Saving.Models
             _model.loadedFiles = FileManagerMvc.Instance.FileManagerController.LoadedFileNames;
             _model.hiddenFiles = FileManagerMvc.Instance.FileManagerController.HiddenFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
+            _model.ending = (int)StoryMvc.Instance.StoryController.storyModel.Ending;
         }
         
+        /// <summary>
+        /// Saves the game into a binary file.
+        /// </summary>
         public void SaveGame()
         {
             //Methods to explicitly save the data if required 
@@ -55,6 +61,11 @@ namespace Saving.Models
             stream.Close();
         }
 
+        /// <summary>
+        /// Loads the game from a binary file. Returns true if successful, false if there was an error or if the file doesn't exist.
+        /// </summary>
+        /// <returns>True if successful, false if not</returns>
+        /// <exception cref="Exception">Generic error when loading a file</exception>
         public bool LoadGame()
         {
             if (!File.Exists(_path))
@@ -83,6 +94,40 @@ namespace Saving.Models
             
             _model.LoadDataFromModel(data);
             return true;
+        }
+        
+        /// <summary>
+        /// Gets the ending from the old save file, which is used to determine which ending the player got in the previous playthrough.
+        /// </summary>
+        /// <returns>Ending in the previous playthrough</returns>
+        /// <exception cref="Exception">Generic error when loading a file</exception>
+        public Endings GetOldEnding()
+        {
+            if (!File.Exists(_oldPath))
+            {
+                return Endings.None;
+            }
+            
+            SaveModel data = null;
+            try
+            {
+                BinaryFormatter formatter = new();
+                FileStream stream = new(_path, FileMode.Open);
+                data = formatter.Deserialize(stream) as SaveModel;
+                stream.Close();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error loading save file: " + e.Message);
+                return Endings.None;
+            }
+            
+            if (data == null)
+            {
+                throw new Exception("Successfully loaded the file, but the data is null.");
+            }
+            
+            return (Endings)data.ending;
         }
     }
 }

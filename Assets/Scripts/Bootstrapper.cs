@@ -1,4 +1,5 @@
-﻿using Saving.Commons;
+﻿using FourthWall.Commons;
+using Saving.Commons;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,7 @@ public class Bootstrapper : MonoBehaviour
         if (!SavingMvc.Instance.SavingController.LoadGame())
         {
             //New Game
+            FourthWallMvc.Instance.SavingActionsController.PerformActionOnFindingNewSave();
             SceneManager.LoadScene(registringScene);
             LoadedNewGame = true;
             return;

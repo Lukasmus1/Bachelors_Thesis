@@ -23,7 +23,7 @@ namespace Saving.Models
         public List<string> hiddenFiles;
         public UserModel userModel;
         public ListOfActionsPersistent persistentActions;
-        
+        public int ending;
         
         public void LoadDataFromModel(SaveModel saveModel)
         {

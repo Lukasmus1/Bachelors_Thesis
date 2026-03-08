@@ -1,5 +1,6 @@
 ﻿using System;
 using Saving.Models;
+using Story.Models;
 using UnityEditor;
 using UnityEngine;
 
@@ -46,6 +47,15 @@ namespace Saving.Controllers
 #else
             Application.Quit();
 #endif
+        }
+
+        /// <summary>
+        /// Gets the ending of the previous playthrough, if it exists. Returns Endings.None if no previous playthrough exists.
+        /// </summary>
+        /// <returns>Ending of the previous playthrough</returns>
+        public Endings GetOldEnding()
+        {
+            return _modelLogic.GetOldEnding();
         }
     }
 }
