@@ -1,4 +1,5 @@
-﻿using Desktop.Controllers;
+﻿using Apps.CompilationHelper.Controllers;
+using Desktop.Controllers;
 
 namespace Desktop.Commons
 {
@@ -16,10 +17,12 @@ namespace Desktop.Commons
         }
 
         public DesktopGeneratorController DesktopGeneratorController { get; set; }
+        public CompilationHelperController CompilationHelperController { get; set; }
         
         private DesktopMvc()
         {
             DesktopGeneratorController = new DesktopGeneratorController();
+            CompilationHelperController = new CompilationHelperController();
         }
     }
 }

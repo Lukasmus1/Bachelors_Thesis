@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Views;
+using Apps.CompilationHelper.Views;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Views;
 using Apps.VirusFinder.Commons;
@@ -18,39 +19,32 @@ using UnityEngine;
 /// </summary>
 public class ScriptReferenceLinker : MonoBehaviour
 {
-    //Chat terminal app
     public GameObject chatTerminalApp;
     [SerializeField] private ChatTerminalView chatTerminalView;
     [SerializeField] private MessageSystemView messageSystemView;
     
-    //File loader app
     public GameObject fileLoaderApp;
     [SerializeField] private FileLoaderView fileLoaderView;
     
-    //Bottom bar
     [SerializeField] private BottomBarView bottomBarView;
     
-    //File viewer app
     public GameObject fileViewerApp;
     
-    //AutostereogramSolver app
     public GameObject autostereoApp;
     
-    //CipherSolver app
     public GameObject cipherSolverApp;
     
-    //VirusFinder app
     public GameObject virusFinderApp;
     [SerializeField] private VirusFinderView virusFinderView;
     
-    //Main canvas holder
     [SerializeField] private GameObject mainCanvas;
     
-    //Desktop
     [SerializeField] private DesktopGeneratorView desktopGeneratorView;
     
-    //Icon parent
     [SerializeField] private GameObject iconParent;
+    
+    [SerializeField] private GameObject compilationProgressBar;
+    [SerializeField] private CompilationHelperView compilationHelperView;
     
     private void Awake()
     {
@@ -69,6 +63,9 @@ public class ScriptReferenceLinker : MonoBehaviour
         
         //Desktop
         DesktopMvc.Instance.DesktopGeneratorController.SetDesktopView(desktopGeneratorView);
+        
+        //Compilation progress bar
+        DesktopMvc.Instance.CompilationHelperController.SetView(compilationHelperView);
     }
 
     /// <summary>
@@ -119,5 +116,15 @@ public class ScriptReferenceLinker : MonoBehaviour
     /// <returns>Desktop holder GameObject</returns>
     public GameObject GetMainCanvas() => mainCanvas;
 
+    /// <summary>
+    /// Gets the IconParent game object.
+    /// </summary>
+    /// <returns>GameObject parent of icons on the desktop</returns>
     public GameObject GetIconParent() => iconParent;
+    
+    /// <summary>
+    /// Gets the compilation progress bar game object.
+    /// </summary>
+    /// <returns>GameObject compilation progress bar on the desktop</returns>
+    public GameObject GetCompilationProgressBar() => compilationProgressBar;
 }

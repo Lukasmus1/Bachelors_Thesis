@@ -1,4 +1,5 @@
-﻿using FourthWall.ExternalWeb.Controllers;
+﻿using FourthWall.CompilationSimulation.Controllers;
+using FourthWall.ExternalWeb.Controllers;
 using FourthWall.FileGeneration.Controllers;
 using FourthWall.NumberPattern.Controllers;
 using FourthWall.SavingActions.Controllers;
@@ -25,6 +26,7 @@ namespace FourthWall.Commons
         public NumberPatternController NumberPatternController { get; set; }
         public ExternalWebController ExternalWebController { get; set; }
         public SavingActionsController SavingActionsController { get; set; }
+        public CompilationSimulationController CompilationSimulationController { get; set; }
         
         private FourthWallMvc()
         {
@@ -33,6 +35,7 @@ namespace FourthWall.Commons
             NumberPatternController = new NumberPatternController();
             ExternalWebController = new ExternalWebController();
             SavingActionsController = new SavingActionsController();
+            CompilationSimulationController = new CompilationSimulationController();
         }
     }
 }

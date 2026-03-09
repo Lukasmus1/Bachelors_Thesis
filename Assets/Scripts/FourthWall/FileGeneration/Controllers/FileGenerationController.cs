@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text;
-using Commons;
 using FourthWall.FileGeneration.Models;
 
 namespace FourthWall.FileGeneration.Controllers
@@ -111,5 +109,6 @@ namespace FourthWall.FileGeneration.Controllers
             _model.OpenFileExplorer(directoryPath);
             _model.CreateMultipleFilesWithDelay(directoryPath, text.Split(" "), delay);
         }
+        
     }
 }

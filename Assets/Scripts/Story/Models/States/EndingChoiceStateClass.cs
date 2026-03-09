@@ -51,13 +51,16 @@ namespace Story.Models.States
 
         public void TransitionCheck(string messageID)
         {
-            if (messageID is "kpPleadingHelpEnd" or "kpThankingEnd")
+            switch (messageID)
             {
-                
-            }
-            else if (messageID is "kpPleadingDeleteEnd" or "playerHateAIEnd")
-            {
-                
+                case "kpPleadingHelpEnd" or "kpThankingEnd":
+                    NextState = (int)StatesEnum.EndingFightForAI;
+                    ChangeToNextState();
+                    break;
+                case "kpPleadingDeleteEnd" or "playerHateAIEnd":
+                    NextState = (int)StatesEnum.EndingFightForCurator;
+                    ChangeToNextState();
+                    break;
             }
         }
 

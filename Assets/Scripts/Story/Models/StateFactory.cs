@@ -44,6 +44,8 @@ namespace Story.Models
                 StatesEnum.Preparation => new PreparationStateClass(),
                 StatesEnum.PreFinale => new PreFinaleStateClass(),
                 StatesEnum.EndingChoice => new EndingChoiceStateClass(),
+                StatesEnum.EndingFightForAI => new EndHelpAIStateClass(),
+                StatesEnum.EndingFightForCurator => new EndHelpCuratorStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

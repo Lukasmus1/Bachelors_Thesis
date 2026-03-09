@@ -15,6 +15,7 @@ public class IconImageLinker : MonoBehaviour
     [SerializeField] private Sprite chatTerminal;
     [SerializeField] private Sprite vigenereCipher;
     [SerializeField] private Sprite virusFinder;
+    [SerializeField] private Sprite compilationHelper;
 
     private void Awake()
     {
@@ -25,5 +26,6 @@ public class IconImageLinker : MonoBehaviour
         AppIconDictionary.Add("ChatTerminal", chatTerminal);
         AppIconDictionary.Add("CipherSolver", vigenereCipher);
         AppIconDictionary.Add("VirusFinder", virusFinder);
+        AppIconDictionary.Add("CompilationHelper", compilationHelper);
     }
 }

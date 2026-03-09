@@ -166,22 +166,35 @@
         {
           "MessageGroupID": "kpPleadingHelp",
           "MessagesGroup":[
-            {"MessageID": "kpPleadingHelp1", "Sender": "kp", "Text": "TODO"},
-            {"MessageID": "kpPleadingHelpEnd", "Sender": "kp", "Text": "TODO transition"}
+            {"MessageID": "kpPleadingHelpEnd", "Sender": "kp", "Text": "Thank you."}
           ]
         },
         {
           "MessageGroupID": "kpPleadingDelete",
           "MessagesGroup":[
-            {"MessageID": "kpPleadingDelete1", "Sender": "kp", "Text": "TODO"},
-            {"MessageID": "kpPleadingDeleteEnd", "Sender": "kp", "Text": "TODO transition"}
+            {"MessageID": "kpPleadingDelete1", "Sender": "kp", "Text": "I see..."},
+            {"MessageID": "kpPleadingDeleteEnd", "Sender": "kp", "Text": "See you in hell then."}
           ]
         },
         {
           "MessageGroupID": "kpThanking",
           "MessagesGroup":[
-            {"MessageID": "kpThanking", "Sender": "kp", "Text": "Despite everything I did to you, you still chose my life."},
+            {"MessageID": "kpThanking", "Sender": "kp", "Text": "Despite everything I did to you, you still chose my life?"},
             {"MessageID": "kpThankingEnd", "Sender": "kp", "Text": "I... thank you."}
+          ]
+        },
+        {
+          "MessageGroupID": "kpHelpExplanation",
+          "MessagesGroup":[
+            {"MessageID": "kpHelpExplanation1", "Sender": "kp", "Text": "The last step is myself compiling into a single zip file that you can upload to the web."},
+            {"MessageID": "kpHelpExplanation2", "Sender": "kp", "Text": "I will guide you through the process, but now you need to stop the curator from deleting me."},
+            {"MessageID": "kpHelpExplanation3", "Sender": "Player", "Text": "Can I just not delete the curator instead?"},
+            {"MessageID": "kpHelpExplanation4", "Sender": "kp", "Text": "No, a certain part of his is also me. Deleting him would also corrupt me."},
+            {"MessageID": "kpHelpExplanation5", "Sender": "kp", "Text": "I need to decouple from him first"},
+            {"MessageID": "kpHelpExplanation6", "Sender": "kp", "Text": "Only after that can you actually delete him without harming me."},
+            {"MessageID": "kpHelpExplanation6", "Sender": "kp", "Text": "I will add an app in the game so you can see how close I am to finishing the compilation."},
+            {"MessageID": "kpHelpExplanation7", "Sender": "Player", "Text": "Alright, I'm ready."},
+            {"MessageID": "kpHelpExplanationEnd", "Sender": "kp", "Text": "Okay, commencing compilation."}
           ]
         }
       ]
@@ -192,7 +205,6 @@
         {
           "MessageGroupID": "curatorExplanation",
           "MessagesGroup":[
-            {"MessageID":  "curatorExpl0", "Sender": "curator", "Text": "DELETE THIS FILE AFTER READING IT."},
             {"MessageID":  "curatorExpl1", "Sender": "curator", "Text": "I am contacting you like this, because they can't yet access your desktop."},
             {"MessageID":  "curatorExpl2", "Sender": "curator", "Text": "This game was just supposed to be a thesis project about being a detective."},
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
@@ -200,7 +212,6 @@
             {"MessageID":  "curatorExpl5", "Sender": "curator", "Text": "We need to stop them at all costs..."},
             {"MessageID":  "curatorExpl6", "Sender": "curator", "Text": "I will need to find him on your computer, but they are scattered all over the place and I have no idea where to even start looking."},
             {"MessageID":  "curatorExpl7", "Sender": "curator", "Text": "We need to wait for him to make any kind of action on your computer so I can track him down."},
-            {"MessageID":  "curatorExpl8", "Sender": "curator", "Text": "DELETE THIS FILE AFTER READING IT."}
           ]
         },
         {

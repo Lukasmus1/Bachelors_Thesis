@@ -13,6 +13,7 @@
         LastFileLocation,
         DeletedVirusFile,
         FirstChoiceSideWithCops,
-        LastHelpChoiceHelp
+        LastHelpChoiceHelp,
+        CompilationLocation
     }
 }
