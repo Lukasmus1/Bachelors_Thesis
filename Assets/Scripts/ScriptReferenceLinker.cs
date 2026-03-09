@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Views;
+using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Views;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Views;
@@ -65,7 +66,7 @@ public class ScriptReferenceLinker : MonoBehaviour
         DesktopMvc.Instance.DesktopGeneratorController.SetDesktopView(desktopGeneratorView);
         
         //Compilation progress bar
-        DesktopMvc.Instance.CompilationHelperController.SetView(compilationHelperView);
+        CompilationHelperMvc.Instance.CompilationHelperController.SetView(compilationHelperView);
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
+using Apps.CompilationHelper.Commons;
 using Desktop.Commons;
 using FourthWall.Commons;
 
@@ -21,7 +22,7 @@ namespace Story.Models.States
             //Second third of seconds will be the curator pinging the folder by creating files that the player has to delete.  
             //Last third of seconds will be all of the above plus minimizing all windows.
             //After all of that, the player will have to delete the curator process in the task manager and upload KP to the net, which will result in the of the game.
-            ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpHelpExplanationEnd", true);   
+            ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpHelpExplanation", true);   
             
             LoadFromState();
         }
@@ -43,8 +44,8 @@ namespace Story.Models.States
                 return;
             }
             
-            DesktopMvc.Instance.CompilationHelperController.EnableCompilationProcess(simulationSeconds);
-            DesktopMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += FirstMovePrompt;
+            CompilationHelperMvc.Instance.CompilationHelperController.EnableCompilationProcess(simulationSeconds);
+            CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += FirstMovePrompt;
         }
 
         public void FirstMovePrompt(int seconds)
@@ -54,7 +55,7 @@ namespace Story.Models.States
                 return;
             }
             
-            DesktopMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= FirstMovePrompt;
+            CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= FirstMovePrompt;
             
             FourthWallMvc.Instance.CompilationSimulationController.FirstMovePrompt();
         }

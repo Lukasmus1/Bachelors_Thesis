@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desktop.CompilationProgressBar.Views.CompilationBarView
   progressBarSlider: {fileID: 7835911080242511496}
+  kpFileMovingUI: {fileID: 0}
+  deletionProgressBar: {fileID: 0}
 --- !u!1 &1868966107052728667
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desktop.CompilationProgressBar.Views.CompilationBarView
   progressBarSlider: {fileID: 1267191533817087954}
+  kpFileMovingUI: {fileID: 3730776590235185270}
+  deletionProgressBar: {fileID: 1267191533817087954}
 --- !u!1 &3805133376598983544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apps.CompilationHelper.Views.CompilationBarView
   progressBarSlider: {fileID: 7835911080242511496}
+  kpFileMovingUI: {fileID: 3730776590235185270}
+  deletionProgressBar: {fileID: 1267191533817087954}
 --- !u!1 &5300230794096307347
 GameObject:
   m_ObjectHideFlags: 0

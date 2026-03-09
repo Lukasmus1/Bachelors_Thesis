@@ -6576,7 +6576,7 @@ MonoBehaviour:
   desktopGeneratorView: {fileID: 667817315}
   iconParent: {fileID: 1109705771}
   compilationProgressBar: {fileID: 1670952814}
-  compilationHelperView: {fileID: 0}
+  compilationHelperView: {fileID: 7518651685188636889}
 --- !u!114 &667817314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18501,9 +18501,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 17.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1267191533817087954, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1613629909695192142, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2838541774978958267, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: resultText
@@ -18522,8 +18526,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 868804822}
     - target: {fileID: 3371407250053446171, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
-      propertyPath: m_AnchorMax.y
+      propertyPath: m_AnchorMax.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371407250053446171, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3676236577034867134, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_fontSizeBase
@@ -18532,6 +18540,10 @@ PrefabInstance:
     - target: {fileID: 3676236577034867134, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730776590235185270, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3952909443396879626, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_Pivot.x
@@ -18631,7 +18643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5137568237629110730, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137568237629110730, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_TagString
+      value: CompilationHelper
       objectReference: {fileID: 0}
     - target: {fileID: 6541757380248807587, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_TargetGraphic
@@ -18643,7 +18659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7181962880198536066, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835911080242511496, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_Value
@@ -18664,6 +18680,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5137568237629110730, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
   m_PrefabInstance: {fileID: 1140962621552813988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7518651685188636889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6641148073092194191, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+  m_PrefabInstance: {fileID: 1140962621552813988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518651685188636888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76dd37fb3e54502b00edea5e0b229ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Apps.CompilationHelper.Views.CompilationBarView
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

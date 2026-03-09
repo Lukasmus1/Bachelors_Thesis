@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Apps.CompilationHelper.Commons;
 using Desktop.Commons;
 using FourthWall.Commons;
 using FourthWall.CompilationSimulation.Controllers;
@@ -38,9 +39,9 @@ namespace FourthWall.CompilationSimulation.Models
                 .CreateDirectory(UserMvc.Instance.UserController.ProceduralData(UserDataType.CompilationLocation))
                 .FullName;
             
-            _thirdOfCompilationTimeSeconds = DesktopMvc.Instance.CompilationHelperController.GetMaxCompilationTimeSeconds() / 3;
+            _thirdOfCompilationTimeSeconds = CompilationHelperMvc.Instance.CompilationHelperController.GetMaxCompilationTimeSeconds() / 3;
             
-            DesktopMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += CreateCompiledPart;
+            CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += CreateCompiledPart;
         }
 
         /// <summary>
@@ -64,6 +65,7 @@ namespace FourthWall.CompilationSimulation.Models
         /// <inheritdoc cref="CompilationSimulationController.FirstMovePrompt"/>
         public void FirstMovePrompt()
         {
+            CompilationHelperMvc.Instance.CompilationHelperController.EnableKpCompilationFileMoving();
             FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "THE CURATOR FOUND ME! USE THE COMPILATION HELPER TO MOVE MY FILES ANYWHERE ELSE! HURRY!", "HELP");
         }
         

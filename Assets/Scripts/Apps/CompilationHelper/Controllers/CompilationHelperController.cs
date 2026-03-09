@@ -36,9 +36,18 @@ namespace Apps.CompilationHelper.Controllers
         {
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", true);
             _view.SetupProgressBar(compilationTimeSeconds);
+            _view.SetupDeletionProgressBar(compilationTimeSeconds / 3);
             _model.StartCompilation(compilationTimeSeconds);
             
             FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulation(); // must be called after _model.StartCompilation -> CompilationTimeSeconds not set
+        }
+
+        /// <summary>
+        /// Enables the UI for moving the compiled files to the K-P compilation folder.
+        /// </summary>
+        public void EnableKpCompilationFileMoving()
+        {
+            _view.EnableKpCompilationFileMoving();
         }
     }
 }
