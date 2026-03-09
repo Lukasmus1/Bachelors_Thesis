@@ -16,6 +16,10 @@ namespace Apps.CompilationHelper.Models
             private set => _compilationTimeSeconds = value;
         }
 
+        /// <summary>
+        /// Starts the compilation process.
+        /// </summary>
+        /// <param name="compilationTimeSeconds">Time of the compilation</param>
         public void StartCompilation(int compilationTimeSeconds)
         {
             CompilationTimeSeconds = compilationTimeSeconds;
@@ -24,6 +28,10 @@ namespace Apps.CompilationHelper.Models
             mbRef.StartCoroutine(CompilationCoroutine());
         }
 
+        /// <summary>
+        /// Coroutine that simulates the compilation process and updates the progress every second.
+        /// </summary>
+        /// <returns>IEnumerator for coroutine</returns>
         private IEnumerator CompilationCoroutine()
         {
             float updateInterval = 0; 

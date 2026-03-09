@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Apps.CompilationHelper.Commons;
-using Desktop.Commons;
+using Commons;
 using FourthWall.Commons;
 using FourthWall.CompilationSimulation.Controllers;
 using FourthWall.FileGeneration.Models;
@@ -12,8 +13,10 @@ namespace FourthWall.CompilationSimulation.Models
 {
     public class CompilationSimulationModel
     {
-        private string _kpCompilationPath;
-
+        public string kpCompilationPath;
+        private readonly List<string> _oldCompiledPaths = new();
+        
+        private const string FOLDER_NAME = "K-P";
         private readonly string[] _compiledParts =
         {
             "compiled_core_logic.bin",
@@ -23,19 +26,20 @@ namespace FourthWall.CompilationSimulation.Models
         private int _nextPartIndex = 0;
         private int _thirdOfCompilationTimeSeconds;
         
-        /// <inheritdoc cref="CompilationSimulationController.GetKpCompilationPath"/>
-        public string GetKpCompilationPath()
+        /// <inheritdoc cref="CompilationSimulationController.CreateKpCompilationPath"/>
+        public string CreateKpCompilationPath()
         {
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            const string folderName = "K-P";
 
-            return Path.Combine(desktop, folderName);
+            string path = Path.Combine(desktop, FOLDER_NAME);
+            _oldCompiledPaths.Add(path);
+            return path;
         }
 
         /// <inheritdoc cref="CompilationSimulationController.BeginCompilationSimulation"/>
         public void BeginCompilationSimulation()
         {
-            _kpCompilationPath = Directory
+            kpCompilationPath = Directory
                 .CreateDirectory(UserMvc.Instance.UserController.ProceduralData(UserDataType.CompilationLocation))
                 .FullName;
             
@@ -55,7 +59,7 @@ namespace FourthWall.CompilationSimulation.Models
                 return;
             }
             
-            string partPath = Path.Combine(_kpCompilationPath, _compiledParts[_nextPartIndex]);
+            string partPath = Path.Combine(kpCompilationPath, _compiledParts[_nextPartIndex]);
             string fileData = FourthWallMvc.Instance.FileGenerationController.GenerateFileData();
 
             FourthWallMvc.Instance.FileGenerationController.CreateFile(partPath, fileData, false);
@@ -69,9 +73,21 @@ namespace FourthWall.CompilationSimulation.Models
             FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "THE CURATOR FOUND ME! USE THE COMPILATION HELPER TO MOVE MY FILES ANYWHERE ELSE! HURRY!", "HELP");
         }
         
-        public void ChangeKpCompilationPath(string newPath)
+        /// <inheritdoc cref="CompilationSimulationController.MoveKpCompilationPath"/>
+        public bool MoveKpCompilationPath(string newPath)
         {
-            _kpCompilationPath = newPath;
+            string fullPath = Path.Combine(newPath, FOLDER_NAME);
+            if (_oldCompiledPaths.Contains(fullPath))
+            {
+                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, "NOT THERE! HE ALREADY KNOWS ABOUT THAT LOCATION!", "ERROR");
+                return false;
+            }
+            
+            _oldCompiledPaths.Add(fullPath);
+            Tools.CopyFolder(kpCompilationPath, fullPath);
+            kpCompilationPath = fullPath;
+            
+            return true;
         }
     }
 }

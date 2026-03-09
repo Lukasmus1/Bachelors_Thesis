@@ -1,8 +1,10 @@
-﻿using System;
+﻿using System.Collections;
 using Apps.Commons;
 using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Controllers;
 using Desktop.Commons;
+using FourthWall.Commons;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +16,8 @@ namespace Apps.CompilationHelper.Views
         
         [SerializeField] private GameObject kpFileMovingUI;
         [SerializeField] private Slider deletionProgressBar;
+        [SerializeField] private Button moveKpButton;
+        [SerializeField] private Slider moveCooldownSlider;
 
         private void OnEnable()
         {
@@ -48,6 +52,7 @@ namespace Apps.CompilationHelper.Views
             
             deletionProgressBar.maxValue = deletionTimeSeconds;
             deletionProgressBar.value = 0;
+            moveCooldownSlider.maxValue = deletionTimeSeconds * 2f/3f; // The cooldown for moving the K-P file is 2/3 of the deletion time.
         }
         
         /// <summary>
@@ -64,7 +69,7 @@ namespace Apps.CompilationHelper.Views
         /// </summary>
         private void UpdateDeletionProgressBar(int _)
         {
-            deletionProgressBar.value++;    
+            deletionProgressBar.value++;
         }
 
         protected override void OnDisableChild()
@@ -76,6 +81,45 @@ namespace Apps.CompilationHelper.Views
         public void EnableKpCompilationFileMoving()
         {
             kpFileMovingUI.SetActive(true);
+        }
+
+        /// <summary>
+        /// Moves the K-P compilation file to a new location chosen by the player.
+        /// </summary>
+        public void OnMoveKpButtonClick()
+        {
+            // Model
+            string currentKpPath = FourthWallMvc.Instance.CompilationSimulationController.GetKpCompilationPath();
+            string newPath = EditorUtility.OpenFolderPanel("New K-P's Compilation Location", currentKpPath, "");
+            
+            if (string.IsNullOrEmpty(newPath))
+            {
+                return;
+            }
+
+            if (!FourthWallMvc.Instance.CompilationSimulationController.MoveKpCompilationPath(newPath))
+            {
+                return;
+            }
+            
+            // UI
+            deletionProgressBar.value = 0;
+            StartCoroutine(MoveCooldownCoroutine());
+        }
+
+        private IEnumerator MoveCooldownCoroutine()
+        {
+            moveKpButton.interactable = false;
+            moveCooldownSlider.value = moveCooldownSlider.maxValue;
+
+            while (moveCooldownSlider.value > 0)
+            {
+                moveCooldownSlider.value -= Time.deltaTime;
+                yield return null;
+            }
+            
+            moveCooldownSlider.value = 0;
+            moveKpButton.interactable = true;
         }
     }
 }

@@ -10,10 +10,16 @@ namespace FourthWall.CompilationSimulation.Controllers
         /// Gets the first path of K-P's compilation.
         /// </summary>
         /// <returns>K-P's compilation path</returns>
-        public string GetKpCompilationPath()
+        public string CreateKpCompilationPath()
         {
-            return _model.GetKpCompilationPath();
+            return _model.CreateKpCompilationPath();
         }
+
+        /// <summary>
+        /// Gets the current path of K-P's compilation, which may have been changed by the user.
+        /// </summary>
+        /// <returns>Current K-P's compilation path</returns>
+        public string GetKpCompilationPath() => _model.kpCompilationPath;
         
         /// <summary>
         /// Begins the compilation simulation by creating files in the K-P compilation path in sequence with a delay.
@@ -31,9 +37,14 @@ namespace FourthWall.CompilationSimulation.Controllers
             _model.FirstMovePrompt();
         }
         
-        public void ChangeKpCompilationPath(string newPath)
+        /// <summary>
+        /// Changes the path of K-P's compilation to the given new path, which simulates the user moving K-P's compilation files to a different folder.
+        /// </summary>
+        /// <param name="newPath">New path to copy to</param>
+        /// <returns>Was the moving successful?</returns>>
+        public bool MoveKpCompilationPath(string newPath)
         {
-            _model.ChangeKpCompilationPath(newPath);
+            return _model.MoveKpCompilationPath(newPath);
         }
     }
 }

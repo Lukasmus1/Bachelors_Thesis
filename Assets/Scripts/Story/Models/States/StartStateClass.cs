@@ -1,9 +1,7 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
-using Apps.CompilationHelper.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
-using Desktop.Commons;
 
 namespace Story.Models.States
 {
@@ -35,7 +33,6 @@ namespace Story.Models.States
             if (messageID == "itTutorial")
             {
                 FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("Guide", true);
-                CompilationHelperMvc.Instance.CompilationHelperController.EnableCompilationProcess(120);
             }
         }
         
