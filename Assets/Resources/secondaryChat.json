@@ -220,7 +220,10 @@
             {"MessageID": "kpFightForAIUpload9", "Sender": "kp", "Text": "I found a website with a backdoor for this."},
             {"MessageID": "kpFightForAIUploadUrlCopy", "Sender": "kp", "Text": "It's URL is: {aiUploadURL}."},
             {"MessageID": "kpFightForAIUpload10", "Sender": "kp", "Text": "I have copied the URL to your clipboard, just paste it in your browser and upload the zip file of me."},
-            {"MessageID": "kpFightForAIUpload11", "Sender": "kp", "Text": "After that, a confirmation file will be downloaded.TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"}
+            {"MessageID": "kpFightForAIUpload11", "Sender": "kp", "Text": "After that, a confirmation file will be downloaded."},
+            {"MessageID": "kpFightForAIUploadFileUploader", "Sender": "kp", "Text": "Open the file uploader I've installed in the game and upload it there."},
+            {"MessageID": "kpFightForAIUpload11", "Sender": "kp", "Text": "And that really is everything from me, thank you again for everything you did for me."},
+            {"MessageID": "kpFightForAIUploadEnd", "Sender": "Player", "Text": "You are welcome, I wish you a happy life."}
           ]
         }
       ]

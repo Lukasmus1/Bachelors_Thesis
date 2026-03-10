@@ -32,13 +32,17 @@ namespace Story.Models.States
         
         private void MessageCheck(string messageID)
         {
-            if (messageID == "kpFightForAIUploadZip")
+            switch (messageID)
             {
-                FourthWallMvc.Instance.CompilationSimulationController.CreateCompiledZipFile();
-            }
-            else if (messageID == "kpFightForAIUploadUrlCopy")
-            {
-                EditorGUIUtility.systemCopyBuffer = UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl);
+                case "kpFightForAIUploadZip":
+                    FourthWallMvc.Instance.CompilationSimulationController.CreateCompiledZipFile();
+                    break;
+                case "kpFightForAIUploadUrlCopy":
+                    EditorGUIUtility.systemCopyBuffer = UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl);
+                    break;
+                case "kpFightForAIUploadFileUploader":
+                    //todo
+                    break;
             }
         }
     }

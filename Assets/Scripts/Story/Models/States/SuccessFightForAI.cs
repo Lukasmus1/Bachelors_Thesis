@@ -18,8 +18,8 @@ namespace Story.Models.States
             
         public override void OnEnter()
         {
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
+            // ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
+            // ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpFightForAISuccess", true);
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "curatorFightForAISuccess", true);
             

@@ -15,6 +15,7 @@ TagManager:
   - VirusFinder
   - VirusPopup
   - CompilationHelper
+  - FileUploader
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,8 @@ using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Views;
 using Apps.FileManager.Commons;
 using Apps.FileManager.Views;
+using Apps.FileUploader.Commons;
+using Apps.FileUploader.Views;
 using Apps.VirusFinder.Commons;
 using Apps.VirusFinder.Views;
 using Desktop.BottomBar.Commons;
@@ -44,8 +46,11 @@ public class ScriptReferenceLinker : MonoBehaviour
     
     [SerializeField] private GameObject iconParent;
     
-    [SerializeField] private GameObject compilationProgressBar;
+    [SerializeField] private GameObject compilationHelper;
     [SerializeField] private CompilationHelperView compilationHelperView;
+    
+    [SerializeField] private GameObject fileUploaderApp;
+    [SerializeField] private FileUploaderView fileUploaderView;
     
     private void Awake()
     {
@@ -67,6 +72,9 @@ public class ScriptReferenceLinker : MonoBehaviour
         
         //Compilation progress bar
         CompilationHelperMvc.Instance.CompilationHelperController.SetView(compilationHelperView);
+        
+        //File uploader app
+        FileUploaderMvc.Instance.FileUploaderController.SetView(fileUploaderView);
     }
 
     /// <summary>
@@ -84,6 +92,7 @@ public class ScriptReferenceLinker : MonoBehaviour
             "AutostereogramSolver" => autostereoApp,
             "CipherSolver" => cipherSolverApp,
             "VirusFinder" => virusFinderApp,
+            "CompilationHelper" => compilationHelper,
             _ => throw new Exception("The app tag has not been found!")
         };
     }
@@ -101,7 +110,8 @@ public class ScriptReferenceLinker : MonoBehaviour
             fileViewerApp,
             autostereoApp,
             cipherSolverApp,
-            virusFinderApp
+            virusFinderApp,
+            compilationHelper
         };
     }
     
@@ -122,10 +132,4 @@ public class ScriptReferenceLinker : MonoBehaviour
     /// </summary>
     /// <returns>GameObject parent of icons on the desktop</returns>
     public GameObject GetIconParent() => iconParent;
-    
-    /// <summary>
-    /// Gets the compilation progress bar game object.
-    /// </summary>
-    /// <returns>GameObject compilation progress bar on the desktop</returns>
-    public GameObject GetCompilationProgressBar() => compilationProgressBar;
 }
