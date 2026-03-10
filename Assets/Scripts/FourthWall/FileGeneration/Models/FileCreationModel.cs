@@ -8,6 +8,7 @@ using UnityEngine;
 using User.Commons;
 using User.Models;
 using Random = System.Random;
+using Ionic.Zip;
 
 namespace FourthWall.FileGeneration.Models
 {
@@ -58,6 +59,15 @@ namespace FourthWall.FileGeneration.Models
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
+            }
+        }
+        
+        /// <inheritdoc cref="FileGenerationController.DestroyFolder"/>
+        public void DestroyFolder(string folderPath)
+        {
+            if (Directory.Exists(folderPath))
+            {
+                Directory.Delete(folderPath, true);
             }
         }
         
@@ -164,6 +174,29 @@ namespace FourthWall.FileGeneration.Models
             }
             
             System.Diagnostics.Process.Start("explorer.exe", path);
+        }
+
+        /// <inheritdoc cref="FileGenerationController.GenerateRandomText"/>
+        public string GenerateRandomText(int count)
+        {
+            Random rand = new();
+            StringBuilder sb = new();
+
+            for (var i = 0; i < count; i++)
+            {
+                var randChar = (char)rand.Next(0, 256);
+                sb.Append(randChar);
+            }
+            
+            return sb.ToString();
+        }
+
+        /// <inheritdoc cref="FileGenerationController.CreateZipFile"/>
+        public void CreateZipFile(string zipPath, string directoryPath)
+        {
+            using var zip = new ZipFile();
+            zip.AddDirectory(directoryPath);
+            zip.Save(zipPath);
         }
     }
 }

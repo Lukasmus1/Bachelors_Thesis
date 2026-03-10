@@ -5,10 +5,8 @@ using System.IO;
 using System.Linq;
 using Apps.CompilationHelper.Commons;
 using Commons;
-using Desktop.Commons;
 using FourthWall.Commons;
 using FourthWall.CompilationSimulation.Controllers;
-using FourthWall.FileGeneration.Models;
 using UnityEngine;
 using User.Commons;
 using User.Models;
@@ -20,6 +18,8 @@ namespace FourthWall.CompilationSimulation.Models
     {
         public string kpCompilationPath;
         private readonly List<string> _oldCompiledPaths = new();
+
+        private const string CURATOR_FILE_NAME = "Curator.exe"; 
         
         private const string FOLDER_NAME = "K-P";
         private readonly string[] _compiledParts =
@@ -54,6 +54,12 @@ namespace FourthWall.CompilationSimulation.Models
             string path = Path.Combine(desktop, FOLDER_NAME);
             _oldCompiledPaths.Add(path);
             return path;
+        }
+
+        /// <inheritdoc cref="CompilationSimulationController.GetKpCompilationPath"/>
+        public string CreateCuratorLocation()
+        {
+            return Path.GetFullPath(CURATOR_FILE_NAME);
         }
 
         /// <inheritdoc cref="CompilationSimulationController.BeginCompilationSimulation"/>
@@ -181,6 +187,18 @@ namespace FourthWall.CompilationSimulation.Models
                 
                 yield return new WaitForSeconds(_thirdOfCompilationTimeSeconds / 3f); // 9th of the total compilation time between each action
             }
+        }
+
+        /// <inheritdoc cref="CompilationSimulationController.CreateCompiledZipFile"/>
+        public void CreateCompiledZipFile()
+        {
+            const string zipName = "K-P's_Compilation.zip";
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            
+            string path = Path.Combine(desktop, zipName);
+            
+            FourthWallMvc.Instance.FileGenerationController.CreateZipFile(path, kpCompilationPath);
+            FourthWallMvc.Instance.FileGenerationController.DestroyFolder(kpCompilationPath);
         }
     }
 }

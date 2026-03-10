@@ -11,6 +11,7 @@ namespace FourthWall.ExternalWeb.Models
     public class ExternalWebModel
     {
         private const string BASE_URL = "https://s2vybmvsx1bhbmlj.netlify.app/?m=";
+        private const string UPLOAD_URL = "https://s2vybmvsx1bhbmlj.netlify.app/?t=up";
             
         //Vigenère cipher params
         private const string VIGENERE_KEY = "plushie";
@@ -59,5 +60,8 @@ namespace FourthWall.ExternalWeb.Models
 
             return sb.ToString();
         }
+
+        /// <inheritdoc cref="ExternalWebController.CreateEndingUploadUrl"/>
+        public string CreateEndingUploadUrl() => UPLOAD_URL;
     }
 }

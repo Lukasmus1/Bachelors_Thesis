@@ -14,6 +14,8 @@
         DeletedVirusFile,
         FirstChoiceSideWithCops,
         LastHelpChoiceHelp,
-        CompilationLocation
+        CompilationLocation,
+        CuratorLocation,
+        AiUploadUrl
     }
 }

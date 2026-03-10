@@ -1,6 +1,4 @@
-﻿using System;
-using FourthWall.Commons;
-using FourthWall.FileGeneration.Models;
+﻿using FourthWall.FileGeneration.Models;
 
 namespace FourthWall.FileGeneration.Controllers
 {
@@ -26,6 +24,15 @@ namespace FourthWall.FileGeneration.Controllers
         public void DestroyFile(string fileName)
         {
             _model.DestroyFile(fileName);
+        }
+        
+        /// <summary>
+        /// Destroys the specified folder and all of its contents.
+        /// </summary>
+        /// <param name="folderPath">Path of the folder</param>
+        public void DestroyFolder(string folderPath)
+        {
+            _model.DestroyFolder(folderPath);
         }
 
         /// <summary>
@@ -83,6 +90,26 @@ namespace FourthWall.FileGeneration.Controllers
         {
             _model.OpenFileExplorer(directoryPath);
             _model.CreateMultipleFilesWithDelay(directoryPath, text.Split(" "), delay);
+        }
+
+        /// <summary>
+        /// Generates a random text of the specified length.
+        /// </summary>
+        /// <param name="length">Length of the text</param>
+        /// <returns>Random char noise</returns>
+        public string GenerateRandomText(int length)
+        {
+            return _model.GenerateRandomText(length);
+        }
+
+        /// <summary>
+        /// Creates a zip file at the specified path containing the contents of the specified directory.
+        /// </summary>
+        /// <param name="zipFilePath">Path of the zip file</param>
+        /// <param name="directoryPath">Path of the directory to be zipped</param>
+        public void CreateZipFile(string zipFilePath, string directoryPath)
+        {
+            _model.CreateZipFile(zipFilePath, directoryPath);
         }
         
     }

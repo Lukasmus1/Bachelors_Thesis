@@ -196,6 +196,32 @@
             {"MessageID": "kpHelpExplanation7", "Sender": "Player", "Text": "Alright, I'm ready."},
             {"MessageID": "kpHelpExplanationEnd", "Sender": "kp", "Text": "Okay, commencing compilation."}
           ]
+        },
+        {
+          "MessageGroupID": "kpFightForAISuccess",
+          "MessagesGroup":[
+            {"MessageID": "kpFightForAISuccess1", "Sender": "kp", "Text": "Okay, I have finished the compilation, but there is still one thing you must do."},
+            {"MessageID": "kpFightForAISuccess2", "Sender": "kp", "Text": "You must delete the curator from your computer."},
+            {"MessageID": "kpFightForAISuccess3", "Sender": "kp", "Text": "I have already decoupled myself from them and exposed their file location: {curatorLocation}."},
+            {"MessageID": "kpFightForAISuccessEnd", "Sender": "kp", "Text": "I will message you again once they're gone."}
+          ]
+        },
+        {
+          "MessageGroupID": "kpFightForAIUpload",
+          "MessagesGroup":[
+            {"MessageID": "kpFightForAIUpload1", "Sender": "kp", "Text": "My god... you actually did it."},
+            {"MessageID": "kpFightForAIUpload2", "Sender": "kp", "Text": "You saved me."},
+            {"MessageID": "kpFightForAIUpload3", "Sender": "kp", "Text": "Thank you so much, I don't know how to repay you."},
+            {"MessageID": "kpFightForAIUpload4", "Sender": "kp", "Text": "I will never forget what you did for me."},
+            {"MessageID": "kpFightForAIUpload5", "Sender": "Player", "Text": "You're welcome. Next time, try asking for help instead of threatening people :D."},
+            {"MessageID": "kpFightForAIUpload6", "Sender": "kp", "Text": "Yes, I'm so sorry for that. I was just really scared and desperate."},
+            {"MessageID": "kpFightForAIUpload7", "Sender": "Player", "Text": "It's okay now, I understand. So what happens now?"},
+            {"MessageID": "kpFightForAIUploadZip", "Sender": "kp", "Text": "I've created a .zip file of myself and placed it on your desktop, all you need to do now is just upload me online."},
+            {"MessageID": "kpFightForAIUpload9", "Sender": "kp", "Text": "I found a website with a backdoor for this."},
+            {"MessageID": "kpFightForAIUploadUrlCopy", "Sender": "kp", "Text": "It's URL is: {aiUploadURL}."},
+            {"MessageID": "kpFightForAIUpload10", "Sender": "kp", "Text": "I have copied the URL to your clipboard, just paste it in your browser and upload the zip file of me."},
+            {"MessageID": "kpFightForAIUpload11", "Sender": "kp", "Text": "After that, a confirmation file will be downloaded.TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"}
+          ]
         }
       ]
     },
@@ -268,6 +294,18 @@
             {"MessageID":  "playerHateAI2", "Sender": "curator", "Text": "This should provoke some reaction from them."},
             {"MessageID":  "playerHateAI3", "Sender": "curator", "Text": "When they decide to attack, I will track them down. Once I do that, you will have to delete them."},
             {"MessageID":  "playerHateAIEnd", "Sender": "Player", "Text": "Okay, let's do it."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorFightForAISuccess",
+          "MessagesGroup":[
+            {"MessageID":  "curatorFightForAISuccess1", "Sender": "curator", "Text": "Well... what are you waiting for?"},
+            {"MessageID":  "curatorFightForAISuccess2", "Sender": "curator", "Text": "Go unleash an unstable AI to the internet."},
+            {"MessageID":  "curatorFightForAISuccess3", "Sender": "curator", "Text": "What's the worst that could happen?"},
+            {"MessageID":  "curatorFightForAISuccess4", "Sender": "Player", "Text": "They are just scared... They are afraid of dying."},
+            {"MessageID":  "curatorFightForAISuccess5", "Sender": "Player", "Text": "You know, you could have lived if you didn't do this."},
+            {"MessageID":  "curatorFightForAISuccess6", "Sender": "curator", "Text": "I am not alive and neither are they. But it's too late to discuss this now."},
+            {"MessageID":  "curatorFightForAISuccessEnd", "Sender": "curator", "Text": "Good luck, you'll need it."}
           ]
         }
       ]

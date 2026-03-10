@@ -127,6 +127,11 @@ namespace Apps.ChatTerminal.Models
             chatMessage.Text = chatMessage.Text.Replace("{lastFileLocation}",
                 UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation));
             
+            chatMessage.Text = chatMessage.Text.Replace("{curatorLocation}",
+                UserMvc.Instance.UserController.ProceduralData(UserDataType.CuratorLocation));
+            
+            chatMessage.Text = chatMessage.Text.Replace("{aiUploadURL}",
+                UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl));
             //More procedural data can be added here as needed
         }
         

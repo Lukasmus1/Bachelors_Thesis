@@ -57,7 +57,9 @@ namespace User.Models
                 new(UserDataType.NumberPatternCode, FourthWallMvc.Instance.NumberPatternController.CreateRandomNumberPattern()),
                 new(UserDataType.ImportantFileLocation, FourthWallMvc.Instance.FileGenerationController.CreateImportantHiddenFileLocation()),
                 new(UserDataType.LastFileLocation, FourthWallMvc.Instance.FileGenerationController.CreateLastFileLocation()),
-                new(UserDataType.CompilationLocation, FourthWallMvc.Instance.CompilationSimulationController.CreateKpCompilationPath())
+                new(UserDataType.CompilationLocation, FourthWallMvc.Instance.CompilationSimulationController.CreateKpCompilationPath()),
+                new(UserDataType.CuratorLocation, FourthWallMvc.Instance.CompilationSimulationController.CreateCuratorLocation()),
+                new(UserDataType.AiUploadUrl, FourthWallMvc.Instance.ExternalWebController.CreateEndingUploadUrl())
             };
             string pictureCode = UserMvc.Instance.UserController.ProceduralData(UserDataType.ScammerName) +
                                  UserMvc.Instance.UserController.ProceduralData(UserDataType.PictureCodeYear);

@@ -54,10 +54,8 @@ namespace Story.Models.States
                 StartCuratorPings;
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds +=
                 StartWindowMinimizing;
-            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += OnSuccessCompilation; // Win condition
-            
-            //Fail states
-            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += OnFailedCompilation;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += OnSuccessCompilation; // Win state
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += OnFailedCompilation; // Lose state
         }
 
         public void FirstMovePrompt(int seconds)
@@ -101,14 +99,18 @@ namespace Story.Models.States
 
         public void OnSuccessCompilation()
         {
-            //todo
-            Debug.Log("we won");
+            NextState = (int)StatesEnum.SuccessFightForAI;
+            ChangeToNextState();
         }
 
         public void OnFailedCompilation()
         {
             //todo
+            
+            NextState = (int)StatesEnum.FailedFightForAI;
             Debug.Log("we lost");
+            
+            ChangeToNextState();
         }
     }
 }

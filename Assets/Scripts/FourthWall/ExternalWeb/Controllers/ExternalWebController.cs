@@ -21,5 +21,14 @@ namespace FourthWall.ExternalWeb.Controllers
             
             return externalWebModel.CreateEndingUrl(realName);
         }
+
+        /// <summary>
+        /// Gets the URL for the upload page of the ending site which is "https://s2vybmvsx1bhbmlj.netlify.app/?t=up".
+        /// </summary>
+        /// <returns>URL for uploading the AI</returns>
+        public string CreateEndingUploadUrl()
+        {
+            return externalWebModel.CreateEndingUploadUrl();
+        }
     }
 }

@@ -55,11 +55,7 @@ namespace Story.Models.Actions
             FourthWallMvc.Instance.FileGenerationController.CreateFile(fileName, fileContent, true);
 
             //Attach file deletion detection
-            GameObject scriptHolder = GameObject.FindWithTag("ScriptHolder");
-            if (scriptHolder == null)
-            {
-                throw new Exception("ScriptHolder not found in scene. Cannot attach FileDeletionDetectionModel.");
-            }
+            GameObject scriptHolder = Tools.GetScriptHolder();
             _fileDeleteDetection = scriptHolder.AddComponent<FileDeletionDetectionModel>();
             _fileDeleteDetection.StartDetection(fileName, OnFileDeletion);
             

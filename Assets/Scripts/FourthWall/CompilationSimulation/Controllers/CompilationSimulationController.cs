@@ -56,9 +56,29 @@ namespace FourthWall.CompilationSimulation.Controllers
             _model.StartCuratorPings();
         }
         
+        /// <summary>
+        /// Begins the last set of complications while compilation simulation is running.
+        /// </summary>
         public void StartLastCompilationComplication()
         {
             _model.StartLastCompilationComplication();
+        }
+
+        /// <summary>
+        /// Creates the location of the curator file.
+        /// </summary>
+        /// <returns>Location of the curator file</returns>
+        public string CreateCuratorLocation()
+        {
+            return _model.CreateCuratorLocation();
+        }
+
+        /// <summary>
+        /// Creates the compiled zip file in the K-P compilation path on the user's desktop.
+        /// </summary>
+        public void CreateCompiledZipFile()
+        {
+            _model.CreateCompiledZipFile();
         }
     }
 }
