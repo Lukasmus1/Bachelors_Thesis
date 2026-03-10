@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Apps.Commons;
 using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Controllers;
@@ -19,6 +20,12 @@ namespace Apps.CompilationHelper.Views
         [SerializeField] private Button moveKpButton;
         [SerializeField] private Slider moveCooldownSlider;
 
+        private void Start()
+        {
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += Cleanup;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += Cleanup;
+        }
+
         private void OnEnable()
         {
             DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
@@ -26,8 +33,15 @@ namespace Apps.CompilationHelper.Views
 
         private void OnDestroy()
         {
+            Cleanup();
+        }
+
+        private void Cleanup()
+        {
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= UpdateProgressBar;
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= UpdateDeletionProgressBar;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= Cleanup;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished -= Cleanup;
         }
 
         /// <summary>
@@ -70,6 +84,11 @@ namespace Apps.CompilationHelper.Views
         private void UpdateDeletionProgressBar(int _)
         {
             deletionProgressBar.value++;
+            
+            if (deletionProgressBar.value >= deletionProgressBar.maxValue)
+            {
+                CompilationHelperMvc.Instance.CompilationHelperController.InvokeCompilationFailed();
+            }
         }
 
         protected override void OnDisableChild()

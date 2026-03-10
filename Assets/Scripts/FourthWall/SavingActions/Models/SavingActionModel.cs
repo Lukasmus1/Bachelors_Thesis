@@ -20,13 +20,13 @@ namespace FourthWall.SavingActions.Models
                     //No previous playthrough, so do nothing
                     break;
                 case Endings.PlayerHelpsAI:
-                    FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "You already helped me once, can you please do it again?", "Thank you");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "You already helped me once, can you please do it again?", "Thank you");
                     break;
                 case Endings.AIWins:
-                    FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "I already won once, I will win again", "...");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "I already won once, I will win again", "...");
                     break;
                 case Endings.AILoses:
-                    FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "Why did you download this again...", "Quit now");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "Why did you download this again...", "Quit now");
                     break;
                 default:
                     throw new Exception("Unknown ending: " + oldEnding);

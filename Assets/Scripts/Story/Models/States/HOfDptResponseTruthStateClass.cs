@@ -45,7 +45,7 @@ namespace Story.Models.States
             var t = new AsyncTimer();
             _ = t.StartTimer(2, () =>
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "No",
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "No",
                     "Unknown Connection Attempt");
 
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
@@ -71,7 +71,7 @@ namespace Story.Models.States
             var t = new AsyncTimer();
             _ = t.StartTimer(2, () =>
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "No, you won't",
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "No, you won't",
                     "Unknown Connection Attempt");
 
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);

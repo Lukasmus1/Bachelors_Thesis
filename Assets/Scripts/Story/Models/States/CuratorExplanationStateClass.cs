@@ -19,7 +19,7 @@ namespace Story.Models.States
             string path = UserMvc.Instance.UserController.CuratorExplanationFilePath;
             
             FourthWallMvc.Instance.FileGenerationController.CreateFile(path, content, false);
-            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, $"An unknown file has been found: {path}", "New File");
+            FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Warning, $"An unknown file has been found: {path}", "New File");
             
             // Next state is dependent on the player's choice in the first choice
             if (UserMvc.Instance.UserController.GetPersistentData(UserDataType.FirstChoiceSideWithCops))

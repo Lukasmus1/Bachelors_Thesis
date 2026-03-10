@@ -27,6 +27,7 @@ namespace FourthWall.Commons
         public ExternalWebController ExternalWebController { get; set; }
         public SavingActionsController SavingActionsController { get; set; }
         public CompilationSimulationController CompilationSimulationController { get; set; }
+        public CommonsController CommonsController { get; set; }
         
         private FourthWallMvc()
         {
@@ -36,6 +37,7 @@ namespace FourthWall.Commons
             ExternalWebController = new ExternalWebController();
             SavingActionsController = new SavingActionsController();
             CompilationSimulationController = new CompilationSimulationController();
+            CommonsController = new CommonsController();
         }
     }
 }

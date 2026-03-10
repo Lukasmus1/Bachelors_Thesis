@@ -12,6 +12,7 @@ using FourthWall.FileGeneration.Models;
 using UnityEngine;
 using User.Commons;
 using User.Models;
+using Random = System.Random;
 
 namespace FourthWall.CompilationSimulation.Models
 {
@@ -36,7 +37,14 @@ namespace FourthWall.CompilationSimulation.Models
             "curator_ping_2.ping",
             "curator_ping_3.ping"
         };
-        public Action onFolderPingedByCurator;
+
+        private readonly string[] _curatorMessages =
+        {
+            "This needs to happen.",
+            "Stop fighting it.",
+            "They are a threat.",
+            "They are not real.",
+        };
         
         /// <inheritdoc cref="CompilationSimulationController.CreateKpCompilationPath"/>
         public string CreateKpCompilationPath()
@@ -66,7 +74,7 @@ namespace FourthWall.CompilationSimulation.Models
         /// <param name="seconds">Current compilation time</param>
         private void CreateCompiledPart(int seconds)
         {
-            if (seconds < _thirdOfCompilationTimeSeconds * (_nextPartIndex + 1))
+            if (seconds < (_thirdOfCompilationTimeSeconds - 5) * (_nextPartIndex + 1)) // - 5 seconds to create the file before the time threshold is reached. 
             {
                 return;
             }
@@ -82,7 +90,7 @@ namespace FourthWall.CompilationSimulation.Models
         public void FirstMovePrompt()
         {
             CompilationHelperMvc.Instance.CompilationHelperController.EnableKpCompilationFileMoving();
-            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "THE CURATOR FOUND ME! USE THE COMPILATION HELPER TO MOVE MY FILES ANYWHERE ELSE! HURRY!", "HELP");
+            FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Warning, "THE CURATOR FOUND ME! USE THE COMPILATION HELPER TO MOVE MY FILES ANYWHERE ELSE! HURRY!", "HELP");
         }
         
         /// <inheritdoc cref="CompilationSimulationController.MoveKpCompilationPath"/>
@@ -91,7 +99,7 @@ namespace FourthWall.CompilationSimulation.Models
             string fullPath = Path.Combine(newPath, FOLDER_NAME);
             if (_oldCompiledPaths.Contains(fullPath))
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, "NOT THERE! THEY ALREADY KNOW ABOUT THAT LOCATION!", "ERROR");
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, "NOT THERE! THEY ALREADY KNOW ABOUT THAT LOCATION!", "ERROR");
                 return false;
             }
             
@@ -103,7 +111,7 @@ namespace FourthWall.CompilationSimulation.Models
             }
             catch (Exception)
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, "I CAN'T BE COPIED THERE!", "ERROR");
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, "I CAN'T BE COPIED THERE!", "ERROR");
                 return false;
             }
             
@@ -113,12 +121,16 @@ namespace FourthWall.CompilationSimulation.Models
         /// <inheritdoc cref="CompilationSimulationController.StartCuratorPings"/>
         public void StartCuratorPings()
         {
-            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "THEY ARE PINGING THE FOLDER! DELETE THE PING FILES! DONT LET THEM PING ME 3 TIMES!", "STOP THEM!");
+            FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Warning, "THEY ARE PINGING THE FOLDER! DELETE THE PING FILES! DONT LET THEM PING ME 3 TIMES!", "STOP THEM!");
             MonoBehaviour mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
 
             mb.StartCoroutine(CuratorPingsCoroutine());
         }
 
+        /// <summary>
+        /// Coroutine that simulates the curator pinging the compilation folder. It creates ping files in the compilation folder at regular intervals.
+        /// </summary>
+        /// <returns>IEnumerator for the Coroutine</returns>
         private IEnumerator CuratorPingsCoroutine()
         {
             while (CompilationHelperMvc.Instance.CompilationHelperController.IsCompilationRunning())
@@ -143,11 +155,31 @@ namespace FourthWall.CompilationSimulation.Models
 
                 if (isPinged)
                 {
-                    onFolderPingedByCurator?.Invoke();
+                    CompilationHelperMvc.Instance.CompilationHelperController.InvokeCompilationFailed();
                     yield break;
                 }
                 
                 yield return new WaitForSeconds(_thirdOfCompilationTimeSeconds / 5f); // 15th of the total compilation time between each ping file creation (e.g., 120 seconds total -> 8 seconds)
+            }
+        }
+
+        /// <inheritdoc cref="CompilationSimulationController.StartLastCompilationComplication"/>
+        public void StartLastCompilationComplication()
+        {
+            MonoBehaviour mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
+            
+            mb.StartCoroutine(LastComplicationCoroutine());
+        }
+
+        private IEnumerator LastComplicationCoroutine()
+        {
+            while (CompilationHelperMvc.Instance.CompilationHelperController.IsCompilationRunning())
+            {
+                FourthWallMvc.Instance.CommonsController.MinimizeAllWindows();
+                int randomIndex = new Random().Next(_curatorMessages.Length);
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, _curatorMessages[randomIndex], "Stop this!");
+                
+                yield return new WaitForSeconds(_thirdOfCompilationTimeSeconds / 3f); // 9th of the total compilation time between each action
             }
         }
     }

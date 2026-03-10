@@ -7,12 +7,6 @@ namespace FourthWall.CompilationSimulation.Controllers
     {
         private readonly CompilationSimulationModel _model = new();
         
-        public Action OnPingedByCurator 
-        {
-            get => _model.onFolderPingedByCurator;
-            set => _model.onFolderPingedByCurator = value;
-        }
-        
         /// <summary>
         /// Gets the first path of K-P's compilation.
         /// </summary>
@@ -54,9 +48,17 @@ namespace FourthWall.CompilationSimulation.Controllers
             return _model.MoveKpCompilationPath(newPath);
         }
 
+        /// <summary>
+        /// Starts the pinging from the curator by creating files in the K-P compilation path in sequence with a delay, which simulates the curator trying to find K-P's compilation by pinging the folder it's in.
+        /// </summary>
         public void StartCuratorPings()
         {
             _model.StartCuratorPings();
+        }
+        
+        public void StartLastCompilationComplication()
+        {
+            _model.StartLastCompilationComplication();
         }
     }
 }

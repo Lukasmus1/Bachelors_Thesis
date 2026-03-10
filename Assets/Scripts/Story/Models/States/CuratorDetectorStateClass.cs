@@ -52,7 +52,7 @@ namespace Story.Models.States
                 ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("curator",
                     "curatorHiddenFile");
             
-            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
+            FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
             
             ImportantFile.OnImportantFileDeleted += ChangeToNextState;
         }

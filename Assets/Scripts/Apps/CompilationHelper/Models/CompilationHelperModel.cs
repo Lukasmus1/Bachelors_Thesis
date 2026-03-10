@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Controllers;
 using Commons;
 using UnityEngine;
@@ -40,8 +41,16 @@ namespace Apps.CompilationHelper.Models
             CompilationTimeSeconds = compilationTimeSeconds;
             
             MonoBehaviour mbRef = Tools.GetScriptReferenceLinker().GetMonoBehavior();
-            mbRef.StartCoroutine(CompilationCoroutine());
             isCompilationRunning = true;
+            mbRef.StartCoroutine(CompilationCoroutine());
+            
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += StopCompilation;
+        }
+        
+        private void StopCompilation()
+        {
+            isCompilationRunning = false;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= StopCompilation;
         }
 
         /// <summary>
@@ -54,7 +63,7 @@ namespace Apps.CompilationHelper.Models
             const float updateFrequency = 1f; // Update every second
             var secondCounter = 0;
             
-            for (elapsed = 0; elapsed < CompilationTimeSeconds; elapsed += Time.deltaTime)
+            for (elapsed = 0; elapsed < CompilationTimeSeconds && isCompilationRunning; elapsed += Time.deltaTime)
             {
                 updateInterval += Time.deltaTime;
 
@@ -67,6 +76,12 @@ namespace Apps.CompilationHelper.Models
                 
                 yield return null;
             }
+            
+            
+            if (isCompilationRunning)
+                CompilationHelperMvc.Instance.CompilationHelperController.InvokeCompilationFinished();
+            
+            StopCompilation();
         }
     }
 }

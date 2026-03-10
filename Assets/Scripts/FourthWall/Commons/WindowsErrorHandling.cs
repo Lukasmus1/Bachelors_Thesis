@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace FourthWall.FileGeneration.Models
+namespace FourthWall.Commons
 {
     /// <summary>
     /// This class provides methods to display Windows message boxes for errors, warnings, and informational messages.

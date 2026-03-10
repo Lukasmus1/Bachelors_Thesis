@@ -45,7 +45,7 @@ namespace Story.Models.States
             var t = new AsyncTimer();
             _ = t.StartTimer(2, () =>
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info, "An unknown connection attempt was detected and prevented", "Unknown Connection Attempt");
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "An unknown connection attempt was detected and prevented", "Unknown Connection Attempt");
             
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
                 
@@ -69,7 +69,7 @@ namespace Story.Models.States
             var t = new AsyncTimer();
             _ = t.StartTimer(2, () =>
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Info,
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info,
                     "An unknown connection attempt was detected and prevented", "Unknown Connection Attempt");
 
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);

@@ -37,7 +37,7 @@ namespace Story.Models.Actions
                 }
                 
                 var message = $"Windows detected a hidden corrupted file in your system: {Path.GetFullPath(fileName)}";
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, message, "File Corruption Error");
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, message, "File Corruption Error");
                 
                 StartTimerForHiddenVirusCancellation(fileName);
             });

@@ -16,6 +16,18 @@ namespace Apps.CompilationHelper.Controllers
             get => _model.onCompilationProgressUpdateSeconds;
             set => _model.onCompilationProgressUpdateSeconds = value;
         }
+
+        public Action onCompilationFinished;
+        public void InvokeCompilationFinished()
+        {
+            onCompilationFinished?.Invoke();
+        }
+
+        public Action onCompilationFailed;
+        public void InvokeCompilationFailed()
+        {
+            onCompilationFailed?.Invoke();
+        }
         
         public void SetView(CompilationHelperView view)
         {
