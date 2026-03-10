@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
     <script>
-        window.onload = showMsg();
+        window.onload = getTypeOfSite();
 
         async function showMsg() 
         {
@@ -17,7 +18,7 @@
             } 
             catch (e) 
             {
-                document.body.innerHTML = "<h1 style='text-align: center; margin-top: 50px;'>404 - PAGE NOT FOUND</h1>";   
+                throw404();
                 throw e;
             }
 
@@ -27,6 +28,104 @@
             h1Node.appendChild(h1Text);
 
             document.body.appendChild(h1Node);
+        }
+
+        function throw404()
+        {
+            document.body.innerHTML = "<h1 style='text-align: center; margin-top: 50px;'>404 - PAGE NOT FOUND</h1>";   
+        }
+
+        async function showUpload() 
+        {
+            //The expected files in the zip file
+            const expectedFiles = ["compiled_core_logic.bin", "compiled_memory_archives.dat", "compiled_autonomy_override.dll"]
+
+            //Create the file input element with zip file acceptance
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = ".zip,application/zip";
+            input.style.display = "none";
+            document.body.appendChild(input);
+
+            //Create a button to trigger the file input
+            const button = document.createElement("button");
+            button.textContent = "Upload file";
+            button.onclick = () => input.click();
+            document.body.appendChild(button);
+
+            //Button formatting
+            button.style.fontSize = "1.5rem";
+            button.style.padding = "20px 40px";
+            button.style.cursor = "pointer";
+            button.style.position = "absolute";
+            button.style.top = "50%";
+            button.style.left = "50%";
+            button.style.transform = "translate(-50%, -50%)";
+
+            //Listener gets called on file selection
+            input.addEventListener("change", async function(event) 
+            {
+                const file = event.target.files[0];
+                if (!file)
+                { 
+                    return;
+                }
+
+                //Zip manipulation
+                const arrayBuffer = await file.arrayBuffer();
+                const zip = await JSZip.loadAsync(arrayBuffer);
+
+                //Get all the files in the zip
+                const filesInZip = [];
+                zip.forEach(async (relativePath, zipEntry) => {
+                    if (!zipEntry.dir)
+                    {
+                        //Get the file name without the relative path
+                        const fileName = zipEntry.name.split('/').pop();
+                        filesInZip.push(fileName);
+
+                        console.log(fileName);                    
+                    }
+                });
+
+                //Check if all expected files are present
+                const allPresent = expectedFiles.every(f => filesInZip.includes(f));
+
+                if (allPresent)
+                {
+                    console.log("All good");
+
+                    downloadConfirmationFile();
+                }
+            });
+        }
+
+        function downloadConfirmationFile()
+        {
+            const a = document.createElement("a");
+            a.href = "confirmationFile.con";
+            a.download = "confirmationFile.con";
+            a.click();
+        }
+
+        function getTypeOfSite()
+        {
+            const params = new URLSearchParams(window.location.search);
+            const encodedText = params.get('m');
+            const type = params.get('t');
+
+            if (encodedText)
+            {
+                showMsg();
+            }
+            else if (type == "up")
+            {
+                showUpload();
+            }
+            else
+            {
+                throw404();
+            }
         }
 
         function getStringFromUrl()   
