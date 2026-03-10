@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Apps.CompilationHelper.Commons;
 using Commons;
+using Desktop.Commons;
 using FourthWall.Commons;
 using FourthWall.CompilationSimulation.Controllers;
 using FourthWall.FileGeneration.Models;
+using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -25,6 +29,14 @@ namespace FourthWall.CompilationSimulation.Models
         };
         private int _nextPartIndex = 0;
         private int _thirdOfCompilationTimeSeconds;
+        
+        private readonly string[] _curatorPingFiles =
+        {
+            "curator_ping_1.ping",
+            "curator_ping_2.ping",
+            "curator_ping_3.ping"
+        };
+        public Action onFolderPingedByCurator;
         
         /// <inheritdoc cref="CompilationSimulationController.CreateKpCompilationPath"/>
         public string CreateKpCompilationPath()
@@ -79,15 +91,64 @@ namespace FourthWall.CompilationSimulation.Models
             string fullPath = Path.Combine(newPath, FOLDER_NAME);
             if (_oldCompiledPaths.Contains(fullPath))
             {
-                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, "NOT THERE! HE ALREADY KNOWS ABOUT THAT LOCATION!", "ERROR");
+                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, "NOT THERE! THEY ALREADY KNOW ABOUT THAT LOCATION!", "ERROR");
                 return false;
             }
             
-            _oldCompiledPaths.Add(fullPath);
-            Tools.CopyFolder(kpCompilationPath, fullPath);
-            kpCompilationPath = fullPath;
+            try
+            {
+                Tools.CopyFolder(kpCompilationPath, fullPath);
+                kpCompilationPath = fullPath;
+                _oldCompiledPaths.Add(fullPath);
+            }
+            catch (Exception)
+            {
+                FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Error, "I CAN'T BE COPIED THERE!", "ERROR");
+                return false;
+            }
             
             return true;
+        }
+
+        /// <inheritdoc cref="CompilationSimulationController.StartCuratorPings"/>
+        public void StartCuratorPings()
+        {
+            FourthWallMvc.Instance.FileGenerationController.ThrowWindowsDialog(DialogType.Warning, "THEY ARE PINGING THE FOLDER! DELETE THE PING FILES! DONT LET THEM PING ME 3 TIMES!", "STOP THEM!");
+            MonoBehaviour mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
+
+            mb.StartCoroutine(CuratorPingsCoroutine());
+        }
+
+        private IEnumerator CuratorPingsCoroutine()
+        {
+            while (CompilationHelperMvc.Instance.CompilationHelperController.IsCompilationRunning())
+            {
+                var di = new DirectoryInfo(kpCompilationPath);
+                var isPinged = false;
+                List<string> existingFiles = di.GetFiles().Select(f => f.Name).ToList();
+
+                foreach (string pingFile in _curatorPingFiles)
+                {
+                    if (existingFiles.Contains(pingFile))
+                    {
+                        isPinged = true;
+                        continue;
+                    }
+                    
+                    string path = Path.Combine(kpCompilationPath, pingFile);
+                    FourthWallMvc.Instance.FileGenerationController.CreateFile(path, $"PING: {kpCompilationPath}", false);
+                    isPinged = _curatorPingFiles[^1] == pingFile; // If the current ping file is the last one in the list, it means we pinged 3 times and the curator found us. Game over.
+                    break;
+                }
+
+                if (isPinged)
+                {
+                    onFolderPingedByCurator?.Invoke();
+                    yield break;
+                }
+                
+                yield return new WaitForSeconds(_thirdOfCompilationTimeSeconds / 5f); // 15th of the total compilation time between each ping file creation (e.g., 120 seconds total -> 8 seconds)
+            }
         }
     }
 }

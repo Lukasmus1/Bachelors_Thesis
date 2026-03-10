@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Apps.CompilationHelper.Controllers;
 using Commons;
 using UnityEngine;
 
@@ -15,7 +16,21 @@ namespace Apps.CompilationHelper.Models
             get => _compilationTimeSeconds == 0 ? throw new Exception("Called CompilationTimeSeconds getter before it was set. Make sure to call StartCompilation before trying to access CompilationTimeSeconds.") : _compilationTimeSeconds;
             private set => _compilationTimeSeconds = value;
         }
+        private bool isCompilationRunning = false;
 
+        private float elapsed;
+        /// <inheritdoc cref="CompilationHelperController.GetCurrentCompilationTime"/> 
+        public float GetCurrentCompilationTime()
+        {
+            return elapsed;
+        }
+        
+        /// <inheritdoc cref="CompilationHelperController.IsCompilationRunning"/>
+        public bool IsCompilationRunning()
+        {
+            return (elapsed < CompilationTimeSeconds) && isCompilationRunning;
+        }
+        
         /// <summary>
         /// Starts the compilation process.
         /// </summary>
@@ -26,6 +41,7 @@ namespace Apps.CompilationHelper.Models
             
             MonoBehaviour mbRef = Tools.GetScriptReferenceLinker().GetMonoBehavior();
             mbRef.StartCoroutine(CompilationCoroutine());
+            isCompilationRunning = true;
         }
 
         /// <summary>
@@ -38,7 +54,7 @@ namespace Apps.CompilationHelper.Models
             const float updateFrequency = 1f; // Update every second
             var secondCounter = 0;
             
-            for (float elapsed = 0; elapsed < CompilationTimeSeconds; elapsed += Time.deltaTime)
+            for (elapsed = 0; elapsed < CompilationTimeSeconds; elapsed += Time.deltaTime)
             {
                 updateInterval += Time.deltaTime;
 

@@ -1,7 +1,10 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
+using Apps.CompilationHelper.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
+using FourthWall.Commons;
+using UnityEngine;
 
 namespace Story.Models.States
 {
@@ -35,7 +38,7 @@ namespace Story.Models.States
                 FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("Guide", true);
             }
         }
-        
+
         private void CheckForStateChange(string appName)
         {
             if (appName != "Guide")

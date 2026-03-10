@@ -1,8 +1,8 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.CompilationHelper.Commons;
-using Desktop.Commons;
 using FourthWall.Commons;
+using UnityEngine;
 
 namespace Story.Models.States
 {
@@ -12,8 +12,8 @@ namespace Story.Models.States
         public override int State { get; } = (int)StatesEnum.EndingFightForAI;
         public override int NextState { get; set; } = (int)StatesEnum.Default;
 
-        private int simulationSeconds = 120;
-        
+        private const int SIMULATION_SECONDS = 120;
+
         public override void OnEnter()
         {
             //The AI will need time to compile into a shippable zipfile that the player will then upload into the net.
@@ -44,13 +44,14 @@ namespace Story.Models.States
                 return;
             }
             
-            CompilationHelperMvc.Instance.CompilationHelperController.EnableCompilationProcess(simulationSeconds);
+            CompilationHelperMvc.Instance.CompilationHelperController.EnableCompilationProcess(SIMULATION_SECONDS);
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += FirstMovePrompt;
+            CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += StartCuratorPings;
         }
 
         public void FirstMovePrompt(int seconds)
         {
-            if (seconds < simulationSeconds * 0.1) // first prompt at 1/10th of the total time
+            if (seconds < SIMULATION_SECONDS * 0.1) // first prompt at 1/10th of the total time
             {
                 return;
             }
@@ -58,6 +59,20 @@ namespace Story.Models.States
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= FirstMovePrompt;
             
             FourthWallMvc.Instance.CompilationSimulationController.FirstMovePrompt();
+        }
+
+        public void StartCuratorPings(int seconds)
+        {
+            if (seconds < SIMULATION_SECONDS / 3)
+            {
+                return;
+            }
+
+            CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= StartCuratorPings;
+            
+            FourthWallMvc.Instance.CompilationSimulationController.StartCuratorPings();
+            FourthWallMvc.Instance.CompilationSimulationController.OnPingedByCurator +=
+                () => { Debug.Log("we fucked"); };
         }
     }
 }

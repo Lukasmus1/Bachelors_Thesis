@@ -49,5 +49,23 @@ namespace Apps.CompilationHelper.Controllers
         {
             _view.EnableKpCompilationFileMoving();
         }
+        
+        /// <summary>
+        /// Gets the current compilation time.
+        /// </summary>
+        /// <returns>Current compilation time</returns>
+        public float GetCurrentCompilationTime()
+        {
+            return _model.GetCurrentCompilationTime();
+        }
+
+        /// <summary>
+        /// Gets whether the compilation process is still running.
+        /// </summary>
+        /// <returns>Is the compilation simulation running?</returns>
+        public bool IsCompilationRunning()
+        {
+            return _model.IsCompilationRunning();
+        }
     }
 }

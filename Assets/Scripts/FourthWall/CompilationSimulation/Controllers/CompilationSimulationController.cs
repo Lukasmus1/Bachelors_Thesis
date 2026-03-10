@@ -1,10 +1,17 @@
-﻿using FourthWall.CompilationSimulation.Models;
+﻿using System;
+using FourthWall.CompilationSimulation.Models;
 
 namespace FourthWall.CompilationSimulation.Controllers
 {
     public class CompilationSimulationController
     {
         private readonly CompilationSimulationModel _model = new();
+        
+        public Action OnPingedByCurator 
+        {
+            get => _model.onFolderPingedByCurator;
+            set => _model.onFolderPingedByCurator = value;
+        }
         
         /// <summary>
         /// Gets the first path of K-P's compilation.
@@ -45,6 +52,11 @@ namespace FourthWall.CompilationSimulation.Controllers
         public bool MoveKpCompilationPath(string newPath)
         {
             return _model.MoveKpCompilationPath(newPath);
+        }
+
+        public void StartCuratorPings()
+        {
+            _model.StartCuratorPings();
         }
     }
 }
