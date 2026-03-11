@@ -1,7 +1,10 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
+using Apps.FileUploader.Commons;
+using Desktop.Commons;
 using FourthWall.Commons;
 using UnityEditor;
+using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -11,10 +14,11 @@ namespace Story.Models.States
     public class UploadAIStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.UploadAI;
-        public override int NextState { get; set; } = (int)StatesEnum.Default;
+        public override int NextState { get; set; } = (int)StatesEnum.SuccessFightForAIEnding;
 
         public override void OnEnter()
         {
+            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpFightForAIUpload", true);
             
             LoadFromState();
@@ -23,6 +27,7 @@ namespace Story.Models.States
         public override void OnExit()
         {
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= MessageCheck;
+            FileUploaderMvc.Instance.FileUploaderController.OnSuccessfulUpload -= OnUploadCheck;
         }
 
         public override void LoadFromState()
@@ -41,9 +46,20 @@ namespace Story.Models.States
                     EditorGUIUtility.systemCopyBuffer = UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl);
                     break;
                 case "kpFightForAIUploadFileUploader":
-                    //todo
+                    DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("File Uploader", true);
+                    FileUploaderMvc.Instance.FileUploaderController.OnSuccessfulUpload += OnUploadCheck;
                     break;
             }
+        }
+
+        private void OnUploadCheck(string fileName)
+        {
+            if (fileName != "confirmationFile.con")
+            {
+                return;
+            }
+            
+            ChangeToNextState();
         }
     }
 }

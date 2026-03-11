@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 namespace Story.Models.States
 {
     [Serializable]
-    public class SuccessFightForAI : StateClass
+    public class SuccessFightForAIStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.SuccessFightForAI;
         public override int NextState { get; set; } = (int)StatesEnum.UploadAI;

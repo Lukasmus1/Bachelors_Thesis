@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,7 @@ public class IconImageLinker : MonoBehaviour
     [SerializeField] private Sprite vigenereCipher;
     [SerializeField] private Sprite virusFinder;
     [SerializeField] private Sprite compilationHelper;
+    [SerializeField] private Sprite fileUploader;
 
     private void Awake()
     {
@@ -27,5 +27,6 @@ public class IconImageLinker : MonoBehaviour
         AppIconDictionary.Add("CipherSolver", vigenereCipher);
         AppIconDictionary.Add("VirusFinder", virusFinder);
         AppIconDictionary.Add("CompilationHelper", compilationHelper);
+        AppIconDictionary.Add("FileUploader", fileUploader);
     }
 }

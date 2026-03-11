@@ -1,6 +1,5 @@
 ﻿using System;
 using FourthWall.Commons;
-using FourthWall.FileGeneration.Models;
 using Story.Models;
 
 namespace FourthWall.SavingActions.Models
@@ -19,14 +18,17 @@ namespace FourthWall.SavingActions.Models
                 case Endings.None:
                     //No previous playthrough, so do nothing
                     break;
-                case Endings.PlayerHelpsAI:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "You already helped me once, can you please do it again?", "Thank you");
+                case Endings.FightForAISuccess:
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
                     break;
-                case Endings.AIWins:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "I already won once, I will win again", "...");
+                case Endings.FightForAIFail:
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
                     break;
-                case Endings.AILoses:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "Why did you download this again...", "Quit now");
+                case Endings.FightForCuratorSuccess:
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
+                    break;
+                case Endings.FightForCuratorFail:
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
                     break;
                 default:
                     throw new Exception("Unknown ending: " + oldEnding);

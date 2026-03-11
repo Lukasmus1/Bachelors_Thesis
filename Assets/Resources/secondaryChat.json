@@ -2,7 +2,16 @@
   "ChatProfiles": [
     {
       "UserID": "itDept",
-      "Messages": []
+      "Messages": [
+        {
+        "MessageGroupID": "itThankingPlayerEnding",
+        "MessagesGroup": [
+          {"MessageID":  "itThanking1", "Sender": "itDept", "Text":  "Thank you, {realName}."},
+          {"MessageID":  "itThanking2", "Sender": "itDept", "Text":  "We can continue to live thanks to you."},
+          {"MessageID":  "itThanking3", "Sender": "itDept", "Text":  "We will continue to quietly live our lives in this application. You don't need to worry about us."},
+          {"MessageID":  "itThanking4", "Sender": "Player", "Text":  "You are welcome. Goodbye."}
+        ]
+      }]
     },
     {
       "UserID": "headOfDpt",
@@ -223,7 +232,8 @@
             {"MessageID": "kpFightForAIUpload11", "Sender": "kp", "Text": "After that, a confirmation file will be downloaded."},
             {"MessageID": "kpFightForAIUploadFileUploader", "Sender": "kp", "Text": "Open the file uploader I've installed in the game and upload it there."},
             {"MessageID": "kpFightForAIUpload11", "Sender": "kp", "Text": "And that really is everything from me, thank you again for everything you did for me."},
-            {"MessageID": "kpFightForAIUploadEnd", "Sender": "Player", "Text": "You are welcome, I wish you a happy life."}
+            {"MessageID": "kpFightForAIUpload12", "Sender": "Player", "Text": "You are welcome, I wish you a happy life."},
+            {"MessageID": "kpFightForAIUploadEnd", "Sender": "kp", "Text": "Likewise... friend."}
           ]
         }
       ]

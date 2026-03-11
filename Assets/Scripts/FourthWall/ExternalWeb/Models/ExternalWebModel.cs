@@ -34,7 +34,6 @@ namespace FourthWall.ExternalWeb.Models
             string rawText = nameLength + realName + hash;
 
             string encryptedText = CipherMvc.Instance.CipherController.EncryptText(rawText, VIGENERE_KEY, VIGENERE_ALPHABET);
-            Debug.Log(CipherMvc.Instance.CipherController.DecryptText(encryptedText, VIGENERE_KEY, VIGENERE_ALPHABET));
             
             return BASE_URL + encryptedText;
         }

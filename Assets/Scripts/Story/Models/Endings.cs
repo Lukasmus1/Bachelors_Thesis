@@ -3,8 +3,9 @@
     public enum Endings
     {
         None,
-        PlayerHelpsAI,
-        AIWins,
-        AILoses
+        FightForAISuccess,
+        FightForAIFail,
+        FightForCuratorSuccess,
+        FightForCuratorFail,
     }
 }

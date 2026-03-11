@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Controllers;
+using FourthWall.Commons;
 using Newtonsoft.Json;
 using UnityEngine;
 using User.Commons;
@@ -132,6 +133,9 @@ namespace Apps.ChatTerminal.Models
             
             chatMessage.Text = chatMessage.Text.Replace("{aiUploadURL}",
                 UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl));
+            
+            chatMessage.Text = chatMessage.Text.Replace("{realName}",
+                FourthWallMvc.Instance.UserInformationController.GetUserRealName());
             //More procedural data can be added here as needed
         }
         

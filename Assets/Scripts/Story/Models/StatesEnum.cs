@@ -35,6 +35,7 @@ namespace Story.Models
         SuccessFightForAI,
         FailedFightForAI,
         UploadAI,
+        SuccessFightForAIEnding,
         EndingFightForCurator,
     }
 }
