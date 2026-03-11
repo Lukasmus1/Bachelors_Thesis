@@ -57,5 +57,11 @@ namespace Saving.Controllers
         {
             return _modelLogic.GetOldEnding();
         }
+
+        
+        public void CreateOldSaveFile()
+        {
+            _modelLogic.CreateOldSaveFile();
+        }
     }
 }

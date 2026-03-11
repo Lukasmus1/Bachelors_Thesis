@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
 using Desktop.Models;
+using Saving.Controllers;
 using Story.Commons;
 using Story.Models;
 using Story.Models.Actions;
@@ -14,8 +15,8 @@ namespace Saving.Models
 {
     public class SaveLogic
     {
-        private readonly string _path = Application.persistentDataPath + "/savefile.sav";
-        private readonly string _oldPath = Application.persistentDataPath + "/savefile_old.dat";
+        private readonly string _savePath = Application.persistentDataPath + "/savefile.sav";
+        private readonly string _oldPath = Application.persistentDataPath + "/../logs.dat";
         
         private readonly SaveModel _model = new();
         
@@ -40,7 +41,7 @@ namespace Saving.Models
             _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
             
             BinaryFormatter formatter = new();
-            FileStream stream = new(_path, FileMode.Create);
+            FileStream stream = new(_savePath, FileMode.Create);
             try
             {
                 formatter.Serialize(stream, _model);
@@ -49,9 +50,9 @@ namespace Saving.Models
             {
                 stream.Close();
 
-                if (File.Exists(_path))
+                if (File.Exists(_savePath))
                 {
-                    File.Delete(_path);
+                    File.Delete(_savePath);
                 }
                 
                 Debug.LogError("Error saving game: " + e.Message);
@@ -68,7 +69,7 @@ namespace Saving.Models
         /// <exception cref="Exception">Generic error when loading a file</exception>
         public bool LoadGame()
         {
-            if (!File.Exists(_path))
+            if (!File.Exists(_savePath))
             {
                 return false;
             }
@@ -77,7 +78,7 @@ namespace Saving.Models
             try
             {
                 BinaryFormatter formatter = new();
-                FileStream stream = new(_path, FileMode.Open);
+                FileStream stream = new(_savePath, FileMode.Open);
                 data = formatter.Deserialize(stream) as SaveModel;
                 stream.Close();
             }
@@ -112,7 +113,7 @@ namespace Saving.Models
             try
             {
                 BinaryFormatter formatter = new();
-                FileStream stream = new(_path, FileMode.Open);
+                FileStream stream = new(_savePath, FileMode.Open);
                 data = formatter.Deserialize(stream) as SaveModel;
                 stream.Close();
             }
@@ -128,6 +129,15 @@ namespace Saving.Models
             }
             
             return (Endings)data.ending;
+        }
+
+        /// <inheritdoc cref="SaveController.CreateOldSaveFile"/>
+        public void CreateOldSaveFile()
+        {
+            if (File.Exists(_savePath))
+            {
+                File.Copy(_savePath, _oldPath, true);
+            }
         }
     }
 }

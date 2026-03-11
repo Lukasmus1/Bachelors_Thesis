@@ -1,4 +1,6 @@
-﻿using Story.Models;
+﻿using FourthWall.Commons;
+using Saving.Commons;
+using Story.Models;
 using Story.Models.States;
 using UnityEngine;
 
@@ -30,13 +32,9 @@ namespace Story.Controllers
         /// <param name="ending"></param>
         public void SetEnding(Endings ending)
         {
-            if (storyModel.Ending != Endings.None)
-            {
-                Debug.LogError("Ending has already been set. Cannot change ending.");
-                return;
-            }
-            
-            storyModel.Ending = ending;
+            storyModel.SetEnding(ending);
+
+            SavingMvc.Instance.SavingController.CreateOldSaveFile();
         }
 
         /// <summary>
