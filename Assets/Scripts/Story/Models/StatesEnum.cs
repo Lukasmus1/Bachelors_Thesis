@@ -33,9 +33,10 @@ namespace Story.Models
         EndingChoice,
         EndingFightForAI,
         SuccessFightForAI,
-        FailedFightForAI,
         UploadAI,
         SuccessFightForAIEnding,
+        FailedFightForAI,
+        FailedFightForAIEnding,
         EndingFightForCurator,
     }
 }

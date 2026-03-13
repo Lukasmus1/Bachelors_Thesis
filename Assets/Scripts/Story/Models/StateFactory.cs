@@ -49,7 +49,8 @@ namespace Story.Models
                 StatesEnum.SuccessFightForAI => new SuccessFightForAIStateClass(),
                 StatesEnum.UploadAI => new UploadAIStateClass(),
                 StatesEnum.SuccessFightForAIEnding => new SuccessFightForAIEndingStateClass(),
-                StatesEnum.FailedFightForAI => new FailedFightForAI(),
+                StatesEnum.FailedFightForAI => new FailedFightForAIStateClass(),
+                StatesEnum.FailedFightForAIEnding => new FailedFightForAIEndingStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

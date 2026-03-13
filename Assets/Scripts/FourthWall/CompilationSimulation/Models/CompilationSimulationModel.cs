@@ -200,5 +200,11 @@ namespace FourthWall.CompilationSimulation.Models
             FourthWallMvc.Instance.FileGenerationController.CreateZipFile(path, kpCompilationPath);
             FourthWallMvc.Instance.FileGenerationController.DestroyFolder(kpCompilationPath);
         }
+
+        /// <inheritdoc cref="CompilationSimulationController.DeleteKpCompilationFolder"/>
+        public void DeleteKpCompilationFolder()
+        {
+            FourthWallMvc.Instance.FileGenerationController.DestroyFolder(kpCompilationPath);
+        }
     }
 }

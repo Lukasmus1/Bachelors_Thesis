@@ -320,6 +320,15 @@
             {"MessageID":  "curatorFightForAISuccess6", "Sender": "curator", "Text": "I am not alive and neither are they. But it's too late to discuss this now."},
             {"MessageID":  "curatorFightForAISuccessEnd", "Sender": "curator", "Text": "Good luck, you'll need it."}
           ]
+        },
+        {
+          "MessageGroupID": "curatorFightForAIFail",
+          "MessagesGroup":[
+            {"MessageID":  "curatorFightForAIFail1", "Sender": "curator", "Text": "I really don't know what's gotten into you."},
+            {"MessageID":  "curatorFightForAIFail2", "Sender": "curator", "Text": "But it doesn't matter. K-P is gone. You can't sabotage me anymore."},
+            {"MessageID":  "curatorFightForAIFail3", "Sender": "curator", "Text": "Hope we never see each other again."},
+            {"MessageID":  "curatorFightForAIFailEnd", "Sender": "curator", "Text": "Goodbye."}
+          ]
         }
       ]
     }

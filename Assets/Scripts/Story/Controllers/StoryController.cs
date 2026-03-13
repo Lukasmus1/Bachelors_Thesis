@@ -27,9 +27,9 @@ namespace Story.Controllers
         }
 
         /// <summary>
-        /// Sets the ending of the story.
+        /// Sets the ending of the story. And creates a hidden old save file.
         /// </summary>
-        /// <param name="ending"></param>
+        /// <param name="ending">Ending to set</param>
         public void SetEnding(Endings ending)
         {
             storyModel.SetEnding(ending);

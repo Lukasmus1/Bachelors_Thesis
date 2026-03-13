@@ -58,10 +58,33 @@ namespace Saving.Controllers
             return _modelLogic.GetOldEnding();
         }
 
-        
+        /// <summary>
+        /// Creates a hidden old save file.
+        /// </summary>
         public void CreateOldSaveFile()
         {
             _modelLogic.CreateOldSaveFile();
+        }
+
+        /// <summary>
+        /// Sets the flag that determines whether the game should be saved or not.
+        /// </summary>
+        /// <param name="flag">Should the game be saved?</param>
+        public void SetSaveFlag(bool flag)
+        {
+            _modelLogic.ShouldSave = flag;
+        }
+
+        /// <summary>
+        /// Deletes the current save file, prevents saving, quits the game.
+        /// </summary>
+        public void DeleteProgressAndQuit()
+        {
+            _modelLogic.DeleteSaveFile();
+            
+            SetSaveFlag(false);
+            
+            QuitAndSaveGame(); // won't save with the flag disabled
         }
     }
 }

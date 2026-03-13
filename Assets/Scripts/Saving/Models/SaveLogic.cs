@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
 using Desktop.Models;
+using FourthWall.Commons;
 using Saving.Controllers;
 using Story.Commons;
 using Story.Models;
@@ -15,6 +16,8 @@ namespace Saving.Models
 {
     public class SaveLogic
     {
+        public bool ShouldSave { private get; set; }
+        
         private readonly string _savePath = Application.persistentDataPath + "/savefile.sav";
         private readonly string _oldPath = Application.persistentDataPath + "/../logs.dat";
         
@@ -29,13 +32,21 @@ namespace Saving.Models
             _model.hiddenFiles = FileManagerMvc.Instance.FileManagerController.HiddenFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
             _model.ending = (int)StoryMvc.Instance.StoryController.storyModel.Ending;
+            
+            ShouldSave = true;
         }
         
         /// <summary>
-        /// Saves the game into a binary file.
+        /// Saves the game into a binary file if the ShouldSave flag is true.
         /// </summary>
         public void SaveGame()
         {
+            if (!ShouldSave)
+            {
+                Debug.Log("Skipping save because ShouldSave is false.");
+                return;
+            }
+            
             //Methods to explicitly save the data if required 
             ChatTerminalMvc.Instance.ChatTerminalController.SaveGameData();
             _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
@@ -138,6 +149,14 @@ namespace Saving.Models
             {
                 File.Copy(_savePath, _oldPath, true);
             }
+        }
+
+        /// <summary>
+        /// Deletes the current save file.
+        /// </summary>
+        public void DeleteSaveFile()
+        {
+            FourthWallMvc.Instance.FileGenerationController.DestroyFile(_savePath);
         }
     }
 }

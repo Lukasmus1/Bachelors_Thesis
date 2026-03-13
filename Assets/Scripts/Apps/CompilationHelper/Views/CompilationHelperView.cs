@@ -42,6 +42,8 @@ namespace Apps.CompilationHelper.Views
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= UpdateDeletionProgressBar;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= Cleanup;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished -= Cleanup;
+            
+            moveKpButton.interactable = false;
         }
 
         /// <summary>

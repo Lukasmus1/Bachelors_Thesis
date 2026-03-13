@@ -80,5 +80,13 @@ namespace FourthWall.CompilationSimulation.Controllers
         {
             _model.CreateCompiledZipFile();
         }
+        
+        /// <summary>
+        /// Deletes the KP compilation folder
+        /// </summary>
+        public void DeleteKpCompilationFolder()
+        {
+            _model.DeleteKpCompilationFolder();
+        }
     }
 }
