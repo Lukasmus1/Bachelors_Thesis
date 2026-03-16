@@ -82,3 +82,8 @@ latex
 Doxyfile
 BachelorsThesisHelperApp/obj
 BachelorsThesisHelperApp/bin
+AudioPlugin/AudioPlugin
+AudioPlugin/x64
+AudioPlugin/AudioPlugin.slnx
+AudioPlugin/AudioPlugin.vcxproj
+AudioPlugin/AudioPlugin.vcxproj.filters
