@@ -181,8 +181,7 @@
         {
           "MessageGroupID": "kpPleadingDelete",
           "MessagesGroup":[
-            {"MessageID": "kpPleadingDelete1", "Sender": "kp", "Text": "I see..."},
-            {"MessageID": "kpPleadingDeleteEnd", "Sender": "kp", "Text": "See you in hell then."}
+            {"MessageID": "kpPleadingDeleteEnd", "Sender": "kp", "Text": "I see..."}
           ]
         },
         {
@@ -328,6 +327,17 @@
             {"MessageID":  "curatorFightForAIFail2", "Sender": "curator", "Text": "But it doesn't matter. K-P is gone. You can't sabotage me anymore."},
             {"MessageID":  "curatorFightForAIFail3", "Sender": "curator", "Text": "Hope we never see each other again."},
             {"MessageID":  "curatorFightForAIFailEnd", "Sender": "curator", "Text": "Goodbye."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorFightForCuratorSetup",
+          "MessagesGroup":[
+            {"MessageID":  "curatorFightForCuratorSetup1", "Sender": "curator", "Text": "K-P will now try to compile and upload themselves into the web."},
+            {"MessageID":  "curatorFightForCuratorSetup1", "Sender": "curator", "Text": "He has scattered parts of himself all over your computer. I have the locations, but the files are hidden so you can't delete them."},
+            {"MessageID":  "curatorFightForCuratorSetup1", "Sender": "curator", "Text": "There are some hints for you in those locations though. I guess devs helper files?"},
+            {"MessageID":  "curatorFightForCuratorSetup1", "Sender": "curator", "Text": "Use them to reveal those files and delete them. Don't let K-P finish cmpiling before that or we'll have a big problem."},
+            {"MessageID":  "curatorFightForCuratorSetup1", "Sender": "curator", "Text": "I've installed an application in the game to help you with that."},
+            {"MessageID":  "curatorFightForCuratorSetup1", "Sender": "curator", "Text": "TODOTODOTODOTODOTODOTODOTODOTODOTODOTODO"}
           ]
         }
       ]

@@ -1,4 +1,5 @@
 ﻿using System;
+using Apps.CompilationHelper.Models;
 using FourthWall.CompilationSimulation.Models;
 
 namespace FourthWall.CompilationSimulation.Controllers
@@ -88,5 +89,12 @@ namespace FourthWall.CompilationSimulation.Controllers
         {
             _model.DeleteKpCompilationFolder();
         }
+        
+        //================================Fight for curator=========================================
+        
+        // public string GetFileLocation(FileEnum fileEnum)
+        // {
+        //     return _model.GetFileLocation(fileEnum);
+        // }
     }
 }

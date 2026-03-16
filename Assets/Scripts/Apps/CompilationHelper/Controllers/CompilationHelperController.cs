@@ -44,11 +44,12 @@ namespace Apps.CompilationHelper.Controllers
         /// Enables the simulated compilation process. 
         /// </summary>
         /// <param name="compilationTimeSeconds">How long should the compilation be in seconds</param>
-        public void EnableCompilationProcess(int compilationTimeSeconds)
+        public void EnableForAICompilationProcess(int compilationTimeSeconds)
         {
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", true);
             _view.SetupProgressBar(compilationTimeSeconds);
             _view.SetupDeletionProgressBar(compilationTimeSeconds / 3);
+            _view.EnableForAILayout();
             _model.StartCompilation(compilationTimeSeconds);
             
             FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulation(); // must be called after _model.StartCompilation -> CompilationTimeSeconds not set

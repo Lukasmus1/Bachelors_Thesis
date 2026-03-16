@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Story.Models.States
 {
     [Serializable]
-    public class EndHelpAIStateClass : StateClass
+    public class FightForAIStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.EndingFightForAI;
         public override int NextState { get; set; } = (int)StatesEnum.Default;
@@ -31,7 +31,9 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= BeginCompilation;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished -= OnSuccessCompilation;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= OnFailedCompilation;
         }
 
         public override void LoadFromState()
@@ -47,7 +49,7 @@ namespace Story.Models.States
             }
 
             // Start compilation simulation and subscribe to progress updates
-            CompilationHelperMvc.Instance.CompilationHelperController.EnableCompilationProcess(SIMULATION_SECONDS);
+            CompilationHelperMvc.Instance.CompilationHelperController.EnableForAICompilationProcess(SIMULATION_SECONDS);
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds +=
                 FirstMovePrompt;
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds +=
@@ -105,10 +107,7 @@ namespace Story.Models.States
 
         public void OnFailedCompilation()
         {
-            //todo
-            
             NextState = (int)StatesEnum.FailedFightForAI;
-            Debug.Log("we lost");
             
             ChangeToNextState();
         }

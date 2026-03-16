@@ -44,7 +44,7 @@ namespace Story.Models
                 StatesEnum.Preparation => new PreparationStateClass(),
                 StatesEnum.PreFinale => new PreFinaleStateClass(),
                 StatesEnum.EndingChoice => new EndingChoiceStateClass(),
-                StatesEnum.EndingFightForAI => new EndHelpAIStateClass(),
+                StatesEnum.EndingFightForAI => new FightForAIStateClass(),
                 StatesEnum.EndingFightForCurator => new EndHelpCuratorStateClass(),
                 StatesEnum.SuccessFightForAI => new SuccessFightForAIStateClass(),
                 StatesEnum.UploadAI => new UploadAIStateClass(),

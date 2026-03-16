@@ -18794,6 +18794,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1963186830749177706, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_Name
+      value: ForAILayout
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963186830749177706, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2838541774978958267, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: resultText
       value: 
@@ -18825,6 +18833,10 @@ PrefabInstance:
     - target: {fileID: 3676236577034867134, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723023572522794043, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3730776590235185270, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive
@@ -18928,7 +18940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5137568237629110730, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5137568237629110730, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_TagString
@@ -18944,7 +18956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7181962880198536066, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835911080242511496, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_Value

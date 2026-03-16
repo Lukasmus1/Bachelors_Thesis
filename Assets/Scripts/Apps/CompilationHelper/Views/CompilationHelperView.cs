@@ -13,6 +13,9 @@ namespace Apps.CompilationHelper.Views
 {
     public class CompilationHelperView : AppsCommon
     {
+        [SerializeField] private GameObject forAILayout;
+        [SerializeField] private GameObject againstAILayout;
+        
         [SerializeField] private Slider progressBarSlider;
         
         [SerializeField] private GameObject kpFileMovingUI;
@@ -46,6 +49,14 @@ namespace Apps.CompilationHelper.Views
             moveKpButton.interactable = false;
         }
 
+        /// <summary>
+        /// Enables the layout for the fight for AI ending.
+        /// </summary>
+        public void EnableForAILayout()
+        {
+            forAILayout.SetActive(true);
+        }
+        
         /// <summary>
         /// Sets up the compilation progress bar.
         /// </summary>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Apps.CompilationHelper.Commons;
+using Apps.CompilationHelper.Models;
 using Commons;
 using FourthWall.Commons;
 using FourthWall.CompilationSimulation.Controllers;
@@ -206,5 +207,10 @@ namespace FourthWall.CompilationSimulation.Models
         {
             FourthWallMvc.Instance.FileGenerationController.DestroyFolder(kpCompilationPath);
         }
+
+        // public string GetFileLocation(FileEnum file)
+        // {
+        //     
+        // }
     }
 }
