@@ -2,9 +2,8 @@
 {
     public enum FileEnum
     {
-        FileOne,
-        FileTwo,
+        DesktopFile,
+        AudioFile,
         FileThree,
-        FileFour,
     }
 }

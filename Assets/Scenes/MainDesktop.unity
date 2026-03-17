@@ -18818,6 +18818,10 @@ PrefabInstance:
       propertyPath: virusFinderIcon
       value: 
       objectReference: {fileID: 868804822}
+    - target: {fileID: 3125097102149230165, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 3153078499333047013, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -18845,6 +18849,18 @@ PrefabInstance:
     - target: {fileID: 3730776590235185270, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933245272070342285, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933245272070342285, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938524881979703172, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenFolderButton
       objectReference: {fileID: 0}
     - target: {fileID: 3952909443396879626, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_Pivot.x
@@ -18926,6 +18942,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3962330901286134992, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962330901286134992, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032425687142845658, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212729675905374825, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440091919335354523, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440091919335354523, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4584433757644019772, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -18950,17 +18990,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: CompilationHelper
       objectReference: {fileID: 0}
+    - target: {fileID: 6269304169219035545, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenFolderButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6541757380248807587, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6751603723074955951, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6751603723074955951, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+    - target: {fileID: 7105659934490045501, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -125
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 7181962880198536066, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchorMax.x
@@ -18974,7 +19014,23 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8327172397566305757, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenFolderButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061127625372937568, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061127625372937568, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6053363668331809755, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+    - {fileID: 5761385915379888703, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+    - {fileID: 5658264688956784907, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+    - {fileID: 6363897601480712309, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -93,6 +93,15 @@ namespace FourthWall.FileGeneration.Controllers
         }
 
         /// <summary>
+        /// Opens a file explorer with the specified path.
+        /// </summary>
+        /// <param name="path">Path to open the file explorer in.</param>
+        public void OpenFileExplorer(string path)
+        {
+            _model.OpenFileExplorer(path);
+        }
+        
+        /// <summary>
         /// Generates a random text of the specified length.
         /// </summary>
         /// <param name="length">Length of the text</param>

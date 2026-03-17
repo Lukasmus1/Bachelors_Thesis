@@ -92,9 +92,14 @@ namespace FourthWall.CompilationSimulation.Controllers
         
         //================================Fight for curator=========================================
         
-        // public string GetFileLocation(FileEnum fileEnum)
-        // {
-        //     return _model.GetFileLocation(fileEnum);
-        // }
+        /// <summary>
+        /// Gets the location of the hidden file and creates the folder if it doesn't exist.
+        /// </summary>
+        /// <param name="fileEnum"></param>
+        /// <returns></returns>
+        public string GetScatteredFileLocation(FileEnum fileEnum)
+        {
+            return _model.GetFileLocation(fileEnum);
+        }
     }
 }

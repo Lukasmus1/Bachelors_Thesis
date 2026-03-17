@@ -16,7 +16,6 @@ namespace Story.Models.States
             //By exploring and adjusting the computer's settings they will slowly uncover the locations.
             //First file will be on the desktop
             //Second file will be revealed by muting the computer's audio
-            //Third file will be revealed once they change their system theme -> fallback for unactivated windows is regedit?
             //For last file, the player will have to edit a custom registry entry
             
             //ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage();

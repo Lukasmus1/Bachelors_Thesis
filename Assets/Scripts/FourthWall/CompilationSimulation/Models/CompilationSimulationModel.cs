@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Models;
+using Apps.FileViewer.Models;
 using Commons;
 using FourthWall.Commons;
 using FourthWall.CompilationSimulation.Controllers;
@@ -17,6 +18,7 @@ namespace FourthWall.CompilationSimulation.Models
 {
     public class CompilationSimulationModel
     {
+        //AI ending
         public string kpCompilationPath;
         private readonly List<string> _oldCompiledPaths = new();
 
@@ -208,9 +210,10 @@ namespace FourthWall.CompilationSimulation.Models
             FourthWallMvc.Instance.FileGenerationController.DestroyFolder(kpCompilationPath);
         }
 
-        // public string GetFileLocation(FileEnum file)
-        // {
-        //     
-        // }
+        /// <inheritdoc cref="CompilationSimulationController.GetScatteredFileLocation"/>
+        public string GetFileLocation(FileEnum file)
+        {
+            return ScatteredFiles.GetFilePath(file);
+        }
     }
 }
