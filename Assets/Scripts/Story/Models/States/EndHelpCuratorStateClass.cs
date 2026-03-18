@@ -1,5 +1,7 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
+using Apps.CompilationHelper.Commons;
+using Desktop.Commons;
 
 namespace Story.Models.States
 {
@@ -18,7 +20,12 @@ namespace Story.Models.States
             //Second file will be revealed by muting the computer's audio
             //For last file, the player will have to edit a custom registry entry
             
-            //ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage();
+            //debug
+            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
+            
+            ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator","curatorFightForCuratorSetup", true);
+            
+            LoadFromState();
         }
 
         public override void OnExit()
@@ -28,7 +35,17 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += LoadApp;
+        }
+
+        private void LoadApp(string messageID)
+        {
+            if (messageID != "curatorFightForCuratorSetupApp")
+                return;
+            
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= LoadApp;
+            
+            CompilationHelperMvc.Instance.CompilationHelperController.EnableForCuratorCompilationProcess(120);
         }
     }
 }

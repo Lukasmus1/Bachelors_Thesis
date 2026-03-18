@@ -18790,13 +18790,17 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1500199789580863154, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1613629909695192142, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1963186830749177706, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_Name
-      value: ForAILayout
+      value: AILayout
       objectReference: {fileID: 0}
     - target: {fileID: 1963186830749177706, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive
@@ -18821,6 +18825,10 @@ PrefabInstance:
     - target: {fileID: 3125097102149230165, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153078499333047013, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
+      propertyPath: m_Name
+      value: CuratorLayout
       objectReference: {fileID: 0}
     - target: {fileID: 3153078499333047013, guid: a2eb525265a071d40bc189b84c8a9087, type: 3}
       propertyPath: m_IsActive

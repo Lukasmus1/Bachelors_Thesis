@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Apps.Commons;
 using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Controllers;
+using Apps.CompilationHelper.Models.ScatteredFilesActions;
 using Desktop.Commons;
 using FourthWall.Commons;
 using UnityEditor;
@@ -13,21 +15,21 @@ namespace Apps.CompilationHelper.Views
 {
     public class CompilationHelperView : AppsCommon
     {
-        [SerializeField] private GameObject forAILayout;
+        public Action onAllFilesDeleted;
         [SerializeField] private GameObject againstAILayout;
+        [SerializeField] private Slider curatorProgressBarSlider;
+        [SerializeField] private GameObject filesArea;
+        [SerializeField] private GameObject kpFinalPathLayout;
+        private List<FileAction> fileActions;
+        private int deletedFiles = 0;
+        private bool aiProgressBarActive;
         
-        [SerializeField] private Slider progressBarSlider;
-        
+        [SerializeField] private GameObject forAILayout;
+        [SerializeField] private Slider aiProgressBarSlider;
         [SerializeField] private GameObject kpFileMovingUI;
         [SerializeField] private Slider deletionProgressBar;
         [SerializeField] private Button moveKpButton;
         [SerializeField] private Slider moveCooldownSlider;
-
-        private void Start()
-        {
-            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += Cleanup;
-            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += Cleanup;
-        }
 
         private void OnEnable()
         {
@@ -50,25 +52,84 @@ namespace Apps.CompilationHelper.Views
         }
 
         /// <summary>
-        /// Enables the layout for the fight for AI ending.
+        /// Enables the specific layout based on the argument.
         /// </summary>
-        public void EnableForAILayout()
+        /// <param name="aiLayout">Should a for AI layout be enabled?</param>
+        public void EnableLayout(bool aiLayout)
         {
-            forAILayout.SetActive(true);
+            againstAILayout.SetActive(!aiLayout); // just in case
+            forAILayout.SetActive(aiLayout);
         }
-        
+
         /// <summary>
         /// Sets up the compilation progress bar.
         /// </summary>
         /// <param name="compilationTimeSeconds">Time for finishing compilation</param>
-        public void SetupProgressBar(int compilationTimeSeconds)
+        /// <param name="aiProgressBar">Should I setup AI progress bar?</param>
+        public void SetupProgressBar(int compilationTimeSeconds, bool aiProgressBar)
         {
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds += UpdateProgressBar;
+
+            if (aiProgressBar)
+            {
+                CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += Cleanup;
+                CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += Cleanup;
+                
+                aiProgressBarSlider.maxValue = compilationTimeSeconds;
+                aiProgressBarSlider.value = 0;
+            }
+            else
+            {
+                onAllFilesDeleted += OnAllFilesDeleted;
+                
+                curatorProgressBarSlider.maxValue = compilationTimeSeconds;
+                curatorProgressBarSlider.value = 0;
+                foreach (GameObject child in filesArea.transform)
+                {
+                    var action = child.GetComponent<FileAction>();
+                    fileActions.Add(action);
+                    
+                    action.onDeleteFile += OnFileDeleted;
+                }
+            }
             
-            progressBarSlider.maxValue = compilationTimeSeconds;
-            progressBarSlider.value = 0;
+            aiProgressBarActive = aiProgressBar;
         }
 
+        /// <summary>
+        /// Gets called everytime a file is deleted.
+        /// </summary>
+        private void OnFileDeleted()
+        {
+            deletedFiles++;
+
+            if (deletedFiles != fileActions.Count) 
+                return;
+            
+            onAllFilesDeleted?.Invoke();
+            foreach (FileAction fileAction in fileActions)
+            {
+                fileAction.onDeleteFile -= OnFileDeleted;
+            }
+        }
+
+        /// <summary>
+        /// Actions that happen when all files are successfully deleted.
+        /// </summary>
+        private void OnAllFilesDeleted()
+        {
+            filesArea.SetActive(false);
+            kpFinalPathLayout.SetActive(true);
+        }
+
+        /// <summary>
+        /// Opens the final K-P's compilation path.
+        /// </summary>
+        public void OpenFinalCompilationPath()
+        {
+            FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer();
+        }
+        
         /// <summary>
         /// Sets up the deletion progress bar.
         /// </summary>
@@ -88,7 +149,10 @@ namespace Apps.CompilationHelper.Views
         /// <param name="seconds">Value to update the progress bar with</param>
         private void UpdateProgressBar(int seconds)
         {
-            progressBarSlider.value = seconds;    
+            if (aiProgressBarActive)
+                aiProgressBarSlider.value = seconds;
+            else
+                curatorProgressBarSlider.value = seconds;
         }
         
         /// <summary>

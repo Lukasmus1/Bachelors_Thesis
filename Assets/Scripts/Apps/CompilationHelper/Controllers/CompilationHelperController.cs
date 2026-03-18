@@ -17,6 +17,12 @@ namespace Apps.CompilationHelper.Controllers
             set => _model.onCompilationProgressUpdateSeconds = value;
         }
 
+        public Action OnAllFilesDeleted
+        {
+            get => _view.onAllFilesDeleted;
+            set => _view.onAllFilesDeleted = value;
+        }
+
         public Action onCompilationFinished;
         public void InvokeCompilationFinished()
         {
@@ -41,18 +47,32 @@ namespace Apps.CompilationHelper.Controllers
         public int GetMaxCompilationTimeSeconds() => _model.CompilationTimeSeconds;
         
         /// <summary>
-        /// Enables the simulated compilation process. 
+        /// Enables the simulated compilation process for AI path.
         /// </summary>
         /// <param name="compilationTimeSeconds">How long should the compilation be in seconds</param>
         public void EnableForAICompilationProcess(int compilationTimeSeconds)
         {
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", true);
-            _view.SetupProgressBar(compilationTimeSeconds);
+            _view.SetupProgressBar(compilationTimeSeconds, true);
             _view.SetupDeletionProgressBar(compilationTimeSeconds / 3);
-            _view.EnableForAILayout();
+            _view.EnableLayout(true);
             _model.StartCompilation(compilationTimeSeconds);
             
             FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulation(); // must be called after _model.StartCompilation -> CompilationTimeSeconds not set
+        }
+
+        /// <summary>
+        /// Enables the simulated compilation process for curator path.
+        /// </summary>
+        /// <param name="compilationTimeSeconds">How long should the compilation be in seconds</param>
+        public void EnableForCuratorCompilationProcess(int compilationTimeSeconds)
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", true);
+            _view.SetupProgressBar(compilationTimeSeconds, false);
+            _view.EnableLayout(false);
+            _model.StartCompilation(compilationTimeSeconds);
+            
+            FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulation();
         }
 
         /// <summary>
