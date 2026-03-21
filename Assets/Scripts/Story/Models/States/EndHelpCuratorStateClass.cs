@@ -9,7 +9,7 @@ namespace Story.Models.States
     public class EndHelpCuratorStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.EndingFightForCurator;
-        public override int NextState { get; set; } = (int)StatesEnum.Default;
+        public override int NextState { get; set; } = (int)StatesEnum.SuccessFightForCurator;
 
         public override void OnEnter()
         {
@@ -21,7 +21,7 @@ namespace Story.Models.States
             //For last file, the player will have to edit a custom registry entry
             
             //debug
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
+            //ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator","curatorFightForCuratorSetup", true);
             
@@ -30,7 +30,7 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
+            CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted -= ChangeToNextState;
         }
 
         public override void LoadFromState()
@@ -46,6 +46,8 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= LoadApp;
             
             CompilationHelperMvc.Instance.CompilationHelperController.EnableForCuratorCompilationProcess(120);
+
+            CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted += ChangeToNextState;
         }
     }
 }

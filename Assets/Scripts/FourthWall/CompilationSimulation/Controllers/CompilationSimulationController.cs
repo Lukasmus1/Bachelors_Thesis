@@ -101,5 +101,14 @@ namespace FourthWall.CompilationSimulation.Controllers
         {
             return _model.GetFileLocation(fileEnum);
         }
+        
+        /// <summary>
+        /// Returns the K-P's final file location
+        /// </summary>
+        /// <returns>K-P's final location</returns>
+        public string CreateKpLocation()
+        {
+            return _model.CreateKpLocation();
+        }
     }
 }

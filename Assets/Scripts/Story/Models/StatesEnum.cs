@@ -38,5 +38,6 @@ namespace Story.Models
         FailedFightForAI,
         FailedFightForAIEnding,
         EndingFightForCurator,
+        SuccessFightForCurator,
     }
 }

@@ -23,6 +23,7 @@ namespace FourthWall.CompilationSimulation.Models
         private readonly List<string> _oldCompiledPaths = new();
 
         private const string CURATOR_FILE_NAME = "Curator.exe"; 
+        private const string KP_FILE_NAME = "K-P.exe"; 
         
         private const string FOLDER_NAME = "K-P";
         private readonly string[] _compiledParts =
@@ -63,6 +64,12 @@ namespace FourthWall.CompilationSimulation.Models
         public string CreateCuratorLocation()
         {
             return Path.GetFullPath(CURATOR_FILE_NAME);
+        }
+
+        /// <inheritdoc cref="CompilationSimulationController.CreateKpLocation"/>
+        public string CreateKpLocation()
+        {
+            return Path.GetFullPath(KP_FILE_NAME);
         }
 
         /// <inheritdoc cref="CompilationSimulationController.BeginCompilationSimulation"/>

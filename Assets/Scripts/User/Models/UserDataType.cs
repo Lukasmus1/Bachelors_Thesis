@@ -16,6 +16,7 @@
         LastHelpChoiceHelp,
         CompilationLocation,
         CuratorLocation,
+        KpLocation,
         AiUploadUrl
     }
 }

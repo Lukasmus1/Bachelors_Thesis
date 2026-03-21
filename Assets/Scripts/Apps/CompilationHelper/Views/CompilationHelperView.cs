@@ -10,6 +10,8 @@ using FourthWall.Commons;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using User.Commons;
+using User.Models;
 
 namespace Apps.CompilationHelper.Views
 {
@@ -20,7 +22,7 @@ namespace Apps.CompilationHelper.Views
         [SerializeField] private Slider curatorProgressBarSlider;
         [SerializeField] private GameObject filesArea;
         [SerializeField] private GameObject kpFinalPathLayout;
-        private List<FileAction> fileActions;
+        private readonly List<FileAction> fileActions = new();
         private int deletedFiles = 0;
         private bool aiProgressBarActive;
         
@@ -84,9 +86,10 @@ namespace Apps.CompilationHelper.Views
                 
                 curatorProgressBarSlider.maxValue = compilationTimeSeconds;
                 curatorProgressBarSlider.value = 0;
-                foreach (GameObject child in filesArea.transform)
+                foreach (Transform child in filesArea.transform)
                 {
-                    var action = child.GetComponent<FileAction>();
+                    var view = child.GetComponent<FileStatusView>();
+                    FileAction action = view.GetAction(); 
                     fileActions.Add(action);
                     
                     action.onDeleteFile += OnFileDeleted;
@@ -125,9 +128,10 @@ namespace Apps.CompilationHelper.Views
         /// <summary>
         /// Opens the final K-P's compilation path.
         /// </summary>
-        public void OpenFinalCompilationPath()
+        public void OpenFinalKpPath()
         {
-            FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer();
+            string kpPath = UserMvc.Instance.UserController.ProceduralData(UserDataType.KpLocation);
+            FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer(kpPath);
         }
         
         /// <summary>

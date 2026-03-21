@@ -21,7 +21,7 @@ namespace Apps.CompilationHelper.Views
 
         private FileAction fileAction;
         
-        private void Awake()
+        private void Setup()
         {
             fileLocation = FourthWallMvc.Instance.CompilationSimulationController.GetScatteredFileLocation(fileEnum);
             folderLocation = Path.GetDirectoryName(fileLocation);
@@ -39,6 +39,16 @@ namespace Apps.CompilationHelper.Views
             fileAction.onDeleteFile += FileDeleted; 
         }
 
+        public FileAction GetAction()
+        {
+            if (fileAction == null)
+            {
+                Setup();
+            }
+            
+            return fileAction;
+        }
+        
         public void OpenFolderButton()
         {
             FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer(folderLocation);
