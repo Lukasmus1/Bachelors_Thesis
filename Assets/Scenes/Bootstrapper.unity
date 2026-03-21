@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bootstrapper
   mainScene: MainDesktop
   registringScene: RegisteringScene
+  welcomeBackScene: WelcomeBackScreen
 --- !u!4 &610135706
 Transform:
   m_ObjectHideFlags: 0

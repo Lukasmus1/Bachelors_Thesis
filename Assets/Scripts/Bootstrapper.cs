@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Bootstrapper : MonoBehaviour
 {
-    [SerializeField] private string mainScene;
     [SerializeField] private string registringScene;
+    [SerializeField] private string welcomeBackScene;
     
     public static bool LoadedNewGame = false;
     
@@ -22,6 +22,6 @@ public class Bootstrapper : MonoBehaviour
         }
         
         //Loaded Game
-        SceneManager.LoadScene(mainScene);
+        SceneManager.LoadScene(welcomeBackScene);
     }
 }
