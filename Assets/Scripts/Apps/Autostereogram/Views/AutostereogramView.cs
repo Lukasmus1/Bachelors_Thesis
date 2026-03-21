@@ -6,6 +6,7 @@ using Apps.FileViewer.Models;
 using Desktop.Commons;
 using Desktop.Notification.Commons;
 using Desktop.Notification.Models;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,8 @@ namespace Apps.Autostereogram.Views
         //ASG Slider
         [Header("ASG Slider")]
         [SerializeField] private Slider movingImageSlider;
+        [SerializeField] private TMP_InputField moveIncrementInputField;
+        private int moveIncrement = 1;
 
         private void OnEnable()
         {
@@ -74,6 +77,9 @@ namespace Apps.Autostereogram.Views
             
             //Set the slider initial value
             movingImageSlider.value = movingImageSlider.maxValue;
+            
+            //Sets the default increment value
+            moveIncrementInputField.text = moveIncrement.ToString();
         }
 
         protected override void OnDisableChild()
@@ -99,7 +105,7 @@ namespace Apps.Autostereogram.Views
         /// <param name="left">Should the slider move to the left?</param>
         public void MoveByOne(bool left)
         {
-            movingImageSlider.value += left ? -2 : 2;
+            movingImageSlider.value += left ? -2 * moveIncrement : 2 * moveIncrement;
         }
 
         /// <summary>
@@ -143,7 +149,43 @@ namespace Apps.Autostereogram.Views
             _overlappingLayerTexture.Apply();
         }
 
+        /// <summary>
+        /// Increments or decrements the moveIncrement based on the bool
+        /// </summary>
+        /// <param name="plus">Add one?</param>
+        public void MoveIncrementEdit(bool plus)
+        {
+            switch (plus)
+            {
+                case true when moveIncrementInputField.text == "9999":
+                case false when moveIncrementInputField.text == "0":
+                    return;
+                default:
+                    moveIncrement += plus ? 1 : -1;
+                    moveIncrementInputField.text = moveIncrement.ToString();
+                    break;
+            }
+        }
 
+        /// <summary>
+        /// Updates the moveIncrement based on the input field value.
+        /// </summary>
+        public void UpdateIncrement()
+        {
+            int num = int.Parse(moveIncrementInputField.text);
+            if (num < 0)
+            {
+                num = 0;
+            }
+
+            if (num > 9999)
+            {
+                num = 9999;
+            }
+
+            moveIncrement = num;
+        }
+        
         /// <summary>
         /// Compares two Color32 objects for equality.
         /// </summary>

@@ -17359,7 +17359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073294505513378838, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2241186325094508719, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17375,12 +17375,56 @@ PrefabInstance:
       objectReference: {fileID: 1972162334}
     - target: {fileID: 2854198452438517644, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 3173434888519683015, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1972162332}
+    - target: {fileID: 3471451065900303552, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471451065900303552, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1972162332}
+    - target: {fileID: 3471451065900303552, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveIncrementEdit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471451065900303552, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Apps.Autostereogram.Views.AutostereogramView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471451065900303552, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890384161226360733, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890384161226360733, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1972162332}
+    - target: {fileID: 3890384161226360733, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveIncrementEdit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890384161226360733, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Apps.Autostereogram.Views.AutostereogramView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890384161226360733, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890384161226360733, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4204999045284018668, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -17432,6 +17476,10 @@ PrefabInstance:
     - target: {fileID: 4534111339775275811, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 28.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820749299289966885, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_Name
+      value: MultiplierDownButton
       objectReference: {fileID: 0}
     - target: {fileID: 4982447759714345165, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_Pivot.x
@@ -17523,7 +17571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090021509081518354, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -45
+      value: -145
       objectReference: {fileID: 0}
     - target: {fileID: 6229923712422804691, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -17531,11 +17579,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6229923712422804691, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6229923712422804691, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670308981434134946, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_InputType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670308981434134946, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_ContentType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670308981434134946, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_Placeholder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670308981434134946, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_KeyboardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670308981434134946, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7174214355055072636, guid: 1b12e44cc78faa1499641270f0d813d4, type: 3}
       propertyPath: m_Sprite
