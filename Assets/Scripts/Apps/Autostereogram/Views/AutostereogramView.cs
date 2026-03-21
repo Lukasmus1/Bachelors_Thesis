@@ -157,8 +157,8 @@ namespace Apps.Autostereogram.Views
         /// </summary>
         private void CreateOverlappingLayerTexture()
         {
-            var width = (int)_asgMovingImageRectTransform.rect.width / 2;
-            var height = (int)_asgMovingImageRectTransform.rect.height / 2;
+            int width = (int)_asgMovingImageRectTransform.rect.width / 2;
+            int height = (int)_asgMovingImageRectTransform.rect.height / 2;
 
             var pixels = new List<Color>(width * height);
             for (var i = 0; i < width * height; i++)
