@@ -14,7 +14,7 @@ namespace Sounds.Views
             
             source.clip = clip;
             
-            float clipLength = source.clip.length + source.clip.length * 0.1f;
+            float clipLength = source.clip.length + source.clip.length * 0.1f; //Slightly longer, 'cause sometimes it cuts off the end of the clip.
             
             source.Play();
             

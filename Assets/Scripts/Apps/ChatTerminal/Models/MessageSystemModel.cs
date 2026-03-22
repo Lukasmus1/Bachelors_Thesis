@@ -121,7 +121,7 @@ namespace Apps.ChatTerminal.Models
                     }
 
 #if UNITY_EDITOR
-                    delayS = 2f;             
+                    delayS = 0.1f;             
 #endif
                     yield return new WaitForSeconds(delayS);
                     

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Desktop.Notification.Commons;
 using Desktop.Notification.Models;
+using Sounds.Commons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,12 +12,18 @@ namespace Desktop.Notification.Views
 {
     public class NotificationView : MonoBehaviour
     {
+        [Header("UI Elements")]
         [SerializeField] private TMP_Text notificationText;
         [SerializeField] private CanvasGroup notificationCanvasGroup;
         
+        [Header("Icons")]
         [SerializeField] private Image iconImage;
         [SerializeField] private Sprite errorIcon;
         [SerializeField] private Sprite notificationIcon;
+        
+        [Header("Sounds")]
+        [SerializeField] private AudioClip infoNotifSound;
+        [SerializeField] private AudioClip alertNotifSound;
         
         private Coroutine coroutine;
         private readonly List<(string, Sprite)> _notificationQueue = new();
@@ -67,6 +74,11 @@ namespace Desktop.Notification.Views
             iconImage.sprite = _notificationQueue[0].Item2;
             _notificationQueue.RemoveAt(0);
             
+            //Ugly hack, but it does the job
+            //Checks the sprite type and plays the according notification sound
+            SoundMvc.Instance.SoundController.PlaySound(
+                iconImage.sprite == errorIcon ? alertNotifSound : infoNotifSound, gameObject.transform);
+
             // Fade in
             var elapsed = 0f;
             while (elapsed < 0.5f)
@@ -96,8 +108,12 @@ namespace Desktop.Notification.Views
             notificationDone?.Invoke();
         }
 
-        //Setter for notification text
-        public void SetNotificationText(string text, NotificationType type)
+        /// <summary>
+        /// Enqueues a notification with the specified text and type. If a notification is currently active, it will be added to the queue and displayed once the current notification is done.
+        /// </summary>
+        /// <param name="text">Text to display</param>
+        /// <param name="type">Type of the notification</param>
+        public void EnqueueNotification(string text, NotificationType type)
         {
             _notificationQueue.Add((text, GetNotificationIcon(type)));
         }

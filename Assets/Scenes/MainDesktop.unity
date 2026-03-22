@@ -1002,6 +1002,8 @@ MonoBehaviour:
   iconImage: {fileID: 292635862}
   errorIcon: {fileID: 21300000, guid: 36a1e5feb67ac3742bca91b4d96bbfe3, type: 3}
   notificationIcon: {fileID: 21300000, guid: f6bcac4bbb32fa544bcbe59715c2657f, type: 3}
+  infoNotifSound: {fileID: 8300000, guid: 4cf18aba8d39b354b9d3613ab303324f, type: 3}
+  alertNotifSound: {fileID: 8300000, guid: cff7b012477a35e40ac7b964a465445c, type: 3}
 --- !u!1 &154325702
 GameObject:
   m_ObjectHideFlags: 0

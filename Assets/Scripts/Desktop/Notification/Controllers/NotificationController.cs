@@ -25,7 +25,7 @@ namespace Desktop.Notification.Controllers
                     {
                         throw new ArgumentNullException(nameof(message), "Message cannot be null for Generic notification type.");
                     }
-                    NotificationView.SetNotificationText(message, NotificationType.Generic);
+                    NotificationView.EnqueueNotification(message, NotificationType.Generic);
                     break;
                 
                 case NotificationType.NewFile:
@@ -33,11 +33,11 @@ namespace Desktop.Notification.Controllers
                     {
                         throw new ArgumentNullException(nameof(message), "Message cannot be null for Generic notification type.");
                     }
-                    NotificationView.SetNotificationText($"New File Received: \"{message}\"", NotificationType.NewFile);
+                    NotificationView.EnqueueNotification($"New File Received: \"{message}\"", NotificationType.NewFile);
                     break;
                 
                 case NotificationType.NewMessage:
-                    NotificationView.SetNotificationText("New Message Received", NotificationType.NewMessage);
+                    NotificationView.EnqueueNotification("New Message Received", NotificationType.NewMessage);
                     break;
                 
                 case NotificationType.Error:
@@ -46,7 +46,7 @@ namespace Desktop.Notification.Controllers
                         throw new ArgumentNullException(nameof(message), "Message cannot be null for Error notification type.");
                     }
                     
-                    NotificationView.SetNotificationText(message, NotificationType.Error);
+                    NotificationView.EnqueueNotification(message, NotificationType.Error);
                     break;
                 
                 case NotificationType.NewApp:
@@ -55,7 +55,7 @@ namespace Desktop.Notification.Controllers
                         throw new ArgumentNullException(nameof(message), "Message cannot be null for NewApp notification type.");
                     }
                     
-                    NotificationView.SetNotificationText(message, NotificationType.NewFile);
+                    NotificationView.EnqueueNotification(message, NotificationType.NewFile);
                     break;
                 
                 default:
