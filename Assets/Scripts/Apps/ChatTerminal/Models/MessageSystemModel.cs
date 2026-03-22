@@ -121,12 +121,20 @@ namespace Apps.ChatTerminal.Models
                     }
 
 #if UNITY_EDITOR
-                    delayS = 0.1f;             
+                    delayS = 2f;             
 #endif
                     yield return new WaitForSeconds(delayS);
-
+                    
                     CreateMessage(message);
-
+                    if (message.Sender == "Player")
+                    {
+                        ChatTerminalMvc.Instance.MessageSystemController.PlayOutcomingMessageNotif();
+                    }
+                    else
+                    {
+                        ChatTerminalMvc.Instance.MessageSystemController.PlayIncomingMessageNotif();
+                    }
+                    
                     ChatTerminalMvc.Instance.MessageSystemController.messageTyped?.Invoke(message.MessageID);
                     
 #if UNITY_EDITOR

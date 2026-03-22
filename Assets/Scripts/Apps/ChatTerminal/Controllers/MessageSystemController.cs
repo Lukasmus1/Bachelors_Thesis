@@ -1,6 +1,8 @@
 ﻿using System;
+using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
 using Apps.ChatTerminal.Views;
+using Sounds.Commons;
 using UnityEngine;
 
 namespace Apps.ChatTerminal.Controllers
@@ -30,9 +32,35 @@ namespace Apps.ChatTerminal.Controllers
         /// <param name="content">Content of the message</param>
         public void CreateMessage(ChatMessage content)
         {
-            _messageSystemView.CreateMessage(content);    
+            _messageSystemView.CreateMessage(content);
         }
 
+        /// <summary>
+        /// Plays an incoming message sound.
+        /// </summary>
+        public void PlayIncomingMessageNotif()
+        {
+            ChatTerminalView view = ChatTerminalMvc.Instance.ChatTerminalController.GetChatTerminalView();
+            AudioClip clip = view.messageRecievedSound;
+            
+            SoundMvc.Instance.SoundController.PlaySound(clip, view.transform);
+        }
+        
+        /// <summary>
+        /// Plays an outcoming message sound.
+        /// </summary>
+        public void PlayOutcomingMessageNotif()
+        {
+            ChatTerminalView view = ChatTerminalMvc.Instance.ChatTerminalController.GetChatTerminalView();
+            AudioClip clip = view.messageSentSound;
+            
+            SoundMvc.Instance.SoundController.PlaySound(clip, view.transform);
+        }
+
+        /// <summary>
+        /// Creates a new choice message in the message system view based on the provided content, allowing for user interaction and decision-making.
+        /// </summary>
+        /// <param name="content">Content of the message</param>
         public void CreateChoiceMessage(ChatMessage content)
         {
             _messageSystemView.CreateChoiceMessage(content);

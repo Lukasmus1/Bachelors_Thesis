@@ -14,6 +14,8 @@ using Desktop.BottomBar.Commons;
 using Desktop.BottomBar.Views;
 using Desktop.Commons;
 using Desktop.Views;
+using Sounds.Commons;
+using Sounds.Views;
 using UnityEngine;
 
 /// <summary>
@@ -52,6 +54,8 @@ public class ScriptReferenceLinker : MonoBehaviour
     [SerializeField] private GameObject fileUploaderApp;
     [SerializeField] private FileUploaderView fileUploaderView;
     
+    [SerializeField] private SoundView soundView;
+    
     private void Awake()
     {
         //Chat terminal app
@@ -75,6 +79,9 @@ public class ScriptReferenceLinker : MonoBehaviour
         
         //File uploader app
         FileUploaderMvc.Instance.FileUploaderController.SetView(fileUploaderView);
+        
+        //Audio management
+        SoundMvc.Instance.SoundController.SetView(soundView);
     }
 
     /// <summary>

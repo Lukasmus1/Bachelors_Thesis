@@ -4,11 +4,9 @@ using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
 using Apps.Commons;
 using Desktop.Commons;
-using FourthWall.Commons;
 using TMPro;
 using UnityEngine;
 using User.Commons;
-using User.Models;
 
 namespace Apps.ChatTerminal.Views
 {
@@ -23,11 +21,15 @@ namespace Apps.ChatTerminal.Views
         [Header("Messages Window")]
         [SerializeField] private GameObject messagesWindow;
         
+        [Header("Sounds")]
+        public AudioClip messageRecievedSound;
+        public AudioClip messageSentSound;
+        
         /// <summary>
         /// This is public because I am using it in the controller.
         /// Ideally, this should be in the model itself, unfortunately this is not serializable.
         /// </summary>
-        private  List<ChatProfile> _profiles = new();
+        private List<ChatProfile> _profiles = new();
         public List<ChatProfile> Profiles
         {
             get

@@ -12,6 +12,7 @@ namespace Apps.ChatTerminal.Controllers
         public ChatTerminalModel chatTerminalModel = new();
         
         private ChatTerminalView _chatTerminalView;
+        public ChatTerminalView GetChatTerminalView() => _chatTerminalView;
         public void SetChatTerminalView(ChatTerminalView chatTerminalView)
         {
             _chatTerminalView = chatTerminalView;
