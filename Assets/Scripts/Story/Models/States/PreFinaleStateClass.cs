@@ -34,14 +34,8 @@ namespace Story.Models.States
                 
                 ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("curator");
                 
-                var fileChecker = Tools.GetScriptHolder().AddComponent<FileDeletionDetectionModel>();
-                
                 string filePath = UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation);
-                fileChecker.StartDetection(filePath, () =>
-                {
-                    UnityEngine.Object.Destroy(fileChecker);
-                    ChangeToNextState();
-                });
+                FourthWallMvc.Instance.FileGenerationController.SetupFileDeletion(filePath, ChangeToNextState);
             });
         }
     }

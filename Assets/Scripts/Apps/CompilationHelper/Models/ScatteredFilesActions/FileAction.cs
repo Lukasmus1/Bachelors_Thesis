@@ -14,20 +14,16 @@ namespace Apps.CompilationHelper.Models.ScatteredFilesActions
             FileLocation = fileLocation;
         }
         protected string FileLocation { get; private set; }
-
-        private FileDeletionDetectionModel _fileDeleteDetection;
+        
         protected void StartFileDeletionDetection()
         {
-            GameObject scriptHolder = Tools.GetScriptHolder();
-            _fileDeleteDetection = scriptHolder.AddComponent<FileDeletionDetectionModel>();
-            _fileDeleteDetection.StartDetection(FileLocation, OnFileDeletion);
+            FourthWallMvc.Instance.FileGenerationController.SetupFileDeletion(FileLocation, OnFileDeletion);
         }
         
         public abstract void OnLoad();
 
         private void OnFileDeletion()
         {
-            Object.Destroy(_fileDeleteDetection);
             onDeleteFile?.Invoke();
         }
 

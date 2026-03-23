@@ -1,6 +1,8 @@
 ﻿using System;
+using Commons;
 using FourthWall.UserInformation.Models;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace FourthWall.UserInformation.Controllers
 {
@@ -35,6 +37,19 @@ namespace FourthWall.UserInformation.Controllers
         public void Screenshot(MonoBehaviour monoBehaviour, Action<Texture2D> callback)
         {
             screenshot.GetScreenshot(monoBehaviour, callback);
+        }
+
+        /// <summary>
+        /// Sets up the detection of disconnection from the internet.
+        /// </summary>
+        /// <param name="callback">What should happen after the user disconnects from the internet</param>
+        public void SetupInternetDisconnectDetection(Action callback)
+        {
+            GameObject scriptHolder = Tools.GetScriptHolder();
+            var model = scriptHolder.AddComponent<InternetDetectionModel>();
+            model.StartDetection(callback);
+            
+            Object.Destroy(model);
         }
     }
 }

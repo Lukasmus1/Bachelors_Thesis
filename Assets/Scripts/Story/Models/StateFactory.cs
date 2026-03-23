@@ -45,12 +45,14 @@ namespace Story.Models
                 StatesEnum.PreFinale => new PreFinaleStateClass(),
                 StatesEnum.EndingChoice => new EndingChoiceStateClass(),
                 StatesEnum.EndingFightForAI => new FightForAIStateClass(),
-                StatesEnum.EndingFightForCurator => new EndHelpCuratorStateClass(),
+                StatesEnum.EndingFightForCurator => new FightForCuratorStateClass(),
                 StatesEnum.SuccessFightForAI => new SuccessFightForAIStateClass(),
                 StatesEnum.UploadAI => new UploadAIStateClass(),
                 StatesEnum.SuccessFightForAIEnding => new SuccessFightForAIEndingStateClass(),
                 StatesEnum.FailedFightForAI => new FailedFightForAIStateClass(),
                 StatesEnum.FailedFightForAIEnding => new FailedFightForAIEndingStateClass(),
+                StatesEnum.SuccessFightForCurator => new SuccessFightForAIEndingStateClass(),
+                StatesEnum.FightForCuratorEnding => new FightForCuratorEndingStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

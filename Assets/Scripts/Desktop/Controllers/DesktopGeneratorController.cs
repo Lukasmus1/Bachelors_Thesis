@@ -24,18 +24,32 @@ namespace Desktop.Controllers
         private readonly Icons _icons = new();
         
         //Random Generators
+        
+        /// <summary>
+        /// Gets a random wallpaper from the Resources folder.
+        /// </summary>
+        /// <returns>Random wallpaper from the resources folder</returns>
         public Texture2D GetRandomWallpaper()
         {
             _wallpaperGenerator = new WallpaperGeneratorRandom();
             return _wallpaperGenerator.GetWallpaperTexture();
         }
         
+        /// <summary>
+        /// Gets a random color scheme.
+        /// </summary>
+        /// <returns>Random color scheme</returns>
         public Color GetRandomColorScheme()
         {
             _colorSchemeGenerator = new ColorGeneration();
             return _colorSchemeGenerator.GenerateRandomColorScheme();
         }
 
+        /// <summary>
+        /// Generates a random icon position on the desktop.
+        /// </summary>
+        /// <param name="iconSize">Relative size of the icon</param>
+        /// <returns>Random position on the desktop</returns>
         public Vector2 GenerateRandomIconPosition(Vector2 iconSize)
         {
             return _iconGeneratorHelper.GenerateRandomIconPosition(iconSize);
@@ -56,24 +70,41 @@ namespace Desktop.Controllers
         }
         
         //User's Generators
+        /// <summary>
+        /// Gets the user's wallpaper.
+        /// </summary>
+        /// <returns>User's wallpaper</returns>
         public Texture2D GetUserWallpaper()
         {
             _wallpaperGenerator = new WallpaperGeneratorUser();
             return _wallpaperGenerator.GetWallpaperTexture();
         }
 
+        /// <summary>
+        /// Gets the user's color scheme.
+        /// </summary>
+        /// <returns>Color scheme of the user's computer.</returns>
         public Color GetUserColorScheme()
         {
             _colorSchemeGenerator = new ColorGenerationUser();
             return _colorSchemeGenerator.GenerateUserColorScheme();
         }
         
+        /// <summary>
+        /// Gets all the icons on the user's desktop.
+        /// </summary>
+        /// <param name="prefabScale">Relative size of the icon</param>
+        /// <returns>List of all icons on the desktop</returns>
         public List<IconClass> GetUserIcons(Vector3 prefabScale)
         {
             _iconGenerator = new IconGeneratorUser();
             return _iconGenerator.GenerateIcons(prefabScale);
         }
-
+        
+        /// <summary>
+        /// Gets the user's font.
+        /// </summary>
+        /// <returns>User's set font</returns>
         public TMP_FontAsset GetUserFont()
         {
             var fontScript = new FontScript();
@@ -151,6 +182,23 @@ namespace Desktop.Controllers
             {
                 obj.SetActive(false);
             }
+        }
+
+        /// <summary>
+        /// Closes a specific app
+        /// </summary>
+        /// <param name="appName">GameObject name of the app to be closed</param>
+        public void CloseApp(string appName)
+        {
+            List<GameObject> linker = Tools.GetScriptReferenceLinker().GetAllApps();
+
+            GameObject obj = linker.FirstOrDefault(obj => obj.name == appName);
+            if (obj == null)
+            {
+                throw new Exception("App not found: " + appName);
+            }
+            
+            obj.SetActive(false);
         }
     }
 }

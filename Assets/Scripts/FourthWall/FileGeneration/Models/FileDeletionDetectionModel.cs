@@ -33,6 +33,10 @@ namespace FourthWall.FileGeneration.Models
             }
         }
 
+        /// <summary>
+        /// Is the file deleted?
+        /// </summary>
+        /// <returns>True if the file is deleted</returns>
         public bool IsFileDeleted()
         {
             return !File.Exists(_monitoredFilePath);
@@ -44,6 +48,7 @@ namespace FourthWall.FileGeneration.Models
             
             fileDeleted?.Invoke();
             _start = false;
+            Destroy(this);
         }
     }
 }

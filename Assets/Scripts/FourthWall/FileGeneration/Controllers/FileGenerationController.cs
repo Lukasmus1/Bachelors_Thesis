@@ -1,4 +1,7 @@
-﻿using FourthWall.FileGeneration.Models;
+﻿using System;
+using Commons;
+using FourthWall.FileGeneration.Models;
+using UnityEngine;
 
 namespace FourthWall.FileGeneration.Controllers
 {
@@ -120,6 +123,17 @@ namespace FourthWall.FileGeneration.Controllers
         {
             _model.CreateZipFile(zipFilePath, directoryPath);
         }
-        
+
+        /// <summary>
+        /// Sets up a file deletion detection and executes an action when the file is deleted. 
+        /// </summary>
+        /// <param name="pathToFile">Path to the file</param>
+        /// <param name="callback">What should happen after the file is deleted</param>
+        public void SetupFileDeletion(string pathToFile, Action callback)
+        {
+            GameObject scriptHolder = Tools.GetScriptHolder();
+            var detectionModel = scriptHolder.AddComponent<FileDeletionDetectionModel>();
+            detectionModel.StartDetection(pathToFile, callback);
+        }
     }
 }

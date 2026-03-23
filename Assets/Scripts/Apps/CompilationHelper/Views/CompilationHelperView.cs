@@ -84,6 +84,7 @@ namespace Apps.CompilationHelper.Views
             {
                 onAllFilesDeleted += OnAllFilesDeleted;
                 
+                CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += OnCompilationSucceededCurator;
                 curatorProgressBarSlider.maxValue = compilationTimeSeconds;
                 curatorProgressBarSlider.value = 0;
                 foreach (Transform child in filesArea.transform)
@@ -134,6 +135,14 @@ namespace Apps.CompilationHelper.Views
         {
             string kpPath = UserMvc.Instance.UserController.ProceduralData(UserDataType.KpLocation);
             FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer(kpPath);
+        }
+
+        /// <summary>
+        /// If the player fails to delete all 3 files, a different set of actions will occur.
+        /// </summary>
+        public void OnCompilationSucceededCurator()
+        {
+            
         }
         
         /// <summary>

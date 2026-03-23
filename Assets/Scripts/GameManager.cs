@@ -1,5 +1,4 @@
-﻿using System;
-using Saving.Commons;
+﻿using Saving.Commons;
 using Story.Models.Actions;
 using UnityEngine;
 

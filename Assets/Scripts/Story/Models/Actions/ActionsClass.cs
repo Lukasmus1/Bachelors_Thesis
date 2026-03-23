@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Story.Models.Actions
 {
@@ -91,11 +92,8 @@ namespace Story.Models.Actions
         /// <exception cref="ArgumentOutOfRangeException">Gets thrown if we use unspecified ActionType</exception>
         public void CleanupAction()
         {
-            foreach (Pair action in ActionsPersistent.actions)
+            foreach (Pair action in ActionsPersistent.actions.Where(action => action.value))
             {
-                if (!action.value)
-                    continue;
-                
                 switch (action.key)
                 {
                     case ActionType.HiddenVirus:

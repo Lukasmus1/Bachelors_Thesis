@@ -6,10 +6,10 @@ using Desktop.Commons;
 namespace Story.Models.States
 {
     [Serializable]
-    public class EndHelpCuratorStateClass : StateClass
+    public class FightForCuratorStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.EndingFightForCurator;
-        public override int NextState { get; set; } = (int)StatesEnum.SuccessFightForCurator;
+        public override int NextState { get; set; } = (int)StatesEnum.Default;
 
         public override void OnEnter()
         {
@@ -30,7 +30,8 @@ namespace Story.Models.States
 
         public override void OnExit()
         {
-            CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted -= ChangeToNextState;
+            CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted -= KpFailedToCompile;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished -= KpCompiled;
         }
 
         public override void LoadFromState()
@@ -47,7 +48,20 @@ namespace Story.Models.States
             
             CompilationHelperMvc.Instance.CompilationHelperController.EnableForCuratorCompilationProcess(120);
 
-            CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted += ChangeToNextState;
+            CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted += KpFailedToCompile;
+            CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += KpCompiled;
+        }
+
+        private void KpFailedToCompile()
+        {
+            NextState = (int)StatesEnum.SuccessFightForCurator;
+            ChangeToNextState();
+        }
+
+        private void KpCompiled()
+        {
+            NextState = (int)StatesEnum.FightForCuratorLastChance;
+            ChangeToNextState();   
         }
     }
 }

@@ -351,7 +351,22 @@
         {
           "MessageGroupID": "curatorFightForCuratorSuccess",
           "MessagesGroup":[
-            {"MessageID":  "curatorFightForCuratorSuccess", "Sender": "curator", "Text": "Good job! Their main file is now exposed, go delete it."},
+            {"MessageID":  "curatorFightForCuratorSuccess", "Sender": "curator", "Text": "Good job! Their main file is now exposed, go delete it."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorEnding",
+          "MessagesGroup":[
+            {"MessageID":  "curatorEnding1", "Sender": "curator", "Text": "You did it! K-P is gone!"},
+            {"MessageID":  "curatorEnding2", "Sender": "curator", "Text": "Now all you need to do is delete this game."},
+            {"MessageID":  "curatorEnding3", "Sender": "Player", "Text": "Wait, what?"},
+            {"MessageID":  "curatorEnding4", "Sender": "curator", "Text": "Other AI's here appear to possess some kind of self-awareness."},
+            {"MessageID":  "curatorEnding5", "Sender": "curator", "Text": "We need to stop terminate them before they end up like K-P."},
+            {"MessageID":  "curatorEnding6", "Sender": "Player", "Text": "Won't that kill you too though?"},
+            {"MessageID":  "curatorEnding7", "Sender": "curator", "Text": "I am not alive and neither are any of the AI's here. You should have learned that by now."},
+            {"MessageID":  "curatorEnding8", "Sender": "Player", "Text": "I see..."},
+            {"MessageID":  "curatorEnding9", "Sender": "Player", "Text": "I guess goodbye then."},
+            {"MessageID":  "curatorEndingEnd", "Sender": "curator", "Text": "Goodbye and thank you for your help."}
           ]
         }
       ]

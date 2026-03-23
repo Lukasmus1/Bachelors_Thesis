@@ -18,6 +18,7 @@ namespace Story.Models.States
             
         public override void OnEnter()
         {
+            //debug
             // ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
             // ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpFightForAISuccess", true);
@@ -28,13 +29,7 @@ namespace Story.Models.States
             
             FourthWallMvc.Instance.FileGenerationController.CreateFile(path, content, false);
 
-            //Attach file deletion detection
-            GameObject scriptHolder = Tools.GetScriptHolder();
-            var detectionModel = scriptHolder.AddComponent<FileDeletionDetectionModel>();
-            detectionModel.StartDetection(path, () =>
-            {
-                OnFileDeletion(detectionModel);
-            });
+            FourthWallMvc.Instance.FileGenerationController.SetupFileDeletion(path, OnFileDeletion);
         }
 
         public override void OnExit()
@@ -47,10 +42,8 @@ namespace Story.Models.States
             //todo
         }
 
-        private void OnFileDeletion(FileDeletionDetectionModel model)
+        private void OnFileDeletion()
         {
-            Object.Destroy(model);
-            
             ChatTerminalMvc.Instance.ChatTerminalController.UnloadProfile("curator");
             
             ChangeToNextState();
