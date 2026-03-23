@@ -43,7 +43,8 @@ namespace Story.Models.States
                     FourthWallMvc.Instance.CompilationSimulationController.CreateCompiledZipFile();
                     break;
                 case "kpFightForAIUploadUrlCopy":
-                    EditorGUIUtility.systemCopyBuffer = UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl);
+                    string textToCopy = UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl);
+                    FourthWallMvc.Instance.CommonsController.CopyToClipboard(textToCopy);
                     break;
                 case "kpFightForAIUploadFileUploader":
                     DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("File Uploader", true);

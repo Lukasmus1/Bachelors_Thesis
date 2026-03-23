@@ -76,6 +76,14 @@ namespace Apps.CompilationHelper.Controllers
         }
 
         /// <summary>
+        /// Stops the compilation process.
+        /// </summary>
+        public void StopCompilation()
+        {
+            _model.StopCompilation();
+        }
+        
+        /// <summary>
         /// Enables the UI for moving the compiled files to the K-P compilation folder.
         /// </summary>
         public void EnableKpCompilationFileMoving()

@@ -2,6 +2,8 @@
 using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
 using Apps.FileViewer.Commons;
+using SFB;
+using UnityEngine;
 
 namespace Story.Models.States
 {

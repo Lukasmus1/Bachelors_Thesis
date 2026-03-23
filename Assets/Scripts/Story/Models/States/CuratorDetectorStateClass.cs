@@ -48,9 +48,8 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
-            GUIUtility.systemCopyBuffer =
-                ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("curator",
-                    "curatorHiddenFile");
+            string textToCopy = ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("curator", "curatorHiddenFile"); 
+            FourthWallMvc.Instance.CommonsController.CopyToClipboard(textToCopy);
             
             FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Warning, "It is no longer safe for us, read the text I have put in your clipboard.", "...");
             

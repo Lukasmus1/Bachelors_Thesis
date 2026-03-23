@@ -7,7 +7,7 @@ using Apps.CompilationHelper.Controllers;
 using Apps.CompilationHelper.Models.ScatteredFilesActions;
 using Desktop.Commons;
 using FourthWall.Commons;
-using UnityEditor;
+using SFB;
 using UnityEngine;
 using UnityEngine.UI;
 using User.Commons;
@@ -123,6 +123,8 @@ namespace Apps.CompilationHelper.Views
         {
             filesArea.SetActive(false);
             kpFinalPathLayout.SetActive(true);
+            CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= UpdateProgressBar;
+            CompilationHelperMvc.Instance.CompilationHelperController.StopCompilation();
         }
 
         /// <summary>
@@ -190,7 +192,7 @@ namespace Apps.CompilationHelper.Views
         {
             // Model
             string currentKpPath = FourthWallMvc.Instance.CompilationSimulationController.GetKpCompilationPath();
-            string newPath = EditorUtility.OpenFolderPanel("New K-P's Compilation Location", currentKpPath, "");
+            string newPath = StandaloneFileBrowser.OpenFilePanel("New K-P's Compilation Location", currentKpPath, "", false)[0];
             
             if (string.IsNullOrEmpty(newPath))
             {

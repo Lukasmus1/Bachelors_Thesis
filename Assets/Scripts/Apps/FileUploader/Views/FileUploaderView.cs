@@ -1,6 +1,8 @@
 ﻿using Apps.Commons;
 using Apps.FileUploader.Commons;
 using Desktop.Commons;
+using FourthWall.Commons;
+using SFB;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -28,7 +30,7 @@ namespace Apps.FileUploader.Views
         {
             string desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop); //Default path is desktop
             
-            string chosenFile = EditorUtility.OpenFilePanel("Load File", desktopPath, "");
+            string chosenFile = StandaloneFileBrowser.OpenFilePanel("Load File", desktopPath, "", false)[0];
 
             if (string.IsNullOrEmpty(chosenFile))
             { 

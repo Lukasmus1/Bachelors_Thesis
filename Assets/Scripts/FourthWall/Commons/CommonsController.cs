@@ -6,6 +6,7 @@ namespace FourthWall.Commons
     {
         private readonly WindowsErrorHandling _winErrorHandling = new();
         private readonly DesktopManipulation _desktopManipulation = new();
+        private readonly ClipboardHelper _clipboardHelper = new();
         
         /// <summary>
         /// Created a new windows dialog based on the specified type, message and title.
@@ -38,6 +39,15 @@ namespace FourthWall.Commons
         public void MinimizeAllWindows()
         {
             _desktopManipulation.MinimizeAllWindows();
+        }
+        
+        /// <summary>
+        /// Copies the given argument string to the clipboard.
+        /// </summary>
+        /// <param name="text">Text to copy to the clipboard</param>
+        public void CopyToClipboard(string text)
+        {
+            _clipboardHelper.CopyToClipboard(text);
         }
     }
 }

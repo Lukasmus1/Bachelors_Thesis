@@ -47,7 +47,10 @@ namespace Apps.CompilationHelper.Models
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed += StopCompilation;
         }
         
-        private void StopCompilation()
+        /// <summary>
+        /// Stops the compilation process.
+        /// </summary>
+        public void StopCompilation()
         {
             isCompilationRunning = false;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= StopCompilation;
