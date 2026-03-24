@@ -8,7 +8,7 @@ namespace Story.Models.States
     [Serializable]
     public class FightForCuratorEndingStateClass : StateClass
     {
-        public override int State { get; } = (int)StatesEnum.FightForCuratorEnding;
+        public override int State { get; } = (int)StatesEnum.SuccessFightForCuratorEnding;
         public override int NextState { get; set; } = (int)StatesEnum.Default;
         
         public override void OnEnter()

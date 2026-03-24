@@ -17,7 +17,7 @@ namespace Story.Models.States
     public class SuccessHelpCuratorStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.SuccessFightForCurator;
-        public override int NextState { get; set; } = (int)StatesEnum.FightForCuratorEnding;
+        public override int NextState { get; set; } = (int)StatesEnum.SuccessFightForCuratorEnding;
         
         public override void OnEnter()
         {

@@ -48,8 +48,22 @@ namespace FourthWall.UserInformation.Controllers
             GameObject scriptHolder = Tools.GetScriptHolder();
             var model = scriptHolder.AddComponent<InternetDetectionModel>();
             model.StartDetection(callback);
-            
-            Object.Destroy(model);
+        }
+
+        /// <summary>
+        /// Tries to stop the current internet disconnection detection.
+        /// </summary>
+        public void StopRunningInternetDisconnectDetection()
+        {
+            GameObject scriptHolder = Tools.GetScriptHolder();
+            if (scriptHolder.TryGetComponent(out InternetDetectionModel model))
+            {
+                model.StopDetection();
+            }
+            else
+            {
+                Debug.LogWarning("Trying to stop internet disconnect detection, but no detection is running.");
+            }
         }
     }
 }
