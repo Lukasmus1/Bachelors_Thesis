@@ -41,6 +41,7 @@ namespace Story.Models
         FightForCuratorLastChance,
         SuccessFightForCurator,
         SuccessFightForCuratorEnding,
+        FailFightForCurator,
         FailFightForCuratorEnding
     }
 }

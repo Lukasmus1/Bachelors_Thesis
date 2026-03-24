@@ -49,7 +49,7 @@ namespace Story.Models.States
             mb.StartCoroutine(CheckSecondsPassed(30, currentDate, () =>
             {
                 FourthWallMvc.Instance.UserInformationController.StopRunningInternetDisconnectDetection();
-                NextState = (int)StatesEnum.FailFightForCuratorEnding;
+                NextState = (int)StatesEnum.FailFightForCurator;
                 ChangeToNextState();
             }));
             

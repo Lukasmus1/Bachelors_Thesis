@@ -7,6 +7,7 @@ using Desktop.Models;
 using Story.Commons;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Desktop.Views
@@ -18,7 +19,6 @@ namespace Desktop.Views
         
         //References for activating desktop generation
         [SerializeField] private GameObject desktopObject;
-        [SerializeField] private GameObject createDesktopButton;
         
         //References for the wallpaper generator
         [Header("Wallpaper")]
@@ -34,23 +34,28 @@ namespace Desktop.Views
         [SerializeField] private GameObject iconPrefab;
         [SerializeField] private Transform iconParent;
 
-        private void Awake()
-        {
-            if (!Bootstrapper.LoadedNewGame)
-            {
-                return;
-            }
-            
-            //GenerateRandomDesktop();
-        }
+        // private void Awake()
+        // {
+        //     if (!Bootstrapper.LoadedNewGame)
+        //     {
+        //         return;
+        //     }
+        //     
+        //     //GenerateRandomDesktop();
+        // }
 
         private void Start()
         {
+            if (SceneManager.GetActiveScene().name == "UserDesktop")
+            {
+                GenerateUserDesktop();
+                return;
+            }
+            
             if (Bootstrapper.LoadedNewGame)
             {
                 StoryMvc.Instance.StoryController.InitNew();
                 GenerateRandomDesktop();
-                
             }
             else
             {
@@ -59,9 +64,15 @@ namespace Desktop.Views
         }
 
         /// <summary>
+        /// Gets the icon prefab size
+        /// </summary>
+        /// <returns>Icon prefab size</returns>
+        public Vector3 GetIconPrefabScale() => iconPrefab.GetComponent<RectTransform>().sizeDelta;
+        
+        /// <summary>
         /// Exposed method for the Generate Desktop button.
         /// </summary>
-        public void GenerateUserDesktopButton()
+        public void GenerateUserDesktop()
         {
             SetDesktopWallpaper(_controller.GetUserWallpaper());
             SetColorScheme(_controller.GetUserColorScheme());
@@ -158,7 +169,13 @@ namespace Desktop.Views
                 GameObject iconObject = desktopIconObjects.FirstOrDefault(x => x.GetComponent<IconClassOnObject>().IconName == iconClass.Name);
                 if (iconObject == null)
                 {
-                    continue;
+                    iconObject = Instantiate(iconPrefab, iconParent);
+                    iconClass.IsActive = true; //Setting the icon active by default, if it is not already instantiated
+                    
+                    //Set the anchor of the icon to the top left corner
+                    var rt = iconObject.GetComponent<RectTransform>();
+                    rt.anchorMin = new Vector2(0, 1); 
+                    rt.anchorMax = new Vector2(0, 1); 
                 }
 
                 iconObject.GetComponent<IconClassOnObject>().SetProps(iconClass);
@@ -173,7 +190,6 @@ namespace Desktop.Views
         {
             //Enabling the desktop object
             desktopObject.SetActive(enable);
-            createDesktopButton.SetActive(!enable);
         }
         
         /// <summary>

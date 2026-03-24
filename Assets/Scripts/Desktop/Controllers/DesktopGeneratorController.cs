@@ -20,6 +20,7 @@ namespace Desktop.Controllers
         private IconGenerator _iconGenerator;
         private readonly IconGenerationHelper _iconGeneratorHelper = new();
         private DesktopGeneratorView _desktopGeneratorView;
+        private readonly UserDesktopModel _userDesktopModel = new();
 
         private readonly Icons _icons = new();
         
@@ -76,6 +77,11 @@ namespace Desktop.Controllers
         /// <returns>User's wallpaper</returns>
         public Texture2D GetUserWallpaper()
         {
+            if (_userDesktopModel.Wallpaper != null)
+            {
+                return _userDesktopModel.Wallpaper;
+            }
+            
             _wallpaperGenerator = new WallpaperGeneratorUser();
             return _wallpaperGenerator.GetWallpaperTexture();
         }
@@ -86,6 +92,11 @@ namespace Desktop.Controllers
         /// <returns>Color scheme of the user's computer.</returns>
         public Color GetUserColorScheme()
         {
+            if (_userDesktopModel.ColorScheme != null)
+            {
+                return (Color)_userDesktopModel.ColorScheme;
+            }
+            
             _colorSchemeGenerator = new ColorGenerationUser();
             return _colorSchemeGenerator.GenerateUserColorScheme();
         }
@@ -97,6 +108,11 @@ namespace Desktop.Controllers
         /// <returns>List of all icons on the desktop</returns>
         public List<IconClass> GetUserIcons(Vector3 prefabScale)
         {
+            if (_userDesktopModel.Icons != null)
+            {
+                return _userDesktopModel.Icons;
+            }
+            
             _iconGenerator = new IconGeneratorUser();
             return _iconGenerator.GenerateIcons(prefabScale);
         }
@@ -107,8 +123,24 @@ namespace Desktop.Controllers
         /// <returns>User's set font</returns>
         public TMP_FontAsset GetUserFont()
         {
+            if (_userDesktopModel.Font != null)
+            {
+                return _userDesktopModel.Font;
+            }
+            
             var fontScript = new FontScript();
             return fontScript.GetUserFont();
+        }
+        
+        /// <summary>
+        /// Preloads the user's desktop
+        /// </summary>
+        public void PreloadUserDesktop()
+        {
+            _userDesktopModel.Wallpaper = GetUserWallpaper();
+            _userDesktopModel.ColorScheme = GetUserColorScheme();
+            _userDesktopModel.Font = GetUserFont();
+            _userDesktopModel.Icons = GetUserIcons(_desktopGeneratorView.GetIconPrefabScale());
         }
 
         //Commons

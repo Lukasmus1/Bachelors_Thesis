@@ -240,6 +240,12 @@
           "MessagesGroup":[
             {"MessageID": "kpFightForCuratorSuccess", "Sender": "kp", "Text": "You will regret this."}
           ]
+        },
+        {
+          "MessageGroupID": "kpFailCuratorEnding",
+          "MessagesGroup":[
+            {"MessageID": "kpFailCuratorEndingEnd", "Sender": "kp", "Text": "Your computer..."}
+          ]
         }
       ]
     },
@@ -367,6 +373,13 @@
             {"MessageID":  "curatorEnding8", "Sender": "Player", "Text": "I see..."},
             {"MessageID":  "curatorEnding9", "Sender": "Player", "Text": "I guess goodbye then."},
             {"MessageID":  "curatorEndingEnd", "Sender": "curator", "Text": "Goodbye and thank you for your help."}
+          ]
+        },
+        {
+          "MessageGroupID": "curatorFailEnding",
+          "MessagesGroup":[
+            {"MessageID":  "curatorFailEnding1", "Sender": "curator", "Text": "I can't help you anymore."},
+            {"MessageID":  "curatorFailEndingEnd", "Sender": "curator", "Text": "We failed..."}
           ]
         }
       ]

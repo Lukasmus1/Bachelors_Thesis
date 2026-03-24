@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WelcomeBackScreen.unity
     guid: 270551ee25ea18b4697f9be77fcb8e4c
+  - enabled: 1
+    path: Assets/Scenes/UserDesktop.unity
+    guid: a6ef8e01576fd4641bf71fa01408de0a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

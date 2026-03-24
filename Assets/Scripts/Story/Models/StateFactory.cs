@@ -54,7 +54,8 @@ namespace Story.Models
                 StatesEnum.SuccessFightForCurator => new SuccessFightForAIEndingStateClass(),
                 StatesEnum.SuccessFightForCuratorEnding => new FightForCuratorEndingStateClass(),
                 StatesEnum.FightForCuratorLastChance => new CuratorEndingLastChance(),
-                StatesEnum.FailFightForCuratorEnding => new FailFightForCuratorEnding(),
+                StatesEnum.FailFightForCurator => new FailFightForCuratorStateClass(),
+                StatesEnum.FailFightForCuratorEnding => new FailFightForCuratorEndingStateClass(),
                 _ => throw new ArgumentOutOfRangeException(nameof(stateEnum), stateEnum, null)
             };
         }

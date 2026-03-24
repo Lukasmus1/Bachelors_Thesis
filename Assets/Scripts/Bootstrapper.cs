@@ -18,10 +18,12 @@ public class Bootstrapper : MonoBehaviour
             FourthWallMvc.Instance.SavingActionsController.PerformActionOnFindingNewSave();
             SceneManager.LoadScene(registringScene);
             LoadedNewGame = true;
+            
             return;
         }
         
         //Loaded Game
         SceneManager.LoadScene(welcomeBackScene);
+        
     }
 }
