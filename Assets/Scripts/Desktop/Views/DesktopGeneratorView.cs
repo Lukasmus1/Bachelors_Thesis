@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Commons;
 using Desktop.Commons;
@@ -126,7 +127,7 @@ namespace Desktop.Views
         /// Sets the color scheme.
         /// </summary>
         /// <param name="clr"></param>
-        private void SetColorScheme(Color clr)
+        public void SetColorScheme(Color clr)
         {
             //Setting slight transparency
             clr.a = 0.998f;

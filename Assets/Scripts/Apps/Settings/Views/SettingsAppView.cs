@@ -1,3 +1,5 @@
+using System;
+using Apps.Commons;
 using Desktop.Commons;
 using Desktop.Models;
 using TMPro;
@@ -6,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Apps.Settings.Views
 {
-    public class SettingsAppView : MonoBehaviour
+    public class SettingsAppView : AppsCommon
     {
         [Header("Wallpaper")]
         [SerializeField] private TMP_Text currentWallpaperText;
@@ -18,15 +20,25 @@ namespace Apps.Settings.Views
         [SerializeField] private GameObject chooseColorSchemePopup;
 
         //[Header("Sounds")]
-        
-        private void Awake()
+
+        private void Start()
         {
             chooseWallpaperPopup.GetComponent<ChangeWallpaperPopupView>().onChangeWallpaper += UpdateWallpaperText;
+        }
+
+        private void OnEnable()
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, true);
             
             UpdateWallpaperText();
             UpdateColorSchemeTextAndImage();
         }
 
+        protected override void OnDisableChild()
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.SetDesktopFlag(gameObject.tag, false);
+        }
+        
         private void OnDestroy()
         {
             chooseWallpaperPopup.GetComponent<ChangeWallpaperPopupView>().onChangeWallpaper -= UpdateWallpaperText;    
@@ -54,6 +66,28 @@ namespace Apps.Settings.Views
         public void OpenChooseColorSchemePopup()
         {
             chooseColorSchemePopup.SetActive(true);
+        }
+
+        /// <summary>
+        /// Changes the current color scheme 
+        /// </summary>
+        public void ChangeColorScheme()
+        {
+            var fcp = chooseColorSchemePopup.GetComponent<FlexibleColorPicker>();
+            
+            DesktopMvc.Instance.DesktopGeneratorController.ChangeColorScheme(fcp.color);
+            
+            UpdateColorSchemeTextAndImage();
+            
+            CancelChooseColorSchemePopup();
+        }
+
+        /// <summary>
+        /// Hides the change color scheme popup
+        /// </summary>
+        public void CancelChooseColorSchemePopup()
+        {
+            chooseColorSchemePopup.SetActive(false);
         }
         
         /// <summary>

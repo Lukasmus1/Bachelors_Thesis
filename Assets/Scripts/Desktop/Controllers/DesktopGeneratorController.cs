@@ -151,7 +151,7 @@ namespace Desktop.Controllers
         }
 
         //Commons
-
+        
         /// <summary>
         /// Changes the current wallpaper for a new one by name.
         /// </summary>
@@ -159,6 +159,19 @@ namespace Desktop.Controllers
         public void ChangeWallpaper(string wallpaperName)
         {
             _desktopGeneratorView.SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper(wallpaperName));
+        }
+
+        //Color scheme change action
+        public Action onColorSchemeChange;
+        
+        /// <summary>
+        /// Changes the current color scheme for a new one.
+        /// </summary>
+        /// <param name="colorScheme">New color</param>
+        public void ChangeColorScheme(Color colorScheme)
+        {
+            _desktopGeneratorView.SetColorScheme(colorScheme);
+            onColorSchemeChange?.Invoke(); // Invokes the method for subscribed object using color
         }
         
         /// <summary>

@@ -13,6 +13,13 @@ namespace Apps.Commons
         {
             _bg = GetComponent<Image>();
             UpdateColor();
+            
+            DesktopMvc.Instance.DesktopGeneratorController.onColorSchemeChange += UpdateColor;
+        }
+
+        private void OnDestroy()
+        {
+            DesktopMvc.Instance.DesktopGeneratorController.onColorSchemeChange -= UpdateColor;
         }
 
         private void UpdateColor()

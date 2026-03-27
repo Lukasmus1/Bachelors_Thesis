@@ -49,6 +49,10 @@ namespace Desktop.Models
         }
         
         private string colorScheme;
+        /// <summary>
+        /// Gets the current set color scheme.
+        /// </summary>
+        /// <returns>Current color scheme string</returns>
         public string GetColorScheme()
         {
             if (string.IsNullOrEmpty(colorScheme))
@@ -58,6 +62,11 @@ namespace Desktop.Models
             }
             return colorScheme;
         }
+        
+        /// <summary>
+        /// Sets a new color scheme
+        /// </summary>
+        /// <param name="color">String of the color</param>
         public void SetColorScheme(string color)
         {
             if (!color.StartsWith("#"))
