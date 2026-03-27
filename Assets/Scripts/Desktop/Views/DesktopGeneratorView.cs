@@ -34,16 +34,6 @@ namespace Desktop.Views
         [SerializeField] private GameObject iconPrefab;
         [SerializeField] private Transform iconParent;
 
-        // private void Awake()
-        // {
-        //     if (!Bootstrapper.LoadedNewGame)
-        //     {
-        //         return;
-        //     }
-        //     
-        //     //GenerateRandomDesktop();
-        // }
-
         private void Start()
         {
             if (SceneManager.GetActiveScene().name == "UserDesktop")
@@ -126,7 +116,7 @@ namespace Desktop.Views
             wallpaperImage.texture = wallpaper;
             
             //Setting the wallpaper in the desktop model
-            DesktopModel.Instance.wallpaper = wallpaper.EncodeToPNG();
+            DesktopModel.Instance.wallpaperName = wallpaper.name;
             
             //Enabling the wallpaper image
             wallpaperImage.gameObject.SetActive(true);

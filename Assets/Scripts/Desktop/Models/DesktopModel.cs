@@ -23,13 +23,17 @@ namespace Desktop.Models
         }
         
         //Public
-        public byte[] wallpaper;
+        public string wallpaperName;
 
         public Texture2D GetWallpaper()
         {
-            var texture = new Texture2D(2, 2);
-            texture.LoadImage(wallpaper);
-            return texture;
+            var wallpaper = Resources.Load<Sprite>("wallpapers/" + wallpaperName);
+            
+            return wallpaper.texture;
+
+            // var texture = new Texture2D(2, 2);
+            // texture.LoadImage(wallpaperName);
+            // return texture;
         }
         
         private string colorScheme;
