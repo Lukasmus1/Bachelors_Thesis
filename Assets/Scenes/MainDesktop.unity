@@ -968,10 +968,10 @@ RectTransform:
   - {fileID: 63290104}
   m_Father: {fileID: 957884499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 962.5, y: 637.5}
-  m_SizeDelta: {x: -1975, y: -1325}
+  m_SizeDelta: {x: 585, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &141579538
 CanvasGroup:
@@ -3899,6 +3899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sounds.Views.SoundView
   audioSourcePrefab: {fileID: 8296205588860854090, guid: c7071b2372eef554684874ed5a537b12, type: 3}
+  audioMixerEffects: {fileID: -1244564535807753190, guid: 192a68b7c6eec054abd281b144ff18bb, type: 2}
+  audioMixerMusic: {fileID: -9002921528623028059, guid: 192a68b7c6eec054abd281b144ff18bb, type: 2}
 --- !u!1 &394490770
 GameObject:
   m_ObjectHideFlags: 0
@@ -19803,6 +19805,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 894683489401878185, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 894683489401878185, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_MinValue
+      value: 0.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 1029397385046182209, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_Name
       value: WallpaperSettings
@@ -19856,8 +19866,20 @@ PrefabInstance:
       value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 3677670506431644588, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_ContentType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677670506431644588, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_Placeholder
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677670506431644588, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_KeyboardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677670506431644588, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3974476529666743607, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.y
@@ -19878,6 +19900,14 @@ PrefabInstance:
     - target: {fileID: 4934246208359516920, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020097920190049272, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020097920190049272, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_MinValue
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984466222300114929, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.x

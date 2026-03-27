@@ -6,6 +6,7 @@ using Apps.FileManager.Commons;
 using Desktop.Models;
 using FourthWall.Commons;
 using Saving.Controllers;
+using Sounds.Commons;
 using Story.Commons;
 using Story.Models;
 using Story.Models.Actions;
@@ -32,6 +33,7 @@ namespace Saving.Models
             _model.hiddenFiles = FileManagerMvc.Instance.FileManagerController.HiddenFileNames;
             _model.userModel = UserMvc.Instance.UserController.userModel;
             _model.ending = (int)StoryMvc.Instance.StoryController.storyModel.Ending;
+            _model.soundModel = SoundMvc.Instance.SoundController.soundModel;
             
             ShouldSave = true;
         }

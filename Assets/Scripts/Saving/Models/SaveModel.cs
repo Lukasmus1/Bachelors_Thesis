@@ -5,6 +5,9 @@ using Apps.ChatTerminal.Models;
 using Apps.FileManager.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
+using Sounds.Commons;
+using Sounds.Controllers;
+using Sounds.Models;
 using Story.Commons;
 using Story.Models;
 using Story.Models.Actions;
@@ -23,6 +26,7 @@ namespace Saving.Models
         public List<string> hiddenFiles;
         public UserModel userModel;
         public ListOfActionsPersistent persistentActions;
+        public SoundModel soundModel;
         public int ending;
         
         public void LoadDataFromModel(SaveModel saveModel)
@@ -46,6 +50,8 @@ namespace Saving.Models
             FileManagerMvc.Instance.FileManagerController.LoadFromSave(loadedFiles, hiddenFiles);
             
             ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
+            
+            SoundMvc.Instance.SoundController.soundModel = saveModel.soundModel;
         }
     }
 }

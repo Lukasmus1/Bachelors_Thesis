@@ -5,6 +5,7 @@ using Commons;
 using Desktop.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
+using Sounds.Commons;
 using Story.Commons;
 using TMPro;
 using UnityEngine;
@@ -37,6 +38,8 @@ namespace Desktop.Views
 
         private void Start()
         {
+            SoundMvc.Instance.SoundController.UpdateVolumeFromModel(); // Sound volume init
+            
             if (SceneManager.GetActiveScene().name == "UserDesktop")
             {
                 GenerateUserDesktop();

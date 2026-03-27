@@ -4,6 +4,7 @@ using Apps.ChatTerminal.Models;
 using Apps.ChatTerminal.Views;
 using Sounds.Commons;
 using UnityEngine;
+using AudioType = Sounds.Models.AudioType;
 
 namespace Apps.ChatTerminal.Controllers
 {
@@ -43,7 +44,7 @@ namespace Apps.ChatTerminal.Controllers
             ChatTerminalView view = ChatTerminalMvc.Instance.ChatTerminalController.GetChatTerminalView();
             AudioClip clip = view.messageRecievedSound;
             
-            SoundMvc.Instance.SoundController.PlaySound(clip, view.transform);
+            SoundMvc.Instance.SoundController.PlaySound(clip, view.transform, AudioType.Effects);
         }
         
         /// <summary>
@@ -54,7 +55,7 @@ namespace Apps.ChatTerminal.Controllers
             ChatTerminalView view = ChatTerminalMvc.Instance.ChatTerminalController.GetChatTerminalView();
             AudioClip clip = view.messageSentSound;
             
-            SoundMvc.Instance.SoundController.PlaySound(clip, view.transform);
+            SoundMvc.Instance.SoundController.PlaySound(clip, view.transform, AudioType.Effects);
         }
 
         /// <summary>

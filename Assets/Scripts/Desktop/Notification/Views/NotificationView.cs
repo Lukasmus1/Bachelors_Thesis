@@ -7,6 +7,7 @@ using Sounds.Commons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using AudioType = Sounds.Models.AudioType;
 
 namespace Desktop.Notification.Views
 {
@@ -77,7 +78,7 @@ namespace Desktop.Notification.Views
             //Ugly hack, but it does the job
             //Checks the sprite type and plays the according notification sound
             SoundMvc.Instance.SoundController.PlaySound(
-                iconImage.sprite == errorIcon ? alertNotifSound : infoNotifSound, gameObject.transform);
+                iconImage.sprite == errorIcon ? alertNotifSound : infoNotifSound, gameObject.transform, AudioType.Effects);
 
             // Fade in
             var elapsed = 0f;
