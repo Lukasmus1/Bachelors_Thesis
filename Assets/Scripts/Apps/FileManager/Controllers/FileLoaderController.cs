@@ -96,6 +96,10 @@ namespace Apps.FileManager.Controllers
             _fileLoaderModel.SetHiddenFileFlag(fileName, shouldHide); // Sets the flag in model -> used for saving
         }
         
+        /// <summary>
+        /// Screenshots the game screen and saves it so the user model.
+        /// </summary>
+        /// <exception cref="Exception">Gets thrown if a problem occured with screenshotting</exception>
         public void CreateUsersScreenshotFile()
         {
             //Get the mono behavior from the script reference linker

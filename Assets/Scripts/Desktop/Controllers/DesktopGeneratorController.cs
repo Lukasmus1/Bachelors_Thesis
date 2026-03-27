@@ -35,6 +35,12 @@ namespace Desktop.Controllers
             _wallpaperGenerator = new WallpaperGeneratorRandom();
             return _wallpaperGenerator.GetWallpaperTexture();
         }
+
+        /// <summary>
+        /// Gets the current wallpaper name from the desktop model.
+        /// </summary>
+        /// <returns>Current set wallpaper name</returns>
+        public string GetCurrentWallpaperName() => DesktopModel.Instance.wallpaperName;
         
         /// <summary>
         /// Gets a random color scheme.
@@ -71,6 +77,7 @@ namespace Desktop.Controllers
         }
         
         //User's Generators
+        
         /// <summary>
         /// Gets the user's wallpaper.
         /// </summary>
@@ -144,6 +151,15 @@ namespace Desktop.Controllers
         }
 
         //Commons
+
+        /// <summary>
+        /// Changes the current wallpaper for a new one by name.
+        /// </summary>
+        /// <param name="wallpaperName">Name of the new wallpaper</param>
+        public void ChangeWallpaper(string wallpaperName)
+        {
+            _desktopGeneratorView.SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper(wallpaperName));
+        }
         
         /// <summary>
         /// Sets a flag for each app, so I can't open it twice for example.

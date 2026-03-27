@@ -86,7 +86,7 @@ namespace Desktop.Views
         /// </summary>
         private void LoadDesktop()
         {
-            SetDesktopWallpaper(DesktopModel.Instance.GetWallpaper());
+            SetDesktopWallpaper(DesktopModel.Instance.GetCurrentWallpaper());
             //Bright red as a color for error indication
             SetColorScheme(ColorUtility.TryParseHtmlString(DesktopModel.Instance.GetColorScheme(), out Color color) ? color : Color.red);
             SetIcons(DesktopModel.Instance.Icons);
@@ -110,7 +110,7 @@ namespace Desktop.Views
         /// Sets the desktop wallpaper.
         /// </summary>
         /// <param name="wallpaper">Wallpaper as Texture2D</param>
-        private void SetDesktopWallpaper(Texture2D wallpaper)
+        public void SetDesktopWallpaper(Texture2D wallpaper)
         {
             //Setting the wallpaper image
             wallpaperImage.texture = wallpaper;

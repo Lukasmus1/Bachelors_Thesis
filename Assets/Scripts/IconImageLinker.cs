@@ -16,6 +16,7 @@ public class IconImageLinker : MonoBehaviour
     [SerializeField] private Sprite virusFinder;
     [SerializeField] private Sprite compilationHelper;
     [SerializeField] private Sprite fileUploader;
+    [SerializeField] private Sprite settings;
 
     private void Awake()
     {
@@ -28,5 +29,6 @@ public class IconImageLinker : MonoBehaviour
         AppIconDictionary.Add("VirusFinder", virusFinder);
         AppIconDictionary.Add("CompilationHelper", compilationHelper);
         AppIconDictionary.Add("FileUploader", fileUploader);
+        AppIconDictionary.Add("Settings", settings);
     }
 }

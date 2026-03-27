@@ -25,15 +25,27 @@ namespace Desktop.Models
         //Public
         public string wallpaperName;
 
-        public Texture2D GetWallpaper()
+        /// <summary>
+        /// Returns the current wallpaper texture based on the wallpaper name stored in the model.
+        /// </summary>
+        /// <returns>Texture2D of the current wallpaper</returns>
+        public Texture2D GetCurrentWallpaper()
         {
             var wallpaper = Resources.Load<Sprite>("wallpapers/" + wallpaperName);
             
             return wallpaper.texture;
+        }
 
-            // var texture = new Texture2D(2, 2);
-            // texture.LoadImage(wallpaperName);
-            // return texture;
+        /// <summary>
+        /// Gets a specific wallpaper by its name.
+        /// </summary>
+        /// <param name="desiredWallpaper">Wallpaper name</param>
+        /// <returns>Texture2D of the desired wallpaper</returns>
+        /// <exception cref="KeyNotFoundException">Gets thrown if the wallpaper is not found</exception>
+        public Texture2D GetWallpaper(string desiredWallpaper)
+        {
+            var wallpaper = Resources.Load<Sprite>("wallpapers/" + desiredWallpaper);
+            return wallpaper.texture ?? throw new KeyNotFoundException($"Wallpaper {desiredWallpaper} not found");
         }
         
         private string colorScheme;

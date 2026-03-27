@@ -51,10 +51,12 @@ public class ScriptReferenceLinker : MonoBehaviour
     [SerializeField] private GameObject compilationHelper;
     [SerializeField] private CompilationHelperView compilationHelperView;
     
-    [SerializeField] private GameObject fileUploaderApp;
+    public GameObject fileUploaderApp;
     [SerializeField] private FileUploaderView fileUploaderView;
     
     [SerializeField] private SoundView soundView;
+    
+    public GameObject settingsApp;
     
     private void Awake()
     {
@@ -100,6 +102,8 @@ public class ScriptReferenceLinker : MonoBehaviour
             "CipherSolver" => cipherSolverApp,
             "VirusFinder" => virusFinderApp,
             "CompilationHelper" => compilationHelper,
+            "FileUploader" => fileUploaderApp,
+            "Settings" => settingsApp,
             _ => throw new Exception("The app tag has not been found!")
         };
     }
@@ -118,7 +122,9 @@ public class ScriptReferenceLinker : MonoBehaviour
             autostereoApp,
             cipherSolverApp,
             virusFinderApp,
-            compilationHelper
+            compilationHelper,
+            fileUploaderApp,
+            settingsApp
         };
     }
     
