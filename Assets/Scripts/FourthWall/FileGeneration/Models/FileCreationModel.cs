@@ -19,6 +19,13 @@ namespace FourthWall.FileGeneration.Models
             //Ensure any existing file is removed
             DestroyFile(fileName);
             
+            string dirPath = Path.GetDirectoryName(fileName);
+            
+            if (!string.IsNullOrEmpty(dirPath) && !Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+            
             File.WriteAllText(fileName, content);
         }
 
@@ -106,7 +113,21 @@ namespace FourthWall.FileGeneration.Models
         }
 
         /// <inheritdoc cref="FileGenerationController.CreateImportantHiddenFileLocation"/>
-        public string CreateImportantFileLocation()
+        public string CreateNewImportantFileLocation()
+        {
+            string filePath = GenerateRandomImportantFileLocation();
+            string content = GenerateFileData();
+            
+            CreateHiddenFile(filePath, content, true);
+            
+            return filePath;
+        }
+
+        /// <summary>
+        /// Generates a random important file location.
+        /// </summary>
+        /// <returns>A random important file location.</returns>
+        private string GenerateRandomImportantFileLocation()
         {
             string fullPath = GetLocalAppDataLowPath();
             string[] dirs = Directory.GetDirectories(fullPath);
@@ -115,13 +136,24 @@ namespace FourthWall.FileGeneration.Models
             
             //Create a hidden file in that directory with the generated content.
             string fileName = GenerateRandomFileName();
-            string filePath = Path.Combine(randomPath, fileName);
+            return Path.Combine(randomPath, fileName);
+        }
 
+        /// <inheritdoc cref="FileGenerationController.CreateImportantHiddenFileLocationFromSave"/>
+        public void CreateImportantHiddenFileLocationFromSave()
+        {
+            string filePath = UserMvc.Instance.UserController.ProceduralData(UserDataType.ImportantFileLocation);
             string content = GenerateFileData();
             
             CreateHiddenFile(filePath, content, true);
-            
-            return filePath;
+        }
+        
+        /// <inheritdoc cref="FileGenerationController.DestroyImportantFileLocation"/>
+        public void DestroyImportantFileLocation()
+        {
+            string fullPath = UserMvc.Instance.UserController.ProceduralData(UserDataType.ImportantFileLocation);
+            string directoryPath = Path.GetDirectoryName(fullPath);
+            DestroyFolder(directoryPath);
         }
 
         /// <inheritdoc cref="FileGenerationController.CreateLastFileLocation"/>

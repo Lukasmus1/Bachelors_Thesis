@@ -5,8 +5,8 @@ using Apps.ChatTerminal.Models;
 using Apps.FileManager.Commons;
 using Desktop.Controllers;
 using Desktop.Models;
+using FourthWall.Commons;
 using Sounds.Commons;
-using Sounds.Controllers;
 using Sounds.Models;
 using Story.Commons;
 using Story.Models;
@@ -44,6 +44,8 @@ namespace Saving.Models
             
             userModel = saveModel.userModel;
             UserMvc.Instance.UserController.userModel = userModel;
+            if (!UserMvc.Instance.UserController.GetPersistentData(UserDataType.ImportantFileDeleted))
+                FourthWallMvc.Instance.FileGenerationController.CreateImportantHiddenFileLocationFromSave();
 
             loadedFiles = saveModel.loadedFiles;
             hiddenFiles = saveModel.hiddenFiles;

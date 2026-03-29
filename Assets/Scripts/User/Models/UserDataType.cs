@@ -17,6 +17,7 @@
         CompilationLocation,
         CuratorLocation,
         KpLocation,
+        ImportantFileDeleted,
         AiUploadUrl
     }
 }

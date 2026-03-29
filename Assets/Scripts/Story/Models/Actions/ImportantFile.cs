@@ -18,6 +18,7 @@ namespace Story.Models.Actions
         private static void OnDeletion()
         {
             ActionsClass.Instance.ActionsPersistent.SetAction(ActionType.ImportantFile, false);
+            UserMvc.Instance.UserController.SetPersistentData(UserDataType.ImportantFileDeleted, true);
             
             OnImportantFileDeleted?.Invoke();
         }

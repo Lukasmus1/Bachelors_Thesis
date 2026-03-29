@@ -62,9 +62,22 @@ namespace FourthWall.FileGeneration.Controllers
         /// <returns>Path to the hidden file</returns>
         public string CreateImportantHiddenFileLocation()
         {
-            return _model.CreateImportantFileLocation();
+            return _model.CreateNewImportantFileLocation();
         }
 
+        /// <summary>
+        /// Destroys the hidden file created in the random location.
+        /// </summary>
+        public void DestroyImportantFileLocation()
+        {
+            _model.DestroyImportantFileLocation();
+        }
+
+        public void CreateImportantHiddenFileLocationFromSave()
+        {
+            _model.CreateImportantHiddenFileLocationFromSave();
+        }
+        
         /// <summary>
         /// Creates a location of the last important file for K-P. 
         /// </summary>
