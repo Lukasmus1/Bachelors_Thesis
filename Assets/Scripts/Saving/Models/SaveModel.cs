@@ -31,6 +31,9 @@ namespace Saving.Models
         
         public void LoadDataFromModel(SaveModel saveModel)
         {
+            persistentActions = saveModel.persistentActions;
+            ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
+            
             desktop = saveModel.desktop;
             DesktopModel.Instance = desktop;
             DesktopGeneratorController.ClearFlags(); //Clear any flags that may have stuck
@@ -38,21 +41,18 @@ namespace Saving.Models
             chatTerminalModel = saveModel.chatTerminalModel;
             ChatTerminalMvc.Instance.ChatTerminalController.chatTerminalModel = chatTerminalModel;
             
-            storyModel = saveModel.storyModel;
-            StoryMvc.Instance.StoryController.storyModel = storyModel;
-            StoryMvc.Instance.StoryController.LoadFromState();
-            
             userModel = saveModel.userModel;
             UserMvc.Instance.UserController.userModel = userModel;
             if (!UserMvc.Instance.UserController.GetPersistentData(UserDataType.ImportantFileDeleted))
                 FourthWallMvc.Instance.FileGenerationController.CreateImportantHiddenFileLocationFromSave();
+            
+            storyModel = saveModel.storyModel;
+            StoryMvc.Instance.StoryController.storyModel = storyModel;
+            StoryMvc.Instance.StoryController.LoadFromState();
 
             loadedFiles = saveModel.loadedFiles;
             hiddenFiles = saveModel.hiddenFiles;
             FileManagerMvc.Instance.FileManagerController.LoadFromSave(loadedFiles, hiddenFiles);
-            
-            persistentActions = saveModel.persistentActions;
-            ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
             
             soundModel = saveModel.soundModel;
             SoundMvc.Instance.SoundController.soundModel = saveModel.soundModel;

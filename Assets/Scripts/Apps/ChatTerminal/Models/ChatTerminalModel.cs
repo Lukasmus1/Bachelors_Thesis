@@ -136,6 +136,10 @@ namespace Apps.ChatTerminal.Models
             
             chatMessage.Text = chatMessage.Text.Replace("{realName}",
                 FourthWallMvc.Instance.UserInformationController.GetUserRealName());
+
+            chatMessage.Text = chatMessage.Text.Replace("{patternHelper}",
+                FourthWallMvc.Instance.FileGenerationController.GeneratePatternHelper());
+
             //More procedural data can be added here as needed
         }
         

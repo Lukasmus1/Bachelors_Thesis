@@ -42,6 +42,14 @@ namespace Apps.VirusFinder.Controllers
         }
 
         /// <summary>
+        /// Clears the current viruses list.
+        /// </summary>
+        public void ResetVirusCount()
+        {
+            _model.Viruses.Clear();
+        }
+        
+        /// <summary>
         /// Enables viruses on the desktop and returns the number of viruses present.
         /// </summary>
         /// <returns>Number of viruses</returns>

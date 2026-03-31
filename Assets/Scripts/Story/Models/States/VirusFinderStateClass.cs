@@ -34,6 +34,7 @@ namespace Story.Models.States
         {
             if (virusCount == 0)
             {
+                VirusFinderMvc.Instance.VirusFinderController.ResetVirusCount();
                 ChangeToNextState();
             }
         }

@@ -273,7 +273,7 @@
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "Unfortunately they've encrypted it and I don't have the key."},
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "I have managed to pull a encryption table from the development files of the game. But it contains a lot of numbers and I don't know what the correct combination is."},
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "There was alongside it, however, an application called \"EncryptionPattern.exe\" that could help you."},
-            {"MessageID":  "curatorExpl4", "Sender": "curator", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {location}TODOTODOTODOTODOTODOTODOTODOTODO"}
+            {"MessageID":  "curatorExpl4", "Sender": "curator", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {patternHelper}"}
           ]
         },
         {

@@ -18,7 +18,7 @@ namespace Apps.VirusFinder.Models
         private readonly GameObject _iconPrefab = Resources.Load<GameObject>("Prefabs/Apps/VirusFinder/VirusIcon");
 
         //List of possible virus names
-        private readonly string[] listOfNames =
+        private readonly string[] _listOfNames =
         {
             "ą̵̵̵̛̖͔̻͇͚̟̬̯͓̙̞̤̻̏ͦ̀́̔͐̉̀̇̍ͨ̏͌̾̓ͩ̚̚̕͜͠",
             "d̸̷̡̲͍̝̼̫͉̻͍͚̗͉̆̐̆ͧ̆́͛̆ͮͯ͑̈́̕̕͡", 
@@ -41,7 +41,7 @@ namespace Apps.VirusFinder.Models
             {
                 GameObject newVirus = Object.Instantiate(_iconPrefab, iconParent);
                 
-                string name = listOfNames[Random.Range(0, listOfNames.Length)];
+                string name = _listOfNames[Random.Range(0, _listOfNames.Length)];
                 Vector2 pos = DesktopMvc.Instance.DesktopGeneratorController.GenerateRandomIconPosition(_iconPrefab.GetComponent<RectTransform>().sizeDelta);
 
                 newVirus.GetComponent<IconScript>().SetProperties(pos, name);

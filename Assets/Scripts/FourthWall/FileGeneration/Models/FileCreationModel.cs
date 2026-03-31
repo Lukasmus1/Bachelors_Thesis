@@ -230,5 +230,16 @@ namespace FourthWall.FileGeneration.Models
             zip.AddDirectory(directoryPath);
             zip.Save(zipPath);
         }
+        
+        /// <inheritdoc cref="FileGenerationController.GeneratePatternHelper"/>
+        public string GeneratePatternHelper()
+        {
+            string sourcePath = Path.Combine(Application.streamingAssetsPath, @"ExternalApp\EncryptionPattern.exe");
+            const string destPath = "EncryptionPattern.exe";
+            
+            File.Copy(sourcePath, destPath, true);
+
+            return Path.GetFullPath(destPath);
+        }
     }
 }

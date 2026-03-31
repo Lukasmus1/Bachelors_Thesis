@@ -11,18 +11,19 @@ namespace Story.Models
     [Serializable]
     public class StoryModel
     {
-        private StateClass currentStateClass;
+        private StateClass _currentStateClass;
         public StateClass CurrentStateClass
         {
-            get => currentStateClass;
+            get => _currentStateClass;
             set
             {
-                if (currentStateClass != value)
+                if (_currentStateClass != value)
                 {
-                    currentStateClass?.OnExit();
+                    _currentStateClass?.OnExit();
+                    Debug.Log($"Entering {value.State}");
                     value.OnEnter();
                 }
-                currentStateClass = value;
+                _currentStateClass = value;
             }
         }
         
@@ -35,7 +36,7 @@ namespace Story.Models
 
         public void LoadFromState()
         {
-            currentStateClass?.LoadFromState();
+            _currentStateClass?.LoadFromState();
         } 
         
         public int GetExtremeAlignment(bool maximumAlignment)

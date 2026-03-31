@@ -20,8 +20,6 @@ namespace Apps.VirusFinder.Views
 
         private void OnEnable()
         {
-            VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(2);
-            
             resultText.text = "";
             scanProgressBar.value = 0;
             percentageText.text = "0%";

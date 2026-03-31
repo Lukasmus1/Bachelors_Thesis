@@ -100,6 +100,10 @@ namespace Story.Models.Actions
                         HiddenVirus.CleanupHiddenVirusAction();
                         break;
 
+                    case ActionType.ImportantFile:
+                        //The implementation of the important file SUCKS. 
+                        //I am cleaning it up elsewhere, this would be redundant.
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

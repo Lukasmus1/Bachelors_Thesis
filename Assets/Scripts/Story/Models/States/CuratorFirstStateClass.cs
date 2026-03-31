@@ -13,8 +13,19 @@ namespace Story.Models.States
         public override int NextState { get; set; } = (int)StatesEnum.NewFiles;
 
         private bool _shouldUnsubscribe = false;
+        private bool _curatorLoaded = false;
         
         public override void OnEnter()
+        {
+            LoadFromState();
+        }
+
+        public override void OnExit()
+        {
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;
+        }
+
+        public override void LoadFromState()
         {
             if (!UserMvc.Instance.UserController.GetPersistentData(UserDataType.DeletedVirusFile))
             {
@@ -27,19 +38,13 @@ namespace Story.Models.States
             {
                 KpDoNotDeleteFiles.OnKpDoNotDeleteFiles -= OnEnter;
             }
-            
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
-            
-            LoadFromState();
-        }
 
-        public override void OnExit()
-        {
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;
-        }
-
-        public override void LoadFromState()
-        {
+            if (!_curatorLoaded)
+            {
+                ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
+                _curatorLoaded = true;
+            }
+            
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped += TransitionCheck;
         }
 

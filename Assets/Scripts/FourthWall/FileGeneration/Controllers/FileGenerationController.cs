@@ -148,5 +148,14 @@ namespace FourthWall.FileGeneration.Controllers
             var detectionModel = scriptHolder.AddComponent<FileDeletionDetectionModel>();
             detectionModel.StartDetection(pathToFile, callback);
         }
+
+        /// <summary>
+        /// Moves the pattern helper from resources to a predetermined folder on the users computer.
+        /// </summary>
+        /// <returns>Path to the pattern helper</returns>
+        public string GeneratePatternHelper()
+        {
+            return _model.GeneratePatternHelper();
+        }
     }
 }
