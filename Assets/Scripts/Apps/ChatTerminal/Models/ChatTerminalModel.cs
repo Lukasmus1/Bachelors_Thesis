@@ -125,20 +125,25 @@ namespace Apps.ChatTerminal.Models
         /// <param name="chatMessage">ChatMessage to edit</param>
         private void UpdateProceduralData(ChatMessage chatMessage)
         {
-            chatMessage.Text = chatMessage.Text.Replace("{lastFileLocation}",
-                UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation));
+            if (chatMessage.Text.Contains("{lastFileLocation}"))
+                chatMessage.Text = chatMessage.Text.Replace("{lastFileLocation}",
+                    UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation));
             
-            chatMessage.Text = chatMessage.Text.Replace("{curatorLocation}",
-                UserMvc.Instance.UserController.ProceduralData(UserDataType.CuratorLocation));
+            if (chatMessage.Text.Contains("{curatorLocation}"))
+                chatMessage.Text = chatMessage.Text.Replace("{curatorLocation}",
+                    UserMvc.Instance.UserController.ProceduralData(UserDataType.CuratorLocation));
             
-            chatMessage.Text = chatMessage.Text.Replace("{aiUploadURL}",
-                UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl));
+            if (chatMessage.Text.Contains("{aiUploadURL}"))
+                chatMessage.Text = chatMessage.Text.Replace("{aiUploadURL}",
+                    UserMvc.Instance.UserController.ProceduralData(UserDataType.AiUploadUrl));
             
-            chatMessage.Text = chatMessage.Text.Replace("{realName}",
-                FourthWallMvc.Instance.UserInformationController.GetUserRealName());
+            if (chatMessage.Text.Contains("{realName}"))
+                chatMessage.Text = chatMessage.Text.Replace("{realName}",
+                    FourthWallMvc.Instance.UserInformationController.GetUserRealName());
 
-            chatMessage.Text = chatMessage.Text.Replace("{patternHelper}",
-                FourthWallMvc.Instance.FileGenerationController.GeneratePatternHelper());
+            if (chatMessage.Text.Contains("{patternHelper}"))
+                chatMessage.Text = chatMessage.Text.Replace("{patternHelper}",
+                    FourthWallMvc.Instance.FileGenerationController.GeneratePatternHelper());
 
             //More procedural data can be added here as needed
         }
