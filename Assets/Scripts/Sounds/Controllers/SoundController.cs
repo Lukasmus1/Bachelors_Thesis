@@ -43,8 +43,8 @@ namespace Sounds.Controllers
         /// </summary>
         public void UpdateVolumeFromModel()
         {
-            UpdateSoundVolume(soundModel.EffectsVolume, AudioType.Effects);
-            UpdateSoundVolume(soundModel.MusicVolume, AudioType.Music);
+            UpdateSoundVolume(EffectsVolume, AudioType.Effects);
+            UpdateSoundVolume(MusicVolume, AudioType.Music);
         }
         
         /// <summary>
@@ -58,11 +58,11 @@ namespace Sounds.Controllers
             {
                 case AudioType.Effects:
                     _soundView.audioMixerEffects.audioMixer.SetFloat("EffectsVolume", volume);
-                    soundModel.EffectsVolume = volume;
+                    EffectsVolume = volume;
                     break;
                 case AudioType.Music:
                     _soundView.audioMixerMusic.audioMixer.SetFloat("MusicVolume", volume);
-                    soundModel.MusicVolume = volume;
+                    MusicVolume = volume;
                     break;
             }
         }

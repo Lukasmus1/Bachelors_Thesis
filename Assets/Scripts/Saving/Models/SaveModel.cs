@@ -51,8 +51,10 @@ namespace Saving.Models
             hiddenFiles = saveModel.hiddenFiles;
             FileManagerMvc.Instance.FileManagerController.LoadFromSave(loadedFiles, hiddenFiles);
             
+            persistentActions = saveModel.persistentActions;
             ActionsClass.Instance.ActionsPersistent = saveModel.persistentActions;
             
+            soundModel = saveModel.soundModel;
             SoundMvc.Instance.SoundController.soundModel = saveModel.soundModel;
         }
     }

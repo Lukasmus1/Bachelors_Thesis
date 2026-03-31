@@ -51,7 +51,6 @@ namespace Saving.Models
             
             //Methods to explicitly save the data if required 
             ChatTerminalMvc.Instance.ChatTerminalController.SaveGameData();
-            _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
             FourthWallMvc.Instance.FileGenerationController.DestroyImportantFileLocation();
             
             BinaryFormatter formatter = new();
