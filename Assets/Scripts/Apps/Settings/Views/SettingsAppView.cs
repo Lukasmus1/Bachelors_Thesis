@@ -243,7 +243,7 @@ namespace Apps.Settings.Views
         /// </summary>
         /// <param name="linearValue">Linear float value</param>
         /// <returns>Log10 value</returns>
-        private float ConvertFromLinearToLog(float linearValue) => Mathf.Log10(linearValue) * 20;
+        private float ConvertFromLinearToLog(float linearValue) => Mathf.Log10(Mathf.Clamp(linearValue, minVolumeLin, maxVolumeLin)) * 20;
 
         /// <summary>
         /// Converts the linear value to percentage
