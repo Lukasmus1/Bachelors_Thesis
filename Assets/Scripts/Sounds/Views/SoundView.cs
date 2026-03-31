@@ -8,12 +8,22 @@ namespace Sounds.Views
 {
     public class SoundView : MonoBehaviour
     {
+        [Header("General Audio Settings")]
         [SerializeField] private AudioSource audioSourcePrefab;
         public AudioMixerGroup audioMixerEffects;
         public AudioMixerGroup audioMixerMusic;
         
+        [Header("Background Music Settings")]
+        [SerializeField] private AudioClip backgroundMusicClip;
+        [NonSerialized] public AudioSource bgmAudioSource;
+        
+        private void Awake()
+        {
+            bgmAudioSource = PlaySound(backgroundMusicClip, transform, AudioType.Music, true);
+        }
+
         /// <inheritdoc cref="SoundController.PlaySound"/>
-        public void PlaySound(AudioClip clip, Transform spawnTransform, AudioType audioType)
+        public AudioSource PlaySound(AudioClip clip, Transform spawnTransform, AudioType audioType, bool loop = false)
         {
             AudioSource source = Instantiate(audioSourcePrefab, spawnTransform);
             
@@ -26,11 +36,17 @@ namespace Sounds.Views
                 _ => throw new Exception("Invalid audio type")
             };
 
-            float clipLength = source.clip.length + source.clip.length * 0.1f; //Slightly longer, 'cause sometimes it cuts off the end of the clip.
+            source.loop = loop;
             
             source.Play();
             
-            Destroy(source.gameObject, clipLength);
+            if (!loop)
+            {
+                float clipLength = source.clip.length + source.clip.length * 0.1f; //Slightly longer, 'cause sometimes it cuts off the end of the clip.
+                Destroy(source.gameObject, clipLength);
+            }
+            
+            return source;
         }
     }
 }

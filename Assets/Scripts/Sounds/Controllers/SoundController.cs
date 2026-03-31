@@ -26,6 +26,12 @@ namespace Sounds.Controllers
             get =>  soundModel.MusicVolume;
             set =>  soundModel.MusicVolume = value;
         }
+
+        public AudioSource BackgroundMusic
+        {
+            get => _soundView.bgmAudioSource;
+            set => _soundView.bgmAudioSource = value;
+        }
         
         /// <summary>
         /// Plays a sound at the given transform position. https://www.youtube.com/watch?v=DU7cgVsU2rM
