@@ -1380,6 +1380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8011825433780185326, guid: af0366a13b86b78489e01b4756e6ba91, type: 3}
+      propertyPath: m_text
+      value: Chat Terminal
+      objectReference: {fileID: 0}
     - target: {fileID: 8753762689036262157, guid: af0366a13b86b78489e01b4756e6ba91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

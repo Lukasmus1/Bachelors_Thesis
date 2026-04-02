@@ -255,6 +255,7 @@
         {
           "MessageGroupID": "curatorExplanation",
           "MessagesGroup":[
+            {"MessageID":  "curatorExpl0", "Sender": "curator", "Text": "DELETE THIS FILE AFTER READING."},
             {"MessageID":  "curatorExpl1", "Sender": "curator", "Text": "I am contacting you like this, because they can't yet access your desktop."},
             {"MessageID":  "curatorExpl2", "Sender": "curator", "Text": "This game was just supposed to be a thesis project about being a detective."},
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "But somehow one of the AIs became self aware. You know them as K-P. They were supposed to be the scammer you are hunting in this story."},
