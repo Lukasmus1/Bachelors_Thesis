@@ -275,8 +275,8 @@ MonoBehaviour:
   contactPrefab: {fileID: 3956741269752487994, guid: 742fdab488886ef4590a944d8dddda48, type: 3}
   contactsParent: {fileID: 817763205358485925}
   messagesWindow: {fileID: 149309411995131904}
-  messageRecievedSound: {fileID: 8300000, guid: 38ea4011fb304b049bb7c0d4b553e430, type: 3}
-  messageSentSound: {fileID: 8300000, guid: 0c21329ae858b2443946454d2d8d7ae9, type: 3}
+  messageRecievedSound: {fileID: 8300000, guid: dc33979487c96114bb334ef460dfef86, type: 3}
+  messageSentSound: {fileID: 8300000, guid: 2e2b0b199fc55974d9755b089a67894f, type: 3}
 --- !u!1 &1799932230038066507
 GameObject:
   m_ObjectHideFlags: 0
