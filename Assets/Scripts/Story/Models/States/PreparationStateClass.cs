@@ -42,7 +42,8 @@ namespace Story.Models.States
             {
                 DesktopMvc.Instance.DesktopGeneratorController.CloseAllApps();
 
-                string files = ChatTerminalMvc.Instance.ChatTerminalController.GetSecondaryMessageGroupConcat("kp", "kpLastWarning").Remove('\n'); 
+                string files = ChatTerminalMvc.Instance.ChatTerminalController
+                    .GetSecondaryMessageGroupConcat("kp", "kpLastWarning").TrimEnd('\n', '\r');
                 FourthWallMvc.Instance.FileGenerationController.CreateCreepyFileSequence(files, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\-", 1);
                 
                 ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= NewFileCheck;

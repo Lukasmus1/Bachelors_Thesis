@@ -116,6 +116,7 @@ namespace Apps.ChatTerminal.Controllers
         public void ChangeUsername(string userID, string newName)
         {
             chatTerminalModel.ChangeUsername(userID, newName, _chatTerminalView.Profiles);
+            _chatTerminalView.ChangeUsername(userID, newName);
         }
     }
 }

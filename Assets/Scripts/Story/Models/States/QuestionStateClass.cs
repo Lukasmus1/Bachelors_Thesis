@@ -11,9 +11,9 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
+            ChatTerminalMvc.Instance.ChatTerminalController.ChangeUsername("curator", "Curator");
             ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("curator");
-            ChatTerminalMvc.Instance.ChatTerminalController.ChangeUsername("curator", "Curator");
             
             LoadFromState();
         }
@@ -39,8 +39,6 @@ namespace Story.Models.States
             
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("curator");
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= ContinuationCheck;
-            
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += TransitionCheck;
         }
 
         private void TransitionCheck(string messageID)

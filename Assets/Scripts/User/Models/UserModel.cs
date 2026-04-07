@@ -73,6 +73,7 @@ namespace User.Models
             {
                 new(UserDataType.DeletedVirusFile, false),
                 new(UserDataType.FirstChoiceSideWithCops, false),
+                new(UserDataType.ImportantFileDeleted, false),
                 new(UserDataType.LastHelpChoiceHelp, false)
             };
             

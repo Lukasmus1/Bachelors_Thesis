@@ -99,6 +99,25 @@ namespace Apps.ChatTerminal.Views
             Destroy(profileToUnload.gameObject);
             _profiles.Remove(profileToUnload);
         }
+
+        /// <summary>
+        /// Changes the username of a given contact
+        /// </summary>
+        /// <param name="userID">ID of the user</param>
+        /// <param name="newUsername">New desired username</param>
+        public void ChangeUsername(string userID, string newUsername)
+        {
+            ChatProfile profile = _profiles.FirstOrDefault(profile => profile.UserID == userID);
+
+            if (!profile)
+            {
+                return;
+            }
+            
+            profile.Username = newUsername;
+            
+            UpdateContactData();
+        }
         
         private void OnEnable()
         {

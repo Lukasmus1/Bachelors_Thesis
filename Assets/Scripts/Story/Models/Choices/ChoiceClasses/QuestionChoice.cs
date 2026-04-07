@@ -26,8 +26,6 @@ namespace Story.Models.Choices.ChoiceClasses
             {
                 ChatTerminalMvc.Instance.MessageSystemController.QueueSecondaryMessageFromChoice("curator", "curatorQuestionNeutral");
                 ChatTerminalMvc.Instance.MessageSystemController.ToggleMessagePause(false);
-                
-                
             }),
             new ChoiceActionClass(
             2,

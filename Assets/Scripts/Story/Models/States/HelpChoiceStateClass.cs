@@ -13,8 +13,6 @@ namespace Story.Models.States
         {
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
             
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += ContinuationCheck;
-            
             LoadFromState();
         }
 
@@ -42,7 +40,6 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("curator");
             
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= ContinuationCheck;
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += QuestionCheck;
         }
         
         private void QuestionCheck(string messageID)
@@ -55,18 +52,20 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.ChatTerminalController.IncreaseChatProfileMessageIndex("headOfDpt");
             
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= QuestionCheck;
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += TransitionCheck;
         }
 
         private void TransitionCheck(string messageID)
         {
-            if (messageID == "dptChoiceHelpEnd")
+            switch (messageID)
             {
-                NextState = (int)StatesEnum.ItHelp;
-            }
-            else if (messageID == "dptChoiceIgnoreEnd")
-            {
-                NextState = (int)StatesEnum.Preparation;
+                case "dptChoiceHelpEnd":
+                    NextState = (int)StatesEnum.ItHelp;
+                    break;
+                case "dptChoiceIgnoreEnd":
+                    NextState = (int)StatesEnum.Preparation;
+                    break;
+                default:
+                    return;
             }
 
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;

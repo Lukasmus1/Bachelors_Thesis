@@ -201,7 +201,7 @@ namespace Apps.CompilationHelper.Views
         {
             // Model
             string currentKpPath = FourthWallMvc.Instance.CompilationSimulationController.GetKpCompilationPath();
-            string newPath = StandaloneFileBrowser.OpenFilePanel("New K-P's Compilation Location", currentKpPath, "", false)[0];
+            string newPath = StandaloneFileBrowser.OpenFolderPanel("New K-P's Compilation Location", currentKpPath, false)[0];
             
             if (string.IsNullOrEmpty(newPath))
             {

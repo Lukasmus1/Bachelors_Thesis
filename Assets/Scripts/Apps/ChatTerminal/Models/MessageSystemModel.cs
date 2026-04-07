@@ -45,6 +45,10 @@ namespace Apps.ChatTerminal.Models
             
             InterruptedMessaging(CurrentProfile.SeenMessagesIndex);
             coroutineHost.StopCoroutine(_runningCoroutine);
+            if (_isPaused)
+            {
+                TogglePause(false);
+            }
             _runningCoroutine = null;
         }
         

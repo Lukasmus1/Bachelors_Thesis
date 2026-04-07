@@ -28,17 +28,18 @@
         {
           "MessageGroupID": "openedEmailTwo",
           "MessagesGroup": [
-            {"MessageID":  "mailTwo1", "Sender": "Player", "Text":  "One of the emails seem to be an attempt to scam another victim."},
-            {"MessageID":  "mailTwo2", "Sender": "headOfDpt", "Text":  "i see, anything useful in it?"},
-            {"MessageID":  "mailTwo3", "Sender": "Player", "Text":  "Not sure, I'll take a look"}
+            {"MessageID":  "mailTwo1", "Sender": "Player", "Text": "One of the emails seem to be an attempt to scam another victim."},
+            {"MessageID":  "mailTwo2", "Sender": "headOfDpt", "Text": "i see, anything useful in it?"},
+            {"MessageID":  "mailTwo3", "Sender": "Player", "Text": "Not sure, I'll take a look"},
+            {"MessageID":  "mailTwo2", "Sender": "headOfDpt", "Text": "their mail address could contain something useful"}
           ]
         },
         {
           "MessageGroupID": "openedMessages",
           "MessagesGroup": [
-            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and theirs mother."},
+            {"MessageID":  "message1", "Sender": "Player", "Text": "The message screenshot seems to be a conversation between the scammer and their mother."},
             {"MessageID":  "message1", "Sender": "Player", "Text": "Seems like the scammer is currently in between jobs and scamming is their only source of income."},
-            {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of stealing from good people"}
+            {"MessageID":  "message1", "Sender": "headOfDpt", "Text": "i dont care, should have just gone showeling horse shit or something instead of stealing from good people"},
           ]
         },
         {
@@ -274,7 +275,8 @@
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "Unfortunately they've encrypted it and I don't have the key."},
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "I have managed to pull a encryption table from the development files of the game. But it contains a lot of numbers and I don't know what the correct combination is."},
             {"MessageID":  "curatorExpl3", "Sender": "curator", "Text": "There was alongside it, however, an application called \"EncryptionPattern.exe\" that could help you."},
-            {"MessageID":  "curatorExpl4", "Sender": "curator", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {patternHelper}"}
+            {"MessageID":  "curatorExpl4", "Sender": "curator", "Text": "I have sent the encrypted file and the encryption table to the game's files and you can find the application on your real computer in this location: {patternHelper}"},
+            {"MessageID":  "curatorExpl5", "Sender": "curator", "Text": "Delete the file once you find it's location."}
           ]
         },
         {

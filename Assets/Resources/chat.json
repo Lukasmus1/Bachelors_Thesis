@@ -221,7 +221,7 @@
           {"MessageID": "curatorQuestionChoice", "Sender": "CHOICE", "Text": "{0}Okay, but why just not let them leave into the internet? || {1}Pleasure to <i>finally</i> meet you. So what's next? || {2}Okay, tell me what I need to do to get rid of them."}
         ],
         [
-          {"MessageID": "curator10", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."}
+          {"MessageID": "curatorNextStep", "Sender": "curator", "Text": "Now the next step is to find their main file on your PC and delete him once and for all."}
         ],
         [
           {"MessageID": "curator11", "Sender": "curator", "Text": "You don't need to pretend play a detective anymore, he's not important right now."},

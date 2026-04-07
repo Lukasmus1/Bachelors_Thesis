@@ -18,21 +18,15 @@ namespace Story.Models.States
             
             if (UserMvc.Instance.UserController.GetCuratorAlignment() == maxValue)
             {
-                //todo //The player hates the AI, doesn't get a choice
-                
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "playerHateAI", true);
                 ChatTerminalMvc.Instance.MessageSystemController.messageTyped += PlayerLoveAIBonus;
             }
             else if (UserMvc.Instance.UserController.GetCuratorAlignment() == minValue)
-            {
-                //todo //The player loves the AI, doesn't get a choice
-                
+            { 
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "playerLoveAI", true);
             }
             else
-            {
-                //todo //The player is neutral, gets a choice
-                
+            { 
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpPleading", true);
             }
             

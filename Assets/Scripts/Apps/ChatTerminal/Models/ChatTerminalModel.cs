@@ -277,13 +277,18 @@ namespace Apps.ChatTerminal.Models
             ChatProfileModel modelJson = LoadedChatProfilesFromJson.FirstOrDefault(x => x.UserID == userID);
             ChatProfile modelLoaded = loadedProfiles.FirstOrDefault(x => x.UserID == userID);
             
-            if (modelJson == null || !modelLoaded)
+            if (modelJson == null)
             {
                 Debug.LogError($"Chat profile with ID {userID} not found.");
                 return;
             }
             
             modelJson.Username = newName;
+            
+            if (modelLoaded == null)
+            {
+                return;
+            }
             modelLoaded.Username = newName;
         }
     }

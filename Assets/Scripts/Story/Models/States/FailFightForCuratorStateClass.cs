@@ -20,10 +20,6 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            //debug
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
-            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
-            
             //Preload the user's desktop scene
             _mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
             _mb.StartCoroutine(PreloadScene());
@@ -62,6 +58,7 @@ namespace Story.Models.States
         public override void LoadFromState()
         {
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped += NextMessageCheck;
+            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += TransitionCheck;
         }
 
         private void NextMessageCheck(string messageID)
@@ -70,7 +67,6 @@ namespace Story.Models.States
                 return;
             
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpFailCuratorEnding", true);
-            ChatTerminalMvc.Instance.MessageSystemController.messageTyped += TransitionCheck;
         }
 
         private void TransitionCheck(string messageID)
