@@ -17,8 +17,7 @@ namespace FourthWall.NumberPattern.Models
             {
                 pattern += Random.Range(1, 10).ToString();
             }
-
-            Debug.Log(pattern);
+            
             return pattern;
         }
 

@@ -50,6 +50,16 @@ namespace Saving.Controllers
         }
 
         /// <summary>
+        /// Quits without saving the progress.
+        /// </summary>
+        public void QuitWithoutSaving()
+        {
+            SetSaveFlag(false);
+            
+            QuitAndSaveGame();
+        }
+
+        /// <summary>
         /// Gets the ending of the previous playthrough, if it exists. Returns Endings.None if no previous playthrough exists.
         /// </summary>
         /// <returns>Ending of the previous playthrough</returns>

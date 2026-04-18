@@ -878,10 +878,8 @@ MonoBehaviour:
   currentColorSchemeImage: {fileID: 3255041201641200074}
   currentColorSchemeText: {fileID: 1473403237354886944}
   chooseColorSchemePopup: {fileID: 2101021533486544031}
-  effectsGroup: {fileID: -1244564535807753190, guid: 192a68b7c6eec054abd281b144ff18bb, type: 2}
   effectsSlider: {fileID: 894683489401878185}
   effectsInputField: {fileID: 4135814917337513876}
-  musicGroup: {fileID: -9002921528623028059, guid: 192a68b7c6eec054abd281b144ff18bb, type: 2}
   musicSlider: {fileID: 5020097920190049272}
   musicInputField: {fileID: 3677670506431644588}
 --- !u!1 &2393213963420779160
@@ -6152,7 +6150,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

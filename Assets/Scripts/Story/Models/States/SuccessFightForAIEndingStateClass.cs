@@ -26,7 +26,7 @@ namespace Story.Models.States
         public override void LoadFromState()
         {
             FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "You already helped us enough, thank you! <3", "Thank you!");
-            SavingMvc.Instance.SavingController.QuitAndSaveGame();
+            SavingMvc.Instance.SavingController.QuitWithoutSaving();
         }
     }
 }

@@ -12,8 +12,9 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            //ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             FourthWallMvc.Instance.CompilationSimulationController.DeleteKpCompilationFolder();
+         
+            ChatTerminalMvc.Instance.ChatTerminalController.UnloadProfile("kp");
             
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "curatorFightForAIFail", true);
             

@@ -14563,6 +14563,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3787316276833390017, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
+      propertyPath: m_text
+      value: File Manager
+      objectReference: {fileID: 0}
     - target: {fileID: 3890912313859346592, guid: ea25dbb7c2a3efd4ba73aca38f785871, type: 3}
       propertyPath: m_SizeDelta.x
       value: 250
@@ -19925,7 +19929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5020097920190049272, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_MinValue
-      value: 0
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 5984466222300114929, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.x
