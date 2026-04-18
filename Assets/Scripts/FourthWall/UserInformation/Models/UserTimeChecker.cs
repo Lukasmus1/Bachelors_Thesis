@@ -5,34 +5,34 @@ namespace FourthWall.UserInformation.Models
 {
     public class UserTimeChecker : MonoBehaviour
     {
-        private Action onCurrentTimeInRange;
+        private Action _onCurrentTimeInRange;
         private Action _onTimeInRange;
         
-        private TimeSpan fromTime;
-        private TimeSpan toTime;
-        private bool start = false;
+        private TimeSpan _fromTime;
+        private TimeSpan _toTime;
+        private bool _start = false;
         
         public void StartTimeChecking(string from, string to, Action onCurrentTimeInRange)
         {
-            fromTime = TimeSpan.Parse(from);
-            toTime = TimeSpan.Parse(to);
+            _fromTime = TimeSpan.Parse(from);
+            _toTime = TimeSpan.Parse(to);
             
             _onTimeInRange = onCurrentTimeInRange;
-            this.onCurrentTimeInRange += _onTimeInRange;
+            _onCurrentTimeInRange += _onTimeInRange;
             
-            start = true;
+            _start = true;
         }
 
         private void Update()
         {
-            if (!start || !IsCurrentTimeInRange())
+            if (!_start || !IsCurrentTimeInRange())
             {
                 return;
             }
 
-            onCurrentTimeInRange?.Invoke();
-            start = false;
-            onCurrentTimeInRange -= _onTimeInRange;
+            _onCurrentTimeInRange?.Invoke();
+            _start = false;
+            _onCurrentTimeInRange -= _onTimeInRange;
             Destroy(this);
         }
         
@@ -40,13 +40,13 @@ namespace FourthWall.UserInformation.Models
         {
             TimeSpan currentTime = DateTime.Now.TimeOfDay;
             
-            if (toTime < fromTime)
+            if (_toTime < _fromTime)
             {
-                return currentTime >= fromTime || currentTime <= toTime;
+                return currentTime >= _fromTime || currentTime <= _toTime;
             }
             else
             {
-                return currentTime >= toTime || currentTime <= fromTime;
+                return currentTime <= _toTime && currentTime >= _fromTime;
             }
             
         }
