@@ -20,6 +20,9 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", false);
+            DesktopMvc.Instance.DesktopGeneratorController.CloseApp("CompilationHelper");
+            
             //Preload the user's desktop scene
             _mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
             _mb.StartCoroutine(PreloadScene());

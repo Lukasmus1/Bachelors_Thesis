@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using Apps.CompilationHelper.Commons;
 using Commons;
 using Desktop.Commons;
 using FourthWall.Commons;
+using FourthWall.CompilationSimulation.Models;
 using UnityEngine;
 
 namespace Story.Models.States
@@ -17,9 +19,6 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", false);
-            DesktopMvc.Instance.DesktopGeneratorController.CloseApp("CompilationHelper");
-
             //Several seconds timer for disconnecting from the net
             //5 seconds for reading
             //25 seconds for disconnecting
@@ -33,11 +32,15 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
+            ScatteredFiles.DeleteGeneratedFolders();
+            CompilationHelperMvc.Instance.CompilationHelperController.DisableFileAreaUI();
+            
             //If the user disconnects in time
             FourthWallMvc.Instance.UserInformationController.SetupInternetDisconnectDetection(() =>
             {
                 _shouldCoroutineStop = true;
                 NextState = (int)StatesEnum.SuccessFightForCurator;
+                CompilationHelperMvc.Instance.CompilationHelperController.EnableFinalKpLocationButton();
                 ChangeToNextState();
             });
             

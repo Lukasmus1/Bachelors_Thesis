@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Apps.ChatTerminal.Commons;
+using Commons;
 using Desktop.Commons;
 using FourthWall.Commons;
 using Saving.Commons;
@@ -10,7 +11,7 @@ using User.Models;
 namespace Story.Models.States
 {
     [Serializable]
-    public class SuccessHelpCuratorStateClass : StateClass
+    public class SuccessFightForCuratorStateClass : StateClass
     {
         public override int State { get; } = (int)StatesEnum.SuccessFightForCurator;
         public override int NextState { get; set; } = (int)StatesEnum.SuccessFightForCuratorEnding;
@@ -33,6 +34,7 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;
             
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", false);
+            DesktopMvc.Instance.DesktopGeneratorController.CloseApp("CompilationHelper");
         }
 
         public override void LoadFromState()
@@ -56,9 +58,15 @@ namespace Story.Models.States
             if (messageID != "curatorEndingEnd")
                 return;
             
-            ChangeToNextState();
+            var t = new AsyncTimer();
+            _ = t.StartTimer(3, () =>
+            {
+                ChangeToNextState();
             
-            SavingMvc.Instance.SavingController.QuitAndSaveGame();
+                SavingMvc.Instance.SavingController.QuitAndSaveGame();
+
+                t.Dispose();
+            });
         }
     }
 }

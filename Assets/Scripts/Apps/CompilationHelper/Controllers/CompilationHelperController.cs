@@ -74,6 +74,22 @@ namespace Apps.CompilationHelper.Controllers
         }
 
         /// <summary>
+        /// Enables the UI for opening the last KP's location. 
+        /// </summary>
+        public void EnableFinalKpLocationButton()
+        {
+            _view.EnableFinalKpLocationButton();
+        }
+        
+        /// <summary>
+        /// Disables the file area UI.
+        /// </summary>
+        public void DisableFileAreaUI()
+        {
+            _view.DisableFileAreaUI();
+        }
+
+        /// <summary>
         /// Stops the compilation process.
         /// </summary>
         public void StopCompilation()

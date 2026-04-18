@@ -19,16 +19,16 @@ namespace FourthWall.SavingActions.Models
                     //No previous playthrough, so do nothing
                     break;
                 case Endings.FightForAISuccess:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "Have we done this before?", "...");
                     break;
                 case Endings.FightForAIFail:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "Do not attempt this again...", "...");
                     break;
                 case Endings.FightForCuratorSuccess:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "Please, close this game...", "...");
                     break;
                 case Endings.FightForCuratorFail:
-                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "TBD MESSAGE", "TBD MESSAGE");
+                    FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Info, "We've already done this before...", "...");
                     break;
                 default:
                     throw new Exception("Unknown ending: " + oldEnding);

@@ -51,5 +51,19 @@ namespace FourthWall.CompilationSimulation.Models
             
             return Path.Combine(FileDirectories[file], FileNames[file]);
         }
+
+        /// <summary>
+        /// Cleans up the generated folders.
+        /// </summary>
+        public static void DeleteGeneratedFolders()
+        {
+            foreach (KeyValuePair<FileEnum, string> fileDirectory in FileDirectories)
+            {
+                if (Directory.Exists(fileDirectory.Value))
+                {
+                    FourthWallMvc.Instance.FileGenerationController.DestroyFolder(fileDirectory.Value);
+                }
+            }
+        }
     }
 }

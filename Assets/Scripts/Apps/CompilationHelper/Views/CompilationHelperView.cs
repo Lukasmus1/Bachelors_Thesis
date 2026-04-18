@@ -50,8 +50,12 @@ namespace Apps.CompilationHelper.Views
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= UpdateDeletionProgressBar;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= Cleanup;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished -= Cleanup;
+         
+            if (aiProgressBarSlider)
+                aiProgressBarSlider.value = aiProgressBarSlider.maxValue;
             
-            moveKpButton.interactable = false;
+            if (moveKpButton)
+                moveKpButton.interactable = false;
         }
 
         /// <summary>
@@ -123,10 +127,26 @@ namespace Apps.CompilationHelper.Views
         /// </summary>
         private void OnAllFilesDeleted()
         {
-            filesArea.SetActive(false);
-            kpFinalPathLayout.SetActive(true);
+            EnableFinalKpLocationButton();
             CompilationHelperMvc.Instance.CompilationHelperController.OnCompilationProgressUpdateSeconds -= UpdateProgressBar;
             CompilationHelperMvc.Instance.CompilationHelperController.StopCompilation();
+        }
+
+        /// <summary>
+        /// Enables the UI for opening the last KP's location. 
+        /// </summary>
+        public void EnableFinalKpLocationButton()
+        {
+            DisableFileAreaUI();
+            kpFinalPathLayout.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the file area UI.
+        /// </summary>
+        public void DisableFileAreaUI()
+        {
+            filesArea.SetActive(false);   
         }
 
         /// <summary>
@@ -142,9 +162,9 @@ namespace Apps.CompilationHelper.Views
         /// <summary>
         /// If the player fails to delete all 3 files, a different set of actions will occur.
         /// </summary>
-        public void OnCompilationSucceededCurator()
+        private void OnCompilationSucceededCurator()
         {
-            
+            curatorProgressBarSlider.value = curatorProgressBarSlider.maxValue;
         }
         
         /// <summary>

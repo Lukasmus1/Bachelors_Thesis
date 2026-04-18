@@ -37,6 +37,7 @@ namespace Story.Models.States
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= OnFailedCompilation;
             
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", false);
+            DesktopMvc.Instance.DesktopGeneratorController.CloseApp("CompilationHelper");
         }
 
         public override void LoadFromState()
