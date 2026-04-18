@@ -25,6 +25,8 @@ namespace Story.Models.States
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpDesktopFile");
                 UserMvc.Instance.UserController.IncreaseCuratorAlignment(Alignment.AIDesktopFile);
+                
+                FourthWallMvc.Instance.FileGenerationController.DestroyFile(UserMvc.Instance.UserController.CuratorExplanationFilePath);
             }
 
             AsyncTimer t = new();

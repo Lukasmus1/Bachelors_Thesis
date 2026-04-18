@@ -58,7 +58,7 @@ namespace Apps.CompilationHelper.Controllers
             _view.EnableLayout(true);
             _model.StartCompilation(compilationTimeSeconds);
             
-            FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulation(); // must be called after _model.StartCompilation -> CompilationTimeSeconds not set
+            FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulationForAI(); // must be called after _model.StartCompilation -> CompilationTimeSeconds not set
         }
 
         /// <summary>
@@ -71,8 +71,6 @@ namespace Apps.CompilationHelper.Controllers
             _view.SetupProgressBar(compilationTimeSeconds, false);
             _view.EnableLayout(false);
             _model.StartCompilation(compilationTimeSeconds);
-            
-            FourthWallMvc.Instance.CompilationSimulationController.BeginCompilationSimulation();
         }
 
         /// <summary>

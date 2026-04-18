@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Apps.ChatTerminal.Commons;
+using Desktop.Commons;
 using FourthWall.Commons;
 using Saving.Commons;
 using User.Commons;
@@ -18,10 +20,10 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpFightForCuratorSuccess", true);
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "curatorFightForCuratorSuccess", true);
             
-            string path = UserMvc.Instance.UserController.ProceduralData(UserDataType.KpLocation);
+            string fullPath = UserMvc.Instance.UserController.ProceduralData(UserDataType.KpLocation);
             string content = FourthWallMvc.Instance.FileGenerationController.GenerateRandomText(200);
             
-            FourthWallMvc.Instance.FileGenerationController.CreateFile(path, content, false);
+            FourthWallMvc.Instance.FileGenerationController.CreateFile(fullPath, content, false);
             
             LoadFromState();
         }
@@ -29,6 +31,8 @@ namespace Story.Models.States
         public override void OnExit()
         {
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= TransitionCheck;
+            
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", false);
         }
 
         public override void LoadFromState()

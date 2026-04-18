@@ -1,6 +1,7 @@
 ﻿using System;
 using Apps.ChatTerminal.Commons;
 using Apps.CompilationHelper.Commons;
+using Desktop.Commons;
 using FourthWall.Commons;
 using UnityEngine;
 
@@ -34,6 +35,8 @@ namespace Story.Models.States
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= BeginCompilation;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished -= OnSuccessCompilation;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFailed -= OnFailedCompilation;
+            
+            DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Compilation Helper", false);
         }
 
         public override void LoadFromState()

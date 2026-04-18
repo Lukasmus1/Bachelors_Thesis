@@ -20,9 +20,6 @@ namespace Story.Models.States
             //Second file will be revealed by muting the computer's audio
             //For last file, the player will have to edit a custom registry entry
             
-            //debug
-            //ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
-            
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator","curatorFightForCuratorSetup", true);
             
             LoadFromState();

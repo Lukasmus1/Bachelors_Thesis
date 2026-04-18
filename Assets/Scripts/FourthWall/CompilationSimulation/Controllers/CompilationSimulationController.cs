@@ -24,13 +24,13 @@ namespace FourthWall.CompilationSimulation.Controllers
         public string GetKpCompilationPath() => _model.kpCompilationPath;
         
         /// <summary>
-        /// Begins the compilation simulation by creating files in the K-P compilation path in sequence with a delay.
+        /// Begins the compilation simulation when fighting for AI by creating files in the K-P compilation path in sequence with a delay.
         /// </summary>
-        public void BeginCompilationSimulation()
+        public void BeginCompilationSimulationForAI()
         {
             _model.BeginCompilationSimulation();
         }
-
+        
         /// <summary>
         /// The first event from Curator that prompts the user to move K-P's compilation files.
         /// </summary>

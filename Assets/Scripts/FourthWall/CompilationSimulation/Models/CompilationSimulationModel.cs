@@ -72,7 +72,7 @@ namespace FourthWall.CompilationSimulation.Models
             return Path.GetFullPath(KP_FILE_NAME);
         }
 
-        /// <inheritdoc cref="CompilationSimulationController.BeginCompilationSimulation"/>
+        /// <inheritdoc cref="CompilationSimulationController.BeginCompilationSimulationForAi"/>
         public void BeginCompilationSimulation()
         {
             kpCompilationPath = Directory

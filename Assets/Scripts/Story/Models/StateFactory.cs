@@ -51,7 +51,7 @@ namespace Story.Models
                 StatesEnum.SuccessFightForAIEnding => new SuccessFightForAIEndingStateClass(),
                 StatesEnum.FailedFightForAI => new FailedFightForAIStateClass(),
                 StatesEnum.FailedFightForAIEnding => new FailedFightForAIEndingStateClass(),
-                StatesEnum.SuccessFightForCurator => new SuccessFightForAIEndingStateClass(),
+                StatesEnum.SuccessFightForCurator => new SuccessHelpCuratorStateClass(),
                 StatesEnum.SuccessFightForCuratorEnding => new FightForCuratorEndingStateClass(),
                 StatesEnum.FightForCuratorLastChance => new CuratorEndingLastChance(),
                 StatesEnum.FailFightForCurator => new FailFightForCuratorStateClass(),

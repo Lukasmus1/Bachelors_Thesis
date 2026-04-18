@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Apps.Commons;
 using Apps.CompilationHelper.Commons;
 using Apps.CompilationHelper.Controllers;
@@ -134,7 +135,8 @@ namespace Apps.CompilationHelper.Views
         public void OpenFinalKpPath()
         {
             string kpPath = UserMvc.Instance.UserController.ProceduralData(UserDataType.KpLocation);
-            FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer(kpPath);
+            string kpDir = Path.GetDirectoryName(kpPath);
+            FourthWallMvc.Instance.FileGenerationController.OpenFileExplorer(kpDir);
         }
 
         /// <summary>
