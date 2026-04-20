@@ -14,19 +14,30 @@ namespace FourthWall.FileGeneration.Models
 {
     public class FileCreationModel
     {
-        private void CreateFile(string fileName, string content)
+        private string CreateFile(string fileName, string content)
         {
-            //Ensure any existing file is removed
-            DestroyFile(fileName);
-            
-            string dirPath = Path.GetDirectoryName(fileName);
-            
-            if (!string.IsNullOrEmpty(dirPath) && !Directory.Exists(dirPath))
+            string dir =  Path.GetDirectoryName(fileName);
+            string name = Path.GetFileNameWithoutExtension(fileName);
+            string ext = Path.GetExtension(fileName);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
             {
-                Directory.CreateDirectory(dirPath);
+                Directory.CreateDirectory(dir);
             }
             
-            File.WriteAllText(fileName, content);
+            string fullPath = fileName;
+            
+            var i = 1;
+            while (File.Exists(fullPath))
+            {
+                name = $"{name}({i})";
+                
+                fullPath = Path.Combine(dir!, name + ext);
+                i++;
+            }
+            
+            File.WriteAllText(fullPath, content);
+            
+            return fullPath;
         }
 
         /// <summary>
@@ -54,10 +65,10 @@ namespace FourthWall.FileGeneration.Models
         /// <inheritdoc cref="FileGenerationController.CreateFile"/>
         public void CreateHiddenFile(string fileName, string content, bool hidden)
         {
-            CreateFile(fileName, content);
+            string path = CreateFile(fileName, content);
             
             if (hidden)
-                File.SetAttributes(fileName, FileAttributes.Hidden);
+                File.SetAttributes(path, FileAttributes.Hidden);
         }
         
         /// <inheritdoc cref="FileGenerationController.DestroyFile"/>

@@ -1,6 +1,7 @@
 ﻿using System;
 using Commons;
 using Desktop.Views;
+using Story.Commons;
 
 namespace Story.Models.States
 {
@@ -12,17 +13,19 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
+            StoryMvc.Instance.StoryController.SetEnding(Endings.FightForCuratorFail);
             
+            throw new NotImplementedException();
         }
 
         public override void OnExit()
         {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
+            throw new NotImplementedException();
         }
 
         public override void LoadFromState()
         {
-            throw new Exception("DEFAULT STATE SHOULD NOT BE USED");
+            throw new NotImplementedException();
         }
     }
 }

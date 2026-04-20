@@ -13,7 +13,7 @@ namespace Story.Models.States
         
         public override void OnEnter()
         {
-            StoryMvc.Instance.StoryController.SetEnding(Endings.FightForAISuccess);
+            StoryMvc.Instance.StoryController.SetEnding(Endings.FightForCuratorSuccess);
         }
 
         //Won't be called, this is the end state

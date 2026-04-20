@@ -127,7 +127,7 @@ namespace Saving.Models
             try
             {
                 BinaryFormatter formatter = new();
-                FileStream stream = new(_savePath, FileMode.Open);
+                FileStream stream = new(_oldPath, FileMode.Open);
                 data = formatter.Deserialize(stream) as SaveModel;
                 stream.Close();
             }
