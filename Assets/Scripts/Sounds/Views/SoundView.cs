@@ -2,6 +2,7 @@
 using Sounds.Controllers;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using AudioType = Sounds.Models.AudioType;
 
 namespace Sounds.Views
@@ -19,7 +20,8 @@ namespace Sounds.Views
         
         private void Awake()
         {
-            bgmAudioSource = PlaySound(backgroundMusicClip, transform, AudioType.Music, true);
+            if (SceneManager.GetActiveScene().name == "MainDesktop")
+                bgmAudioSource = PlaySound(backgroundMusicClip, transform, AudioType.Music, true);
         }
 
         /// <inheritdoc cref="SoundController.PlaySound"/>

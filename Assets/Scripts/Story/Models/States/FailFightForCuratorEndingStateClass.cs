@@ -1,6 +1,5 @@
 ﻿using System;
-using Commons;
-using Desktop.Views;
+using Saving.Commons;
 using Story.Commons;
 
 namespace Story.Models.States
@@ -13,19 +12,16 @@ namespace Story.Models.States
 
         public override void OnEnter()
         {
-            StoryMvc.Instance.StoryController.SetEnding(Endings.FightForCuratorFail);
-            
-            throw new NotImplementedException();
+            //The Ending is set in JumpscareView.cs
         }
 
         public override void OnExit()
         {
-            throw new NotImplementedException();
         }
 
         public override void LoadFromState()
         {
-            throw new NotImplementedException();
+            SavingMvc.Instance.SavingController.QuitWithoutSaving();
         }
     }
 }

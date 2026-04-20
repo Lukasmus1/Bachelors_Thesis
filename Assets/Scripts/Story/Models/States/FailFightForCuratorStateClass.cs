@@ -27,7 +27,7 @@ namespace Story.Models.States
             _mb = Tools.GetScriptReferenceLinker().GetMonoBehavior();
             _mb.StartCoroutine(PreloadScene());
             DesktopMvc.Instance.DesktopGeneratorController.PreloadUserDesktop();
-            
+
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "curatorFailEnding", true);
             
             LoadFromState();
