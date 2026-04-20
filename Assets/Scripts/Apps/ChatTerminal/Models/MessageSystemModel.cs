@@ -8,7 +8,7 @@ namespace Apps.ChatTerminal.Models
 {
     public class MessageSystemModel
     {
-        private const float PLAYER_TYPING_SPEED = 30f;
+        private const float PLAYER_TYPING_SPEED = 50f;
 
         //Choice messages helpers
         private bool _isPaused = false;
@@ -145,7 +145,7 @@ namespace Apps.ChatTerminal.Models
                     continue;             
 #endif
                     //Small delay between each message
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.2f);
                 }
                 CurrentProfile.SeenMessagesIndex++;
             }
