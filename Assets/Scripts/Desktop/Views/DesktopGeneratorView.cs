@@ -139,7 +139,8 @@ namespace Desktop.Views
             DesktopModel.Instance.SetColorScheme(ColorUtility.ToHtmlStringRGBA(clr));
             
             //Setting the color scheme
-            bottomBarBackground.color = clr;
+            if (bottomBarBackground)
+                bottomBarBackground.color = clr;
         }
         
         /// <summary>
