@@ -138,6 +138,16 @@ namespace FourthWall.FileGeneration.Controllers
         }
 
         /// <summary>
+        /// Create a specific zip file for AI compression.
+        /// </summary>
+        /// <param name="zipFilePath">Path for the zip file</param>
+        /// <param name="compiledParts">Files to be zipped</param>
+        public void CreateZipFileAI(string zipFilePath, string[] compiledParts)
+        {
+            _model.CreateZipFileAI(zipFilePath, compiledParts);
+        }
+
+        /// <summary>
         /// Sets up a file deletion detection and executes an action when the file is deleted. 
         /// </summary>
         /// <param name="pathToFile">Path to the file</param>

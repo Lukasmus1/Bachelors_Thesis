@@ -6,7 +6,6 @@ using FourthWall.FileGeneration.Models;
 using UnityEngine;
 using User.Commons;
 using User.Models;
-using Object = UnityEngine.Object;
 
 namespace Story.Models.States
 {
@@ -15,31 +14,32 @@ namespace Story.Models.States
     {
         public override int State { get; } = (int)StatesEnum.SuccessFightForAI;
         public override int NextState { get; set; } = (int)StatesEnum.UploadAI;
+        
+        private string _path;
             
         public override void OnEnter()
         {
             //debug
-            // ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
-            // ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
+            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("kp");
+            ChatTerminalMvc.Instance.ChatTerminalController.LoadNewProfile("curator");
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("kp", "kpFightForAISuccess", true);
             ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "curatorFightForAISuccess", true);
             
-            string path = UserMvc.Instance.UserController.ProceduralData(UserDataType.CuratorLocation);
+            _path = UserMvc.Instance.UserController.ProceduralData(UserDataType.CuratorLocation);
             string content = FourthWallMvc.Instance.FileGenerationController.GenerateRandomText(200);
             
-            FourthWallMvc.Instance.FileGenerationController.CreateFile(path, content, false);
+            FourthWallMvc.Instance.FileGenerationController.CreateFile(_path, content, false);
 
-            FourthWallMvc.Instance.FileGenerationController.SetupFileDeletion(path, OnFileDeletion);
+            LoadFromState();
         }
 
         public override void OnExit()
         {
-            //todo
         }
 
         public override void LoadFromState()
         {
-            //todo
+            FourthWallMvc.Instance.FileGenerationController.SetupFileDeletion(_path, OnFileDeletion);
         }
 
         private void OnFileDeletion()

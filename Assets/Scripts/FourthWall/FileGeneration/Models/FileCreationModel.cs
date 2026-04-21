@@ -241,6 +241,17 @@ namespace FourthWall.FileGeneration.Models
             zip.AddDirectory(directoryPath);
             zip.Save(zipPath);
         }
+
+        /// <inheritdoc cref="FileGenerationController.CreateZipFileAI"/>
+        public void CreateZipFileAI(string zipFilePath, string[] compiledParts)
+        {
+            using var zip = new ZipFile();
+            foreach (string compiledPart in compiledParts)
+            {
+                zip.AddEntry(compiledPart, compiledPart);
+            }
+            zip.Save(zipFilePath);
+        }
         
         /// <inheritdoc cref="FileGenerationController.GeneratePatternHelper"/>
         public string GeneratePatternHelper()

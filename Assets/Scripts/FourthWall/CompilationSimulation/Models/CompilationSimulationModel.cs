@@ -207,7 +207,7 @@ namespace FourthWall.CompilationSimulation.Models
             
             string path = Path.Combine(desktop, zipName);
             
-            FourthWallMvc.Instance.FileGenerationController.CreateZipFile(path, kpCompilationPath);
+            FourthWallMvc.Instance.FileGenerationController.CreateZipFileAI(path, _compiledParts);
             FourthWallMvc.Instance.FileGenerationController.DestroyFolder(kpCompilationPath);
         }
 
