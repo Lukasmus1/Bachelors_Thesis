@@ -6999,7 +6999,7 @@ MonoBehaviour:
   chatTerminal: {fileID: 21300000, guid: 8062ddb2a9c2eab4885c9208bc550b0c, type: 3}
   vigenereCipher: {fileID: 21300000, guid: 1430f8c01ed0e4e4f8045dfcbe70f704, type: 3}
   virusFinder: {fileID: 21300000, guid: 41ef03b03c876724ba0ad6a4c5ed3b9b, type: 3}
-  compilationHelper: {fileID: 21300000, guid: e3c6b8d0412ac944cbac4da1432c665f, type: 3}
+  compilationHelper: {fileID: 21300000, guid: 930b8cf718c91b04682473e2c0ff7b33, type: 3}
   fileUploader: {fileID: 21300000, guid: bf6833f965c78b04aa3594ebb5fea4ff, type: 3}
   settings: {fileID: 21300000, guid: 0abac6be81302a64c96497970693d8b4, type: 3}
 --- !u!114 &667817313
@@ -7513,7 +7513,7 @@ PrefabInstance:
     - target: {fileID: 8526751389689936393, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: e3c6b8d0412ac944cbac4da1432c665f, type: 3}
+      objectReference: {fileID: 2800000, guid: 930b8cf718c91b04682473e2c0ff7b33, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

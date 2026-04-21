@@ -24,7 +24,7 @@ namespace Story.Models.Actions
         private static void StartTimerForHiddenVirusCancellation(string fileName)
         {
             _t1 = new AsyncTimer();
-            _ = _t1.StartTimer(120, () =>
+            _ = _t1.StartTimer(30, () =>
             {
                 if (_fileDeleteDetection.IsFileDeleted())
                 {
@@ -36,7 +36,7 @@ namespace Story.Models.Actions
                     return;
                 }
                 
-                var message = $"Windows detected a hidden corrupted file in your system: {Path.GetFullPath(fileName)}";
+                var message = $"Windows detected a hidden corrupted file in your system: {Path.GetFullPath(fileName)}. Please delete it immediately.";
                 FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, message, "File Corruption Error");
                 
                 StartTimerForHiddenVirusCancellation(fileName);

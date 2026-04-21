@@ -79,7 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
   title: ".\u0338\u035B\u032B\u033C.\u0334\u0352\u030E\u0320\u0333.\u0334\u0309\u0328\u0329"
   author: ".\u0338\u030B\u0349.\u0334\u0302\u033C.\u0336\u030E\u0322.\u0338\u034C\u0330.\u0337\u033F\u032F.\u0334\u0303\u0325"
-  comments: ".\u0336\u0304\u0360\u0331\u034D.\u0334\u035D\u032F.\u0334\u031A\u0357\u0353.\u0337\u033D\u0311\u034E.\u0335\u0342\u0322\u035C"
+  comments: ".\u0336\u0304\u0360\u0331\u034D.\u0334\u035D\u032F.\u0334\u031A\u0357\u0353.\u0337\u033D\u0311\u034E.\u0335\u0342\u0322\u035C
+    Autostereogram"
   createdDate: 
   intendedFileType: 1
 --- !u!1 &6046349541798103439

@@ -19,11 +19,11 @@ namespace Story.Models.States
             if (UserMvc.Instance.UserController.GetCuratorAlignment() == maxValue)
             {
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "playerHateAI", true);
-                ChatTerminalMvc.Instance.MessageSystemController.messageTyped += PlayerLoveAIBonus;
             }
             else if (UserMvc.Instance.UserController.GetCuratorAlignment() == minValue)
             { 
                 ChatTerminalMvc.Instance.ChatTerminalController.QueueSecondaryMessage("curator", "playerLoveAI", true);
+                ChatTerminalMvc.Instance.MessageSystemController.messageTyped += PlayerLoveAIBonus;
             }
             else
             { 

@@ -307,7 +307,7 @@
             {"MessageID":  "playerLoveAI1", "Sender": "Player", "Text": "I decided to not delete K-P."},
             {"MessageID":  "playerLoveAI2", "Sender": "curator", "Text": "What?"},
             {"MessageID":  "playerLoveAI3", "Sender": "Player", "Text": "I don't want to kill them or anyone else in this game."},
-            {"MessageID":  "playerLoveAI4", "Sender": "curator", "Text": "He is a <color=red>VIRUS</color>, they will destroy your computer."},
+            {"MessageID":  "playerLoveAI4", "Sender": "curator", "Text": "They are a <color=red>VIRUS</color>, they will destroy your computer."},
             {"MessageID":  "playerLoveAI5", "Sender": "Player", "Text": "No, they won't, they just wants to live."},
             {"MessageID":  "playerLoveAI6", "Sender": "curator", "Text": "They are just a bunch of 1s and 0s, they don't <i>want</i> ANYTHING."},
             {"MessageID":  "playerLoveAI7", "Sender": "Player", "Text": "You are wrong, I won't let you kill them."},
