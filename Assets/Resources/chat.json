@@ -97,7 +97,7 @@
           {"MessageID": "dpt28", "Sender": "headOfDpt", "Text": "continue working on the case and report back any findings"}
         ],
         [
-          {"MessageID": "dpt29", "Sender": "Player", "Text": "Hey, so Thomas Bare, the suspect, just seemed to message me some weird things."},
+          {"MessageID": "dpt29", "Sender": "Player", "Text": "Hey, so Thomas Bare, the apparent victim, just seemed to message me some weird things."},
           {"MessageID": "dpt30", "Sender": "Player", "Text": "Actually, it sounds like he might be in trouble."},
           {"MessageID": "dpt31", "Sender": "headOfDpt", "Text": "what are you talking about?"},
           {"MessageID": "dpt32", "Sender": "Player", "Text": "I'm not sure how to describe it, his messages were just weird and now he's not responding to me at all."},

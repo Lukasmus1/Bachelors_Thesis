@@ -3902,6 +3902,17 @@ MonoBehaviour:
   audioMixerEffects: {fileID: -1244564535807753190, guid: 192a68b7c6eec054abd281b144ff18bb, type: 2}
   audioMixerMusic: {fileID: -9002921528623028059, guid: 192a68b7c6eec054abd281b144ff18bb, type: 2}
   backgroundMusicClip: {fileID: 8300000, guid: 6847b36488e84954d806d7ba6ab0dfd2, type: 3}
+--- !u!114 &366806082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3830322291400638770, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+  m_PrefabInstance: {fileID: 8539847015238511358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
 --- !u!1 &394490770
 GameObject:
   m_ObjectHideFlags: 0
@@ -10967,6 +10978,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117115176}
   m_CullTransparentMesh: 1
+--- !u!114 &1126448736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1723093937036644578, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+  m_PrefabInstance: {fileID: 8539847015238511358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &1127826638
 GameObject:
   m_ObjectHideFlags: 0
@@ -16270,6 +16292,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817267002}
   m_CullTransparentMesh: 1
+--- !u!114 &1830655806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3588175700935455172, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+  m_PrefabInstance: {fileID: 8539847015238511358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &1850038578
 GameObject:
   m_ObjectHideFlags: 0
@@ -19861,7 +19894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2233259593218077924, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2637686606155846802, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -19869,11 +19902,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2691597689754335623, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3090721308590006038, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_Name
       value: SoundSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183933018450694060, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3311802019453697168, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.x
@@ -19905,12 +19942,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3974476529666743607, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4135814917337513876, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_Placeholder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4135814917337513876, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249930711292660310, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: fpsSlider
+      value: 
+      objectReference: {fileID: 1830655806}
+    - target: {fileID: 4249930711292660310, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: fpsInputField
+      value: 
+      objectReference: {fileID: 1126448736}
+    - target: {fileID: 4249930711292660310, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: customFpsToggle
+      value: 
+      objectReference: {fileID: 366806082}
     - target: {fileID: 4776211430768732169, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_SizeDelta.x
       value: 331.98
@@ -19921,7 +19974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4934246208359516920, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5020097920190049272, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_MaxValue
@@ -20023,9 +20076,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7275876060452939751, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8758331774957577001, guid: dfe8d28b620bb344f96df952dda03b64, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

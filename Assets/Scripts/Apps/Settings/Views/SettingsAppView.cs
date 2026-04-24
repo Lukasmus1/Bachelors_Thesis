@@ -1,4 +1,6 @@
+using System;
 using Apps.Commons;
+using Apps.Settings.Models;
 using Desktop.Commons;
 using Desktop.Models;
 using Sounds.Commons;
@@ -28,6 +30,11 @@ namespace Apps.Settings.Views
         private float maxVolumeLin;
         private float minVolumeLin;
         
+        [Header("Max FPS")]
+        [SerializeField] private Slider fpsSlider;
+        [SerializeField] private TMP_InputField fpsInputField;
+        [SerializeField] private Toggle customFpsToggle;
+        
 
         private void Start()
         {
@@ -44,6 +51,14 @@ namespace Apps.Settings.Views
             maxVolumeLin = effectsSlider.maxValue;
             minVolumeLin = effectsSlider.minValue;
             UpdateSound();
+            
+            bool isMaxFPSUnlimited = MaxFPS.MaxFPSValue == "-1";
+            fpsSlider.maxValue = (float)Screen.currentResolution.refreshRateRatio.value;
+            fpsSlider.SetValueWithoutNotify(isMaxFPSUnlimited ? fpsSlider.maxValue : int.Parse(MaxFPS.MaxFPSValue));
+            fpsInputField.SetTextWithoutNotify(((int)fpsSlider.value).ToString());
+
+            customFpsToggle.isOn = !isMaxFPSUnlimited;
+            customFpsToggle.onValueChanged.Invoke(!isMaxFPSUnlimited);
         }
 
         protected override void OnDisableChild()
@@ -254,6 +269,44 @@ namespace Apps.Settings.Views
         {
             float percentageValue = linValue / maxVolumeLin * 100;
             return ((int)percentageValue).ToString();
+        }
+        
+        #endregion
+
+        #region FPS
+
+        public void ToggleCustomFPS(bool value)
+        {
+            fpsInputField.interactable = value;
+            fpsSlider.interactable = value;
+            
+            ChangeFramerate(value ? (int)fpsSlider.value : -1);
+        }
+        
+        public void ChaneMaxFPS(float value)
+        {
+            fpsInputField.SetTextWithoutNotify(((int)value).ToString());
+            
+            ChangeFramerate((int)value);
+        }
+
+        public void ChangeMaxFPSInputField(string value)
+        {
+            if (!int.TryParse(value, out int val)) 
+                return;
+            
+            val = Mathf.Clamp(val, 1, (int)fpsSlider.maxValue);
+            fpsInputField.text = val.ToString();
+            
+            fpsSlider.SetValueWithoutNotify(val);
+            
+            ChangeFramerate(val);
+        }
+        
+        private void ChangeFramerate(int val)
+        {
+            Application.targetFrameRate = val;
+            MaxFPS.MaxFPSValue = val.ToString();
         }
         
         #endregion

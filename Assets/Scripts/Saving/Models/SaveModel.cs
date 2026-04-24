@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Apps.ChatTerminal.Commons;
 using Apps.ChatTerminal.Models;
 using Apps.FileManager.Commons;
+using Apps.Settings.Models;
 using Desktop.Controllers;
 using Desktop.Models;
 using FourthWall.Commons;
@@ -27,6 +28,7 @@ namespace Saving.Models
         public UserModel userModel;
         public ListOfActionsPersistent persistentActions;
         public SoundModel soundModel;
+        public string maxFPS;
         public int ending;
         
         public void LoadDataFromModel(SaveModel saveModel)
@@ -56,6 +58,8 @@ namespace Saving.Models
             
             soundModel = saveModel.soundModel;
             SoundMvc.Instance.SoundController.soundModel = saveModel.soundModel;
+            
+            MaxFPS.MaxFPSValue = saveModel.maxFPS;
         }
     }
 }

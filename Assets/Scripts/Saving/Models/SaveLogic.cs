@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Apps.ChatTerminal.Commons;
 using Apps.FileManager.Commons;
+using Apps.Settings.Models;
 using Desktop.Models;
 using FourthWall.Commons;
 using Saving.Controllers;
@@ -53,6 +54,7 @@ namespace Saving.Models
             ChatTerminalMvc.Instance.ChatTerminalController.SaveGameData();
             _model.persistentActions = ActionsClass.Instance.ActionsPersistent;
             FourthWallMvc.Instance.FileGenerationController.DestroyImportantFileLocation();
+            _model.maxFPS = MaxFPS.MaxFPSValue;
             
             BinaryFormatter formatter = new();
             FileStream stream = new(_savePath, FileMode.Create);
