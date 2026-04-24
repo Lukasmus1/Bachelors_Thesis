@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using Commons;
 using FourthWall.FileGeneration.Controllers;
@@ -8,7 +9,6 @@ using UnityEngine;
 using User.Commons;
 using User.Models;
 using Random = System.Random;
-using Ionic.Zip;
 
 namespace FourthWall.FileGeneration.Models
 {
@@ -234,23 +234,19 @@ namespace FourthWall.FileGeneration.Models
             return sb.ToString();
         }
 
-        /// <inheritdoc cref="FileGenerationController.CreateZipFile"/>
-        public void CreateZipFile(string zipPath, string directoryPath)
-        {
-            using var zip = new ZipFile();
-            zip.AddDirectory(directoryPath);
-            zip.Save(zipPath);
-        }
-
         /// <inheritdoc cref="FileGenerationController.CreateZipFileAI"/>
         public void CreateZipFileAI(string zipFilePath, string[] compiledParts)
         {
-            using var zip = new ZipFile();
-            foreach (string compiledPart in compiledParts)
+            using var zipToOpen = new FileStream(zipFilePath, FileMode.Create);
+            using var archive = new ZipArchive(zipToOpen, ZipArchiveMode.Create);
+            
+            foreach (string t in compiledParts)
             {
-                zip.AddEntry(compiledPart, compiledPart);
+                ZipArchiveEntry readmeEntry = archive.CreateEntry(t);
+
+                using var writer = new StreamWriter(readmeEntry.Open());
+                writer.Write(t);
             }
-            zip.Save(zipFilePath);
         }
         
         /// <inheritdoc cref="FileGenerationController.GeneratePatternHelper"/>

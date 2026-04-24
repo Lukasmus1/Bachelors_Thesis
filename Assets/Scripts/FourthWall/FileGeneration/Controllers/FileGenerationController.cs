@@ -128,16 +128,6 @@ namespace FourthWall.FileGeneration.Controllers
         }
 
         /// <summary>
-        /// Creates a zip file at the specified path containing the contents of the specified directory.
-        /// </summary>
-        /// <param name="zipFilePath">Path of the zip file</param>
-        /// <param name="directoryPath">Path of the directory to be zipped</param>
-        public void CreateZipFile(string zipFilePath, string directoryPath)
-        {
-            _model.CreateZipFile(zipFilePath, directoryPath);
-        }
-
-        /// <summary>
         /// Create a specific zip file for AI compression.
         /// </summary>
         /// <param name="zipFilePath">Path for the zip file</param>
