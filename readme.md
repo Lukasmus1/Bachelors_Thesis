@@ -50,4 +50,4 @@ However, to deliver its core meta-horror experience, *Kernel_Panic* interacts wi
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/Lukasmus1/Bachelors_Thesis.git](https://github.com/Lukasmus1/Bachelors_Thesis.git)
+   git clone https://github.com/Lukasmus1/Bachelors_Thesis.git
