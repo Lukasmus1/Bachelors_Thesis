@@ -7,6 +7,7 @@ using Desktop.Controllers;
 using Desktop.Models;
 using Sounds.Commons;
 using Story.Commons;
+using Story.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,6 +56,8 @@ namespace Desktop.Views
             {
                 LoadDesktop();
             }
+            
+            StoryModel.loadFromStateOnDesktop?.Invoke(); //Invokes any LoadFromStates that require the desktop to be loaded
         }
 
         /// <summary>

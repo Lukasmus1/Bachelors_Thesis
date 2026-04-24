@@ -2,7 +2,6 @@
 using Apps.ChatTerminal.Commons;
 using Commons;
 using FourthWall.Commons;
-using FourthWall.FileGeneration.Models;
 using FourthWall.UserInformation.Models;
 using User.Commons;
 using User.Models;
@@ -26,6 +25,11 @@ namespace Story.Models.States
 
         public override void LoadFromState()
         {
+            StoryModel.loadFromStateOnDesktop += SetupTimeChecking;
+        }
+
+        private void SetupTimeChecking()
+        {
             var checker = Tools.GetScriptHolder().AddComponent<UserTimeChecker>();
             
             checker.StartTimeChecking("0:00", "0:30", () =>
@@ -37,6 +41,8 @@ namespace Story.Models.States
                 string filePath = UserMvc.Instance.UserController.ProceduralData(UserDataType.LastFileLocation);
                 FourthWallMvc.Instance.FileGenerationController.SetupFileDeletion(filePath, ChangeToNextState);
             });
+            
+            StoryModel.loadFromStateOnDesktop -= SetupTimeChecking;
         }
     }
 }

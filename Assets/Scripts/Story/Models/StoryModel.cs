@@ -37,7 +37,9 @@ namespace Story.Models
         public void LoadFromState()
         {
             _currentStateClass?.LoadFromState();
-        } 
+        }
+
+        [NonSerialized] public static Action loadFromStateOnDesktop;
         
         public int GetExtremeAlignment(bool maximumAlignment)
         {
