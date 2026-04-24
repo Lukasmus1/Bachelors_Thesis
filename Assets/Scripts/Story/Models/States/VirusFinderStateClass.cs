@@ -14,9 +14,6 @@ namespace Story.Models.States
         {
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Virus Finder", true);
             
-            //Story-wise this is called a bit late, but for practical purposes it's better to do it here
-            VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(5);
-            
             LoadFromState();
         }
 
@@ -28,6 +25,15 @@ namespace Story.Models.States
         public override void LoadFromState()
         {
             VirusFinderMvc.Instance.VirusFinderController.onVirusesCountChanged += TransitionCheck;
+
+            StoryModel.loadFromStateOnDesktop += CreateViruses;
+        }
+
+        private void CreateViruses()
+        {
+            //Story-wise this is called a bit late, but for practical purposes it's better to do it here
+            VirusFinderMvc.Instance.VirusFinderController.CreateRandomViruses(5);
+            StoryModel.loadFromStateOnDesktop -= CreateViruses;
         }
         
         private void TransitionCheck(int virusCount)

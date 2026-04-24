@@ -2,9 +2,7 @@
 using Apps.VirusFinder.Controllers;
 using Commons;
 using Desktop.Commons;
-using Desktop.Models;
 using Desktop.Views;
-using TMPro;
 using UnityEngine;
 
 namespace Apps.VirusFinder.Models
