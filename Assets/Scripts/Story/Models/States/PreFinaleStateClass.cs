@@ -17,6 +17,7 @@ namespace Story.Models.States
         public override void OnEnter()
         {
             LoadFromState();
+            SetupTimeChecking();
         }
 
         //Not needed this time

@@ -22,6 +22,8 @@ namespace Story.Models.States
         {
             FileViewerMvc.Instance.FileLoaderController.metadataOpened -= CheckForMetadataOpened;
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= LoadMouseQuest;
+            
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("MouseQuest", true);
         }
 
         public override void LoadFromState()

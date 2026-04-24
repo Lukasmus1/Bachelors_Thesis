@@ -35,6 +35,7 @@ namespace Story.Models.States
         {
             //What should happen when the link in the mysterious file is clicked
             FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("MysteriousFile", false);
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("CypherCode", true);
             
             ChangeToNextState();
             

@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Apps.FileViewer.Models.GuideFileProps
   title: Scammer's Desktop Screenshot
   author: IT Department
-  comments: Supposed screenshot of the scammer's computer screen. Should be soled
+  comments: Supposed screenshot of the scammer's computer screen. Should be solved
     with a cipher solver.
   createdDate: 
   intendedFileType: 0

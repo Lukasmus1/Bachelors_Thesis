@@ -45,6 +45,10 @@ namespace Story.Models.States
             t3?.Dispose();
 
             UserMvc.Instance.UserController.ClearScreenshot();
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("DetectiveEmail", true);
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("DetectiveEmailTwo", true);
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("DetectiveMessages", true);
+            FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("UserScreenshot", true);
         }
 
         public override void LoadFromState()
