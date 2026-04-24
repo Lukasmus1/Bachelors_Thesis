@@ -89,3 +89,4 @@ AudioPlugin/AudioPlugin.vcxproj
 AudioPlugin/AudioPlugin.vcxproj.filters
 EncryptionPattern.exe
 Assets/StreamingAssets/ExternalApp/EncryptionPattern.exe.meta
+readme.pdf

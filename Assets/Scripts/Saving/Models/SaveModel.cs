@@ -12,6 +12,7 @@ using Sounds.Models;
 using Story.Commons;
 using Story.Models;
 using Story.Models.Actions;
+using UnityEngine;
 using User.Commons;
 using User.Models;
 
@@ -60,6 +61,7 @@ namespace Saving.Models
             SoundMvc.Instance.SoundController.soundModel = saveModel.soundModel;
             
             MaxFPS.MaxFPSValue = saveModel.maxFPS;
+            Application.targetFrameRate = int.Parse(saveModel.maxFPS);
         }
     }
 }
