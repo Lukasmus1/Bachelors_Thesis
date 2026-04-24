@@ -1245,9 +1245,9 @@ MonoBehaviour:
   effectsInputField: {fileID: 4135814917337513876}
   musicSlider: {fileID: 5020097920190049272}
   musicInputField: {fileID: 3677670506431644588}
-  fpsSlider: {fileID: 0}
-  fpsInputField: {fileID: 0}
-  customFpsToggle: {fileID: 0}
+  fpsSlider: {fileID: 3588175700935455172}
+  fpsInputField: {fileID: 1723093937036644578}
+  customFpsToggle: {fileID: 3830322291400638770}
 --- !u!1 &2393213963420779160
 GameObject:
   m_ObjectHideFlags: 0
