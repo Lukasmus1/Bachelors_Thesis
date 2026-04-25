@@ -65,7 +65,17 @@ namespace Apps.FileManager.Models
             //Sets the hidden state of files based on loaded context
             foreach (string fileName in HiddenFileNames)
             {
-                InstantiatedFiles.Find(x => x.name == fileName).GetComponent<FileModel>().IsHidden = true;
+                GameObject file = InstantiatedFiles.Find(x => x.name == fileName);
+                if (file == null)
+                {
+                    file = InstantiatedFiles.Find(x => x.GetComponent<FileModel>().FileName == fileName);
+                    if (file == null)
+                    {
+                        throw new Exception($"File with name {fileName} not found in loaded files. Possible conflict of GameObject and FileModel names?");
+                    }
+                }
+                
+                file.GetComponent<FileModel>().IsHidden = true;
             }
             
             if (InstantiatedFiles.Count == 0)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Commons
 {
@@ -53,7 +54,7 @@ namespace Commons
             }
             catch (TaskCanceledException)
             {
-                //Timer was canceled, do nothing
+                //Nothing
             }
             finally
             {

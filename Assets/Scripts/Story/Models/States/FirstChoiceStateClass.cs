@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Apps.ChatTerminal.Commons;
 
 namespace Story.Models.States

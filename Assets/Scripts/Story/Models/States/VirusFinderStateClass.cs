@@ -15,6 +15,7 @@ namespace Story.Models.States
             DesktopMvc.Instance.DesktopGeneratorController.ToggleIcon("Virus Finder", true);
             
             LoadFromState();
+            CreateViruses();
         }
 
         public override void OnExit()

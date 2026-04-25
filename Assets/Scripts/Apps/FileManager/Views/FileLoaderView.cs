@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Apps.Commons;
 using Apps.FileManager.Commons;
@@ -106,6 +107,11 @@ namespace Apps.FileManager.Views
             List<GameObject> files = FileManagerMvc.Instance.FileManagerController.GetLoadedFiles();
 
             GameObject file = files.Find(file => file.GetComponent<FileModel>().FileName == fileName);
+
+            if (file == null)
+            {
+                throw new Exception($"File with name {fileName} not found in loaded files.");
+            }
             
             file.GetComponent<FileModel>().IsHidden = shouldHide;
             
