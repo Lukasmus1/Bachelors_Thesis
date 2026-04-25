@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,7 +28,7 @@ namespace StartInterface
 
         private static bool RegisterUsername(string username)
         {
-            if (username.Length == 0)
+            if (username.Length is 0 or > 40)
             {
                 return false;
             }
