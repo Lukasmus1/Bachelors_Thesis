@@ -81,7 +81,7 @@ MonoBehaviour:
   title: Scammer's Desktop Screenshot
   author: IT Department
   comments: Supposed screenshot of the scammer's computer screen. Should be solved
-    with a cipher solver.
+    with a cipher solver using a combination of the scammer's name and birth year.
   createdDate: 
   intendedFileType: 0
 --- !u!114 &576872047478689143
