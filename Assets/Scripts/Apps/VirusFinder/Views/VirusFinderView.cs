@@ -17,6 +17,7 @@ namespace Apps.VirusFinder.Views
 
         private bool killScanCoroutine = false;
         private bool killStatusTextCoroutine = false;
+        private bool isRunning = false;
 
         private void OnEnable()
         {
@@ -50,6 +51,9 @@ namespace Apps.VirusFinder.Views
         /// </summary>
         public void StartScanning()
         {
+            if(isRunning) 
+                return;
+            
             killScanCoroutine = false;
             killStatusTextCoroutine = false;
             StartCoroutine(Scan());
@@ -64,8 +68,10 @@ namespace Apps.VirusFinder.Views
             float duration = 2 + VirusFinderMvc.Instance.VirusFinderController.GetVirusesCount();
             var elapsed = 0f;
 
+            isRunning = true;
+            
             StartCoroutine(FindingVirusTextProgress());
-
+            
             scanProgressBar.value = 0;
             percentageText.text = "0%";
             resultText.gameObject.SetActive(true);
@@ -85,6 +91,8 @@ namespace Apps.VirusFinder.Views
             if (killScanCoroutine)
             {
                 killStatusTextCoroutine = true;
+                isRunning = false;
+                
                 yield break;
             }
 
@@ -101,6 +109,7 @@ namespace Apps.VirusFinder.Views
                     _ => $"Found {virusCount} viruses."
                 };
             resultText.color = virusCount == 0 ? Color.darkGreen : Color.darkRed;
+            isRunning = false;
         }
 
         /// <summary>
