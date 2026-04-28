@@ -25,12 +25,18 @@ namespace Story.Models.States
             //30 seconds total
             
             LoadFromState();
+            SetupInternetDetection();
         }
 
         public override void OnExit()
         { }
 
         public override void LoadFromState()
+        {
+            StoryModel.loadFromStateOnDesktop += SetupInternetDetection;
+        }
+
+        private void SetupInternetDetection()
         {
             ScatteredFiles.DeleteGeneratedFolders();
             CompilationHelperMvc.Instance.CompilationHelperController.DisableFileAreaUI();
@@ -58,8 +64,10 @@ namespace Story.Models.States
             
             FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, "YOU LET HIM FINISH THE COMPILATION! DISCONNECT FORM THE INTERNET NOW! IT'S YOUR LAST CHANCE!",
                 "DISCONNECT FROM THE INTERNET");
+            
+            StoryModel.loadFromStateOnDesktop -= SetupInternetDetection;
         }
-
+        
         /// <summary>
         /// Checks if seconds time passed from the given date, if so, invokes the callback.
         /// </summary>

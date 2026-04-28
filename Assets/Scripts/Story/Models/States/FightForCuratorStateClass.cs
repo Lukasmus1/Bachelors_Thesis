@@ -43,7 +43,7 @@ namespace Story.Models.States
             
             ChatTerminalMvc.Instance.MessageSystemController.messageTyped -= LoadApp;
             
-            CompilationHelperMvc.Instance.CompilationHelperController.EnableForCuratorCompilationProcess(120);
+            CompilationHelperMvc.Instance.CompilationHelperController.EnableForCuratorCompilationProcess(180);
 
             CompilationHelperMvc.Instance.CompilationHelperController.OnAllFilesDeleted += KpFailedToCompile;
             CompilationHelperMvc.Instance.CompilationHelperController.onCompilationFinished += KpCompiled;
