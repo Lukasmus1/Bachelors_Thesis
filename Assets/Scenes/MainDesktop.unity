@@ -7067,6 +7067,7 @@ MonoBehaviour:
   - {fileID: 868804822}
   - {fileID: 675116364}
   - {fileID: 1489934750}
+  - {fileID: 1093358709}
   iconPrefab: {fileID: 1474053375335754062, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
   iconParent: {fileID: 1109705772}
 --- !u!114 &667817316
@@ -10824,6 +10825,11 @@ PrefabInstance:
 --- !u!224 &1093358708 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5757989634877996338, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
+  m_PrefabInstance: {fileID: 1093358707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1093358709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1474053375335754062, guid: 35bb7925ccdf2594c83d23434e83842c, type: 3}
   m_PrefabInstance: {fileID: 1093358707}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1109705771

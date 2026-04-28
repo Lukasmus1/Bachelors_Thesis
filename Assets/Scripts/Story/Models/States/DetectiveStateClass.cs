@@ -49,6 +49,7 @@ namespace Story.Models.States
             FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("Scammer's Email Two", true);
             FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("Scammer's Messages", true);
             FileManagerMvc.Instance.FileManagerController.ToggleFileVisibility("Scammer's Desktop Screenshot", true);
+            //FileManagerMvc.Instance.FileManagerController.SetLoadedFileFlag("UserScreenshot", false);
         }
 
         public override void LoadFromState()

@@ -43,7 +43,7 @@ namespace Apps.Autostereogram.Views
             //Set the autostereogram image to the opened file's image
             GameObject openedFile = FileViewerMvc.Instance.FileLoaderController.OpenedFile;
             Sprite imageToSet = openedFile.GetComponentInChildren<Image>().sprite;
-            if (imageToSet == null)
+            if (imageToSet == null || openedFile.GetComponent<FileProps>().intendedFileType != FileType.Autostereogram)
             {
                 gameObject.SetActive(false);
                 NotificationMvc.Instance.NotificationController.InstantiateNotification(NotificationType.Error, "This file cannot be opened as an autostereogram.");
@@ -52,11 +52,6 @@ namespace Apps.Autostereogram.Views
             
             autostereogramImageHolder.GetComponent<Image>().sprite = imageToSet;
             autostereogramMovingImageHolder.GetComponent<Image>().sprite = imageToSet;
-
-            if (openedFile.GetComponent<FileProps>().intendedFileType != FileType.Autostereogram)
-            {
-                return;
-            }
             
             //Get RectTransforms for easier manipulation
             _asgImageRectTransform = autostereogramImageHolder.GetComponent<RectTransform>();

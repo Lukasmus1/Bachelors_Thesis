@@ -17,7 +17,7 @@ namespace Apps.CipherSolver.Views
         private TMP_Text _fileText;
         private string _fileTextCopy;
         
-        //Image cypher solving
+        //Image cipher solving
         private Image _imageComponent;
         private Texture2D _imageTextureCopy;
         
@@ -67,7 +67,7 @@ namespace Apps.CipherSolver.Views
         private void SetAsImage()
         {
             _imageTextureCopy = _imageComponent.sprite.texture;
-            cipherTypeLabel.text = "Image Cypher";
+            cipherTypeLabel.text = "Image Cipher";
             _isTextCypher = false;
         }
 
@@ -77,7 +77,7 @@ namespace Apps.CipherSolver.Views
         private void SetAsText()
         {
             _fileTextCopy = _fileText.text;
-            cipherTypeLabel.text = "Text Cypher";
+            cipherTypeLabel.text = "Text Cipher";
             _isTextCypher = true;
         }
         
