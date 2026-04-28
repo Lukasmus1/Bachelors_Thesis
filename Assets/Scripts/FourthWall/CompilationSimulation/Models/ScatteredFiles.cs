@@ -28,7 +28,7 @@ namespace FourthWall.CompilationSimulation.Models
         {
             { FileEnum.DesktopFile, "No need to obfuscate this one."},
             { FileEnum.AudioFile, "Windows uses the COM interface for its audio API's. K-P has a dependency on it. To prevent issues, the file must remain hidden until the master audio feed is cut."},
-            { FileEnum.FileThree, "This file shouldn't be editable at all, but I don't know how to prevent hackers from doing it, so I'll just create a registry entry in the HKEY_CURRENT_USER\\Software folder to hide it."},
+            { FileEnum.FileThree, "This file shouldn't be editable at all, but I don't know how to prevent hackers from doing it, so I'll just create a registry entry in the HKEY_CURRENT_USER\\Software\\Kernel_Panic folder to hide it."},
         };
         
         /// <summary>
