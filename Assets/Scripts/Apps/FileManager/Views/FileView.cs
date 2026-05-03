@@ -66,7 +66,16 @@ namespace Apps.FileManager.Views
             
             //Setting the position to the right corner of the context menu
             var contextMenuRect = contextMenu.GetComponent<RectTransform>();
-            contextMenu.transform.position = new Vector2(data.position.x + contextMenuRect.rect.width * 0.5f, data.position.y - contextMenuRect.rect.height * 0.5f);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _contextMenuParent.GetComponent<RectTransform>(), 
+                data.position, 
+                data.pressEventCamera, 
+                out Vector2 localPoint);
+            
+            localPoint.x += contextMenuRect.rect.width * 0.5f;
+            localPoint.y -= contextMenuRect.rect.height * 0.5f;
+            
+            contextMenuRect.localPosition = localPoint;
         }
     }
 }
