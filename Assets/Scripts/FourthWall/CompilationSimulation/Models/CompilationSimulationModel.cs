@@ -127,7 +127,7 @@ namespace FourthWall.CompilationSimulation.Models
             }
             catch (Exception)
             {
-                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, "I CAN'T BE COPIED THERE!", "ERROR");
+                FourthWallMvc.Instance.CommonsController.ThrowWindowsDialog(DialogType.Error, "I CAN'T BE MOVED THERE!", "ERROR");
                 return false;
             }
             
