@@ -80,11 +80,8 @@ latex
 Doxyfile
 BachelorsThesisHelperApp/obj
 BachelorsThesisHelperApp/bin
-AudioPlugin/AudioPlugin
-AudioPlugin/x64
-AudioPlugin/AudioPlugin.slnx
-AudioPlugin/AudioPlugin.vcxproj
-AudioPlugin/AudioPlugin.vcxproj.filters
 EncryptionPattern.exe
 Assets/StreamingAssets/ExternalApp/EncryptionPattern.exe.meta
 readme.pdf
+AudioPlugin/x64
+AudioPlugin/AudioPlugin

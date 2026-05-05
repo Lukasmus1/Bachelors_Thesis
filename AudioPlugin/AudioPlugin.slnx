@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AudioPlugin.vcxproj" Id="23b0d947-a905-4611-9596-ea54ceb59479" />
+</Solution>
