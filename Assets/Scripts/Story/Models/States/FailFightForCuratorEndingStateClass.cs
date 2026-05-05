@@ -1,6 +1,5 @@
 ﻿using System;
 using Saving.Commons;
-using Story.Commons;
 
 namespace Story.Models.States
 {
